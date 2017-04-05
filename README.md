@@ -22,3 +22,14 @@ const MyWidget = () => <Timeline />
 
 export default MyWidget
 ```
+
+## Development
+
+```
+yarn
+```
+
+Then:
+```
+yarn watch
+```
