@@ -5,7 +5,7 @@ const Track = ({ elements }) =>
   <div className="track">
     {
       elements.map(element => (
-        <div className="track__element" style={{ left: `${element.left}px` }}>
+        <div key={element.key} className="track__element" style={{ left: `${element.left}px` }}>
           <Element />
         </div>
       ))
