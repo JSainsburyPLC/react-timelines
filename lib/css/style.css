@@ -1,2 +1,48 @@
-body {
+.ln-timeline .entry {
+  background: yellow; }
+
+.ln-timeline .gantt {
+  position: relative; }
+
+.ln-timeline .gantt__sidebar {
+  display: inline-block;
+  vertical-align: top;
+  width: 200px; }
+
+.ln-timeline .gantt__timeline {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 200px);
+  overflow-x: scroll; }
+
+.ln-timeline .timebar__row {
+  height: 40px;
+  background: blue; }
+
+.ln-timeline .timebar-key {
+  background: red;
+  height: 40px; }
+
+.ln-timeline .timeline {
+  width: 2000px; }
+
+.ln-timeline .timeline__header {
+  height: 120px;
+  background: green; }
+
+.ln-timeline .timeline__body {
+  outline: 1px solid red; }
+
+.ln-timeline .track {
+  position: relative;
+  height: 80px;
+  background: #ccc; }
+
+.ln-timeline .track__entry {
+  position: absolute;
+  height: 70px;
+  top: 5px; }
+
+.ln-timeline .track-key {
+  height: 80px;
   background: purple; }

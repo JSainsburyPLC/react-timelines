@@ -4,6 +4,6 @@ import Widget from './components/Widget'
 
 // import { render } from 'react-dom'
 
-const Timeline = () => <Widget />
+const Timeline = () => <div className="ln-timeline"><Widget /></div>
 
 export default Timeline

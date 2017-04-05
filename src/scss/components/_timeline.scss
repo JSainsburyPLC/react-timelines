@@ -1,0 +1,12 @@
+.timeline {
+  width: $timeline-width;
+}
+
+.timeline__header {
+  height: $header-height;
+  background: green;
+}
+
+.timeline__body {
+  outline: 1px solid red;
+}

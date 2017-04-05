@@ -1,0 +1,16 @@
+.gantt {
+  position: relative;
+}
+
+.gantt__sidebar {
+  display: inline-block;
+  vertical-align: top;
+  width: $sidebar-width;
+}
+
+.gantt__timeline {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - #{$sidebar-width});
+  overflow-x: scroll;
+}

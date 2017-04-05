@@ -1,3 +1,15 @@
-body {
-  background: purple;
+$sidebar-width: 200px;
+$timeline-width: 2000px; // TODO: temp
+$header-height: 120px;
+$header-row-height: 40px;
+
+.ln-timeline {
+  @import 'components/entry';
+  @import 'components/gantt';
+  @import 'components/sidebar';
+  @import 'components/timebar';
+  @import 'components/timebar-key';
+  @import 'components/timeline';
+  @import 'components/track';
+  @import 'components/track-key';
 }

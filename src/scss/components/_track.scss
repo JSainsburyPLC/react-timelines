@@ -1,0 +1,11 @@
+.track {
+  position: relative;
+  height: 80px;
+  background: #ccc;
+}
+
+.track__entry {
+  position: absolute;
+  height: 70px;
+  top: 5px;
+}
