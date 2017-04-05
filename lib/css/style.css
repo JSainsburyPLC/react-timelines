@@ -23,9 +23,6 @@
   background: red;
   height: 40px; }
 
-.ln-timeline .timeline {
-  width: 2000px; }
-
 .ln-timeline .timeline__header {
   height: 120px;
   background: green; }

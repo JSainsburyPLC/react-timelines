@@ -10,7 +10,7 @@
     "watch:js": "babel -w src/ -d lib/",
     "build:css": "node-sass src/scss/style.scss lib/css/style.css",
     "watch:css": "node-sass -w src/scss/style.scss lib/css/style.css",
-    "watch": "yarn js & yarn css",
+    "watch": "yarn watch:js & yarn watch:css",
     "build": "yarn run clean && yarn build:js && yarn build:css"
   },
   "repository": "git@github.com:JSainsburyPLC/luna-react-timeline-prototype.git",

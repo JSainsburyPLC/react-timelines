@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Track from './Track'
 
-const Body = () =>
+const Body = ({ time, tracks }) =>
   <div className="timeline__body">
-    <Track elements={[{ key: 1, left: 100 }, { key: 2, left: 200 }]} />
-    <Track elements={[{ key: 3, left: 300 }, { key: 4, left: 400 }]} />
+    {
+      tracks.map(({ id, elements }) =>
+        <Track key={id} time={time} elements={elements} />
+      )
+    }
+    {/* <Track elements={[{ id: 10, left: 100 }, { id: 20, left: 200 }]} />
+    <Track elements={[{ id: 30, left: 300 }, { id: 40, left: 400 }]} /> */}
   </div>
+
+Body.propTypes = {
+  time: PropTypes.shape({}).isRequired,
+  tracks: PropTypes.arrayOf(PropTypes.shape({}))
+}
 
 export default Body
