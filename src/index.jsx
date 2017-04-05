@@ -1,7 +1,9 @@
 import React from 'react'
 
+import Widget from './components/Widget'
+
 // import { render } from 'react-dom'
 
-const Widget = () => <div>My Widget</div>
+const Timeline = () => <Widget />
 
-export default Widget
+export default Timeline

@@ -5,10 +5,13 @@
     [
       "env", {
         "targets": {
-          "browsers": ["last 2 versions", "safari >= 7"]
+          "browsers": ["last 2 versions", "ie 9-11"]
         }
       }
     ]
   ],
-  "plugins": ["transform-runtime"]
+  "plugins": [
+    "add-module-exports",
+    "transform-runtime"
+  ]
 }
