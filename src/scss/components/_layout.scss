@@ -1,14 +1,14 @@
-.gantt {
+.layout {
   position: relative;
 }
 
-.gantt__sidebar {
+.layout__side {
   display: inline-block;
   vertical-align: top;
   width: $sidebar-width;
 }
 
-.gantt__timeline {
+.layout__main {
   display: inline-block;
   vertical-align: top;
   width: calc(100% - #{$sidebar-width});

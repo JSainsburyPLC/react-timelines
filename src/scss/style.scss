@@ -4,8 +4,8 @@ $header-height: 120px;
 $header-row-height: 40px;
 
 .ln-timeline {
-  @import 'components/entry';
-  @import 'components/gantt';
+  @import 'components/element';
+  @import 'components/layout';
   @import 'components/sidebar';
   @import 'components/timebar';
   @import 'components/timebar-key';

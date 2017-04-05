@@ -1,15 +1,15 @@
-.ln-timeline .entry {
+.ln-timeline .element {
   background: yellow; }
 
-.ln-timeline .gantt {
+.ln-timeline .layout {
   position: relative; }
 
-.ln-timeline .gantt__sidebar {
+.ln-timeline .layout__side {
   display: inline-block;
   vertical-align: top;
   width: 200px; }
 
-.ln-timeline .gantt__timeline {
+.ln-timeline .layout__main {
   display: inline-block;
   vertical-align: top;
   width: calc(100% - 200px);
@@ -38,7 +38,7 @@
   height: 80px;
   background: #ccc; }
 
-.ln-timeline .track__entry {
+.ln-timeline .track__element {
   position: absolute;
   height: 70px;
   top: 5px; }
