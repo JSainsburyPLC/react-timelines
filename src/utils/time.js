@@ -1,18 +1,22 @@
-import frac from './frac'
+const create = ({ start, end, scale }) => {
+  const MILLIS_IN_A_DAY = 24 * 60 * 60 * 1000
 
-const MILLIS_IN_A_DAY = 24 * 60 * 60 * 1000
+  const duration = end - start
+  const days = duration / MILLIS_IN_A_DAY
+  const timelineWidth = days * scale
 
-export const toTimelineWidth = (time) => {
-  const { start, end, scale } = time
-  const days = (end - start) / MILLIS_IN_A_DAY
-  const width = days * scale
-  return width
+  const toX = (input) => {
+    const value = (input - start) / duration
+    return value * timelineWidth
+  }
+
+  return {
+    timelineWidth,
+    start,
+    end,
+    scale,
+    toX
+  }
 }
 
-export const toX = (time, input) => {
-  const { start, end, scale } = time
-  const width = toTimelineWidth({ start, end, scale })
-  const value = frac(start, end, input)
-  const x = value * width
-  return x
-}
+export default create

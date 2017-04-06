@@ -1,10 +1,9 @@
 import React, { PropTypes } from 'react'
 import Header from './Header'
 import Body from './Body'
-import { toTimelineWidth } from '../../utils/time'
 
 const Timeline = ({ time, tracks }) =>
-  <div className="timeline" style={{ width: `${toTimelineWidth(time)}px` }}>
+  <div className="timeline" style={{ width: `${time.timelineWidth}px` }}>
     <Header time={time} />
     <Body time={time} tracks={tracks} />
   </div>

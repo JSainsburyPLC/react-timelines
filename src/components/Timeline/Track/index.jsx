@@ -1,12 +1,15 @@
 import React, { PropTypes } from 'react'
 import Element from './Element'
-import { toX } from '../../../utils/time'
 
 const Track = ({ time, elements }) =>
   <div className="track">
     {
-      elements.map(({ id, start }) => (
-        <div key={id} className="track__element" style={{ left: `${toX(time, start)}px` }}>
+      elements.map(({ id, start, end }) => (
+        <div
+          key={id}
+          className="track__element"
+          style={{ left: `${time.toX(start)}px`, width: `${time.toX(end) - time.toX(start)}px` }}
+        >
           <Element />
         </div>
       ))

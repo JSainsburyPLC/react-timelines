@@ -5,7 +5,8 @@
     [
       "env", {
         "targets": {
-          "browsers": ["last 2 versions", "ie 9-11"]
+          "browsers": ["last 2 versions", "ie 9-11"],
+          "node": "current"
         }
       }
     ]
