@@ -1,4 +1,4 @@
-# Luna React Timeline
+# React Timeline
 
 ## Install
 
