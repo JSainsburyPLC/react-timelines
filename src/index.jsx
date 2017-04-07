@@ -27,6 +27,7 @@ class Container extends Component {
           </div>
           <div className="layout__main">
             <Timeline
+              now={this.props.now}
               time={this.state.time}
               timebar={this.props.timebar}
               tracks={this.props.tracks}
@@ -39,6 +40,7 @@ class Container extends Component {
 }
 
 Container.propTypes = {
+  now: PropTypes.instanceOf(Date),
   scale: PropTypes.shape({}).isRequired,
   timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired

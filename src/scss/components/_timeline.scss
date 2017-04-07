@@ -1,5 +1,18 @@
-.timeline {}
+.timeline {
+
+}
 
 .timeline__header {}
 
-.timeline__body {}
+.timeline__body {
+  position: relative;
+}
+
+.timeline__time {
+  position: absolute;
+  // z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  border-left: 1px solid red;
+}

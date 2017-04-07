@@ -1,6 +1,11 @@
 .element {
-  background: white;
-  height: 70px;
-  line-height: 70px;
-  padding: 0 5px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+
+  background: #06f;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
