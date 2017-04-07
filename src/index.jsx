@@ -8,13 +8,13 @@ class Container extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      time: createTime(props.time)
+      time: createTime(props.scale)
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.time !== this.props.time) {
-      this.setState({ time: createTime(nextProps.time) })
+    if (nextProps.scale !== this.props.scale) {
+      this.setState({ time: createTime(nextProps.scale) })
     }
   }
 
@@ -39,7 +39,7 @@ class Container extends Component {
 }
 
 Container.propTypes = {
-  time: PropTypes.shape({}).isRequired,
+  scale: PropTypes.shape({}).isRequired,
   timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 }
