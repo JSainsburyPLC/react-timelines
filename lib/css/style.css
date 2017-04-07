@@ -1,7 +1,7 @@
 .react-timeline {
   font-family: sans-serif; }
   .react-timeline .element {
-    background: yellow;
+    background: white;
     height: 70px;
     line-height: 70px;
     padding: 0 5px; }
@@ -19,19 +19,18 @@
   .react-timeline .timebar__row {
     position: relative;
     height: 40px;
-    overflow: hidden; }
+    overflow: hidden;
+    line-height: 40px; }
   .react-timeline .timebar__cell {
     position: absolute;
     height: 40px;
-    border-left: 1px solid black; }
+    text-align: center;
+    box-shadow: 1px -1px 0 0 black inset;
+    /* TODO: revisit */ }
   .react-timeline .timebar-key {
-    background: red;
+    background: #333;
+    color: #fff;
     height: 40px; }
-  .react-timeline .timeline__header {
-    height: 120px;
-    background: green; }
-  .react-timeline .timeline__body {
-    outline: 1px solid red; }
   .react-timeline .track {
     position: relative;
     height: 80px;
@@ -42,4 +41,5 @@
     top: 5px; }
   .react-timeline .track-key {
     height: 80px;
-    background: purple; }
+    background: #999;
+    color: #fff; }

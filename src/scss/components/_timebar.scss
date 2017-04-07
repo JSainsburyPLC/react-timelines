@@ -4,10 +4,12 @@
   position: relative;
   height: $react-timeline-header-row-height;
   overflow: hidden;
+  line-height: $react-timeline-header-row-height;
 }
 
 .timebar__cell {
   position: absolute;
   height: $react-timeline-header-row-height;
-  border-left: 1px solid black;
+  text-align: center;
+  box-shadow: 1px -1px 0 0 black inset; /* TODO: revisit */
 }
