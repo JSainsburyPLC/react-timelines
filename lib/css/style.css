@@ -1,54 +1,45 @@
-.react-timeline .element {
-  background: yellow;
-  height: 70px;
-  line-height: 70px;
-  padding: 0 5px; }
-
-.react-timeline .layout {
-  position: relative; }
-
-.react-timeline .layout__side {
-  display: inline-block;
-  vertical-align: top;
-  width: 200px; }
-
-.react-timeline .layout__main {
-  display: inline-block;
-  vertical-align: top;
-  width: calc(100% - 200px);
-  overflow-x: scroll; }
-
-.react-timeline .timebar__row {
-  position: relative;
-  height: 40px;
-  overflow: hidden; }
-
-.react-timeline .timebar__cell {
-  position: absolute;
-  height: 40px;
-  border-left: 1px solid black; }
-
-.react-timeline .timebar-key {
-  background: red;
-  height: 40px; }
-
-.react-timeline .timeline__header {
-  height: 120px;
-  background: green; }
-
-.react-timeline .timeline__body {
-  outline: 1px solid red; }
-
-.react-timeline .track {
-  position: relative;
-  height: 80px;
-  background: #ccc; }
-
-.react-timeline .track__element {
-  position: absolute;
-  height: 70px;
-  top: 5px; }
-
-.react-timeline .track-key {
-  height: 80px;
-  background: purple; }
+.react-timeline {
+  font-family: sans-serif; }
+  .react-timeline .element {
+    background: yellow;
+    height: 70px;
+    line-height: 70px;
+    padding: 0 5px; }
+  .react-timeline .layout {
+    position: relative; }
+  .react-timeline .layout__side {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px; }
+  .react-timeline .layout__main {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 200px);
+    overflow-x: scroll; }
+  .react-timeline .timebar__row {
+    position: relative;
+    height: 40px;
+    overflow: hidden; }
+  .react-timeline .timebar__cell {
+    position: absolute;
+    height: 40px;
+    border-left: 1px solid black; }
+  .react-timeline .timebar-key {
+    background: red;
+    height: 40px; }
+  .react-timeline .timeline__header {
+    height: 120px;
+    background: green; }
+  .react-timeline .timeline__body {
+    outline: 1px solid red; }
+  .react-timeline .track {
+    position: relative;
+    height: 80px;
+    background: #ccc; }
+  .react-timeline .track__element {
+    position: absolute;
+    height: 70px;
+    top: 5px; }
+  .react-timeline .track-key {
+    height: 80px;
+    background: purple; }

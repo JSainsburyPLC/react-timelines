@@ -1,9 +1,13 @@
-$sidebar-width: 200px;
-$header-height: 120px;
-$header-row-height: 40px;
-$track-height: 80px;
+$react-timeline-font-family: sans-serif !default;
+$react-timeline-sidebar-width: 200px !default;
+$react-timeline-header-height: 120px !default;
+$react-timeline-header-row-height: 40px !default;
+$react-timeline-track-height: 80px !default;
 
 .react-timeline {
+
+  font-family: $react-timeline-font-family;
+
   @import 'components/element';
   @import 'components/layout';
   @import 'components/sidebar';

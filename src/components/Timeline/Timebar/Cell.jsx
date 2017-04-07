@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 const Cell = ({ time, id, title, start }) =>
   <div
     className="timebar__cell"
-    style={{ left: `${time.toX(start)}px` }}
+    style={time.toStyleLeft(start)}
   >
     {title}
   </div>

@@ -8,8 +8,6 @@ const Body = ({ time, tracks }) =>
         <Track key={id} time={time} elements={elements} />
       )
     }
-    {/* <Track elements={[{ id: 10, left: 100 }, { id: 20, left: 200 }]} />
-    <Track elements={[{ id: 30, left: 300 }, { id: 40, left: 400 }]} /> */}
   </div>
 
 Body.propTypes = {

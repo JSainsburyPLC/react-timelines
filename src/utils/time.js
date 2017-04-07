@@ -5,9 +5,21 @@ const create = ({ start, end, scale }) => {
   const days = duration / MILLIS_IN_A_DAY
   const timelineWidth = days * scale
 
-  const toX = (input) => {
-    const value = (input - start) / duration
+  const toX = (from) => {
+    const value = (from - start) / duration
     return value * timelineWidth
+  }
+
+  const toStyleLeft = from => ({
+    left: `${toX(from)}px`
+  })
+
+  const toStyleLeftAndWidth = (from, to) => {
+    const left = toX(from)
+    return {
+      left: `${left}px`,
+      width: `${toX(to) - left}px`
+    }
   }
 
   return {
@@ -15,7 +27,9 @@ const create = ({ start, end, scale }) => {
     start,
     end,
     scale,
-    toX
+    toX,
+    toStyleLeft,
+    toStyleLeftAndWidth
   }
 }
 

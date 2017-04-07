@@ -8,7 +8,7 @@ const Track = ({ time, elements }) =>
         <div
           key={id}
           className="track__element"
-          style={{ left: `${time.toX(start)}px`, width: `${time.toX(end) - time.toX(start)}px` }}
+          style={time.toStyleLeftAndWidth(start, end)}
         >
           <Element />
         </div>

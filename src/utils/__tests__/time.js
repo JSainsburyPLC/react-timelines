@@ -24,7 +24,7 @@ describe('createTime', () => {
   })
 
   describe('toX()', () => {
-    it('calculates correct value for x', () => {
+    it('calculates correct x pixel position for given date', () => {
       const start = new Date('2017-01-01T00:00:00.000Z')
       const end = new Date('2018-01-01T00:00:00.000Z')
       const { toX } = createTime({ start, end, scale: 2 })
@@ -34,6 +34,29 @@ describe('createTime', () => {
       expect(toX(start)).toBe(0)
       expect(toX(nearMiddle)).toBe(362)
       expect(toX(notClamped)).toBe(2190)
+    })
+  })
+
+  describe('toStyleLeft()', () => {
+    it('returns style object with correct "left" property', () => {
+      const start = new Date('2017-01-01T00:00:00.000Z')
+      const firstOfJune = new Date('2017-06-01T12:34:56.000Z')
+      const end = new Date('2018-01-01T00:00:00.000Z')
+      const { toStyleLeft } = createTime({ start, end, scale: 2 })
+      expect(toStyleLeft(start)).toEqual({ left: '0px' })
+      expect(toStyleLeft(firstOfJune)).toEqual({ left: '303.0485185185185px' })
+      expect(toStyleLeft(end)).toEqual({ left: '730px' })
+    })
+  })
+
+  describe('toStyleLeftAndWidth()', () => {
+    it('returns style object with correct "left" and "width" property', () => {
+      const start = new Date('2017-01-01T00:00:00.000Z')
+      const firstOfJune = new Date('2017-06-01T12:34:56.000Z')
+      const end = new Date('2018-01-01T00:00:00.000Z')
+      const { toStyleLeftAndWidth } = createTime({ start, end, scale: 2 })
+      expect(toStyleLeftAndWidth(start, end)).toEqual({ left: '0px', width: '730px' })
+      expect(toStyleLeftAndWidth(firstOfJune, end)).toEqual({ left: '303.0485185185185px', width: '426.9514814814815px' })
     })
   })
 })

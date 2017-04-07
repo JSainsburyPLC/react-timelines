@@ -5,12 +5,12 @@
 .layout__side {
   display: inline-block;
   vertical-align: top;
-  width: $sidebar-width;
+  width: $react-timeline-sidebar-width;
 }
 
 .layout__main {
   display: inline-block;
   vertical-align: top;
-  width: calc(100% - #{$sidebar-width});
+  width: calc(100% - #{$react-timeline-sidebar-width});
   overflow-x: scroll;
 }
