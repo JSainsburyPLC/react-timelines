@@ -1,5 +1,16 @@
 .track-key {
+  // height: $react-timeline-track-height;
+  // background: #999;
+  // color: #fff;
+}
+
+.track-key__entry {
+  position: relative;
   height: $react-timeline-track-height;
-  background: #999;
-  color: #fff;
+  line-height: $react-timeline-track-height;
+  padding: 0 15px;
+  font-weight: bold;
+  background-color: #fff;
+  text-align: right;
+  box-shadow: 0 -1px 0 0 #f6f6f6 inset; /* TODO: revisit */
 }

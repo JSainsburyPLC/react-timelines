@@ -1,8 +1,9 @@
 $react-timeline-font-family: sans-serif !default;
 $react-timeline-sidebar-width: 240px !default;
 // $react-timeline-header-height: 80px !default;
-$react-timeline-header-row-height: 30px !default;
+$react-timeline-header-row-height: 40px !default;
 $react-timeline-track-height: 60px !default;
+$react-timeline-element-spacing: 10px !default;
 
 .react-timeline {
 
@@ -16,5 +17,7 @@ $react-timeline-track-height: 60px !default;
   @import 'components/timebar-key';
   @import 'components/timeline';
   @import 'components/track';
+  @import 'components/tracks';
   @import 'components/track-key';
+  @import 'components/track-keys';
 }

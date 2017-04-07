@@ -4,6 +4,7 @@
     height: 40px;
     line-height: 40px;
     padding: 0 10px;
+    font-weight: bold;
     background: #06f;
     color: #fff;
     white-space: nowrap;
@@ -20,22 +21,27 @@
     vertical-align: top;
     width: calc(100% - 240px);
     overflow-x: scroll; }
+  .react-timeline .sidebar {
+    position: relative;
+    z-index: 1;
+    box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
+    /* TODO: REVISIT */ }
   .react-timeline .timebar__row {
     position: relative;
-    height: 30px;
+    height: 40px;
     overflow: hidden;
-    line-height: 30px; }
+    line-height: 40px; }
   .react-timeline .timebar__cell {
     position: absolute;
-    height: 30px;
+    height: 40px;
     text-align: center;
     background: #fff;
     box-shadow: 1px -1px 0 0 #eee inset;
     /* TODO: revisit */ }
   .react-timeline .timebar-key {
-    background: #333;
+    background-color: none;
     color: #fff;
-    height: 30px; }
+    height: 40px; }
   .react-timeline .timeline__body {
     position: relative; }
   .react-timeline .timeline__time {
@@ -44,17 +50,23 @@
     bottom: 0;
     width: 1px;
     border-left: 1px solid red; }
-  .react-timeline .track {
+  .react-timeline .track__elements {
     position: relative;
     height: 60px;
     background: #fff;
-    box-shadow: 1px -1px 0 0 #eee inset;
+    box-shadow: 0 -1px 0 0 #eee inset;
     /* TODO: revisit */ }
   .react-timeline .track__element {
     position: absolute;
     height: 40px;
     top: 10px; }
-  .react-timeline .track-key {
+  .react-timeline .track-key__entry {
+    position: relative;
     height: 60px;
-    background: #999;
-    color: #fff; }
+    line-height: 60px;
+    padding: 0 15px;
+    font-weight: bold;
+    background-color: #fff;
+    text-align: right;
+    box-shadow: 0 -1px 0 0 #f6f6f6 inset;
+    /* TODO: revisit */ }

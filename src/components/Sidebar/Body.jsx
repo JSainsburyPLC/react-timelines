@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import TrackKeys from './TrackKeys'
 
-const Body = () =>
+const Body = ({ tracks }) =>
   <div className="sidebar__body">
-    <div className="track-key">
-      Track key 1
-    </div>
-    <div className="track-key">
-      Track key 2
-    </div>
+    <TrackKeys tracks={tracks} />
   </div>
+
+Body.propTypes = {
+  tracks: PropTypes.arrayOf(PropTypes.shape({}))
+}
 
 export default Body

@@ -23,7 +23,7 @@ class Container extends Component {
       <div className="react-timeline">
         <div className="layout">
           <div className="layout__side">
-            <Sidebar />
+            <Sidebar tracks={this.props.tracks} />
           </div>
           <div className="layout__main">
             <Timeline

@@ -1,12 +1,16 @@
 .track {
+
+}
+
+.track__elements {
   position: relative;
   height: $react-timeline-track-height;
   background: #fff;
-  box-shadow: 1px -1px 0 0 #eee inset; /* TODO: revisit */
+  box-shadow: 0 -1px 0 0 #eee inset; /* TODO: revisit */
 }
 
 .track__element {
   position: absolute;
-  height: 40px;
-  top: 10px;
+  height: $react-timeline-track-height - 2 * $react-timeline-element-spacing;
+  top: $react-timeline-element-spacing;
 }
