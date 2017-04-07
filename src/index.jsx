@@ -26,7 +26,11 @@ class Container extends Component {
             <Sidebar />
           </div>
           <div className="layout__main">
-            <Timeline time={this.state.time} tracks={this.props.tracks} />
+            <Timeline
+              time={this.state.time}
+              timebar={this.props.timebar}
+              tracks={this.props.tracks}
+            />
           </div>
         </div>
       </div>
@@ -36,6 +40,7 @@ class Container extends Component {
 
 Container.propTypes = {
   time: PropTypes.shape({}).isRequired,
+  timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 }
 

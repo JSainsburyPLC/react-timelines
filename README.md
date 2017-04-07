@@ -7,7 +7,7 @@ Manually add as a dependency in your `package.json`:
 ```json
 {
   "dependencies": {
-    "luna-react-timeline": "git@github.com:JSainsburyPLC/luna-react-timeline-prototype.git"
+    "react-timeline": "git@github.com:JSainsburyPLC/react-timeline.git"
   }
 }
 ```
@@ -15,8 +15,8 @@ Manually add as a dependency in your `package.json`:
 Use the React component and bring in styling:
 
 ```js
-import Timeline from 'luna-react-timeline'
-import 'luna-react-timeline/lib/css/style.css'
+import Timeline from 'react-timeline'
+import 'react-timeline/lib/css/style.css'
 
 const MyWidget = () => <Timeline />
 

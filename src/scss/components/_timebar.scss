@@ -1,6 +1,13 @@
 .timebar {}
 
 .timebar__row {
+  position: relative;
   height: $header-row-height;
-  background: blue;
+  overflow: hidden;
+}
+
+.timebar__cell {
+  position: absolute;
+  height: $header-row-height;
+  border-left: 1px solid black;
 }

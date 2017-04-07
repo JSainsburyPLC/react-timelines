@@ -1,5 +1,8 @@
 .ln-timeline .element {
-  background: yellow; }
+  background: yellow;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 5px; }
 
 .ln-timeline .layout {
   position: relative; }
@@ -16,8 +19,14 @@
   overflow-x: scroll; }
 
 .ln-timeline .timebar__row {
+  position: relative;
   height: 40px;
-  background: blue; }
+  overflow: hidden; }
+
+.ln-timeline .timebar__cell {
+  position: absolute;
+  height: 40px;
+  border-left: 1px solid black; }
 
 .ln-timeline .timebar-key {
   background: red;

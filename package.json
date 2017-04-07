@@ -18,10 +18,9 @@
     "unit": "jest",
     "coverage": "jest --coverage --collectCoverageFrom='**/*.{js,jsx}'"
   },
-  "repository": "git@github.com:JSainsburyPLC/luna-react-timeline-prototype.git",
+  "repository": "git@github.com:JSainsburyPLC/react-timeline.git",
   "author": "JSainsburyPLC",
   "license": "UNLICENSED",
-  "dependencies": {},
   "peerDependencies": {
     "react": ">=15.0",
     "react-dom": ">=15.0"
