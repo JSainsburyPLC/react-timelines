@@ -1,8 +1,8 @@
 {
-  "name": "luna-react-timeline",
+  "name": "react-timeline",
   "private": true,
   "version": "0.1.0",
-  "description": "Luna React Timeline (Gantt)",
+  "description": "React Timeline",
   "main": "lib/index.js",
   "scripts": {
     "clean": "rm -rf ./lib",

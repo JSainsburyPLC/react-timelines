@@ -1,54 +1,54 @@
-.ln-timeline .element {
+.react-timeline .element {
   background: yellow;
   height: 70px;
   line-height: 70px;
   padding: 0 5px; }
 
-.ln-timeline .layout {
+.react-timeline .layout {
   position: relative; }
 
-.ln-timeline .layout__side {
+.react-timeline .layout__side {
   display: inline-block;
   vertical-align: top;
   width: 200px; }
 
-.ln-timeline .layout__main {
+.react-timeline .layout__main {
   display: inline-block;
   vertical-align: top;
   width: calc(100% - 200px);
   overflow-x: scroll; }
 
-.ln-timeline .timebar__row {
+.react-timeline .timebar__row {
   position: relative;
   height: 40px;
   overflow: hidden; }
 
-.ln-timeline .timebar__cell {
+.react-timeline .timebar__cell {
   position: absolute;
   height: 40px;
   border-left: 1px solid black; }
 
-.ln-timeline .timebar-key {
+.react-timeline .timebar-key {
   background: red;
   height: 40px; }
 
-.ln-timeline .timeline__header {
+.react-timeline .timeline__header {
   height: 120px;
   background: green; }
 
-.ln-timeline .timeline__body {
+.react-timeline .timeline__body {
   outline: 1px solid red; }
 
-.ln-timeline .track {
+.react-timeline .track {
   position: relative;
   height: 80px;
   background: #ccc; }
 
-.ln-timeline .track__element {
+.react-timeline .track__element {
   position: absolute;
   height: 70px;
   top: 5px; }
 
-.ln-timeline .track-key {
+.react-timeline .track-key {
   height: 80px;
   background: purple; }

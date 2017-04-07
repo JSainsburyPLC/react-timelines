@@ -20,7 +20,7 @@ class Container extends Component {
 
   render() {
     return (
-      <div className="ln-timeline">
+      <div className="react-timeline">
         <div className="layout">
           <div className="layout__side">
             <Sidebar />
