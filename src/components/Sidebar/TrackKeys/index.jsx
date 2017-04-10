@@ -4,8 +4,14 @@ import TrackKey from './TrackKey'
 const TrackKeys = ({ tracks }) =>
   <div className="track-keys">
     {
-      tracks.map(({ id, tracks: sub, title }) =>
-        <TrackKey key={id} tracks={sub} title={title} />
+      tracks.map(({ id, title, isOpen, toggleOpen, tracks: children }) =>
+        <TrackKey
+          key={id}
+          title={title}
+          isOpen={isOpen}
+          toggleOpen={toggleOpen}
+          tracks={children}
+        />
       )
     }
   </div>

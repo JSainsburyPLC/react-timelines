@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 
-const Element = ({ title, style }) =>
+const Basic = ({ title, style }) =>
   <div className="element" style={style}>{ title }</div>
 
-Element.propTypes = {
+Basic.propTypes = {
   title: PropTypes.string,
   style: PropTypes.shape({})
 }
 
-export default Element
+export default Basic
