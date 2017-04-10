@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
+import datePropType from '../../../utils/datePropType'
 
-const Cell = ({ time, id, title, start, end }) =>
+const Cell = ({ time, title, start, end }) =>
   <div
     className="timebar__cell"
     style={time.toStyleLeftAndWidth(start, end)}
@@ -10,10 +11,9 @@ const Cell = ({ time, id, title, start, end }) =>
 
 Cell.propTypes = {
   time: PropTypes.shape({}),
-  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  start: PropTypes.instanceOf(Date).isRequired,
-  end: PropTypes.instanceOf(Date).isRequired
+  start: datePropType,
+  end: datePropType
 }
 
 export default Cell

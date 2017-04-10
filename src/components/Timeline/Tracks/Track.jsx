@@ -6,7 +6,13 @@ const Track = ({ time, elements, isOpen, tracks, style: trackStyle }) =>
   <div className="track">
     <div className="track__elements">
       { elements.map(element =>
-        <Element trackStyle={trackStyle} time={time} style={element.style} {...element} />)
+        <Element
+          key={element.id}
+          trackStyle={trackStyle}
+          time={time}
+          style={element.style}
+          {...element}
+        />)
       }
     </div>
     { isOpen && tracks && tracks.length > 0
