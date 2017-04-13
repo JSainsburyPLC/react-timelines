@@ -22,7 +22,7 @@ class Container extends Component {
   }
 
   render() {
-    const { isOpen, toggleIsOpen, tracks, now, timebar } = this.props
+    const { isOpen, toggleOpen, tracks, now, timebar } = this.props
     const { time } = this.state
     return (
       <div className="react-timeline">
@@ -33,7 +33,7 @@ class Container extends Component {
           <div className="layout__main">
             <Timeline {...{ now, time, timebar, tracks }} />
           </div>
-          <SidebarToggle {...{ isOpen, toggleIsOpen }} />
+          <SidebarToggle {...{ isOpen, toggleOpen }} />
         </div>
       </div>
     )
@@ -44,7 +44,7 @@ Container.propTypes = {
   now: PropTypes.instanceOf(Date),
   scale: PropTypes.shape({}).isRequired,
   isOpen: PropTypes.bool.isRequired,
-  toggleIsOpen: PropTypes.func.isRequired,
+  toggleOpen: PropTypes.func.isRequired,
   timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 }

@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 
-const Toggle = ({ toggleIsOpen, isOpen }) =>
-  <button className="layout__toggle-button" onClick={toggleIsOpen}>
+const Toggle = ({ toggleOpen, isOpen }) =>
+  <button className="layout__toggle-button" onClick={toggleOpen}>
     {isOpen ? '-' : '+'}
   </button>
 
 Toggle.propTypes = {
-  toggleIsOpen: PropTypes.func.isRequired,
+  toggleOpen: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired
 }
 
