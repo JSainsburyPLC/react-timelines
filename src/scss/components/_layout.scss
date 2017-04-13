@@ -1,16 +1,51 @@
+$layout-bp: 1000px;
+
 .layout {
   position: relative;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.layout__toggle-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: inline-block;
+  min-width: 24px;
+  background-color: #ccc;
+  color: #fff;
+  font-weight: bold;
+
+  @media (min-width: $layout-bp) {
+    display: none;
+  }
 }
 
 .layout__side {
-  display: inline-block;
+  display: table-cell;
+  width: 0;
+  border-right: 1px solid #eee;
+  overflow: hidden;
   vertical-align: top;
-  width: $react-timeline-sidebar-width;
+  will-change: width;
+
+  @media (min-width: $layout-bp) {
+    width: $react-timeline-sidebar-width;
+    overflow: visible;
+  }
+}
+
+.layout.is-open > .layout__side {
+  @media (max-width: $layout-bp) {
+    width: $react-timeline-sidebar-width;
+    transition: width 0.2s 0s;
+  }
 }
 
 .layout__main {
-  display: inline-block;
+  display: table-cell;
+  width: 100%;
   vertical-align: top;
-  width: calc(100% - #{$react-timeline-sidebar-width});
-  overflow-x: scroll;
 }

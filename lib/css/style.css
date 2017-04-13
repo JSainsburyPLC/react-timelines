@@ -11,21 +11,45 @@
     overflow: hidden;
     text-overflow: ellipsis; }
   .react-timeline .layout {
-    position: relative; }
+    position: relative;
+    display: table;
+    table-layout: fixed;
+    width: 100%; }
+  .react-timeline .layout__toggle-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: inline-block;
+    min-width: 24px;
+    background-color: #ccc;
+    color: #fff;
+    font-weight: bold; }
+    @media (min-width: 1000px) {
+      .react-timeline .layout__toggle-button {
+        display: none; } }
   .react-timeline .layout__side {
-    display: inline-block;
+    display: table-cell;
+    width: 0;
+    border-right: 1px solid #eee;
+    overflow: hidden;
     vertical-align: top;
-    width: 240px; }
+    will-change: width; }
+    @media (min-width: 1000px) {
+      .react-timeline .layout__side {
+        width: 240px;
+        overflow: visible; } }
+  @media (max-width: 1000px) {
+    .react-timeline .layout.is-open > .layout__side {
+      width: 240px;
+      transition: width 0.2s 0s; } }
   .react-timeline .layout__main {
-    display: inline-block;
-    vertical-align: top;
-    width: calc(100% - 240px);
-    overflow-x: scroll; }
+    display: table-cell;
+    width: 100%;
+    vertical-align: top; }
   .react-timeline .sidebar {
     position: relative;
-    z-index: 1;
-    box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
-    /* TODO: REVISIT */ }
+    z-index: 1; }
   .react-timeline .timebar__row {
     position: relative;
     height: 40px;
@@ -42,6 +66,8 @@
     background-color: none;
     color: #fff;
     height: 40px; }
+  .react-timeline .timeline {
+    overflow-x: scroll; }
   .react-timeline .timeline__body {
     position: relative; }
   .react-timeline .timeline__time {

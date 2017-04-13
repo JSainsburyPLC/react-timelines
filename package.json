@@ -54,5 +54,8 @@
       "node_modules",
       "src"
     ]
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
   }
 }
