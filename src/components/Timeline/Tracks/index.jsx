@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import Track from './Track'
+import datePropType from '../../../utils/datePropType'
 
 const Tracks = ({ time, tracks }) =>
   <div className="tracks">

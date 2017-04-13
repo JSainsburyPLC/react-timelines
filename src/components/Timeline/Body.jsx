@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import Tracks from './Tracks'
 import Now from './Now'
+import datePropType from '../../utils/datePropType'
 
 const Body = ({ now, time, tracks }) =>
   <div className="timeline__body">
@@ -9,7 +10,7 @@ const Body = ({ now, time, tracks }) =>
   </div>
 
 Body.propTypes = {
-  now: PropTypes.instanceOf(Date),
+  now: datePropType,
   time: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({}))
 }

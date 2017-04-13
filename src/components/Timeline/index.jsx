@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import Header from './Header'
 import Body from './Body'
+import datePropType from '../../utils/datePropType'
 
 const Timeline = ({ now, time, timebar, tracks }) =>
   <div className="timeline" style={{ width: `${time.timelineWidth}px` }}>
@@ -9,7 +10,7 @@ const Timeline = ({ now, time, timebar, tracks }) =>
   </div>
 
 Timeline.propTypes = {
-  now: PropTypes.instanceOf(Date),
+  now: datePropType,
   time: PropTypes.shape({}).isRequired,
   timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({}))

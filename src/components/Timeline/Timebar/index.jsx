@@ -1,11 +1,19 @@
 import React, { PropTypes } from 'react'
+import datePropType from '../../../utils/datePropType'
 import Row from './Row'
 
 const Timebar = ({ time, rows }) =>
   <div className="timebar">
     {
-      rows.map(({ id, title, cells }) =>
-        <Row key={id} time={time} title={title} cells={cells} />)
+      rows.map(({ id, title, cells, style }) =>
+        <Row
+          key={id}
+          time={time}
+          title={title}
+          cells={cells}
+          style={style}
+        />
+      )
     }
   </div>
 

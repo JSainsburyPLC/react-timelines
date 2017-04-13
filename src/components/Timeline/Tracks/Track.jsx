@@ -2,10 +2,18 @@ import React, { PropTypes } from 'react'
 import Tracks from './'
 import Element from './Element'
 
-const Track = ({ time, elements, isOpen, tracks, style }) =>
+const Track = ({ time, elements, isOpen, tracks, style: trackStyle }) =>
   <div className="track">
     <div className="track__elements">
-      { elements.map(element => <Element trackStyle={style} time={time} {...element} />) }
+      { elements.map(element =>
+        <Element
+          key={element.id}
+          trackStyle={trackStyle}
+          time={time}
+          style={element.style}
+          {...element}
+        />)
+      }
     </div>
     { isOpen && tracks && tracks.length > 0
       && <Tracks time={time} tracks={tracks} />

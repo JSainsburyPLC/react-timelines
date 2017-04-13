@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import Cell from './Cell'
 
-const Row = ({ time, title, cells }) =>
-  <div className="timebar__row">
+const Row = ({ time, cells, style }) =>
+  <div className="timebar__row" style={style}>
     {
       cells.map(cell =>
         <Cell key={cell.id} time={time} {...cell} />
@@ -11,9 +11,9 @@ const Row = ({ time, title, cells }) =>
   </div>
 
 Row.propTypes = {
-  time: PropTypes.shape({}),
-  title: PropTypes.string.isRequired,
-  cells: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  time: PropTypes.shape({}).isRequired,
+  cells: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  style: PropTypes.shape({})
 }
 
 export default Row
