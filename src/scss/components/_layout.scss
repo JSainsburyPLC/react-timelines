@@ -13,14 +13,14 @@
   vertical-align: top;
   will-change: width;
 
-  @media (min-width: $layout-bp) {
+  @media (min-width: $react-timeline-auto-open-breakpoint) {
     width: $react-timeline-sidebar-width;
     overflow: visible;
   }
 }
 
 .layout.is-open > .layout__side {
-  @media (max-width: $layout-bp) {
+  @media (max-width: $react-timeline-auto-open-breakpoint) {
     width: $react-timeline-sidebar-width;
     transition: width 0.2s 0s;
   }
