@@ -1,34 +1,31 @@
-$sidebar-width-offset: ($react-timeline-sidebar-width - 40px);
+$sidebar-closed-offset: 40px;
+
 .layout {
   position: relative;
-  display: table;
-  width: calc(100% + #{$sidebar-width-offset});
-  margin-left: -$sidebar-width-offset;
+  margin-left: -($react-timeline-sidebar-width - $sidebar-closed-offset);
   table-layout: fixed;
 
   @media (min-width: $react-timeline-auto-open-breakpoint) {
-    width: 100%;
     margin-left: 0;
   }
 
   &.is-open {
     margin-left: 0;
-    width: 100%;
-    transition: all 0.2s;
+    transition: margin 0.2s;
   }
 }
 
 .layout__side {
   position: relative;
   z-index: 1;
-  display: table-cell;
+  display: inline-block;
   width: $react-timeline-sidebar-width;
   box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
   vertical-align: top;
 }
 
 .layout__main {
-  display: table-cell;
-  width: 100%;
+  display: inline-block;
+  width: calc(100% - #{$react-timeline-sidebar-width});
   vertical-align: top;
 }
