@@ -8,6 +8,7 @@ $react-timeline-auto-open-breakpoint: 1000px !default;
 
 .react-timeline {
   position: relative;
+  overflow: hidden;
   font-family: $react-timeline-font-family;
   // border: 1px solid #000;
 
