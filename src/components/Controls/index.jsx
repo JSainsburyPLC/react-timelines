@@ -4,7 +4,7 @@ import Toggle from './Toggle'
 
 const Controls = ({ isOpen, toggleOpen }) =>
   <div className="controls">
-    <Toggle {...{ isOpen, toggleOpen }} />
+    <Toggle isOpen={isOpen} toggleOpen={toggleOpen} />
   </div>
 
 Controls.propTypes = {
