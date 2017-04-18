@@ -11,10 +11,9 @@
     color: #fff;
     font-weight: bold; }
   .react-timeline .controls__button[disabled] {
-    background-color: #ccc;
-    cursor: not-allowed; }
+    background-color: #ccc; }
   @media (min-width: 1000px) {
-    .react-timeline .controls__toggle {
+    .react-timeline .controls__button--toggle {
       display: none; } }
   .react-timeline .element {
     height: 40px;

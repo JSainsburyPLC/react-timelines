@@ -12,10 +12,9 @@
 
 .controls__button[disabled] {
   background-color: #ccc;
-  cursor: not-allowed;
 }
 
-.controls__toggle {
+.controls__button--toggle {
   @media (min-width: $react-timeline-auto-open-breakpoint) {
     display: none;
   }
