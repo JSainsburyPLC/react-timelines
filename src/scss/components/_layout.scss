@@ -1,26 +1,8 @@
-$layout-bp: 1000px;
-
 .layout {
   position: relative;
   display: table;
   table-layout: fixed;
   width: 100%;
-}
-
-.layout__toggle-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: inline-block;
-  min-width: 24px;
-  background-color: #ccc;
-  color: #fff;
-  font-weight: bold;
-
-  @media (min-width: $layout-bp) {
-    display: none;
-  }
 }
 
 .layout__side {

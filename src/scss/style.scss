@@ -4,12 +4,14 @@ $react-timeline-sidebar-width: 240px !default;
 $react-timeline-header-row-height: 40px !default;
 $react-timeline-track-height: 60px !default;
 $react-timeline-element-spacing: 10px !default;
+$layout-bp: 1000px !default;
 
 .react-timeline {
-
+  position: relative;
   font-family: $react-timeline-font-family;
   // border: 1px solid #000;
 
+  @import 'components/controls';
   @import 'components/element';
   @import 'components/layout';
   @import 'components/sidebar';

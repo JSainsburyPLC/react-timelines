@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 const Toggle = ({ toggleOpen, isOpen }) =>
-  <button className="layout__toggle-button" onClick={toggleOpen}>
+  <button className="controls__toggle" onClick={toggleOpen}>
     {isOpen ? '-' : '+'}
   </button>
 

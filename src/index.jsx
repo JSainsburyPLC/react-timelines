@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import classNames from 'classnames'
 
+import Controls from './components/Controls'
 import Sidebar from './components/Sidebar'
-import SidebarToggle from './components/Sidebar/Toggle'
 import Timeline from './components/Timeline'
 import createTime from './utils/time'
 
@@ -26,6 +26,7 @@ class Container extends Component {
     const { time } = this.state
     return (
       <div className="react-timeline">
+        <Controls {...{ isOpen, toggleOpen }} />
         <div className={classNames('layout', { 'is-open': isOpen })}>
           <div className="layout__side">
             <Sidebar tracks={tracks} />
@@ -33,7 +34,6 @@ class Container extends Component {
           <div className="layout__main">
             <Timeline {...{ now, time, timebar, tracks }} />
           </div>
-          <SidebarToggle {...{ isOpen, toggleOpen }} />
         </div>
       </div>
     )
