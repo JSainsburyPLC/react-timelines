@@ -1,6 +1,5 @@
 $react-timeline-font-family: sans-serif !default;
 $react-timeline-sidebar-width: 240px !default;
-// $react-timeline-header-height: 80px !default;
 $react-timeline-header-row-height: 40px !default;
 $react-timeline-track-height: 60px !default;
 $react-timeline-element-spacing: 10px !default;
@@ -8,7 +7,6 @@ $react-timeline-element-spacing: 10px !default;
 .react-timeline {
 
   font-family: $react-timeline-font-family;
-  // border: 1px solid #000;
 
   @import 'components/element';
   @import 'components/layout';

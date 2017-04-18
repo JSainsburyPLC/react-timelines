@@ -11,4 +11,5 @@ $height: $react-timeline-track-height - 2 * $react-timeline-element-spacing;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 }
