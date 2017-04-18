@@ -1,0 +1,135 @@
+.react-timeline {
+  position: relative;
+  overflow: hidden;
+  font-family: sans-serif; }
+  .react-timeline .controls__toggle {
+    display: inline-block;
+    min-width: 24px;
+    padding: 0 5px;
+    background-color: #ccc;
+    color: #fff;
+    font-weight: bold; }
+    @media (min-width: 1000px) {
+      .react-timeline .controls__toggle {
+        display: none; } }
+  .react-timeline .element {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    font-weight: bold;
+    background: #06f;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center; }
+  .react-timeline .layout {
+    position: relative;
+    display: table;
+    width: calc(100% + 200px);
+    margin-left: -200px;
+    table-layout: fixed; }
+    @media (min-width: 1000px) {
+      .react-timeline .layout {
+        width: 100%;
+        margin-left: 0; } }
+    .react-timeline .layout.is-open {
+      margin-left: 0;
+      width: 100%;
+      transition: all 0.2s; }
+  .react-timeline .layout__side {
+    position: relative;
+    z-index: 1;
+    display: table-cell;
+    width: 240px;
+    box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
+    vertical-align: top; }
+  .react-timeline .layout__main {
+    display: table-cell;
+    width: 100%;
+    vertical-align: top; }
+  .react-timeline .sidebar {
+    position: relative;
+    z-index: 1;
+    background-color: #f6f6f6; }
+  .react-timeline .sidebar__body {
+    box-shadow: 1px 1px 0 0 #d7d7d7 inset; }
+  .react-timeline .timebar__row {
+    position: relative;
+    height: 40px;
+    overflow: hidden;
+    line-height: 40px; }
+  .react-timeline .timebar__cell {
+    position: absolute;
+    height: 40px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 1px -1px 0 0 #eee inset;
+    /* TODO: revisit */ }
+  .react-timeline .timebar-key {
+    background-color: none;
+    color: #fff;
+    height: 40px; }
+  .react-timeline .timeline {
+    overflow-x: scroll; }
+  .react-timeline .timeline__body {
+    position: relative; }
+  .react-timeline .timeline__time {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    border-left: 2px solid rgba(255, 0, 127, 0.8); }
+  .react-timeline .track__elements {
+    position: relative;
+    height: 60px;
+    background: #fff;
+    box-shadow: 0 -1px 0 0 #eee inset;
+    /* TODO: revisit */ }
+  .react-timeline .track__element {
+    position: absolute;
+    height: 40px;
+    top: 10px; }
+  .react-timeline .track-key__entry {
+    position: relative;
+    height: 60px;
+    line-height: 60px;
+    font-weight: bold;
+    text-align: left;
+    box-shadow: 0 -1px 0 0 #d7d7d7 inset;
+    /* TODO: revisit */ }
+  .react-timeline .track-keys > .track-key >
+.track-key__entry {
+    padding-left: 20px; }
+  .react-timeline .track-keys > .track-key >
+.track-keys > .track-key >
+.track-key__entry {
+    padding-left: 40px; }
+  .react-timeline .track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-key__entry {
+    padding-left: 60px; }
+  .react-timeline .track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-key__entry {
+    padding-left: 80px; }
+  .react-timeline .track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-key__entry {
+    padding-left: 100px; }
+  .react-timeline .track-key__toggle {
+    /* Button reset */
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    box-shadow: none;
+    display: inline-block;
+    background-color: #767676;
+    margin-right: 10px;
+    color: #fff;
+    min-width: 24px; }
