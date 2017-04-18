@@ -26,7 +26,7 @@ class Container extends Component {
     return (
       <div className="react-timeline">
         <Controls isOpen={isOpen} toggleOpen={toggleOpen} />
-        <div className={`layout ${isOpen && 'is-open'}`}>
+        <div className={`layout ${isOpen ? 'is-open' : ''}`}>
           <div className="layout__side">
             <Sidebar tracks={tracks} />
           </div>

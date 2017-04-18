@@ -1,9 +1,11 @@
 .react-timeline {
   position: relative;
+  overflow: hidden;
   font-family: sans-serif; }
   .react-timeline .controls__toggle {
     display: inline-block;
     min-width: 24px;
+    padding: 0 5px;
     background-color: #ccc;
     color: #fff;
     font-weight: bold; }
@@ -23,23 +25,24 @@
   .react-timeline .layout {
     position: relative;
     display: table;
-    table-layout: fixed;
-    width: 100%; }
-  .react-timeline .layout__side {
-    display: table-cell;
-    width: 0;
-    border-right: 1px solid #eee;
-    overflow: hidden;
-    vertical-align: top;
-    will-change: width; }
+    width: calc(100% + 200px);
+    margin-left: -200px;
+    table-layout: fixed; }
     @media (min-width: 1000px) {
-      .react-timeline .layout__side {
-        width: 240px;
-        overflow: visible; } }
-  @media (max-width: 1000px) {
-    .react-timeline .layout.is-open > .layout__side {
-      width: 240px;
-      transition: width 0.2s 0s; } }
+      .react-timeline .layout {
+        width: 100%;
+        margin-left: 0; } }
+    .react-timeline .layout.is-open {
+      margin-left: 0;
+      width: 100%;
+      transition: all 0.2s; }
+  .react-timeline .layout__side {
+    position: relative;
+    z-index: 1;
+    display: table-cell;
+    width: 240px;
+    box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
+    vertical-align: top; }
   .react-timeline .layout__main {
     display: table-cell;
     width: 100%;
