@@ -13,6 +13,6 @@
   // z-index: 1;
   top: 0;
   bottom: 0;
-  width: 1px;
-  border-left: 1px solid red;
+  margin-left: -1px;
+  border-left: 2px solid rgba(255, 0, 127, 0.8); // TODO: $var
 }
