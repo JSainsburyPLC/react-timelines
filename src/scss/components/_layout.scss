@@ -1,16 +1,30 @@
+$sidebar-closed-offset: 40px;
+
 .layout {
   position: relative;
+  margin-left: -($react-timeline-sidebar-width - $sidebar-closed-offset);
+
+  @media (min-width: $react-timeline-auto-open-breakpoint) {
+    margin-left: 0;
+  }
+
+  &.is-open {
+    margin-left: 0;
+    transition: margin 0.2s;
+  }
 }
 
 .layout__side {
+  position: relative;
+  z-index: 1;
   display: inline-block;
-  vertical-align: top;
   width: $react-timeline-sidebar-width;
+  box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
+  vertical-align: top;
 }
 
 .layout__main {
   display: inline-block;
-  vertical-align: top;
   width: calc(100% - #{$react-timeline-sidebar-width});
-  overflow-x: scroll;
+  vertical-align: top;
 }

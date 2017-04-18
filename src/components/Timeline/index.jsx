@@ -4,9 +4,11 @@ import Body from './Body'
 import datePropType from '../../utils/datePropType'
 
 const Timeline = ({ now, time, timebar, tracks }) =>
-  <div className="timeline" style={{ width: `${time.timelineWidth}px` }}>
-    <Header time={time} timebar={timebar} />
-    <Body now={now} time={time} tracks={tracks} />
+  <div className="timeline">
+    <div style={{ width: `${time.timelineWidth}px` }}>
+      <Header time={time} timebar={timebar} />
+      <Body now={now} time={time} tracks={tracks} />
+    </div>
   </div>
 
 Timeline.propTypes = {

@@ -6,9 +6,13 @@
 
 .track-key__entry {
   position: relative;
+  overflow: hidden;
   height: $react-timeline-track-height;
+  padding-right: $react-timeline-sidebar-key-indent-width;
   line-height: $react-timeline-track-height;
   // padding: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-weight: bold;
   // background-color: #fff;
   text-align: left;

@@ -1,5 +1,5 @@
 .timeline {
-
+  overflow-x: scroll;
 }
 
 .timeline__header {}
@@ -10,7 +10,6 @@
 
 .timeline__time {
   position: absolute;
-  // z-index: 1;
   top: 0;
   bottom: 0;
   margin-left: -1px;

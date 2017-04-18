@@ -1,5 +1,17 @@
 .react-timeline {
+  position: relative;
+  overflow: hidden;
   font-family: sans-serif; }
+  .react-timeline .controls__toggle {
+    display: inline-block;
+    min-width: 24px;
+    padding: 0 5px;
+    background-color: #ccc;
+    color: #fff;
+    font-weight: bold; }
+    @media (min-width: 1000px) {
+      .react-timeline .controls__toggle {
+        display: none; } }
   .react-timeline .element {
     height: 40px;
     line-height: 40px;
@@ -12,22 +24,29 @@
     text-overflow: ellipsis;
     text-align: center; }
   .react-timeline .layout {
-    position: relative; }
+    position: relative;
+    margin-left: -200px; }
+    @media (min-width: 1000px) {
+      .react-timeline .layout {
+        margin-left: 0; } }
+    .react-timeline .layout.is-open {
+      margin-left: 0;
+      transition: margin 0.2s; }
   .react-timeline .layout__side {
+    position: relative;
+    z-index: 1;
     display: inline-block;
-    vertical-align: top;
-    width: 240px; }
+    width: 240px;
+    box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
+    vertical-align: top; }
   .react-timeline .layout__main {
     display: inline-block;
-    vertical-align: top;
     width: calc(100% - 240px);
-    overflow-x: scroll; }
+    vertical-align: top; }
   .react-timeline .sidebar {
     position: relative;
     z-index: 1;
-    background-color: #f6f6f6;
-    box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
-    /* TODO: REVISIT */ }
+    background-color: #f6f6f6; }
   .react-timeline .sidebar__body {
     box-shadow: 1px 1px 0 0 #d7d7d7 inset; }
   .react-timeline .timebar__row {
@@ -46,6 +65,8 @@
     background-color: none;
     color: #fff;
     height: 40px; }
+  .react-timeline .timeline {
+    overflow-x: scroll; }
   .react-timeline .timeline__body {
     position: relative; }
   .react-timeline .timeline__time {
@@ -66,8 +87,12 @@
     top: 10px; }
   .react-timeline .track-key__entry {
     position: relative;
+    overflow: hidden;
     height: 60px;
+    padding-right: 20px;
     line-height: 60px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-weight: bold;
     text-align: left;
     box-shadow: 0 -1px 0 0 #d7d7d7 inset;
