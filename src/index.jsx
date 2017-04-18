@@ -21,11 +21,17 @@ class Container extends Component {
   }
 
   render() {
-    const { isOpen, toggleOpen, tracks, now, timebar } = this.props
+    const { isOpen, toggleOpen, tracks, now, timebar, zoomIn, zoomOut, scale } = this.props
     const { time } = this.state
     return (
       <div className="react-timeline">
-        <Controls isOpen={isOpen} toggleOpen={toggleOpen} />
+        <Controls
+          isOpen={isOpen}
+          toggleOpen={toggleOpen}
+          zoomIn={zoomIn}
+          zoomOut={zoomOut}
+          scaleFactor={scale.factor}
+        />
         <div className={`layout ${isOpen ? 'is-open' : ''}`}>
           <div className="layout__side">
             <Sidebar tracks={tracks} />
@@ -50,7 +56,9 @@ Container.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggleOpen: PropTypes.func.isRequired,
   timebar: PropTypes.shape({}).isRequired,
-  tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  zoomIn: PropTypes.func.isRequired,
+  zoomOut: PropTypes.func.isRequired
 }
 
 export default Container

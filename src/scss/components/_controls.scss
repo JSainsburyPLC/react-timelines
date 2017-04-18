@@ -1,13 +1,21 @@
 .controls {}
 
-.controls__toggle {
+.controls__button {
   display: inline-block;
   min-width: 24px;
   padding: 0 5px;
-  background-color: #ccc;
+  margin-right: 5px;
+  background-color: #767676;
   color: #fff;
   font-weight: bold;
+}
 
+.controls__button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.controls__toggle {
   @media (min-width: $react-timeline-auto-open-breakpoint) {
     display: none;
   }
