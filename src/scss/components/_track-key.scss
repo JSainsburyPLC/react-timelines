@@ -8,11 +8,45 @@
   position: relative;
   height: $react-timeline-track-height;
   line-height: $react-timeline-track-height;
-  padding: 0 15px;
+  // padding: 0;
   font-weight: bold;
-  background-color: #fff;
+  // background-color: #fff;
   text-align: left;
-  box-shadow: 0 -1px 0 0 #f6f6f6 inset; /* TODO: revisit */
+  box-shadow: 0 -1px 0 0 $react-timeline-sidebar-separator-color inset; /* TODO: revisit */
+}
+
+.track-keys > .track-key >
+.track-key__entry {
+  padding-left: $react-timeline-sidebar-key-indent-width;
+}
+
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-key__entry  {
+  padding-left: $react-timeline-sidebar-key-indent-width * 2;
+}
+
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-key__entry {
+  padding-left: $react-timeline-sidebar-key-indent-width * 3;
+}
+
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-key__entry {
+  padding-left: $react-timeline-sidebar-key-indent-width * 4;
+}
+
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-key__entry {
+  padding-left: $react-timeline-sidebar-key-indent-width * 5;
 }
 
 .track-key__toggle {
@@ -23,7 +57,7 @@
   box-shadow: none;
 
   display: inline-block;
-  background-color: #ccc;
+  background-color: #767676;
   margin-right: 10px;
   color: #fff;
   min-width: 24px;

@@ -1,8 +1,15 @@
 .sidebar {
   position: relative;
   z-index: 1;
+<<<<<<< HEAD
+=======
+  background-color: $react-timeline-sidebar-background-color;
+  box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1); /* TODO: REVISIT */
+>>>>>>> 41f6ad2f7c2752332e73631b8bed590f45c74bd4
 }
 
 .sidebar__header {}
 
-.sidebar__body {}
+.sidebar__body {
+  box-shadow: 1px 1px 0 0 #d7d7d7 inset;
+}
