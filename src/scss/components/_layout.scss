@@ -3,7 +3,6 @@ $sidebar-closed-offset: 40px;
 .layout {
   position: relative;
   margin-left: -($react-timeline-sidebar-width - $sidebar-closed-offset);
-  table-layout: fixed;
 
   @media (min-width: $react-timeline-auto-open-breakpoint) {
     margin-left: 0;

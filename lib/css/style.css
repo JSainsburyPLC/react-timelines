@@ -25,28 +25,23 @@
     text-align: center; }
   .react-timeline .layout {
     position: relative;
-    display: table;
-    width: calc(100% + 200px);
-    margin-left: -200px;
-    table-layout: fixed; }
+    margin-left: -200px; }
     @media (min-width: 1000px) {
       .react-timeline .layout {
-        width: 100%;
         margin-left: 0; } }
     .react-timeline .layout.is-open {
       margin-left: 0;
-      width: 100%;
-      transition: all 0.2s; }
+      transition: margin 0.2s; }
   .react-timeline .layout__side {
     position: relative;
     z-index: 1;
-    display: table-cell;
+    display: inline-block;
     width: 240px;
     box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
     vertical-align: top; }
   .react-timeline .layout__main {
-    display: table-cell;
-    width: 100%;
+    display: inline-block;
+    width: calc(100% - 240px);
     vertical-align: top; }
   .react-timeline .sidebar {
     position: relative;
@@ -92,8 +87,12 @@
     top: 10px; }
   .react-timeline .track-key__entry {
     position: relative;
+    overflow: hidden;
     height: 60px;
+    padding-right: 20px;
     line-height: 60px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-weight: bold;
     text-align: left;
     box-shadow: 0 -1px 0 0 #d7d7d7 inset;
