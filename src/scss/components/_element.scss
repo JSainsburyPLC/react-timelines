@@ -3,8 +3,7 @@ $height: $react-timeline-track-height - 2 * $react-timeline-element-spacing;
 .element {
   height: $height;
   line-height: $height;
-  padding: 0 10px;
-
+  padding-left: 10px;
   font-weight: bold;
   background: #06f;
   color: #fff;

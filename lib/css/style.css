@@ -18,7 +18,7 @@
   .react-timeline .element {
     height: 40px;
     line-height: 40px;
-    padding: 0 10px;
+    padding-left: 10px;
     font-weight: bold;
     background: #06f;
     color: #fff;
@@ -102,9 +102,12 @@
     /* TODO: revisit */ }
   .react-timeline .timebar-key {
     height: 40px;
-    padding-left: 20px;
+    padding-right: 20px;
     border-left: 1px solid #d7d7d7;
     line-height: 40px;
+    background-color: #4c4c4c;
+    color: white;
+    text-align: right;
     font-weight: bold;
     box-shadow: 0 -1px 0 0 #d7d7d7 inset; }
   .react-timeline .timeline {
