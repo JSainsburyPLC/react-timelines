@@ -18,7 +18,7 @@
   .react-timeline .element {
     height: 40px;
     line-height: 40px;
-    padding-left: 10px;
+    padding: 0 10px;
     font-weight: bold;
     background: #06f;
     color: #fff;
