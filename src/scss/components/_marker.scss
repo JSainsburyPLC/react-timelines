@@ -3,8 +3,8 @@
   z-index: 1;
   top: 0;
   bottom: 0;
-  margin-left: -($react-timeline-marker-track-width / 2);
-  border-left: $react-timeline-marker-track-width solid $react-timeline-marker-background-color;
+  margin-left: -($react-timeline-marker-line-width / 2);
+  border-left: $react-timeline-marker-line-width solid $react-timeline-marker-background-color;
 }
 
 .marker__label {
@@ -26,7 +26,7 @@
     top: 100%;
     left: 50%;
     margin-left: -$size;
-    transform: translateX(-($react-timeline-marker-track-width / 2));
+    transform: translateX(-($react-timeline-marker-line-width / 2));
     border-left: $size solid transparent;
     border-right: $size solid transparent;
     border-top: $size solid $react-timeline-marker-background-color;
