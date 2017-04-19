@@ -84,8 +84,10 @@
     z-index: 1;
     background-color: #f6f6f6;
     box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1); }
+  .react-timeline .sidebar__header {
+    box-shadow: 0 1px 0 0 #d7d7d7 inset; }
   .react-timeline .sidebar__body {
-    box-shadow: 1px 1px 0 0 #d7d7d7 inset; }
+    box-shadow: 1px 0 0 0 #d7d7d7 inset; }
   .react-timeline .timebar__row {
     position: relative;
     height: 40px;
@@ -99,13 +101,16 @@
     box-shadow: 1px -1px 0 0 #eee inset;
     /* TODO: revisit */ }
   .react-timeline .timebar-key {
-    background-color: none;
-    color: #fff;
-    height: 40px; }
+    height: 40px;
+    padding-left: 20px;
+    border-left: 1px solid #d7d7d7;
+    line-height: 40px;
+    font-weight: bold;
+    box-shadow: 0 -1px 0 0 #d7d7d7 inset; }
   .react-timeline .timeline {
     overflow-x: scroll;
     padding-top: 50px; }
-  .react-timeline .timeline__wrapper {
+  .react-timeline .timeline__content {
     position: relative; }
   .react-timeline .timeline__body {
     position: relative; }
