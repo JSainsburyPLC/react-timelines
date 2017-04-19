@@ -1,8 +1,8 @@
-$sidebar-closed-offset: 40px;
+$react-timeline-sidebar-closed-offset: 40px;
 
 .layout {
   position: relative;
-  margin-left: -($react-timeline-sidebar-width - $sidebar-closed-offset);
+  margin-left: -($react-timeline-sidebar-width - $react-timeline-sidebar-closed-offset);
 
   @media (min-width: $react-timeline-auto-open-breakpoint) {
     margin-left: 0;
@@ -19,7 +19,7 @@ $sidebar-closed-offset: 40px;
   z-index: 1;
   display: inline-block;
   width: $react-timeline-sidebar-width;
-  box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
+  padding-top: $react-timeline-marker-label-height;
   vertical-align: top;
 }
 

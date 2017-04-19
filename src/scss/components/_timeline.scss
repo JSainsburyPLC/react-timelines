@@ -1,17 +1,14 @@
 .timeline {
   overflow-x: scroll;
+  padding-top: $react-timeline-marker-label-height;
+}
+
+.timeline__wrapper {
+  position: relative;
 }
 
 .timeline__header {}
 
 .timeline__body {
   position: relative;
-}
-
-.timeline__time {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin-left: -1px;
-  border-left: 2px solid rgba(255, 0, 127, 0.8); // TODO: $var
 }
