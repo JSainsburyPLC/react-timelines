@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-const Header = () =>
+const Header = ({ timebar: { rows } }) =>
   <div className="sidebar__header">
-    <div className="timebar-key">Quarters</div>
-    <div className="timebar-key">Periods</div>
-    <div className="timebar-key">Months</div>
+    {
+      rows.map(({ id, title }) =>
+        <div key={id} className="timebar-key">{title}</div>
+      )
+    }
   </div>
+
+Header.propTypes = {
+  timebar: PropTypes.shape({})
+}
 
 export default Header

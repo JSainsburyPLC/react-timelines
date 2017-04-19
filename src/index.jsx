@@ -34,7 +34,10 @@ class Container extends Component {
         />
         <div className={`layout ${isOpen ? 'is-open' : ''}`}>
           <div className="layout__side">
-            <Sidebar tracks={tracks} />
+            <Sidebar
+              timebar={timebar}
+              tracks={tracks}
+            />
           </div>
           <div className="layout__main">
             <Timeline
