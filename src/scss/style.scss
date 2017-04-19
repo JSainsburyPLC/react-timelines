@@ -1,5 +1,6 @@
 $react-timeline-font-family: sans-serif !default;
 $react-timeline-sidebar-width: 240px !default;
+$react-timeline-sidebar-closed-offset: 40px;
 $react-timeline-header-row-height: 40px !default;
 $react-timeline-track-height: 60px !default;
 $react-timeline-element-spacing: 10px !default;
@@ -7,6 +8,10 @@ $react-timeline-auto-open-breakpoint: 1000px !default;
 $react-timeline-sidebar-background-color: #f6f6f6 !default;
 $react-timeline-sidebar-separator-color: #d7d7d7 !default;
 $react-timeline-sidebar-key-indent-width: 20px !default;
+$react-timeline-marker-label-height: 50px !default;
+$react-timeline-marker-background-color: rgba(255, 0, 127, 0.8) !default;
+$react-timeline-marker-track-width: 2px !default;
+
 
 .react-timeline {
   position: relative;
@@ -16,6 +21,7 @@ $react-timeline-sidebar-key-indent-width: 20px !default;
   @import 'components/controls';
   @import 'components/element';
   @import 'components/layout';
+  @import 'components/marker';
   @import 'components/sidebar';
   @import 'components/timebar';
   @import 'components/timebar-key';

@@ -40,16 +40,50 @@
     z-index: 1;
     display: inline-block;
     width: 240px;
-    box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
+    padding-top: 50px;
     vertical-align: top; }
   .react-timeline .layout__main {
     display: inline-block;
     width: calc(100% - 240px);
     vertical-align: top; }
+  .react-timeline .marker {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    border-left: 2px solid rgba(255, 0, 127, 0.8); }
+  .react-timeline .marker__label {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    display: table;
+    height: 50px;
+    padding: 0 10px;
+    line-height: 1.1;
+    text-align: center;
+    background: rgba(255, 0, 127, 0.8);
+    transform: translateX(-50%); }
+    .react-timeline .marker__label::before {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -6px;
+      transform: translateX(-1px);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid rgba(255, 0, 127, 0.8);
+      content: ' '; }
+  .react-timeline .marker__content {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: white; }
   .react-timeline .sidebar {
     position: relative;
     z-index: 1;
-    background-color: #f6f6f6; }
+    background-color: #f6f6f6;
+    box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1); }
   .react-timeline .sidebar__body {
     box-shadow: 1px 1px 0 0 #d7d7d7 inset; }
   .react-timeline .timebar__row {
@@ -69,15 +103,12 @@
     color: #fff;
     height: 40px; }
   .react-timeline .timeline {
-    overflow-x: scroll; }
+    overflow-x: scroll;
+    padding-top: 50px; }
+  .react-timeline .timeline__wrapper {
+    position: relative; }
   .react-timeline .timeline__body {
     position: relative; }
-  .react-timeline .timeline__time {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-left: -1px;
-    border-left: 2px solid rgba(255, 0, 127, 0.8); }
   .react-timeline .track__elements {
     position: relative;
     height: 60px;
