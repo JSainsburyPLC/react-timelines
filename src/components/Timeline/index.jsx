@@ -7,7 +7,7 @@ import datePropType from '../../utils/datePropType'
 
 const Timeline = ({ now, time, timebar, tracks }) =>
   <div className="timeline">
-    <div className="timeline__wrapper" style={{ width: `${time.timelineWidth}px` }}>
+    <div className="timeline__content" style={{ width: `${time.timelineWidth}px` }}>
       {now && <TodayMarker now={now} time={time} />}
       <Header time={time} timebar={timebar} />
       <Body now={now} time={time} tracks={tracks} />

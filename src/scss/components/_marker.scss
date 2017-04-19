@@ -4,7 +4,7 @@
   top: 0;
   bottom: 0;
   margin-left: -($react-timeline-marker-track-width / 2);
-  border-left: $react-timeline-marker-track-width solid $react-timeline-marker-background;
+  border-left: $react-timeline-marker-track-width solid $react-timeline-marker-background-color;
 }
 
 .marker__label {
@@ -16,7 +16,7 @@
   padding: 0 10px;
   line-height: 1.1;
   text-align: center;
-  background: $react-timeline-marker-background;
+  background: $react-timeline-marker-background-color;
   transform: translateX(-50%);
 
   &::before {
@@ -29,7 +29,7 @@
     transform: translateX(-($react-timeline-marker-track-width / 2));
     border-left: $size solid transparent;
     border-right: $size solid transparent;
-    border-top: $size solid $react-timeline-marker-background;
+    border-top: $size solid $react-timeline-marker-background-color;
     content: ' ';
   }
 }
