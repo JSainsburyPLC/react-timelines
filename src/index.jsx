@@ -41,6 +41,8 @@ class Container extends Component {
           zoomIn={zoomIn}
           zoomOut={zoomOut}
           zoom={scale.zoom}
+          zoomMin={scale.zoomMin}
+          zoomMax={scale.zoomMax}
         />
         <div className={`layout ${isOpen ? 'is-open' : ''}`}>
           <div className="layout__side">
@@ -73,7 +75,9 @@ Container.propTypes = {
   toggleOpen: PropTypes.func.isRequired,
   toggleTrackOpen: PropTypes.func,
   zoomIn: PropTypes.func.isRequired,
-  zoomOut: PropTypes.func.isRequired
+  zoomOut: PropTypes.func.isRequired,
+  zoomMin: PropTypes.number,
+  zoomMax: PropTypes.number
 }
 
 export default Container

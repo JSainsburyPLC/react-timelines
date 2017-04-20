@@ -2,11 +2,19 @@ import React, { PropTypes } from 'react'
 
 import Toggle from './Toggle'
 
-const Controls = ({ isOpen, toggleOpen, zoomIn, zoomOut, zoom }) =>
+const Controls = ({
+  isOpen,
+  toggleOpen,
+  zoomIn,
+  zoomOut,
+  zoom,
+  zoomMin,
+  zoomMax
+}) =>
   <div className="controls">
     <Toggle isOpen={isOpen} toggleOpen={toggleOpen} />
-    <button className="controls__button" onClick={zoomIn}>Zoom in</button>
-    <button className="controls__button" disabled={zoom <= 1} onClick={zoomOut}>Zoom out</button>
+    <button className="controls__button" disabled={zoomMax && zoom >= zoomMax} onClick={zoomIn}>Zoom in</button>
+    <button className="controls__button" disabled={zoomMin && zoom <= zoomMin} onClick={zoomOut}>Zoom out</button>
   </div>
 
 Controls.propTypes = {
@@ -14,7 +22,9 @@ Controls.propTypes = {
   toggleOpen: PropTypes.func.isRequired,
   zoomIn: PropTypes.func.isRequired,
   zoomOut: PropTypes.func.isRequired,
-  zoom: PropTypes.number.isRequired
+  zoom: PropTypes.number.isRequired,
+  zoomMin: PropTypes.number,
+  zoomMax: PropTypes.number
 }
 
 export default Controls
