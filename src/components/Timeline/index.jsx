@@ -11,9 +11,11 @@ import { getDayMonth } from '../../utils/formatDate'
 class Timeline extends Component {
   constructor(props) {
     super(props)
+
     this.handleMouseMove = this.handleMouseMove.bind(this)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
+
     this.state = { pointerX: 0, pointerVisible: false }
   }
 
