@@ -4,7 +4,15 @@
   top: 0;
   bottom: 0;
   margin-left: -($react-timeline-marker-line-width / 2);
-  border-left: $react-timeline-marker-line-width solid $react-timeline-marker-background-color;
+  border-left: $react-timeline-marker-line-width solid currentColor;
+}
+
+.marker--today {
+  color: $react-timeline-today-marker-background-color;
+}
+
+.marker--mouse {
+  color: $react-timeline-mouse-marker-background-color;
 }
 
 .marker__label {
@@ -16,7 +24,7 @@
   padding: 0 10px;
   line-height: 1.1;
   text-align: center;
-  background: $react-timeline-marker-background-color;
+  background: currentColor;
   transform: translateX(-50%);
 
   &::before {
@@ -29,7 +37,7 @@
     transform: translateX(-($react-timeline-marker-line-width / 2));
     border-left: $size solid transparent;
     border-right: $size solid transparent;
-    border-top: $size solid $react-timeline-marker-background-color;
+    border-top: $size solid currentColor;
     content: ' ';
   }
 }

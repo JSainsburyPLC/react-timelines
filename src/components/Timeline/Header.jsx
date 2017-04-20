@@ -1,10 +1,23 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import Timebar from './Timebar'
 
-const Header = ({ time, timebar: { rows } }) =>
-  <div className="timeline__header">
-    <Timebar time={time} rows={rows} />
-  </div>
+class Header extends Component {
+  shouldComponentUpdate(nextProps) {
+    if ((this.props.time !== nextProps.time) && this.props.timebar !== nextProps.timebar) {
+      return true
+    }
+    return false
+  }
+
+  render() {
+    const { time, timebar: { rows } } = this.props
+    return (
+      <div className="timeline__header">
+        <Timebar time={time} rows={rows} />
+      </div>
+    )
+  }
+}
 
 Header.propTypes = {
   time: PropTypes.shape({}).isRequired,

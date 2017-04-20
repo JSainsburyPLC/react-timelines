@@ -1,16 +1,28 @@
-import React, { PropTypes } from 'react'
-
+import React, { PropTypes, Component } from 'react'
 import Marker from './Marker'
 import datePropType from '../../utils/datePropType'
 import getMonth from '../../utils/getMonth'
 
-const TodayMarker = ({ now, time }) =>
-  <Marker date={now} time={time}>
-    <div>
-      <div>Today</div>
-      <strong>{`${now.getDate()} ${getMonth(now)}`}</strong>
-    </div>
-  </Marker>
+class TodayMarker extends Component {
+  shouldComponentUpdate(nextProps) {
+    if ((this.props.time !== nextProps.time) && this.props.now !== nextProps.now) {
+      return true
+    }
+    return false
+  }
+
+  render() {
+    const { now, time } = this.props
+    return (
+      <Marker modifier="today" style={time.toStyleLeft(now)}>
+        <div>
+          <div>Today</div>
+          <strong>{`${now.getDate()} ${getMonth(now)}`}</strong>
+        </div>
+      </Marker>
+    )
+  }
+}
 
 TodayMarker.propTypes = {
   time: PropTypes.shape({}).isRequired,
