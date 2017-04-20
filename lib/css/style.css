@@ -52,7 +52,11 @@
     top: 0;
     bottom: 0;
     margin-left: -1px;
-    border-left: 2px solid rgba(255, 0, 127, 0.8); }
+    border-left: 2px solid currentColor; }
+  .react-timeline .marker--now {
+    color: rgba(255, 0, 127, 0.8); }
+  .react-timeline .marker--pointer {
+    color: rgba(100, 100, 100, 0.8); }
   .react-timeline .marker__label {
     position: absolute;
     bottom: 100%;
@@ -62,7 +66,7 @@
     padding: 0 10px;
     line-height: 1.1;
     text-align: center;
-    background: rgba(255, 0, 127, 0.8);
+    background: currentColor;
     transform: translateX(-50%); }
     .react-timeline .marker__label::before {
       position: absolute;
@@ -72,7 +76,7 @@
       transform: translateX(-1px);
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      border-top: 6px solid rgba(255, 0, 127, 0.8);
+      border-top: 6px solid currentColor;
       content: ' '; }
   .react-timeline .marker__content {
     display: table-cell;

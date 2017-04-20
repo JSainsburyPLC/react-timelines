@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react'
-import datePropType from '../../utils/datePropType'
 
-const Marker = ({ time, date, children }) =>
-  <div className="marker" style={time.toStyleLeft(date)}>
+const Marker = ({ x, modifier, children }) =>
+  <div
+    className={`marker marker--${modifier}`}
+    style={{ left: `${x}px` }}
+  >
     <div className="marker__label">
       <div className="marker__content">
         {children}
@@ -11,8 +13,8 @@ const Marker = ({ time, date, children }) =>
   </div>
 
 Marker.propTypes = {
-  time: PropTypes.shape({}).isRequired,
-  date: datePropType,
+  x: PropTypes.number.isRequired,
+  modifier: PropTypes.string.isRequired,
   children: PropTypes.node
 }
 
