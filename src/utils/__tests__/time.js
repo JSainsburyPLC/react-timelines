@@ -59,4 +59,16 @@ describe('createTime', () => {
       expect(toStyleLeftAndWidth(firstOfJune, end)).toEqual({ left: '303.0485185185185px', width: '426.9514814814815px' })
     })
   })
+
+  describe('fromX', () => {
+    it('calculates the date from a given x value', () => {
+      const start = new Date('2017-01-01')
+      const firstOfDecember = new Date('2017-12-01')
+      const end = new Date('2018-01-01')
+      const { fromX, toX } = createTime({ start, end, factor: 2 })
+      expect(fromX(toX(start))).toEqual(start)
+      expect(fromX(toX(firstOfDecember))).toEqual(firstOfDecember)
+      expect(fromX(toX(end))).toEqual(end)
+    })
+  })
 })

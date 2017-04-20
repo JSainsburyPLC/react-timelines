@@ -10,7 +10,8 @@
     "semi": ["error", "never"],
     "import/named": "error",
     "import/default": "error",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }]
   },
   "settings": {
     "import/parser": "babel-eslint"

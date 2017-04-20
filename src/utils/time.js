@@ -22,6 +22,9 @@ const create = ({ start, end, factor }) => {
     }
   }
 
+  const fromX = x =>
+    new Date(start.getTime() + ((x / timelineWidth) * duration))
+
   return {
     timelineWidth,
     start,
@@ -29,7 +32,8 @@ const create = ({ start, end, factor }) => {
     factor,
     toX,
     toStyleLeft,
-    toStyleLeftAndWidth
+    toStyleLeftAndWidth,
+    fromX
   }
 }
 

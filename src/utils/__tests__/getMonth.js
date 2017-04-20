@@ -1,9 +1,0 @@
-import getMonth from '../getMonth'
-
-describe('getMonth', () => {
-  it('returns the current month name for a given date', () => {
-    expect(getMonth(new Date('2017-01-01'))).toEqual('Jan')
-    expect(getMonth(new Date('2017-02-01'))).toEqual('Feb')
-    expect(getMonth(new Date('2017-11-01'))).toEqual('Nov')
-  })
-})

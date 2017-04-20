@@ -1,7 +1,7 @@
 import React, { PropTypes, PureComponent } from 'react'
 import Marker from './'
 import datePropType from '../../../utils/datePropType'
-import getMonth from '../../../utils/getMonth'
+import { getDayMonth } from '../../../utils/formatDate'
 
 class TodayMarker extends PureComponent {
   render() {
@@ -10,7 +10,7 @@ class TodayMarker extends PureComponent {
       <Marker modifier="now" x={time.toX(now)}>
         <div>
           <div>Today</div>
-          <strong>{`${now.getDate()} ${getMonth(now)}`}</strong>
+          <strong>{getDayMonth(now)}</strong>
         </div>
       </Marker>
     )

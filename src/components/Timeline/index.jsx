@@ -6,13 +6,12 @@ import PointerMarker from './Marker/Pointer'
 
 import datePropType from '../../utils/datePropType'
 import getMouseX from '../../utils/getMouseX'
+import { getDayMonth } from '../../utils/formatDate'
 
 class Timeline extends Component {
   constructor(props) {
     super(props)
-
     this.handleMouseMove = this.handleMouseMove.bind(this)
-
     this.state = { pointerX: 0 }
   }
 
@@ -22,6 +21,7 @@ class Timeline extends Component {
 
   render() {
     const { now, time, timebar, tracks } = this.props
+    const { pointerX } = this.state
     return (
       <div className="timeline">
         <div
@@ -30,7 +30,7 @@ class Timeline extends Component {
           onMouseMove={this.handleMouseMove}
         >
           {now && <NowMarker now={now} time={time} />}
-          <PointerMarker x={this.state.pointerX} />
+          <PointerMarker x={pointerX} text={getDayMonth(time.fromX(pointerX))} />
           <Header time={time} timebar={timebar} />
           <Body time={time} tracks={tracks} />
         </div>

@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import datePropType from '../../../utils/datePropType'
 import Row from './Row'
 
 const Timebar = ({ time, rows }) =>
