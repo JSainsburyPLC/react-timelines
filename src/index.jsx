@@ -40,7 +40,7 @@ class Container extends Component {
           toggleOpen={toggleOpen}
           zoomIn={zoomIn}
           zoomOut={zoomOut}
-          scaleFactor={scale.factor}
+          zoom={scale.zoom}
         />
         <div className={`layout ${isOpen ? 'is-open' : ''}`}>
           <div className="layout__side">
