@@ -52,7 +52,10 @@
     top: 0;
     bottom: 0;
     margin-left: -1px;
-    border-left: 2px solid; }
+    border-left: 2px solid;
+    opacity: 0; }
+  .react-timeline .marker.is-visible {
+    opacity: 1; }
   .react-timeline .marker--now {
     color: #ff007f;
     border-color: rgba(255, 0, 127, 0.8); }
