@@ -1,11 +1,11 @@
 import React, { PropTypes, Component } from 'react'
 import Header from './Header'
 import Body from './Body'
-import TodayMarker from './TodayMarker'
-import MouseMarker from './MouseMarker'
+import NowMarker from './Marker/Now'
+import PointerMarker from './Marker/Pointer'
 
 import datePropType from '../../utils/datePropType'
-import getRelativeMouseX from '../../utils/getRelativeMouseX'
+import getMouseX from '../../utils/getMouseX'
 
 class Timeline extends Component {
   constructor(props) {
@@ -13,19 +13,11 @@ class Timeline extends Component {
 
     this.handleMouseMove = this.handleMouseMove.bind(this)
 
-    this.state = {
-      mouseOffset: {
-        x: 0
-      }
-    }
+    this.state = { pointerX: 0 }
   }
 
   handleMouseMove(e) {
-    this.setState({
-      mouseOffset: {
-        x: getRelativeMouseX(e)
-      }
-    })
+    this.setState({ pointerX: getMouseX(e) })
   }
 
   render() {
@@ -34,8 +26,8 @@ class Timeline extends Component {
       <div className="timeline">
         <div className="timeline__content" style={{ width: `${time.timelineWidth}px` }}>
           <div onMouseMove={this.handleMouseMove}>
-            {now && <TodayMarker now={now} time={time} />}
-            <MouseMarker mouseOffset={this.state.mouseOffset} />
+            {now && <NowMarker now={now} time={time} />}
+            <PointerMarker x={this.state.pointerX} />
             <Header time={time} timebar={timebar} />
             <Body now={now} time={time} tracks={tracks} />
           </div>

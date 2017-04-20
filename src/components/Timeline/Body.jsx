@@ -3,10 +3,10 @@ import Tracks from './Tracks'
 
 class Body extends Component {
   shouldComponentUpdate(nextProps) {
-    if ((this.props.time !== nextProps.time) && this.props.tracks !== nextProps.tracks) {
-      return true
+    if ((this.props.time === nextProps.time) && this.props.tracks === nextProps.tracks) {
+      return false
     }
-    return false
+    return true
   }
   render() {
     const { time, tracks } = this.props

@@ -53,9 +53,9 @@
     bottom: 0;
     margin-left: -1px;
     border-left: 2px solid currentColor; }
-  .react-timeline .marker--today {
+  .react-timeline .marker--now {
     color: rgba(255, 0, 127, 0.8); }
-  .react-timeline .marker--mouse {
+  .react-timeline .marker--pointer {
     color: rgba(100, 100, 100, 0.8); }
   .react-timeline .marker__label {
     position: absolute;

@@ -1,6 +1,6 @@
-import getRelativeMouseX from '../getRelativeMouseX'
+import getMouseX from '../getMouseX'
 
-describe('getRelativeMouseX', () => {
+describe('getMouseX', () => {
   it('gets mouse x position for a given event', () => {
     const event = {
       clientX: 200,
@@ -8,6 +8,6 @@ describe('getRelativeMouseX', () => {
         getBoundingClientRect: () => ({ left: 10 })
       }
     }
-    expect(getRelativeMouseX(event)).toBe(190)
+    expect(getMouseX(event)).toBe(190)
   })
 })

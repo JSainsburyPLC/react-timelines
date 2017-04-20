@@ -3,10 +3,10 @@ import Timebar from './Timebar'
 
 class Header extends Component {
   shouldComponentUpdate(nextProps) {
-    if ((this.props.time !== nextProps.time) && this.props.timebar !== nextProps.timebar) {
-      return true
+    if ((this.props.time === nextProps.time) && this.props.timebar === nextProps.timebar) {
+      return false
     }
-    return false
+    return true
   }
 
   render() {

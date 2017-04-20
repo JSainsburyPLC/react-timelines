@@ -1,20 +1,20 @@
 import React, { PropTypes, Component } from 'react'
-import Marker from './Marker'
-import datePropType from '../../utils/datePropType'
-import getMonth from '../../utils/getMonth'
+import Marker from './'
+import datePropType from '../../../utils/datePropType'
+import getMonth from '../../../utils/getMonth'
 
 class TodayMarker extends Component {
   shouldComponentUpdate(nextProps) {
-    if ((this.props.time !== nextProps.time) && this.props.now !== nextProps.now) {
-      return true
+    if ((this.props.time === nextProps.time) && this.props.now === nextProps.now) {
+      return false
     }
-    return false
+    return true
   }
 
   render() {
     const { now, time } = this.props
     return (
-      <Marker modifier="today" style={time.toStyleLeft(now)}>
+      <Marker modifier="now" x={time.toX(now)}>
         <div>
           <div>Today</div>
           <strong>{`${now.getDate()} ${getMonth(now)}`}</strong>

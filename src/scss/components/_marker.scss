@@ -7,12 +7,12 @@
   border-left: $react-timeline-marker-line-width solid currentColor;
 }
 
-.marker--today {
-  color: $react-timeline-today-marker-background-color;
+.marker--now {
+  color: $react-timeline-now-marker-background-color;
 }
 
-.marker--mouse {
-  color: $react-timeline-mouse-marker-background-color;
+.marker--pointer {
+  color: $react-timeline-pointer-marker-background-color;
 }
 
 .marker__label {

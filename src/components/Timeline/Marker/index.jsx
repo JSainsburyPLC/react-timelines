@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react'
 
 const classModifier = {
-  today: 'marker--today',
-  mouse: 'marker--mouse'
+  now: 'marker--now',
+  pointer: 'marker--pointer'
 }
 
-const Marker = ({ style, modifier, children }) =>
+const Marker = ({ x, modifier, children }) =>
   <div
     className={`marker ${classModifier[modifier]}`}
-    style={style}
+    style={{ left: `${x}px` }}
   >
     <div className="marker__label">
       <div className="marker__content">
@@ -18,7 +18,7 @@ const Marker = ({ style, modifier, children }) =>
   </div>
 
 Marker.propTypes = {
-  style: PropTypes.shape({}).isRequired,
+  x: PropTypes.number.isRequired,
   modifier: PropTypes.string.isRequired,
   children: PropTypes.node
 }
