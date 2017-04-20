@@ -11,26 +11,44 @@ import { getDayMonth } from '../../utils/formatDate'
 class Timeline extends Component {
   constructor(props) {
     super(props)
+
     this.handleMouseMove = this.handleMouseMove.bind(this)
-    this.state = { pointerX: 0 }
+    this.handleMouseEnter = this.handleMouseEnter.bind(this)
+    this.handleMouseLeave = this.handleMouseLeave.bind(this)
+
+    this.state = { pointerX: 0, pointerVisible: false }
   }
 
   handleMouseMove(e) {
     this.setState({ pointerX: getMouseX(e) })
   }
 
+  handleMouseEnter() {
+    this.setState({ pointerVisible: true })
+  }
+
+  handleMouseLeave() {
+    this.setState({ pointerVisible: false })
+  }
+
   render() {
     const { now, time, timebar, tracks } = this.props
-    const { pointerX } = this.state
+    const { pointerX, pointerVisible } = this.state
     return (
       <div className="timeline">
         <div
           className="timeline__content"
           style={{ width: `${time.timelineWidth}px` }}
           onMouseMove={this.handleMouseMove}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
         >
-          {now && <NowMarker now={now} time={time} />}
-          <PointerMarker x={pointerX} text={getDayMonth(time.fromX(pointerX))} />
+          {now && <NowMarker now={now} visible time={time} />}
+          <PointerMarker
+            x={pointerX}
+            visible={pointerVisible}
+            text={getDayMonth(time.fromX(pointerX))}
+          />
           <Header time={time} timebar={timebar} />
           <Body time={time} tracks={tracks} />
         </div>

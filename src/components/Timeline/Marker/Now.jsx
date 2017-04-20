@@ -5,9 +5,9 @@ import { getDayMonth } from '../../../utils/formatDate'
 
 class TodayMarker extends PureComponent {
   render() {
-    const { now, time } = this.props
+    const { now, time, visible } = this.props
     return (
-      <Marker modifier="now" x={time.toX(now)}>
+      <Marker modifier="now" x={time.toX(now)} visible={visible}>
         <div>
           <div>Today</div>
           <strong>{getDayMonth(now)}</strong>
@@ -19,6 +19,7 @@ class TodayMarker extends PureComponent {
 
 TodayMarker.propTypes = {
   time: PropTypes.shape({}).isRequired,
+  visible: PropTypes.bool.isRequired,
   now: datePropType
 }
 
