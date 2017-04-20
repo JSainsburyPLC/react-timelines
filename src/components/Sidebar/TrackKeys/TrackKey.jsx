@@ -8,10 +8,10 @@ const TrackKey = ({ track, toggleOpen }) => {
       <div className="track-key__entry">
         { (isOpen !== undefined) &&
           <button
-            className="track-key__toggle"
+            className={`track-key__toggle ${isOpen ? 'track-key__toggle--close' : 'track-key__toggle--open'}`}
             onClick={() => toggleOpen(track)}
           >
-            { isOpen ? '−' : '+' }
+            { isOpen ? 'Close' : 'Open' }
           </button>
         }
         { title }

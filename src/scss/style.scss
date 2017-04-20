@@ -3,6 +3,7 @@ $react-timeline-header-row-height: 40px !default;
 $react-timeline-track-height: 60px !default;
 $react-timeline-element-spacing: 10px !default;
 $react-timeline-auto-open-breakpoint: 1000px !default;
+$react-timeline-base64-data-prefix: 'data:image/svg+xml;base64,';
 
 // Sidebar
 $react-timeline-sidebar-width: 240px !default;
@@ -17,6 +18,10 @@ $react-timeline-marker-line-width: 2px !default;
 $react-timeline-marker-now-background-color: #ff007f !default;
 $react-timeline-marker-pointer-background-color: #646464 !default;
 $react-timeline-marker-line-transparency: 0.8 !default;
+
+// Controls
+$react-timeline-button-background-color: #767676 !default;
+$react-timeline-button-background-color-hover: #4c4c4c !default;
 
 .react-timeline {
   position: relative;

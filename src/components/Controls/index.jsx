@@ -5,8 +5,8 @@ import Toggle from './Toggle'
 const Controls = ({ isOpen, toggleOpen, zoomIn, zoomOut, scaleFactor }) =>
   <div className="controls">
     <Toggle isOpen={isOpen} toggleOpen={toggleOpen} />
-    <button className="controls__button" onClick={zoomIn}>Zoom in</button>
-    <button className="controls__button" disabled={scaleFactor <= 1} onClick={zoomOut}>Zoom out</button>
+    <button className="controls__button controls__button--zoom-in" onClick={zoomIn}>Zoom in</button>
+    <button className="controls__button controls__button--zoom-out" disabled={scaleFactor <= 1} onClick={zoomOut}>Zoom out</button>
   </div>
 
 Controls.propTypes = {
