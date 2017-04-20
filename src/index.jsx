@@ -21,7 +21,17 @@ class Container extends Component {
   }
 
   render() {
-    const { isOpen, toggleOpen, tracks, now, timebar, zoomIn, zoomOut, scale } = this.props
+    const {
+      isOpen,
+      tracks,
+      now,
+      timebar,
+      toggleOpen,
+      toggleTrackOpen,
+      zoomIn,
+      zoomOut,
+      scale
+    } = this.props
     const { time } = this.state
     return (
       <div className="react-timeline">
@@ -37,6 +47,7 @@ class Container extends Component {
             <Sidebar
               timebar={timebar}
               tracks={tracks}
+              toggleTrackOpen={toggleTrackOpen}
             />
           </div>
           <div className="layout__main">
@@ -57,9 +68,10 @@ Container.propTypes = {
   now: PropTypes.instanceOf(Date),
   scale: PropTypes.shape({}).isRequired,
   isOpen: PropTypes.bool.isRequired,
-  toggleOpen: PropTypes.func.isRequired,
   timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  toggleOpen: PropTypes.func.isRequired,
+  toggleTrackOpen: PropTypes.func,
   zoomIn: PropTypes.func.isRequired,
   zoomOut: PropTypes.func.isRequired
 }

@@ -1,23 +1,22 @@
 import React, { PropTypes } from 'react'
 import TrackKey from './TrackKey'
 
-const TrackKeys = ({ tracks }) =>
+const TrackKeys = ({ tracks, toggleOpen }) =>
   <div className="track-keys">
     {
-      tracks.map(({ id, title, isOpen, toggleOpen, tracks: children }) =>
+      tracks.map(track => (
         <TrackKey
-          key={id}
-          title={title}
-          isOpen={isOpen}
+          key={track.id}
+          track={track}
           toggleOpen={toggleOpen}
-          tracks={children}
         />
-      )
+      ))
     }
   </div>
 
 TrackKeys.propTypes = {
-  tracks: PropTypes.arrayOf(PropTypes.shape({}))
+  tracks: PropTypes.arrayOf(PropTypes.shape({})),
+  toggleOpen: PropTypes.func
 }
 
 export default TrackKeys
