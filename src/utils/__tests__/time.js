@@ -24,7 +24,7 @@ describe('createTime', () => {
   })
 
   describe('toX()', () => {
-    it('calculates correct x pixel position for given date', () => {
+    it('calculates correct x pixel position for given date (with pixel rounding)', () => {
       const start = new Date('2017-01-01T00:00:00.000Z')
       const end = new Date('2018-01-01T00:00:00.000Z')
       const { toX } = createTime({ start, end, zoom: 2 })
@@ -44,7 +44,7 @@ describe('createTime', () => {
       const end = new Date('2018-01-01T00:00:00.000Z')
       const { toStyleLeft } = createTime({ start, end, zoom: 2 })
       expect(toStyleLeft(start)).toEqual({ left: '0px' })
-      expect(toStyleLeft(firstOfJune)).toEqual({ left: '303.0485185185185px' })
+      expect(toStyleLeft(firstOfJune)).toEqual({ left: '303px' })
       expect(toStyleLeft(end)).toEqual({ left: '730px' })
     })
   })
@@ -56,7 +56,7 @@ describe('createTime', () => {
       const end = new Date('2018-01-01T00:00:00.000Z')
       const { toStyleLeftAndWidth } = createTime({ start, end, zoom: 2 })
       expect(toStyleLeftAndWidth(start, end)).toEqual({ left: '0px', width: '730px' })
-      expect(toStyleLeftAndWidth(firstOfJune, end)).toEqual({ left: '303.0485185185185px', width: '426.9514814814815px' })
+      expect(toStyleLeftAndWidth(firstOfJune, end)).toEqual({ left: '303px', width: '427px' })
     })
   })
 
