@@ -24,13 +24,15 @@ class Timeline extends Component {
     const { now, time, timebar, tracks } = this.props
     return (
       <div className="timeline">
-        <div className="timeline__content" style={{ width: `${time.timelineWidth}px` }}>
-          <div onMouseMove={this.handleMouseMove}>
-            {now && <NowMarker now={now} time={time} />}
-            <PointerMarker x={this.state.pointerX} />
-            <Header time={time} timebar={timebar} />
-            <Body now={now} time={time} tracks={tracks} />
-          </div>
+        <div
+          className="timeline__content"
+          style={{ width: `${time.timelineWidth}px` }}
+          onMouseMove={this.handleMouseMove}
+        >
+          {now && <NowMarker now={now} time={time} />}
+          <PointerMarker x={this.state.pointerX} />
+          <Header time={time} timebar={timebar} />
+          <Body time={time} tracks={tracks} />
         </div>
       </div>
     )

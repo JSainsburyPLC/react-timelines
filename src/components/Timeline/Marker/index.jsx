@@ -1,13 +1,8 @@
 import React, { PropTypes } from 'react'
 
-const classModifier = {
-  now: 'marker--now',
-  pointer: 'marker--pointer'
-}
-
 const Marker = ({ x, modifier, children }) =>
   <div
-    className={`marker ${classModifier[modifier]}`}
+    className={`marker marker--${modifier}`}
     style={{ left: `${x}px` }}
   >
     <div className="marker__label">
