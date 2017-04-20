@@ -1,14 +1,7 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, PureComponent } from 'react'
 import Timebar from './Timebar'
 
-class Header extends Component {
-  shouldComponentUpdate(nextProps) {
-    if ((this.props.time === nextProps.time) && this.props.timebar === nextProps.timebar) {
-      return false
-    }
-    return true
-  }
-
+class Header extends PureComponent {
   render() {
     const { time, timebar: { rows } } = this.props
     return (

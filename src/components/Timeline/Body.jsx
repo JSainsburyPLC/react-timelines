@@ -1,13 +1,7 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 import Tracks from './Tracks'
 
-class Body extends Component {
-  shouldComponentUpdate(nextProps) {
-    if ((this.props.time === nextProps.time) && this.props.tracks === nextProps.tracks) {
-      return false
-    }
-    return true
-  }
+class Body extends PureComponent {
   render() {
     const { time, tracks } = this.props
     return (

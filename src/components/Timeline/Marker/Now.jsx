@@ -1,16 +1,9 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, PureComponent } from 'react'
 import Marker from './'
 import datePropType from '../../../utils/datePropType'
 import getMonth from '../../../utils/getMonth'
 
-class TodayMarker extends Component {
-  shouldComponentUpdate(nextProps) {
-    if ((this.props.time === nextProps.time) && this.props.now === nextProps.now) {
-      return false
-    }
-    return true
-  }
-
+class TodayMarker extends PureComponent {
   render() {
     const { now, time } = this.props
     return (
