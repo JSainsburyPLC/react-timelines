@@ -52,16 +52,19 @@
     top: 0;
     bottom: 0;
     margin-left: -1px;
-    border-left: 2px solid currentColor; }
+    border-left: 2px solid; }
   .react-timeline .marker--now {
-    color: rgba(255, 0, 127, 0.8); }
+    color: #ff007f;
+    border-color: rgba(255, 0, 127, 0.8); }
   .react-timeline .marker--pointer {
-    color: rgba(100, 100, 100, 0.8); }
+    color: #646464;
+    border-color: rgba(100, 100, 100, 0.8); }
   .react-timeline .marker__label {
     position: absolute;
     bottom: 100%;
     left: 50%;
     display: table;
+    min-width: 70px;
     height: 50px;
     padding: 0 10px;
     line-height: 1.1;

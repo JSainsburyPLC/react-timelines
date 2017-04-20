@@ -4,15 +4,17 @@
   top: 0;
   bottom: 0;
   margin-left: -($react-timeline-marker-line-width / 2);
-  border-left: $react-timeline-marker-line-width solid currentColor;
+  border-left: $react-timeline-marker-line-width solid;
 }
 
 .marker--now {
   color: $react-timeline-marker-now-background-color;
+  border-color: rgba($react-timeline-marker-now-background-color, $react-timeline-marker-line-transparency);
 }
 
 .marker--pointer {
   color: $react-timeline-marker-pointer-background-color;
+  border-color: rgba($react-timeline-marker-pointer-background-color, $react-timeline-marker-line-transparency);
 }
 
 .marker__label {
@@ -20,6 +22,7 @@
   bottom: 100%;
   left: 50%;
   display: table;
+  min-width: 70px;
   height: $react-timeline-marker-label-height;
   padding: 0 10px;
   line-height: 1.1;
