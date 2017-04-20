@@ -75,9 +75,7 @@ Container.propTypes = {
   toggleOpen: PropTypes.func.isRequired,
   toggleTrackOpen: PropTypes.func,
   zoomIn: PropTypes.func.isRequired,
-  zoomOut: PropTypes.func.isRequired,
-  zoomMin: PropTypes.number,
-  zoomMax: PropTypes.number
+  zoomOut: PropTypes.func.isRequired
 }
 
 export default Container
