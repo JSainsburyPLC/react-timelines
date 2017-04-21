@@ -4,7 +4,7 @@
   top: 0;
   bottom: 0;
   margin-left: -($react-timeline-marker-line-width / 2);
-  border-left: $react-timeline-marker-line-width solid;
+  border-left: $react-timeline-marker-line-width dotted;
   opacity: 0;
 }
 
@@ -14,12 +14,18 @@
 
 .marker--now {
   color: $react-timeline-marker-now-background-color;
-  border-color: rgba($react-timeline-marker-now-background-color, $react-timeline-marker-line-transparency);
+  border-color: rgba(
+    $react-timeline-marker-now-background-color,
+    $react-timeline-marker-line-transparency
+  );
 }
 
 .marker--pointer {
   color: $react-timeline-marker-pointer-background-color;
-  border-color: rgba($react-timeline-marker-pointer-background-color, $react-timeline-marker-line-transparency);
+  border-color: rgba(
+    $react-timeline-marker-pointer-background-color,
+    $react-timeline-marker-line-transparency
+  );
 }
 
 .marker__label {
