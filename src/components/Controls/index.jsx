@@ -13,8 +13,8 @@ const Controls = ({
 }) =>
   <div className="controls">
     <Toggle isOpen={isOpen} toggleOpen={toggleOpen} />
-    <button className="controls__button" disabled={zoomMax && zoom >= zoomMax} onClick={zoomIn}>Zoom in</button>
-    <button className="controls__button" disabled={zoomMin && zoom <= zoomMin} onClick={zoomOut}>Zoom out</button>
+    <button className="controls__button controls__button--zoom-in" disabled={zoomMax && zoom >= zoomMax} onClick={zoomIn}>Zoom in</button>
+    <button className="controls__button controls__button--zoom-out" disabled={zoomMin && zoom <= zoomMin} onClick={zoomOut}>Zoom out</button>
   </div>
 
 Controls.propTypes = {
