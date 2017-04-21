@@ -62,8 +62,7 @@
   width: $size;
   height: $size;
   overflow: hidden;
-  margin-right: 5px;
-  margin-left: -$psuedo-offset;
+  left: -$psuedo-offset;
   vertical-align: middle;
   background: transparent;
   color: transparent;
@@ -81,7 +80,7 @@
     right: $psuedo-offset;
     left: $psuedo-offset;
     background-color: $react-timeline-button-background-color;
-    background-size: 50%;
+    background-size: 10px;
     background-repeat: no-repeat;
     background-position: center center;
     content: ' ';
