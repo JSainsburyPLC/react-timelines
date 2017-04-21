@@ -1,7 +1,16 @@
 .react-timeline {
   position: relative;
+  z-index: 1;
   overflow: hidden;
   font-family: sans-serif; }
+  .react-timeline .controls {
+    position: relative; }
+  @media (min-width: 1000px) {
+    .react-timeline .controls__content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2; } }
   .react-timeline .controls__button {
     display: inline-block;
     width: 36px;
