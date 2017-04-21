@@ -1,9 +1,9 @@
-const create = ({ start, end, factor }) => {
+const create = ({ start, end, zoom }) => {
   const MILLIS_IN_A_DAY = 24 * 60 * 60 * 1000
 
   const duration = end - start
   const days = duration / MILLIS_IN_A_DAY
-  const timelineWidth = days * factor
+  const timelineWidth = days * zoom
 
   const toX = (from) => {
     const value = (from - start) / duration
@@ -29,7 +29,7 @@ const create = ({ start, end, factor }) => {
     timelineWidth,
     start,
     end,
-    factor,
+    zoom,
     toX,
     toStyleLeft,
     toStyleLeftAndWidth,
