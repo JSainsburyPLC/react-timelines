@@ -1,4 +1,4 @@
-# React Timeline
+# React Timeline [![CircleCI](https://circleci.com/gh/JSainsburyPLC/react-timeline.svg?style=svg&circle-token=2ee544b1d8344e0c95f9633d712afd31b0edc293)](https://circleci.com/gh/JSainsburyPLC/react-timeline)
 
 ## Install
 

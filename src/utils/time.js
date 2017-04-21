@@ -7,7 +7,7 @@ const create = ({ start, end, zoom }) => {
 
   const toX = (from) => {
     const value = (from - start) / duration
-    return value * timelineWidth
+    return Math.round(value * timelineWidth)
   }
 
   const toStyleLeft = from => ({
