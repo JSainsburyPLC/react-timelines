@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 
-import datePropType from '../../utils/datePropType'
 import { getDayMonth } from '../../utils/formatDate'
 
 const Basic = ({ title, start, end, style }) =>
@@ -9,16 +8,16 @@ const Basic = ({ title, start, end, style }) =>
       { title }
     </div>
     <div className="element__tooltip">
-      <div><strong>Title</strong> {title}</div>
-      <div><strong>Start</strong> {getDayMonth(start.toDate())}</div>
-      <div><strong>End Date</strong> {getDayMonth(end.toDate())}</div>
+      <div>{title}</div>
+      <div><strong>Start</strong> {getDayMonth(start)}</div>
+      <div><strong>End</strong> {getDayMonth(end)}</div>
     </div>
   </div>
 
 Basic.propTypes = {
   title: PropTypes.string,
-  start: datePropType,
-  end: datePropType,
+  start: PropTypes.instanceOf(Date),
+  end: PropTypes.instanceOf(Date),
   style: PropTypes.shape({})
 }
 
