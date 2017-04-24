@@ -87,7 +87,7 @@
     color: #888;
     border-color: rgba(136, 136, 136, 0.5); }
   .react-timeline .marker--pointer.is-highlighted {
-    color: #626262;
+    color: #484848;
     border-color: #858585; }
   .react-timeline .marker__label {
     position: absolute;

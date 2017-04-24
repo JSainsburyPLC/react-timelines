@@ -31,8 +31,8 @@
 }
 
 .marker--pointer.is-highlighted {
-  color: darken($react-timeline-marker-pointer-background-color, 15%);
-  border-color: rgba(darken($react-timeline-marker-pointer-background-color, 1), 15%);
+  color: darken($react-timeline-marker-pointer-background-color, 25%);
+  border-color: rgba(darken($react-timeline-marker-pointer-background-color, 1), 25%);
 }
 
 .marker__label {
