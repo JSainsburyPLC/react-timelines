@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import BasicElement from '../../Elements/Basic'
-import datePropType from '../../../utils/datePropType'
 
 const Element = ({ time, trackStyle, style, id, title, start, end }) =>
   <div
@@ -20,8 +19,8 @@ Element.propTypes = {
   style: PropTypes.shape({}),
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
-  start: datePropType,
-  end: datePropType
+  start: PropTypes.instanceOf(Date).isRequired,
+  end: PropTypes.instanceOf(Date).isRequired
 }
 
 export default Element
