@@ -12,6 +12,11 @@
   opacity: 1;
 }
 
+.marker.is-highlighted {
+  background-color: blue;
+  opacity: 1;
+}
+
 .marker--now {
   color: $react-timeline-marker-now-background-color;
   border-color: rgba(

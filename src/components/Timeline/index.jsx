@@ -14,9 +14,13 @@ class Timeline extends Component {
 
     this.handleMouseMove = this.handleMouseMove.bind(this)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
-    this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.setPointerHighlight = this.setPointerHighlight.bind(this)
 
-    this.state = { pointerX: 0, pointerVisible: false }
+    this.state = { pointerX: 0, pointerVisible: false, pointerHighlighted: false }
+  }
+
+  setPointerHighlight(over) {
+    this.setState({ pointerHighlighted: over })
   }
 
   handleMouseMove(e) {
@@ -24,32 +28,30 @@ class Timeline extends Component {
   }
 
   handleMouseEnter() {
+    this.setPointerHighlight(true)
     this.setState({ pointerVisible: true })
-  }
-
-  handleMouseLeave() {
-    this.setState({ pointerVisible: false })
   }
 
   render() {
     const { now, time, timebar, tracks } = this.props
-    const { pointerX, pointerVisible } = this.state
+    const { pointerX, pointerVisible, pointerHighlighted } = this.state
     return (
       <div className="timeline">
-        <div
-          className="timeline__content"
-          style={{ width: `${time.timelineWidth}px` }}
-          onMouseMove={this.handleMouseMove}
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-        >
+        <div className="timeline__content" style={{ width: `${time.timelineWidth}px` }}>
           {now && <NowMarker now={now} visible time={time} />}
           <PointerMarker
             x={pointerX}
             visible={pointerVisible}
+            highlighted={pointerHighlighted}
             text={getDayMonth(time.fromX(pointerX))}
           />
-          <Header time={time} timebar={timebar} />
+          <div
+            onMouseMove={this.handleMouseMove}
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.setPointerHighlight(false)}
+          >
+            <Header time={time} timebar={timebar} />
+          </div>
           <Body time={time} tracks={tracks} />
         </div>
       </div>
