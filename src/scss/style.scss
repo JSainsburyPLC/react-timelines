@@ -1,9 +1,9 @@
-$react-timeline-header-row-height: 40px !default;
-$react-timeline-track-height: 60px !default;
-$react-timeline-element-spacing: 10px !default;
 $react-timeline-auto-open-breakpoint: 1000px !default;
 $react-timeline-font-family: sans-serif !default;
-$react-timeline-border-width: 1px;
+$react-timeline-border-width: 1px !default;
+
+// Header
+$react-timeline-header-row-height: 40px !default;
 
 // Sidebar
 $react-timeline-sidebar-width: 240px !default;
@@ -11,6 +11,10 @@ $react-timeline-sidebar-closed-offset: 40px;
 $react-timeline-sidebar-background-color: #fff !default;
 $react-timeline-sidebar-separator-color: #eee !default;
 $react-timeline-sidebar-key-indent-width: 20px !default;
+
+// Track / Elements
+$react-timeline-track-height: 60px !default;
+$react-timeline-element-spacing: 10px !default;
 
 // Markers
 $react-timeline-marker-label-height: 50px !default;
