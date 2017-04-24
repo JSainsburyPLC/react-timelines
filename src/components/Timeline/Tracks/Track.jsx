@@ -5,7 +5,7 @@ import Element from './Element'
 const Track = ({ time, elements, isOpen, tracks, style: trackStyle }) =>
   <div className="track">
     <div className="track__elements">
-      { elements.map(element =>
+      { elements.filter(({ start, end }) => (end > start)).map(element =>
         <Element
           key={element.id}
           trackStyle={trackStyle}

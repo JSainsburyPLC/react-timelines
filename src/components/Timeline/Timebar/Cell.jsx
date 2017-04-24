@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import datePropType from '../../../utils/datePropType'
 
 const Cell = ({ time, title, start, end }) =>
   <div
@@ -12,8 +11,8 @@ const Cell = ({ time, title, start, end }) =>
 Cell.propTypes = {
   time: PropTypes.shape({}),
   title: PropTypes.string.isRequired,
-  start: datePropType,
-  end: datePropType
+  start: PropTypes.instanceOf(Date).isRequired,
+  end: PropTypes.instanceOf(Date).isRequired
 }
 
 export default Cell

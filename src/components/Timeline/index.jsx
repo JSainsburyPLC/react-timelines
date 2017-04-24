@@ -4,7 +4,6 @@ import Body from './Body'
 import NowMarker from './Marker/Now'
 import PointerMarker from './Marker/Pointer'
 
-import datePropType from '../../utils/datePropType'
 import getMouseX from '../../utils/getMouseX'
 import { getDayMonth } from '../../utils/formatDate'
 
@@ -59,7 +58,7 @@ class Timeline extends Component {
 }
 
 Timeline.propTypes = {
-  now: datePropType,
+  now: PropTypes.instanceOf(Date).isRequired,
   time: PropTypes.shape({}).isRequired,
   timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({}))
