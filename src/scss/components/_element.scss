@@ -1,9 +1,9 @@
 .element {
   $height: $react-timeline-track-height - 2 * $react-timeline-element-spacing;
 
+  position: relative;
   height: $height;
   line-height: $height;
-  font-weight: bold;
   background: #06f;
   color: #fff;
   text-align: center;
@@ -11,7 +11,39 @@
 
 .element__content {
   padding: 0 10px;
-  white-space: nowrap;
   overflow: hidden;
+  white-space: nowrap;
+  font-weight: bold;
   text-overflow: ellipsis;
+}
+
+.element__tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  z-index: 1;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border: 1px solid #888;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: white;
+  color: $react-timeline-text-color;
+  transform: translateX(-50%) scale(0);
+
+  &::before {
+    $size: 10px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-top: $size solid red;
+    border-left: $size solid transparent;
+    border-left: $size solid transparent;
+    content: ' ';
+  }
+}
+
+.element:hover > .element__tooltip,
+.element:focus > .element__tooltip {
+  transform: translateX(-50%) scale(1);
 }

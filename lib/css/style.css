@@ -2,7 +2,8 @@
   position: relative;
   z-index: 1;
   overflow: hidden;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  color: #4c4c4c; }
   .react-timeline .controls {
     position: relative; }
   @media (min-width: 1000px) {
@@ -39,16 +40,42 @@
     .react-timeline .controls__button--toggle {
       display: none; } }
   .react-timeline .element {
+    position: relative;
     height: 40px;
     line-height: 40px;
-    padding: 0 10px;
-    font-weight: bold;
     background: #06f;
     color: #fff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     text-align: center; }
+  .react-timeline .element__content {
+    padding: 0 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: bold;
+    text-overflow: ellipsis; }
+  .react-timeline .element__tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    z-index: 1;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #888;
+    line-height: 1.2;
+    white-space: nowrap;
+    background: white;
+    color: #4c4c4c;
+    transform: translateX(-50%) scale(0); }
+    .react-timeline .element__tooltip::before {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      border-top: 10px solid red;
+      border-left: 10px solid transparent;
+      border-left: 10px solid transparent;
+      content: ' '; }
+  .react-timeline .element:hover > .element__tooltip,
+  .react-timeline .element:focus > .element__tooltip {
+    transform: translateX(-50%) scale(1); }
   .react-timeline .layout {
     position: relative;
     margin-left: -200px; }
