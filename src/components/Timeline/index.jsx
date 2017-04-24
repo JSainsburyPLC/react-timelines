@@ -14,22 +14,21 @@ class Timeline extends Component {
 
     this.handleMouseMove = this.handleMouseMove.bind(this)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
-    this.setPointerHighlight = this.setPointerHighlight.bind(this)
+    this.handleMouseLeave = this.handleMouseLeave.bind(this)
 
     this.state = { pointerX: 0, pointerVisible: false, pointerHighlighted: false }
-  }
-
-  setPointerHighlight(over) {
-    this.setState({ pointerHighlighted: over })
   }
 
   handleMouseMove(e) {
     this.setState({ pointerX: getMouseX(e) })
   }
 
+  handleMouseLeave() {
+    this.setState({ pointerHighlighted: false })
+  }
+
   handleMouseEnter() {
-    this.setPointerHighlight(true)
-    this.setState({ pointerVisible: true })
+    this.setState({ pointerVisible: true, pointerHighlighted: true })
   }
 
   render() {
@@ -48,7 +47,7 @@ class Timeline extends Component {
           <div
             onMouseMove={this.handleMouseMove}
             onMouseEnter={this.handleMouseEnter}
-            onMouseLeave={this.setPointerHighlight(false)}
+            onMouseLeave={this.handleMouseLeave}
           >
             <Header time={time} timebar={timebar} />
           </div>
