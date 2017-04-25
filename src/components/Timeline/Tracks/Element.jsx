@@ -9,6 +9,8 @@ const Element = ({ time, trackStyle, style, id, title, start, end }) =>
   >
     <BasicElement
       title={title}
+      start={start}
+      end={end}
       style={{ ...trackStyle, ...style }}
     />
   </div>

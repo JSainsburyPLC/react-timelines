@@ -1,6 +1,7 @@
 $react-timeline-auto-open-breakpoint: 1000px !default;
 $react-timeline-font-family: sans-serif !default;
 $react-timeline-border-width: 1px !default;
+$react-timeline-text-color: #4c4c4c !default;
 
 // Header
 $react-timeline-header-row-height: 40px !default;
@@ -32,6 +33,7 @@ $react-timeline-button-background-color-hover: #4c4c4c !default;
   z-index: 1;
   overflow: hidden;
   font-family: $react-timeline-font-family;
+  color: $react-timeline-text-color;
 
   @import 'components/controls';
   @import 'components/element';
