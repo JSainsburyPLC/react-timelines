@@ -58,6 +58,7 @@ class Timeline extends Component {
       tracks,
       now,
       timebar,
+      highlightTrack,
       toggleTrackOpen,
       enableSticky = false,
       scrollToNow,
@@ -92,6 +93,7 @@ class Timeline extends Component {
           sidebarWidth={sidebarWidth}
           clickElement={clickElement}
           clickTrackButton={clickTrackButton}
+          highlightTrack={highlightTrack}
         />
       </div>
     )
@@ -116,6 +118,7 @@ Timeline.propTypes = {
   timebar: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   now: PropTypes.instanceOf(Date),
+  highlightTrack: PropTypes.func,
   toggleTrackOpen: PropTypes.func,
   enableSticky: PropTypes.bool,
   scrollToNow: PropTypes.bool,

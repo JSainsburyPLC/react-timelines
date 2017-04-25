@@ -4,10 +4,15 @@ import PropTypes from 'prop-types'
 import Header from './Header'
 import Body from './Body'
 
-const Sidebar = ({ timebar, tracks, toggleTrackOpen, sticky, clickTrackButton }) => (
+const Sidebar = ({ timebar, tracks, highlightTrack, toggleTrackOpen, sticky, clickTrackButton }) => (
   <div className="rt-sidebar">
     <Header timebar={timebar} sticky={sticky} />
-    <Body tracks={tracks} toggleTrackOpen={toggleTrackOpen} clickTrackButton={clickTrackButton} />
+    <Body
+      tracks={tracks}
+      toggleTrackOpen={toggleTrackOpen}
+      highlightTrack={highlightTrack}
+      clickTrackButton={clickTrackButton}
+    />
   </div>
 )
 
@@ -22,6 +27,7 @@ Sidebar.propTypes = {
   toggleTrackOpen: PropTypes.func,
   sticky: PropTypes.shape({}),
   clickTrackButton: PropTypes.func,
+  highlightTrack: PropTypes.func,
 }
 
 export default Sidebar

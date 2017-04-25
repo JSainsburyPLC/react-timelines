@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 
 import TrackKeys from '.'
 
-const TrackKey = ({ track, toggleOpen, clickTrackButton }) => {
+const noop = () => {}
+const TrackKey = ({ track, highlight = noop, toggleOpen = noop, clickTrackButton }) => {
   const { title, tracks, isOpen, hasButton, sideComponent } = track
   const isExpandable = isOpen !== undefined
 
@@ -21,7 +22,12 @@ const TrackKey = ({ track, toggleOpen, clickTrackButton }) => {
 
   return (
     <li className="rt-track-key">
-      <div className="rt-track-key__entry">
+      <div
+        className="rt-track-key__entry"
+        onMouseEnter={() => {
+          highlight(track)
+        }}
+      >
         {isExpandable && (
           <button
             title="Expand track"
@@ -48,11 +54,13 @@ TrackKey.propTypes = {
     hasButton: PropTypes.bool,
   }),
   toggleOpen: PropTypes.func,
+  highlight: PropTypes.func,
   clickTrackButton: PropTypes.func,
 }
 
 TrackKey.defaultProps = {
   clickTrackButton: undefined,
+  toggleOpen: PropTypes.func,
 }
 
 export default TrackKey
