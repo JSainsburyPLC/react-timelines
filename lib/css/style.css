@@ -64,7 +64,8 @@
     background: #4c4c4c;
     color: white;
     opacity: 0;
-    transform: translateX(-50%) scale(0); }
+    transform: translateX(-50%) scale(0);
+    will-change: transform; }
     .react-timeline .element__tooltip::before {
       position: absolute;
       top: 100%;
