@@ -30,6 +30,7 @@
   color: white;
   opacity: 0;
   transform: translateX(-50%) scale(0);
+  will-change: transform;
 
   &::before {
     $size: 6px;
