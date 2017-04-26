@@ -28,9 +28,7 @@
   text-align: left;
   background: $react-timeline-text-color;
   color: white;
-  opacity: 0;
   transform: translateX(-50%) scale(0);
-  will-change: transform;
 
   &::before {
     $size: 6px;
@@ -49,6 +47,5 @@
 .element:focus > .element__tooltip {
   $delay: 0.3s;
   transform: translateX(-50%) scale(1);
-  opacity: 1;
-  transition: transform 0s $delay, opacity 0.4s $delay;
+  transition: transform 0s $delay;
 }
