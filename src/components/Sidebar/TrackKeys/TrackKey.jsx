@@ -3,10 +3,11 @@ import TrackKeys from './'
 
 const TrackKey = ({ track, toggleOpen }) => {
   const { title, tracks, isOpen } = track
+  const isExpandable = isOpen !== undefined
   return (
     <div className="track-key">
       <div className="track-key__entry">
-        { (isOpen !== undefined) &&
+        { isExpandable &&
           <button
             className={`track-key__toggle ${isOpen ? 'track-key__toggle--close' : 'track-key__toggle--open'}`}
             onClick={() => toggleOpen(track)}
