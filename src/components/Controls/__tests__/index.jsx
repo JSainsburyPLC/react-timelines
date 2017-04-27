@@ -51,7 +51,7 @@ describe('<Controls />', () => {
       expect(zoomIn).toBeCalled()
     })
   })
-  //
+
   describe('Zoom out button', () => {
     const buttonElement = 'button.controls__button--zoom-out'
 
