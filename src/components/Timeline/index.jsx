@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import Header from './Header'
 import Body from './Body'
-import NowMarker from './Marker/Now'
-import PointerMarker from './Marker/Pointer'
+import NowMarker from './Marker/NowMarker'
+import PointerMarker from './Marker/PointerMarker'
 
 import getMouseX from '../../utils/getMouseX'
 import { getDayMonth } from '../../utils/formatDate'

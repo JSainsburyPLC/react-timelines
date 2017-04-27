@@ -2,7 +2,7 @@ import React, { PropTypes, PureComponent } from 'react'
 import Marker from './'
 import { getDayMonth } from '../../../utils/formatDate'
 
-class TodayMarker extends PureComponent {
+class NowMarker extends PureComponent {
   render() {
     const { now, time, visible } = this.props
     return (
@@ -16,10 +16,10 @@ class TodayMarker extends PureComponent {
   }
 }
 
-TodayMarker.propTypes = {
+NowMarker.propTypes = {
   time: PropTypes.shape({}).isRequired,
   visible: PropTypes.bool.isRequired,
   now: PropTypes.instanceOf(Date).isRequired
 }
 
-export default TodayMarker
+export default NowMarker
