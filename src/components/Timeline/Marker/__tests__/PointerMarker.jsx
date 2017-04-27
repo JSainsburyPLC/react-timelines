@@ -7,7 +7,7 @@ import Marker from '../'
 describe('<PointerMarker />', () => {
   const props = {
     x: 0,
-    text: 'TEST',
+    text: 'test',
     visible: false,
     highlighted: false
   }
@@ -19,6 +19,6 @@ describe('<PointerMarker />', () => {
 
   it('renders "text"', () => {
     const wrapper = shallow(<PointerMarker {...props} />)
-    expect(wrapper.find('strong').text()).toBe('TEST')
+    expect(wrapper.find('strong').text()).toBe('test')
   })
 })
