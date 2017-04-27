@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import Controls from '../'
-import Toggle from '../Toggle'
 
 const createProps = ({
   isOpen = true,
@@ -23,16 +22,6 @@ const createProps = ({
 })
 
 describe('<Controls />', () => {
-  describe('<Toggle />', () => {
-    it('renders with "isOpen" and "toggleOpen" props', () => {
-      const toggleOpen = jest.fn()
-      const props = createProps({ isOpen: false, toggleOpen })
-      const wrapper = shallow(<Controls {...props} />)
-      expect(wrapper.find(Toggle).prop('isOpen')).toBe(false)
-      expect(wrapper.find(Toggle).prop('toggleOpen')).toBe(toggleOpen)
-    })
-  })
-
   describe('Zoom in button', () => {
     const buttonElement = 'button.controls__button--zoom-in'
 
