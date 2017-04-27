@@ -48,4 +48,11 @@ describe('<Marker />', () => {
     const wrapper = shallow(<Marker {...props} />)
     expect(wrapper.prop('className')).not.toMatch('is-highlighted')
   })
+
+  it('follows the horizontal mouse position', () => {
+    const x = 100
+    const props = createProps({ x })
+    const wrapper = shallow(<Marker {...props} />)
+    expect(wrapper.prop('style')).toEqual({ left: '100px' })
+  })
 })
