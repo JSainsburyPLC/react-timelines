@@ -23,9 +23,9 @@ const Basic = ({ title, start, end, style, tooltip }) =>
   </div>
 
 Basic.propTypes = {
-  title: PropTypes.string,
-  start: PropTypes.instanceOf(Date),
-  end: PropTypes.instanceOf(Date),
+  title: PropTypes.string.isRequired,
+  start: PropTypes.instanceOf(Date).isRequired,
+  end: PropTypes.instanceOf(Date).isRequired,
   style: PropTypes.shape({}),
   tooltip: PropTypes.string
 }
