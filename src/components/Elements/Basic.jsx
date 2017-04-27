@@ -26,7 +26,7 @@ Basic.propTypes = {
   title: PropTypes.string.isRequired,
   start: PropTypes.instanceOf(Date).isRequired,
   end: PropTypes.instanceOf(Date).isRequired,
-  style: PropTypes.shape({}).isRequired,
+  style: PropTypes.shape({}),
   tooltip: PropTypes.string
 }
 

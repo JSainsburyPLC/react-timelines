@@ -15,7 +15,7 @@ describe('<TrackKey />', () => {
   describe('toggle button', () => {
     const getToggleButton = node => node.find('.track-key__toggle')
 
-    it('renders when "track.isOpen" is not undefined', () => {
+    it('renders when "track.isOpen" is defined', () => {
       const track = {
         title: 'TEST',
         isOpen: false
@@ -25,7 +25,7 @@ describe('<TrackKey />', () => {
       expect(getToggleButton(wrapper).exists()).toBe(true)
     })
 
-    it('does not render when "track.isOpen" is "undefined"', () => {
+    it('does not render when "track.isOpen" is undefined', () => {
       const track = {
         title: 'TEST'
       }
