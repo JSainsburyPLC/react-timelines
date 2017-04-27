@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 
 import { getDayMonth } from '../../utils/formatDate'
 
+// eslint-disable-next-line no-unused-vars
 const Segmented = ({ title, start, end, style, tooltip }) =>
   <div className="element" style={style}>
     <div className="element__content" aria-hidden="true">
