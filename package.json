@@ -55,5 +55,8 @@
       "node_modules",
       "src"
     ]
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8"
   }
 }

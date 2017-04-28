@@ -1,5 +1,5 @@
-import React, { PropTypes, Component } from 'react'
-
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Controls from './components/Controls'
 import Sidebar from './components/Sidebar'
 import Timeline from './components/Timeline'
