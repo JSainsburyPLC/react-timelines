@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import BasicElement from '../../Elements/Basic'
 
 const Element = ({ time, style, id, title, start, end, tooltip }) =>

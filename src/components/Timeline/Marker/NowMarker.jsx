@@ -1,4 +1,6 @@
-import React, { PropTypes, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+
 import Marker from './'
 import { getDayMonth } from '../../../utils/formatDate'
 
