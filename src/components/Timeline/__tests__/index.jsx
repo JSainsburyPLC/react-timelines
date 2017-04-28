@@ -38,7 +38,7 @@ describe('<Timeline />', () => {
     expect(wrapper.find(NowMarker).exists()).toBe(false)
   })
 
-  it('updates the pointerX state when handleMouseMove is called', () => {
+  it('updates pointer x position when the mouse moves', () => {
     const event = 50
     const props = createProps()
     const wrapper = shallow(<Timeline {...props} />)
@@ -49,7 +49,7 @@ describe('<Timeline />', () => {
     expect(wrapper.state('pointerX')).toBe(50)
   })
 
-  it('sets "pointerVisible" and "pointerHighlighted" state to "true" when "handleMouseEnter" is called', () => {
+  it('makes the pointer visible and highlighted when the mouse enters', () => {
     const props = createProps()
     const wrapper = shallow(<Timeline {...props} />)
     expect(wrapper.state('pointerVisible')).toBe(false)
@@ -60,7 +60,7 @@ describe('<Timeline />', () => {
     expect(wrapper.state('pointerHighlighted')).toBe(true)
   })
 
-  it('sets "pointerHighlighted" state to "false" when "handleMouseLeave" is called', () => {
+  it('removes the pointer highlight when the mouse leaves', () => {
     const props = createProps()
     const wrapper = shallow(<Timeline {...props} />)
     expect(wrapper.state('pointerHighlighted')).toBe(false)
