@@ -38,7 +38,7 @@ class Timeline extends Component {
     return (
       <div className="timeline">
         <div className="timeline__content" style={{ width: `${time.timelineWidth}px` }}>
-          {now && <NowMarker now={now} visible time={time} />}
+          <NowMarker now={now} visible time={time} />
           <PointerMarker
             x={pointerX}
             visible={pointerVisible}
