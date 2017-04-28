@@ -45,13 +45,13 @@ class Timeline extends Component {
             highlighted={pointerHighlighted}
             text={getDayMonth(time.fromX(pointerX))}
           />
-          <div
-            onMouseMove={this.handleMouseMove}
-            onMouseEnter={this.handleMouseEnter}
-            onMouseLeave={this.handleMouseLeave}
-          >
-            <Header time={time} timebar={timebar} />
-          </div>
+          <Header
+            time={time}
+            timebar={timebar}
+            onMove={this.handleMouseMove}
+            onEnter={this.handleMouseEnter}
+            onLeave={this.handleMouseLeave}
+          />
           <Body time={time} tracks={tracks} />
         </div>
       </div>
