@@ -15,7 +15,7 @@ const createProps = ({
 })
 
 describe('<Track />', () => {
-  it('renders filtered <Element /> components where "start" precedes "end"', () => {
+  it('filters out <Element /> components where "start" is after "end"', () => {
     const props = createProps({
       elements: [
         {
@@ -51,7 +51,7 @@ describe('<Track />', () => {
     expect(wrapper.find(Tracks)).toHaveLength(0)
   })
 
-  it('does not render <Tracks /> if tracks don\'t exist', () => {
+  it('does not render <Tracks /> if there are no tracks', () => {
     const props = createProps({
       isOpen: true,
       tracks: []
