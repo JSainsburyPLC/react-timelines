@@ -60,7 +60,7 @@ class Timeline extends Component {
 }
 
 Timeline.propTypes = {
-  now: PropTypes.instanceOf(Date).isRequired,
+  now: PropTypes.instanceOf(Date),
   time: PropTypes.shape({}).isRequired,
   timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({}))
