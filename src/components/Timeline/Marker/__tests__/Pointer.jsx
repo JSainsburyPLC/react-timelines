@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import PointerMarker from '../PointerMarker'
+import PointerMarker from '../Pointer'
 import Marker from '../'
 
 describe('<PointerMarker />', () => {

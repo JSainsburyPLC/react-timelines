@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import Header from './Header'
 import Body from './Body'
-import NowMarker from './Marker/NowMarker'
-import PointerMarker from './Marker/PointerMarker'
+import NowMarker from './Marker/Now'
+import PointerMarker from './Marker/Pointer'
 
 import getMouseX from '../../utils/getMouseX'
 import { getDayMonth } from '../../utils/formatDate'

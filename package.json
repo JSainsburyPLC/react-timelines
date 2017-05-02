@@ -21,9 +21,8 @@
   "repository": "git@github.com:JSainsburyPLC/react-timeline.git",
   "author": "JSainsburyPLC",
   "license": "UNLICENSED",
-  "peerDependencies": {
-    "react": ">=15.0",
-    "react-dom": ">=15.0"
+  "dependencies": {
+    "prop-types": "^15.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
@@ -47,6 +46,10 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2"
   },
+  "peerDependencies": {
+    "react": ">=15.0",
+    "react-dom": ">=15.0"
+  },
   "jest": {
     "rootDir": "./src",
     "resetMocks": true,
@@ -55,8 +58,5 @@
       "node_modules",
       "src"
     ]
-  },
-  "dependencies": {
-    "prop-types": "^15.5.8"
   }
 }

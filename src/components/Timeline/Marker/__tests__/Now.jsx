@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import NowMarker from '../NowMarker'
+import NowMarker from '../Now'
 import Marker from '../'
 import createTime from '../../../../utils/time'
 
