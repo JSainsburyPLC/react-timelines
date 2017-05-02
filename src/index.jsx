@@ -22,7 +22,7 @@ class Container extends Component {
 
   render() {
     const {
-      isOpen,
+      isOpen = true,
       tracks,
       now,
       timebar,
@@ -67,15 +67,21 @@ class Container extends Component {
 }
 
 Container.propTypes = {
-  now: PropTypes.instanceOf(Date),
-  scale: PropTypes.shape({}).isRequired,
-  isOpen: PropTypes.bool.isRequired,
+  scale: PropTypes.shape({
+    start: PropTypes.instanceOf(Date).isRequired,
+    end: PropTypes.instanceOf(Date).isRequired,
+    zoom: PropTypes.number.isRequired,
+    zoomMin: PropTypes.number,
+    zoomMax: PropTypes.number
+  }).isRequired,
   timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  toggleOpen: PropTypes.func.isRequired,
+  now: PropTypes.instanceOf(Date),
+  isOpen: PropTypes.bool,
+  toggleOpen: PropTypes.func,
   toggleTrackOpen: PropTypes.func,
-  zoomIn: PropTypes.func.isRequired,
-  zoomOut: PropTypes.func.isRequired
+  zoomIn: PropTypes.func,
+  zoomOut: PropTypes.func
 }
 
 export default Container

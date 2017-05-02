@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-
 import Controls from '../'
+import Toggle from '../Toggle'
 
 const createProps = ({
   isOpen = true,
@@ -11,7 +11,7 @@ const createProps = ({
   zoom = 2,
   zoomMin = 1,
   zoomMax = 10
-}) => ({
+} = {}) => ({
   isOpen,
   toggleOpen,
   zoomIn,
@@ -22,8 +22,28 @@ const createProps = ({
 })
 
 describe('<Controls />', () => {
+  describe('Toggle', () => {
+    it('render <Toggle />', () => {
+      const props = createProps()
+      const wrapper = shallow(<Controls {...props} />)
+      expect(wrapper.find(Toggle).exists()).toBe(true)
+    })
+
+    it('do not render <Toggle /> if no "toggleOpen" prop', () => {
+      const props = { ...createProps(), toggleOpen: undefined }
+      const wrapper = shallow(<Controls {...props} />)
+      expect(wrapper.find(Toggle).exists()).toBe(false)
+    })
+  })
+
   describe('Zoom in button', () => {
-    const findButton = node => node.find('button.controls__button--zoom-in')
+    const findButton = node => node.find('.controls__button--zoom-in')
+
+    it('not rendered if no "zoomIn" fn passed', () => {
+      const props = { ...createProps(), zoomIn: undefined }
+      const wrapper = shallow(<Controls {...props} />)
+      expect(findButton(wrapper).exists()).toBe(false)
+    })
 
     it('is disabled when "zoom" is equal to "zoomMax"', () => {
       const props = createProps({ zoom: 5, zoomMax: 5 })
@@ -53,7 +73,13 @@ describe('<Controls />', () => {
   })
 
   describe('Zoom out button', () => {
-    const findButton = node => node.find('button.controls__button--zoom-out')
+    const findButton = node => node.find('.controls__button--zoom-out')
+
+    it('not rendered if no "zoomOut" fn passed', () => {
+      const props = { ...createProps(), zoomOut: undefined }
+      const wrapper = shallow(<Controls {...props} />)
+      expect(findButton(wrapper).exists()).toBe(false)
+    })
 
     it('is disabled when "zoom" is equal to "zoomMin"', () => {
       const props = createProps({ zoom: 2, zoomMin: 2 })
