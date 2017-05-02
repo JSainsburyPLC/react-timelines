@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
 import elements from '../../Elements'
 
-const TrackElement = ({ type = 'Basic', time, style, id, title, start, end, tooltip }) => {
+const TrackElement = (props) => {
+  const { type = 'Basic', id, start, end, time } = props
   const Element = elements[type]
   return (
     <div
@@ -9,28 +10,17 @@ const TrackElement = ({ type = 'Basic', time, style, id, title, start, end, tool
       className="track__element"
       style={time.toStyleLeftAndWidth(start, end)}
     >
-      {
-        <Element
-          tooltip={tooltip}
-          title={title}
-          start={start}
-          end={end}
-          style={{ ...style }}
-        />
-      }
+      <Element {...props} />
     </div>
   )
 }
 
 TrackElement.propTypes = {
-  type: PropTypes.string,
   time: PropTypes.shape({}).isRequired,
-  style: PropTypes.shape({}),
+  type: PropTypes.string,
   id: PropTypes.string.isRequired,
-  title: PropTypes.string,
   start: PropTypes.instanceOf(Date).isRequired,
-  end: PropTypes.instanceOf(Date).isRequired,
-  tooltip: PropTypes.string
+  end: PropTypes.instanceOf(Date).isRequired
 }
 
 export default TrackElement

@@ -1,15 +1,14 @@
 .element {
-  $height: $react-timeline-track-height - 2 * $react-timeline-element-spacing;
-
   position: relative;
-  height: $height;
-  line-height: $height;
-  background: #06f;
-  color: #fff;
+  height: $react-timeline-element-height;
+  line-height: $react-timeline-element-height;
+  background: $react-timeline-element-text-background-color;
+  color: $react-timeline-element-text-color;
   text-align: center;
 }
 
-.element__content {
+.element__title {
+  position: relative;
   padding: 0 10px;
   overflow: hidden;
   white-space: nowrap;

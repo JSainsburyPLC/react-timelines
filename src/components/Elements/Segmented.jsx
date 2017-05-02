@@ -1,34 +1,57 @@
 import React, { PropTypes } from 'react'
 
-import { getDayMonth } from '../../utils/formatDate'
+const Segment = ({ time, offsetX, start, end, style }) => {
+  const left = time.toX(start) - offsetX
+  const width = time.toX(end) - left - offsetX
+  const segmentStyle = {
+    ...style,
+    left,
+    width
+  }
+  return (
+    <div className="segmented__segment" style={segmentStyle} />
+  )
+}
+
+Segment.propTypes = {
+  time: PropTypes.shape({}).isRequired,
+  offsetX: PropTypes.number.isRequired,
+  start: PropTypes.instanceOf(Date).isRequired,
+  end: PropTypes.instanceOf(Date).isRequired,
+  style: PropTypes.shape({})
+}
 
 // eslint-disable-next-line no-unused-vars
-const Segmented = ({ title, start, end, style, tooltip }) =>
-  <div className="element" style={style}>
-    <div className="element__content" aria-hidden="true">
-      Segmented
-    </div>
-    <div className="element__tooltip">
+const Segmented = ({ time, title, start, end, tooltip, segments }) => {
+  const offsetX = time.toX(start)
+  return (
+    <div className="element segmented">
       {
-        tooltip
-        ? <div>{tooltip}</div>
-        : (
-          <div>
-            <div>Segmented</div>
-            <div><strong>Start</strong> {getDayMonth(start)}</div>
-            <div><strong>End</strong> {getDayMonth(end)}</div>
-          </div>
+        segments.map(segment =>
+          <Segment
+            key={segment.id}
+            {...segment}
+            offsetX={offsetX}
+            time={time}
+          />
         )
       }
+      <div className="element__title">
+        { title }
+      </div>
     </div>
-  </div>
+  )
+}
 
 Segmented.propTypes = {
+  time: PropTypes.shape({}).isRequired,
   title: PropTypes.string,
   start: PropTypes.instanceOf(Date),
   end: PropTypes.instanceOf(Date),
-  style: PropTypes.shape({}),
-  tooltip: PropTypes.string
+  tooltip: PropTypes.string,
+  segments: PropTypes.arrayOf(
+    PropTypes.shape({ id: PropTypes.string.isRequired })
+  ).isRequired
 }
 
 export default Segmented

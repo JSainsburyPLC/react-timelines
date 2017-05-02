@@ -16,6 +16,10 @@ $react-timeline-sidebar-key-indent-width: 20px !default;
 // Track / Elements
 $react-timeline-track-height: 60px !default;
 $react-timeline-element-spacing: 10px !default;
+$react-timeline-element-text-color: '#fff' !default;
+$react-timeline-element-text-background-color: '#000' !default;
+$react-timeline-element-height: $react-timeline-track-height - 2 * $react-timeline-element-spacing;
+
 
 // Markers
 $react-timeline-marker-label-height: 50px !default;
@@ -35,6 +39,7 @@ $react-timeline-button-background-color-hover: #4c4c4c !default;
   font-family: $react-timeline-font-family;
   color: $react-timeline-text-color;
 
+  // Components
   @import 'components/controls';
   @import 'components/element';
   @import 'components/layout';
@@ -47,4 +52,7 @@ $react-timeline-button-background-color-hover: #4c4c4c !default;
   @import 'components/tracks';
   @import 'components/track-key';
   @import 'components/track-keys';
+
+  // Elements
+  @import 'components/elements/segmented';
 }

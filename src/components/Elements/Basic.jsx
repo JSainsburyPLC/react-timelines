@@ -4,7 +4,7 @@ import { getDayMonth } from '../../utils/formatDate'
 
 const Basic = ({ title, start, end, style, tooltip }) =>
   <div className="element" style={style}>
-    <div className="element__content" aria-hidden="true">
+    <div className="element__title">
       { title }
     </div>
     <div className="element__tooltip">

@@ -43,10 +43,11 @@
     position: relative;
     height: 40px;
     line-height: 40px;
-    background: #06f;
-    color: #fff;
+    background: "#000";
+    color: "#fff";
     text-align: center; }
-  .react-timeline .element__content {
+  .react-timeline .element__title {
+    position: relative;
     padding: 0 10px;
     overflow: hidden;
     white-space: nowrap;
@@ -246,3 +247,8 @@
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iOCIgdmlld0JveD0iMTYgMjQgMjQgOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYgMjRoMjR2OEgxNnoiIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=="); }
   .react-timeline .track-key__toggle--open::before {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjE2IDE1IDI0IDI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTMyIDE2djI0aC04VjE2eiIvPjxwYXRoIGQ9Ik0xNiAyNGgyNHY4SDE2eiIvPjwvZz48L3N2Zz4="); }
+  .react-timeline .segmented__segment {
+    position: absolute;
+    top: 0;
+    height: 40px;
+    line-height: 40px; }
