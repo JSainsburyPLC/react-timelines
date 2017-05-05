@@ -1,27 +1,51 @@
 # React Timelines [![CircleCI](https://circleci.com/gh/JSainsburyPLC/react-timeline.svg?style=svg&circle-token=2ee544b1d8344e0c95f9633d712afd31b0edc293)](https://circleci.com/gh/JSainsburyPLC/react-timeline)
 
-## Install
+## Intall
 
-Manually add as a dependency in your `package.json`:
-
-```json
-{
-  "dependencies": {
-    "react-timeline": "git@github.com:JSainsburyPLC/react-timeline.git"
-  }
-}
+Install with Yarn:
+```js
+yarn add react-timelines
 ```
 
-Use the React component and bring in styling:
+NPM:
+```js
+npm install react-timelines
+```
+
+## Use
+
+Use the component:
 
 ```js
-import Timeline from 'react-timeline'
-import 'react-timeline/lib/css/style.css'
+import Timeline from 'react-timelines'
 
-const MyWidget = () => <Timeline />
+const MyWidget = () => <Timeline {...props} />
 
 export default MyWidget
 ```
+
+## Styling
+
+**Using Webpack**
+
+Using Webpack with CSS loader, add the following:
+```js
+import 'react-timelines/lib/css/style.css';
+```
+
+**Using Sass (SCSS)**
+
+Using Sass you can configure the timeline with variables:
+```scss
+$react-timelines-font-family: MaryAnn;
+$react-timelines-sidebar-width: 320px;
+
+@import 'node_modules/react-timelines/src/scss/style';
+```
+
+**Without build tools**
+
+Create a CSS file with the contents of `react-timelines/lib/css/style.css` and include it in `<head>`
 
 ## Development
 

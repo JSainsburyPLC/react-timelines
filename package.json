@@ -1,8 +1,7 @@
 {
-  "name": "react-timeline",
-  "private": true,
-  "version": "0.2.0",
-  "description": "React Timeline",
+  "name": "react-timelines",
+  "version": "0.3.0",
+  "description": "React Timelines",
   "main": "lib/index.js",
   "scripts": {
     "clean": "rm -rf ./lib",
@@ -18,7 +17,7 @@
     "unit": "jest",
     "coverage": "jest --coverage --collectCoverageFrom='**/*.{js,jsx}'"
   },
-  "repository": "git@github.com:JSainsburyPLC/react-timeline.git",
+  "repository": "git@github.com:JSainsburyPLC/react-timelines.git",
   "author": "JSainsburyPLC",
   "license": "UNLICENSED",
   "dependencies": {

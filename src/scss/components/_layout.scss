@@ -1,8 +1,8 @@
 .layout {
   position: relative;
-  margin-left: -($react-timeline-sidebar-width - $react-timeline-sidebar-closed-offset);
+  margin-left: -($react-timelines-sidebar-width - $react-timelines-sidebar-closed-offset);
 
-  @media (min-width: $react-timeline-auto-open-breakpoint) {
+  @media (min-width: $react-timelines-auto-open-breakpoint) {
     margin-left: 0;
   }
 
@@ -16,13 +16,13 @@
   position: relative;
   z-index: 1;
   display: inline-block;
-  width: $react-timeline-sidebar-width;
-  padding-top: $react-timeline-marker-label-height;
+  width: $react-timelines-sidebar-width;
+  padding-top: $react-timelines-marker-label-height;
   vertical-align: top;
 }
 
 .layout__main {
   display: inline-block;
-  width: calc(100% - #{$react-timeline-sidebar-width});
+  width: calc(100% - #{$react-timelines-sidebar-width});
   vertical-align: top;
 }

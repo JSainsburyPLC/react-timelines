@@ -2,9 +2,9 @@
 
 .timebar__row {
   position: relative;
-  height: $react-timeline-header-row-height + $react-timeline-border-width;
+  height: $react-timelines-header-row-height + $react-timelines-border-width;
   overflow: hidden;
-  line-height: $react-timeline-header-row-height;
+  line-height: $react-timelines-header-row-height;
 }
 
 .timebar__cell {
@@ -12,5 +12,5 @@
   text-align: center;
   background: #fff;
   box-shadow: 1px 0 0 0 #eee inset;
-  border-bottom: $react-timeline-border-width solid #eee;
+  border-bottom: $react-timelines-border-width solid #eee;
 }

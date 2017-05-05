@@ -4,13 +4,13 @@
 
 .track__elements {
   position: relative;
-  height: $react-timeline-track-height + $react-timeline-border-width;
+  height: $react-timelines-track-height + $react-timelines-border-width;
   background: #fff;
-  border-bottom: $react-timeline-border-width solid #eee;
+  border-bottom: $react-timelines-border-width solid #eee;
 }
 
 .track__element {
   position: absolute;
-  height: $react-timeline-track-height - 2 * $react-timeline-element-spacing;
-  top: $react-timeline-element-spacing;
+  height: $react-timelines-track-height - 2 * $react-timelines-element-spacing;
+  top: $react-timelines-element-spacing;
 }

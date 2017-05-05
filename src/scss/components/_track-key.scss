@@ -1,5 +1,5 @@
 .track-key {
-  // height: $react-timeline-track-height;
+  // height: $react-timelines-track-height;
   // background: #999;
   // color: #fff;
 }
@@ -7,40 +7,32 @@
 .track-key__entry {
   position: relative;
   overflow: hidden;
-  height: $react-timeline-track-height + $react-timeline-border-width;
-  padding-right: $react-timeline-sidebar-key-indent-width;
-  line-height: $react-timeline-track-height;
+  height: $react-timelines-track-height + $react-timelines-border-width;
+  padding-right: $react-timelines-sidebar-key-indent-width;
+  line-height: $react-timelines-track-height;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: bold;
   text-align: left;
-  border-bottom: $react-timeline-border-width solid $react-timeline-sidebar-separator-color;
+  border-bottom: $react-timelines-border-width solid $react-timelines-sidebar-separator-color;
 }
 
 .track-keys > .track-key >
 .track-key__entry {
-  padding-left: $react-timeline-sidebar-key-indent-width;
+  padding-left: $react-timelines-sidebar-key-indent-width;
 }
 
 .track-keys > .track-key >
 .track-keys > .track-key >
 .track-key__entry  {
-  padding-left: $react-timeline-sidebar-key-indent-width * 2;
+  padding-left: $react-timelines-sidebar-key-indent-width * 2;
 }
 
 .track-keys > .track-key >
 .track-keys > .track-key >
 .track-keys > .track-key >
 .track-key__entry {
-  padding-left: $react-timeline-sidebar-key-indent-width * 3;
-}
-
-.track-keys > .track-key >
-.track-keys > .track-key >
-.track-keys > .track-key >
-.track-keys > .track-key >
-.track-key__entry {
-  padding-left: $react-timeline-sidebar-key-indent-width * 4;
+  padding-left: $react-timelines-sidebar-key-indent-width * 3;
 }
 
 .track-keys > .track-key >
@@ -48,7 +40,15 @@
 .track-keys > .track-key >
 .track-keys > .track-key >
 .track-key__entry {
-  padding-left: $react-timeline-sidebar-key-indent-width * 5;
+  padding-left: $react-timelines-sidebar-key-indent-width * 4;
+}
+
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-keys > .track-key >
+.track-key__entry {
+  padding-left: $react-timelines-sidebar-key-indent-width * 5;
 }
 
 .track-key__toggle {
@@ -68,7 +68,7 @@
 
   &:hover::before,
   &:focus::before {
-    background-color: $react-timeline-button-background-color-hover;
+    background-color: $react-timelines-button-background-color-hover;
   }
 
   &::before {
@@ -77,7 +77,7 @@
     bottom: $psuedo-offset;
     right: $psuedo-offset;
     left: $psuedo-offset;
-    background-color: $react-timeline-button-background-color;
+    background-color: $react-timelines-button-background-color;
     background-size: 10px;
     background-repeat: no-repeat;
     background-position: center center;

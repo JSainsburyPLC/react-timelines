@@ -1,5 +1,5 @@
 .element {
-  $height: $react-timeline-track-height - 2 * $react-timeline-element-spacing;
+  $height: $react-timelines-track-height - 2 * $react-timelines-element-spacing;
 
   position: relative;
   height: $height;
@@ -26,7 +26,7 @@
   line-height: 1.3;
   white-space: nowrap;
   text-align: left;
-  background: $react-timeline-text-color;
+  background: $react-timelines-text-color;
   color: white;
   transform: translateX(-50%) scale(0);
 
@@ -35,7 +35,7 @@
     position: absolute;
     top: 100%;
     left: 50%;
-    border-top: $size solid $react-timeline-text-color;
+    border-top: $size solid $react-timelines-text-color;
     border-right: $size solid transparent;
     border-left: $size solid transparent;
     transform: translateX(-50%);

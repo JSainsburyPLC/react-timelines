@@ -1,39 +1,39 @@
-$react-timeline-auto-open-breakpoint: 1000px !default;
-$react-timeline-font-family: sans-serif !default;
-$react-timeline-border-width: 1px !default;
-$react-timeline-text-color: #4c4c4c !default;
+$react-timelines-auto-open-breakpoint: 1000px !default;
+$react-timelines-font-family: sans-serif !default;
+$react-timelines-border-width: 1px !default;
+$react-timelines-text-color: #4c4c4c !default;
 
 // Header
-$react-timeline-header-row-height: 40px !default;
+$react-timelines-header-row-height: 40px !default;
 
 // Sidebar
-$react-timeline-sidebar-width: 240px !default;
-$react-timeline-sidebar-closed-offset: 40px;
-$react-timeline-sidebar-background-color: #fff !default;
-$react-timeline-sidebar-separator-color: #eee !default;
-$react-timeline-sidebar-key-indent-width: 20px !default;
+$react-timelines-sidebar-width: 240px !default;
+$react-timelines-sidebar-closed-offset: 40px;
+$react-timelines-sidebar-background-color: #fff !default;
+$react-timelines-sidebar-separator-color: #eee !default;
+$react-timelines-sidebar-key-indent-width: 20px !default;
 
 // Track / Elements
-$react-timeline-track-height: 60px !default;
-$react-timeline-element-spacing: 10px !default;
+$react-timelines-track-height: 60px !default;
+$react-timelines-element-spacing: 10px !default;
 
 // Markers
-$react-timeline-marker-label-height: 50px !default;
-$react-timeline-marker-line-width: 2px !default;
-$react-timeline-marker-now-background-color: #ff007f !default;
-$react-timeline-marker-pointer-background-color: #888 !default;
-$react-timeline-marker-line-transparency: 0.5 !default;
+$react-timelines-marker-label-height: 50px !default;
+$react-timelines-marker-line-width: 2px !default;
+$react-timelines-marker-now-background-color: #ff007f !default;
+$react-timelines-marker-pointer-background-color: #888 !default;
+$react-timelines-marker-line-transparency: 0.5 !default;
 
 // Controls
-$react-timeline-button-background-color: #767676 !default;
-$react-timeline-button-background-color-hover: #4c4c4c !default;
+$react-timelines-button-background-color: #767676 !default;
+$react-timelines-button-background-color-hover: #4c4c4c !default;
 
-.react-timeline {
+.react-timelines {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  font-family: $react-timeline-font-family;
-  color: $react-timeline-text-color;
+  font-family: $react-timelines-font-family;
+  color: $react-timelines-text-color;
 
   @import 'components/controls';
   @import 'components/element';

@@ -1,18 +1,18 @@
-.react-timeline {
+.react-timelines {
   position: relative;
   z-index: 1;
   overflow: hidden;
   font-family: sans-serif;
   color: #4c4c4c; }
-  .react-timeline .controls {
+  .react-timelines .controls {
     position: relative; }
   @media (min-width: 1000px) {
-    .react-timeline .controls__content {
+    .react-timelines .controls__content {
       position: absolute;
       top: 0;
       left: 0;
       z-index: 2; } }
-  .react-timeline .controls__button {
+  .react-timelines .controls__button {
     display: inline-block;
     width: 36px;
     height: 36px;
@@ -24,35 +24,35 @@
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: center center; }
-    .react-timeline .controls__button:hover, .react-timeline .controls__button:focus {
+    .react-timelines .controls__button:hover, .react-timelines .controls__button:focus {
       background-color: #4c4c4c; }
-  .react-timeline .controls__button--toggle-open {
+  .react-timelines .controls__button--toggle-open {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNTYiIHZpZXdCb3g9IjAgMCA1NiA1NiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+TWVudTwvdGl0bGU+PGcgZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIj48cmVjdCB3aWR0aD0iNDYiIGhlaWdodD0iOCIgcng9IjQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUgNykiLz48cmVjdCB3aWR0aD0iNDYiIGhlaWdodD0iOCIgcng9IjQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUgNDEpIi8+PHJlY3Qgd2lkdGg9IjQ2IiBoZWlnaHQ9IjgiIHJ4PSI0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1IDI0KSIvPjwvZz48L3N2Zz4="); }
-  .react-timeline .controls__button--toggle-close {
+  .react-timelines .controls__button--toggle-close {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNTYiIHZpZXdCb3g9IjAgMCA1NiA1NiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q3Jvc3M8L3RpdGxlPjxnIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHJlY3Qgd2lkdGg9IjU2IiBoZWlnaHQ9IjgiIHJ4PSI0IiB0cmFuc2Zvcm09InJvdGF0ZSgtNDUgNTYuMzM1IDE2LjI2MykiLz48cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iOCIgcng9IjQiIHRyYW5zZm9ybT0icm90YXRlKDQ1IC0uNzA3IDE1LjM2NCkiLz48L2c+PC9zdmc+"); }
-  .react-timeline .controls__button--zoom-in {
+  .react-timelines .controls__button--zoom-in {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTkiIGhlaWdodD0iNTkiIHZpZXdCb3g9IjEgMSA1OSA1OSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjZmZmIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMi41IDIyaDI0djZoLTI0eiIvPjxwYXRoIGQ9Ik0yNy41IDEzdjI0aC02VjEzeiIvPjxnPjxwYXRoIGQ9Ik0yNSA0OC41QzEyLjAyIDQ4LjUgMS41IDM3Ljk4IDEuNSAyNVMxMi4wMiAxLjUgMjUgMS41IDQ4LjUgMTIuMDIgNDguNSAyNSAzNy45OCA0OC41IDI1IDQ4LjV6bS0uMTItNi4yNGM5LjYgMCAxNy4zOC03Ljc4IDE3LjM4LTE3LjM4IDAtOS42LTcuNzgtMTcuMzgtMTcuMzgtMTcuMzgtOS42IDAtMTcuMzggNy43OC0xNy4zOCAxNy4zOCAwIDkuNiA3Ljc4IDE3LjM4IDE3LjM4IDE3LjM4eiIvPjxyZWN0IHdpZHRoPSIyNCIgaGVpZ2h0PSI4IiByeD0iNCIgdHJhbnNmb3JtPSJyb3RhdGUoNDUgLTIyLjMxMiA2Ny43NjYpIi8+PC9nPjwvZz48L3N2Zz4="); }
-  .react-timeline .controls__button--zoom-out {
+  .react-timelines .controls__button--zoom-out {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTkiIGhlaWdodD0iNTkiIHZpZXdCb3g9IjEgMSA1OSA1OSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjZmZmIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMi41IDIyaDI0djZoLTI0eiIvPjxwYXRoIGQ9Ik0yNSA0OC41QzEyLjAyIDQ4LjUgMS41IDM3Ljk4IDEuNSAyNVMxMi4wMiAxLjUgMjUgMS41IDQ4LjUgMTIuMDIgNDguNSAyNSAzNy45OCA0OC41IDI1IDQ4LjV6bS0uMTItNi4yNGM5LjYgMCAxNy4zOC03Ljc4IDE3LjM4LTE3LjM4IDAtOS42LTcuNzgtMTcuMzgtMTcuMzgtMTcuMzgtOS42IDAtMTcuMzggNy43OC0xNy4zOCAxNy4zOCAwIDkuNiA3Ljc4IDE3LjM4IDE3LjM4IDE3LjM4eiIvPjxyZWN0IHdpZHRoPSIyNCIgaGVpZ2h0PSI4IiByeD0iNCIgdHJhbnNmb3JtPSJyb3RhdGUoNDUgLTIyLjMxMiA2Ny43NjYpIi8+PC9nPjwvc3ZnPg=="); }
-  .react-timeline .controls__button[disabled] {
+  .react-timelines .controls__button[disabled] {
     opacity: 0.5; }
   @media (min-width: 1000px) {
-    .react-timeline .controls__button--toggle {
+    .react-timelines .controls__button--toggle {
       display: none; } }
-  .react-timeline .element {
+  .react-timelines .element {
     position: relative;
     height: 40px;
     line-height: 40px;
     background: #06f;
     color: #fff;
     text-align: center; }
-  .react-timeline .element__content {
+  .react-timelines .element__content {
     padding: 0 10px;
     overflow: hidden;
     white-space: nowrap;
     font-weight: bold;
     text-overflow: ellipsis; }
-  .react-timeline .element__tooltip {
+  .react-timelines .element__tooltip {
     position: absolute;
     bottom: 100%;
     left: 50%;
@@ -64,7 +64,7 @@
     background: #4c4c4c;
     color: white;
     transform: translateX(-50%) scale(0); }
-    .react-timeline .element__tooltip::before {
+    .react-timelines .element__tooltip::before {
       position: absolute;
       top: 100%;
       left: 50%;
@@ -73,31 +73,31 @@
       border-left: 6px solid transparent;
       transform: translateX(-50%);
       content: ' '; }
-  .react-timeline .element:hover > .element__tooltip,
-  .react-timeline .element:focus > .element__tooltip {
+  .react-timelines .element:hover > .element__tooltip,
+  .react-timelines .element:focus > .element__tooltip {
     transform: translateX(-50%) scale(1);
     transition: transform 0s 0.3s; }
-  .react-timeline .layout {
+  .react-timelines .layout {
     position: relative;
     margin-left: -200px; }
     @media (min-width: 1000px) {
-      .react-timeline .layout {
+      .react-timelines .layout {
         margin-left: 0; } }
-    .react-timeline .layout.is-open {
+    .react-timelines .layout.is-open {
       margin-left: 0;
       transition: margin 0.2s; }
-  .react-timeline .layout__side {
+  .react-timelines .layout__side {
     position: relative;
     z-index: 1;
     display: inline-block;
     width: 240px;
     padding-top: 50px;
     vertical-align: top; }
-  .react-timeline .layout__main {
+  .react-timelines .layout__main {
     display: inline-block;
     width: calc(100% - 240px);
     vertical-align: top; }
-  .react-timeline .marker {
+  .react-timelines .marker {
     position: absolute;
     z-index: 1;
     top: 0;
@@ -106,18 +106,18 @@
     border-left: 2px solid;
     opacity: 0;
     pointer-events: none; }
-  .react-timeline .marker.is-visible {
+  .react-timelines .marker.is-visible {
     opacity: 1; }
-  .react-timeline .marker--now {
+  .react-timelines .marker--now {
     color: #ff007f;
     border-color: rgba(255, 0, 127, 0.5); }
-  .react-timeline .marker--pointer {
+  .react-timelines .marker--pointer {
     color: #888;
     border-color: rgba(136, 136, 136, 0.5); }
-  .react-timeline .marker--pointer.is-highlighted {
+  .react-timelines .marker--pointer.is-highlighted {
     color: #484848;
     border-color: #858585; }
-  .react-timeline .marker__label {
+  .react-timelines .marker__label {
     position: absolute;
     bottom: 100%;
     left: 50%;
@@ -129,7 +129,7 @@
     text-align: center;
     background: currentColor;
     transform: translateX(-50%); }
-    .react-timeline .marker__label::before {
+    .react-timelines .marker__label::before {
       position: absolute;
       top: 100%;
       left: 50%;
@@ -139,51 +139,51 @@
       border-right: 6px solid transparent;
       border-top: 6px solid currentColor;
       content: ' '; }
-  .react-timeline .marker__content {
+  .react-timelines .marker__content {
     display: table-cell;
     vertical-align: middle;
     white-space: nowrap;
     color: white; }
-  .react-timeline .sidebar {
+  .react-timelines .sidebar {
     position: relative;
     z-index: 1;
     background-color: #fff;
     box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1); }
-  .react-timeline .timebar__row {
+  .react-timelines .timebar__row {
     position: relative;
     height: 41px;
     overflow: hidden;
     line-height: 40px; }
-  .react-timeline .timebar__cell {
+  .react-timelines .timebar__cell {
     position: absolute;
     text-align: center;
     background: #fff;
     box-shadow: 1px 0 0 0 #eee inset;
     border-bottom: 1px solid #eee; }
-  .react-timeline .timebar-key {
+  .react-timelines .timebar-key {
     height: 41px;
     padding-right: 20px;
     line-height: 40px;
     text-align: right;
     font-weight: bold;
     border-bottom: 1px solid #eee; }
-  .react-timeline .timeline {
+  .react-timelines .timeline {
     overflow-x: scroll;
     padding-top: 50px; }
-  .react-timeline .timeline__content {
+  .react-timelines .timeline__content {
     position: relative; }
-  .react-timeline .timeline__body {
+  .react-timelines .timeline__body {
     position: relative; }
-  .react-timeline .track__elements {
+  .react-timelines .track__elements {
     position: relative;
     height: 61px;
     background: #fff;
     border-bottom: 1px solid #eee; }
-  .react-timeline .track__element {
+  .react-timelines .track__element {
     position: absolute;
     height: 40px;
     top: 10px; }
-  .react-timeline .track-key__entry {
+  .react-timelines .track-key__entry {
     position: relative;
     overflow: hidden;
     height: 61px;
@@ -194,31 +194,31 @@
     font-weight: bold;
     text-align: left;
     border-bottom: 1px solid #eee; }
-  .react-timeline .track-keys > .track-key >
+  .react-timelines .track-keys > .track-key >
 .track-key__entry {
     padding-left: 20px; }
-  .react-timeline .track-keys > .track-key >
+  .react-timelines .track-keys > .track-key >
 .track-keys > .track-key >
 .track-key__entry {
     padding-left: 40px; }
-  .react-timeline .track-keys > .track-key >
+  .react-timelines .track-keys > .track-key >
 .track-keys > .track-key >
 .track-keys > .track-key >
 .track-key__entry {
     padding-left: 60px; }
-  .react-timeline .track-keys > .track-key >
+  .react-timelines .track-keys > .track-key >
 .track-keys > .track-key >
 .track-keys > .track-key >
 .track-keys > .track-key >
 .track-key__entry {
     padding-left: 80px; }
-  .react-timeline .track-keys > .track-key >
+  .react-timelines .track-keys > .track-key >
 .track-keys > .track-key >
 .track-keys > .track-key >
 .track-keys > .track-key >
 .track-key__entry {
     padding-left: 100px; }
-  .react-timeline .track-key__toggle {
+  .react-timelines .track-key__toggle {
     position: relative;
     display: inline-block;
     width: 34px;
@@ -229,9 +229,9 @@
     background: transparent;
     color: transparent;
     white-space: nowrap; }
-    .react-timeline .track-key__toggle:hover::before, .react-timeline .track-key__toggle:focus::before {
+    .react-timelines .track-key__toggle:hover::before, .react-timelines .track-key__toggle:focus::before {
       background-color: #4c4c4c; }
-    .react-timeline .track-key__toggle::before {
+    .react-timelines .track-key__toggle::before {
       position: absolute;
       top: 6px;
       bottom: 6px;
@@ -242,7 +242,7 @@
       background-repeat: no-repeat;
       background-position: center center;
       content: ' '; }
-  .react-timeline .track-key__toggle--close::before {
+  .react-timelines .track-key__toggle--close::before {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iOCIgdmlld0JveD0iMTYgMjQgMjQgOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYgMjRoMjR2OEgxNnoiIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=="); }
-  .react-timeline .track-key__toggle--open::before {
+  .react-timelines .track-key__toggle--open::before {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjE2IDE1IDI0IDI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTMyIDE2djI0aC04VjE2eiIvPjxwYXRoIGQ9Ik0xNiAyNGgyNHY4SDE2eiIvPjwvZz48L3N2Zz4="); }

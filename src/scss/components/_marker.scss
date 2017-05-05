@@ -3,8 +3,8 @@
   z-index: 1;
   top: 0;
   bottom: 0;
-  margin-left: -($react-timeline-marker-line-width / 2);
-  border-left: $react-timeline-marker-line-width solid;
+  margin-left: -($react-timelines-marker-line-width / 2);
+  border-left: $react-timelines-marker-line-width solid;
   opacity: 0;
   pointer-events: none;
 }
@@ -15,24 +15,24 @@
 
 
 .marker--now {
-  color: $react-timeline-marker-now-background-color;
+  color: $react-timelines-marker-now-background-color;
   border-color: rgba(
-    $react-timeline-marker-now-background-color,
-    $react-timeline-marker-line-transparency
+    $react-timelines-marker-now-background-color,
+    $react-timelines-marker-line-transparency
   );
 }
 
 .marker--pointer {
-  color: $react-timeline-marker-pointer-background-color;
+  color: $react-timelines-marker-pointer-background-color;
   border-color: rgba(
-    $react-timeline-marker-pointer-background-color,
-    $react-timeline-marker-line-transparency
+    $react-timelines-marker-pointer-background-color,
+    $react-timelines-marker-line-transparency
   );
 }
 
 .marker--pointer.is-highlighted {
-  color: darken($react-timeline-marker-pointer-background-color, 25%);
-  border-color: rgba(darken($react-timeline-marker-pointer-background-color, 1), 25%);
+  color: darken($react-timelines-marker-pointer-background-color, 25%);
+  border-color: rgba(darken($react-timelines-marker-pointer-background-color, 1), 25%);
 }
 
 .marker__label {
@@ -41,7 +41,7 @@
   left: 50%;
   display: table;
   min-width: 70px;
-  height: $react-timeline-marker-label-height;
+  height: $react-timelines-marker-label-height;
   padding: 0 10px;
   line-height: 1.1;
   text-align: center;
@@ -55,7 +55,7 @@
     top: 100%;
     left: 50%;
     margin-left: -$size;
-    transform: translateX(-($react-timeline-marker-line-width / 2));
+    transform: translateX(-($react-timelines-marker-line-width / 2));
     border-left: $size solid transparent;
     border-right: $size solid transparent;
     border-top: $size solid currentColor;

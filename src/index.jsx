@@ -34,7 +34,7 @@ class Container extends Component {
     } = this.props
     const { time } = this.state
     return (
-      <div className="react-timeline">
+      <div className="react-timelines">
         <Controls
           isOpen={isOpen}
           toggleOpen={toggleOpen}
