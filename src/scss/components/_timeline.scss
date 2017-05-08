@@ -7,7 +7,20 @@
   position: relative;
 }
 
-.timeline__header {}
+.timeline__header-wrapper {
+  position: static;
+  top: 0;
+  z-index: 1;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.timeline__header-wrapper::webkit-scrollbar {
+  display: none;
+}
 
 .timeline__body {
   position: relative;

@@ -88,7 +88,7 @@
       transition: margin 0.2s; }
   .react-timelines .layout__side {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: inline-block;
     width: 240px;
     padding-top: 50px;
@@ -99,7 +99,7 @@
     vertical-align: top; }
   .react-timelines .marker {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     bottom: 0;
     margin-left: -1px;
@@ -149,6 +149,10 @@
     z-index: 1;
     background-color: #fff;
     box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1); }
+  .react-timelines .sidebar__header {
+    position: static;
+    z-index: 1;
+    background-color: #fff; }
   .react-timelines .timebar__row {
     position: relative;
     height: 41px;
@@ -172,6 +176,15 @@
     padding-top: 50px; }
   .react-timelines .timeline__content {
     position: relative; }
+  .react-timelines .timeline__header-wrapper {
+    position: static;
+    top: 0;
+    z-index: 1;
+    overflow-x: scroll; }
+    .react-timelines .timeline__header-wrapper::-webkit-scrollbar {
+      display: none; }
+  .react-timelines .timeline__header-wrapper::webkit-scrollbar {
+    display: none; }
   .react-timelines .timeline__body {
     position: relative; }
   .react-timelines .track__elements {

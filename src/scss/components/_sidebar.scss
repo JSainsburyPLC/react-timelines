@@ -6,6 +6,9 @@
 }
 
 .sidebar__header {
+  position: static;
+  z-index: 1;
+  background-color: $react-timelines-sidebar-background-color;
 }
 
 .sidebar__body {}
