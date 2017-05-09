@@ -151,8 +151,11 @@
     box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1); }
   .react-timelines .sidebar__header {
     position: static;
+    top: 0;
     z-index: 1;
     background-color: #fff; }
+  .react-timelines .sidebar__header.is-sticky {
+    position: fixed; }
   .react-timelines .timebar__row {
     position: relative;
     height: 41px;
@@ -176,13 +179,15 @@
     padding-top: 50px; }
   .react-timelines .timeline__content {
     position: relative; }
-  .react-timelines .timeline__header-wrapper {
+  .react-timelines .timeline__header {
     position: static;
     top: 0;
     z-index: 1;
     overflow-x: scroll; }
-    .react-timelines .timeline__header-wrapper::-webkit-scrollbar {
+    .react-timelines .timeline__header::-webkit-scrollbar {
       display: none; }
+  .react-timelines .timeline__header.is-sticky {
+    position: fixed; }
   .react-timelines .timeline__header-wrapper::webkit-scrollbar {
     display: none; }
   .react-timelines .timeline__body {

@@ -11,7 +11,7 @@ class Container extends Component {
     super(props)
     this.state = {
       time: createTime(props.scale),
-      shouldHeaderBeSticky: false,
+      isHeaderSticky: false,
       headerHeight: 0,
       markerOffset: 0,
       sidebarWidth: 0
@@ -63,9 +63,9 @@ class Container extends Component {
     requestAnimationFrame(() => {
       const { markerOffset, headerHeight } = this.state
       const { top, bottom } = this.tracker.getBoundingClientRect()
-      const shouldHeaderBeSticky = (top <= -markerOffset) && (bottom >= headerHeight)
+      const isHeaderSticky = (top <= -markerOffset) && (bottom >= headerHeight)
       if (this.props.stickyHeader) {
-        this.setState(() => ({ shouldHeaderBeSticky }))
+        this.setState(() => ({ isHeaderSticky }))
       }
     })
   }
@@ -82,7 +82,7 @@ class Container extends Component {
       zoomOut,
       scale
     } = this.props
-    const { time, shouldHeaderBeSticky, headerHeight, sidebarWidth } = this.state
+    const { time, isHeaderSticky, headerHeight, sidebarWidth } = this.state
     return (
       <div className="react-timelines" ref={(tracker) => { this.tracker = tracker }}>
         <Controls
@@ -100,7 +100,7 @@ class Container extends Component {
               timebar={timebar}
               tracks={tracks}
               toggleTrackOpen={toggleTrackOpen}
-              shouldHeaderBeSticky={shouldHeaderBeSticky}
+              isHeaderSticky={isHeaderSticky}
               headerHeight={headerHeight}
               width={sidebarWidth}
             />
@@ -113,7 +113,7 @@ class Container extends Component {
               tracks={tracks}
               getMarkerOffset={this.getMarkerOffset}
               getHeaderHeight={this.getHeaderHeight}
-              shouldHeaderBeSticky={shouldHeaderBeSticky}
+              isHeaderSticky={isHeaderSticky}
               headerHeight={headerHeight}
             />
           </div>

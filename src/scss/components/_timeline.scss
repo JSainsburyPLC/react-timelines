@@ -7,7 +7,7 @@
   position: relative;
 }
 
-.timeline__header-wrapper {
+.timeline__header {
   position: static;
   top: 0;
   z-index: 1;
@@ -16,6 +16,10 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.timeline__header.is-sticky {
+  position: fixed;
 }
 
 .timeline__header-wrapper::webkit-scrollbar {

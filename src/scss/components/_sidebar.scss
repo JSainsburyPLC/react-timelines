@@ -7,8 +7,13 @@
 
 .sidebar__header {
   position: static;
+  top: 0;
   z-index: 1;
   background-color: $react-timelines-sidebar-background-color;
+}
+
+.sidebar__header.is-sticky {
+  position: fixed;
 }
 
 .sidebar__body {}

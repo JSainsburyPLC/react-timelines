@@ -58,7 +58,7 @@ class Timeline extends Component {
   }
 
   render() {
-    const { now, time, timebar, tracks, shouldHeaderBeSticky, headerHeight } = this.props
+    const { now, time, timebar, tracks, isHeaderSticky, headerHeight } = this.props
     const {
       pointerX,
       pointerVisible,
@@ -67,7 +67,7 @@ class Timeline extends Component {
       scrollLeft
     } = this.state
     return (
-      <div className="timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={shouldHeaderBeSticky && this.handleScroll}>
+      <div className="timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={isHeaderSticky && this.handleScroll}>
         <div className="timeline__content" style={{ width: `${time.timelineWidth}px` }}>
           {now && <NowMarker now={now} visible time={time} />}
           <PointerMarker
@@ -84,7 +84,7 @@ class Timeline extends Component {
               onEnter={this.handleMouseEnter}
               onLeave={this.handleMouseLeave}
               width={time.timelineWidth}
-              shouldHeaderBeSticky={shouldHeaderBeSticky}
+              isSticky={isHeaderSticky}
               height={headerHeight}
               visualWidth={timelineVisualWidth}
               scrollLeft={scrollLeft}
@@ -104,7 +104,7 @@ Timeline.propTypes = {
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   getHeaderHeight: PropTypes.func,
   getMarkerOffset: PropTypes.func,
-  shouldHeaderBeSticky: PropTypes.bool,
+  isHeaderSticky: PropTypes.bool,
   headerHeight: PropTypes.number
 }
 

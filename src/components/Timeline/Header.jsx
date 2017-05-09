@@ -16,23 +16,21 @@ class Header extends PureComponent {
       onMove,
       onEnter,
       onLeave,
-      shouldHeaderBeSticky,
+      isSticky,
       width,
       height,
       visualWidth,
       timebar: { rows }
     } = this.props
-    const style = shouldHeaderBeSticky
+    const style = isSticky
       ? {
-        position: 'fixed',
         width: visualWidth
       }
       : {}
     return (
-      <div style={shouldHeaderBeSticky ? { paddingTop: height } : {}}>
-        <div className="timeline__header-wrapper" style={style} ref={(wrapper) => { this.wrapper = wrapper }}>
+      <div style={isSticky ? { paddingTop: height } : {}}>
+        <div className={`timeline__header ${isSticky ? 'is-sticky' : ''}`} style={style} ref={(wrapper) => { this.wrapper = wrapper }}>
           <div
-            className="timeline__header"
             style={{ width }}
             onMouseMove={onMove}
             onMouseEnter={onEnter}
@@ -52,7 +50,7 @@ Header.propTypes = {
   onMove: PropTypes.func.isRequired,
   onEnter: PropTypes.func.isRequired,
   onLeave: PropTypes.func.isRequired,
-  shouldHeaderBeSticky: PropTypes.bool,
+  isSticky: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
   visualWidth: PropTypes.number,
