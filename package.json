@@ -4,7 +4,7 @@
   "description": "React Timelines",
   "main": "lib/index.js",
   "scripts": {
-    "clean": "rm -rf ./lib",
+    "clean": "rimraf lib coverage",
     "build:js": "babel src/ -d lib/",
     "watch:js": "babel -w src/ -d lib/",
     "build:css": "node-sass src/scss/style.scss lib/css/style.css",
@@ -15,7 +15,8 @@
     "lint:js": "eslint . --ext .js,.jsx",
     "lint": "yarn lint:js",
     "unit": "jest",
-    "coverage": "jest --coverage --collectCoverageFrom='**/*.{js,jsx}'"
+    "coverage": "jest --coverage --collectCoverageFrom='**/*.{js,jsx}'",
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": "git@github.com:JSainsburyPLC/react-timelines.git",
   "author": "JSainsburyPLC",
@@ -43,7 +44,8 @@
     "node-sass": "^4.5.2",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "rimraf": "^2.6.1"
   },
   "peerDependencies": {
     "react": ">=15.0",
