@@ -12,6 +12,24 @@
   background-color: $react-timelines-sidebar-background-color;
 }
 
+.sidebar__header {
+  position: relative;
+  margin-left: ($react-timelines-sidebar-width - $react-timelines-sidebar-closed-offset);
+  direction: rtl;
+  overflow: hidden;
+
+  @media (min-width: $react-timelines-auto-open-breakpoint) {
+    margin-left: 0;
+    direction: ltr;
+  }
+}
+
+.layout.is-open .sidebar__header {
+  margin-left: 0;
+  direction: ltr;
+}
+
+
 .sidebar__header.is-sticky {
   position: fixed;
 }

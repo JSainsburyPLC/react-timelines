@@ -11,6 +11,10 @@
   position: static;
   top: 0;
   z-index: 1;
+  overflow: hidden;
+}
+
+.timeline__header-scroll {
   overflow-x: scroll;
 
   &::-webkit-scrollbar {
@@ -20,10 +24,6 @@
 
 .timeline__header.is-sticky {
   position: fixed;
-}
-
-.timeline__header-wrapper::webkit-scrollbar {
-  display: none;
 }
 
 .timeline__body {

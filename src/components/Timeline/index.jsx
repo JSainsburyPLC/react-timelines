@@ -16,26 +16,42 @@ class Timeline extends Component {
     this.handleMouseMove = this.handleMouseMove.bind(this)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
-    this.getTimelineWidth = this.getTimelineWidth.bind(this)
     this.handleScroll = this.handleScroll.bind(this)
+    this.handleResize = this.handleResize.bind(this)
 
     this.state = {
       pointerX: 0,
       pointerVisible: false,
       pointerHighlighted: false,
-      timelineVisualWidth: 0,
       scrollLeft: 0
     }
   }
 
   componentDidMount() {
-    this.props.getHeaderHeight(this.header)
-    this.props.getMarkerOffset(this.timeline)
-    this.getTimelineWidth()
+    if (this.props.stickyHeader) {
+      window.addEventListener('resize', this.handleResize)
+      this.props.getMarkerOffset(this.timeline)
+      this.props.getTimelineWidth(this.timeline)
+    }
   }
 
-  getTimelineWidth() {
-    this.setState({ timelineVisualWidth: this.timeline.offsetWidth })
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isHeaderSticky !== nextProps.isHeaderSticky) {
+      const scrollLeft = this.timeline.scrollLeft
+      this.setState({ scrollLeft })
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isOpen !== this.props.isOpen) {
+      this.props.getTimelineWidth(this.timeline)
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.stickyHeader) {
+      window.removeEventListener('resize', this.handleResize)
+    }
   }
 
   handleMouseMove(e) {
@@ -57,13 +73,27 @@ class Timeline extends Component {
     })
   }
 
+  handleResize() {
+    requestAnimationFrame(() => {
+      this.props.getTimelineWidth(this.timeline)
+    })
+  }
+
   render() {
-    const { now, time, timebar, tracks, isHeaderSticky, headerHeight } = this.props
+    const {
+      now,
+      time,
+      timebar,
+      tracks,
+      isHeaderSticky,
+      headerHeight,
+      timelineVisualWidth,
+      getHeaderHeight
+    } = this.props
     const {
       pointerX,
       pointerVisible,
       pointerHighlighted,
-      timelineVisualWidth,
       scrollLeft
     } = this.state
     return (
@@ -76,7 +106,7 @@ class Timeline extends Component {
             highlighted={pointerHighlighted}
             text={getDayMonth(time.fromX(pointerX))}
           />
-          <div ref={(header) => { this.header = header }}>
+          <div>
             <Header
               time={time}
               timebar={timebar}
@@ -88,6 +118,7 @@ class Timeline extends Component {
               height={headerHeight}
               visualWidth={timelineVisualWidth}
               scrollLeft={scrollLeft}
+              getHeight={getHeaderHeight}
             />
           </div>
           <Body time={time} tracks={tracks} />
@@ -104,8 +135,12 @@ Timeline.propTypes = {
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   getHeaderHeight: PropTypes.func,
   getMarkerOffset: PropTypes.func,
+  getTimelineWidth: PropTypes.func,
   isHeaderSticky: PropTypes.bool,
-  headerHeight: PropTypes.number
+  stickyHeader: PropTypes.bool,
+  headerHeight: PropTypes.number,
+  timelineVisualWidth: PropTypes.number,
+  isOpen: PropTypes.bool
 }
 
 export default Timeline

@@ -4,9 +4,14 @@ import PropTypes from 'prop-types'
 import Timebar from './Timebar'
 
 class Header extends PureComponent {
-  componentWillReceiveProps(nextProps) {
-    if (this.props.scrollLeft !== nextProps.scrollLeft) {
-      this.wrapper.scrollLeft = nextProps.scrollLeft
+  componentDidMount() {
+    this.props.getHeight(this.timebar)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { scrollLeft, isSticky } = this.props
+    if (scrollLeft !== prevProps.scrollLeft || isSticky !== prevProps.isSticky) {
+      this.scroll.scrollLeft = scrollLeft
     }
   }
 
@@ -22,21 +27,22 @@ class Header extends PureComponent {
       visualWidth,
       timebar: { rows }
     } = this.props
-    const style = isSticky
-      ? {
-        width: visualWidth
-      }
-      : {}
     return (
       <div style={isSticky ? { paddingTop: height } : {}}>
-        <div className={`timeline__header ${isSticky ? 'is-sticky' : ''}`} style={style} ref={(wrapper) => { this.wrapper = wrapper }}>
-          <div
-            style={{ width }}
-            onMouseMove={onMove}
-            onMouseEnter={onEnter}
-            onMouseLeave={onLeave}
-          >
-            <Timebar time={time} rows={rows} />
+        <div
+          className={`timeline__header ${isSticky ? 'is-sticky' : ''}`}
+          style={isSticky ? { width: visualWidth, height } : { height }}
+        >
+          <div className="timeline__header-scroll" ref={(scroll) => { this.scroll = scroll }}>
+            <div
+              ref={(timebar) => { this.timebar = timebar }}
+              style={{ width }}
+              onMouseMove={onMove}
+              onMouseEnter={onEnter}
+              onMouseLeave={onLeave}
+            >
+              <Timebar time={time} rows={rows} />
+            </div>
           </div>
         </div>
       </div>
@@ -54,7 +60,8 @@ Header.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   visualWidth: PropTypes.number,
-  scrollLeft: PropTypes.number
+  scrollLeft: PropTypes.number,
+  getHeight: PropTypes.func
 }
 
 export default Header

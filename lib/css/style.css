@@ -11,7 +11,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 2; } }
+      z-index: 3; } }
   .react-timelines .controls__button {
     display: inline-block;
     width: 36px;
@@ -84,8 +84,7 @@
       .react-timelines .layout {
         margin-left: 0; } }
     .react-timelines .layout.is-open {
-      margin-left: 0;
-      transition: margin 0.2s; }
+      margin-left: 0; }
   .react-timelines .layout__side {
     position: relative;
     z-index: 2;
@@ -154,6 +153,18 @@
     top: 0;
     z-index: 1;
     background-color: #fff; }
+  .react-timelines .sidebar__header {
+    position: relative;
+    margin-left: 200px;
+    direction: rtl;
+    overflow: hidden; }
+    @media (min-width: 1000px) {
+      .react-timelines .sidebar__header {
+        margin-left: 0;
+        direction: ltr; } }
+  .react-timelines .layout.is-open .sidebar__header {
+    margin-left: 0;
+    direction: ltr; }
   .react-timelines .sidebar__header.is-sticky {
     position: fixed; }
   .react-timelines .timebar__row {
@@ -183,13 +194,13 @@
     position: static;
     top: 0;
     z-index: 1;
+    overflow: hidden; }
+  .react-timelines .timeline__header-scroll {
     overflow-x: scroll; }
-    .react-timelines .timeline__header::-webkit-scrollbar {
+    .react-timelines .timeline__header-scroll::-webkit-scrollbar {
       display: none; }
   .react-timelines .timeline__header.is-sticky {
     position: fixed; }
-  .react-timelines .timeline__header-wrapper::webkit-scrollbar {
-    display: none; }
   .react-timelines .timeline__body {
     position: relative; }
   .react-timelines .track__elements {

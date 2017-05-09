@@ -5,6 +5,9 @@ import Sidebar from './components/Sidebar'
 import Timeline from './components/Timeline'
 import createTime from './utils/time'
 
+const getNumericPropertyValue = (node, prop) =>
+  parseInt(getComputedStyle(node, null).getPropertyValue(prop), 10)
+
 class Container extends Component {
 
   constructor(props) {
@@ -14,18 +17,22 @@ class Container extends Component {
       isHeaderSticky: false,
       headerHeight: 0,
       markerOffset: 0,
-      sidebarWidth: 0
+      sidebarWidth: 0,
+      timelineVisualWidth: 0
     }
 
     this.handleScroll = this.handleScroll.bind(this)
+    this.handleResize = this.handleResize.bind(this)
     this.getHeaderHeight = this.getHeaderHeight.bind(this)
-    this.getMarkerOffset = this.getMarkerOffset.bind(this)
     this.getSidebarWidth = this.getSidebarWidth.bind(this)
+    this.getMarkerOffset = this.getMarkerOffset.bind(this)
+    this.getTimelineWidth = this.getTimelineWidth.bind(this)
   }
 
   componentDidMount() {
     if (this.props.stickyHeader) {
       window.addEventListener('scroll', this.handleScroll)
+      window.addEventListener('resize', this.handleResize)
       this.getSidebarWidth()
     }
   }
@@ -36,37 +43,51 @@ class Container extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.isOpen !== this.props.isOpen) {
+      this.getSidebarWidth()
+    }
+  }
+
   componentWillUnmount() {
     if (this.props.stickyHeader) {
       window.removeEventListener('scroll', this.handleScroll)
+      window.removeEventListener('resize', this.handleResize)
     }
   }
 
   getSidebarWidth() {
-    this.setState({
-      sidebarWidth: this.sidebar.offsetWidth
-    })
+    const layoutOffset = getNumericPropertyValue(this.layout, 'margin-left')
+    const sidebarWidth = (this.sidebar.offsetWidth + layoutOffset)
+    this.setState({ sidebarWidth })
   }
 
   getHeaderHeight(header) {
-    this.setState(() => ({
-      headerHeight: header.offsetHeight
-    }))
+    this.setState({ headerHeight: header.offsetHeight })
   }
 
   getMarkerOffset(node) {
-    const markerOffset = parseInt(getComputedStyle(node, null).getPropertyValue('padding-top'), 10)
-    this.setState(() => ({ markerOffset }))
+    this.setState({ markerOffset: getNumericPropertyValue(node, 'padding-top') })
+  }
+
+  getTimelineWidth(node) {
+    this.setState({ timelineVisualWidth: node.offsetWidth })
   }
 
   handleScroll() {
     requestAnimationFrame(() => {
       const { markerOffset, headerHeight } = this.state
-      const { top, bottom } = this.tracker.getBoundingClientRect()
+      const { top, bottom } = this.layoutMain.getBoundingClientRect()
       const isHeaderSticky = (top <= -markerOffset) && (bottom >= headerHeight)
       if (this.props.stickyHeader) {
         this.setState(() => ({ isHeaderSticky }))
       }
+    })
+  }
+
+  handleResize() {
+    requestAnimationFrame(() => {
+      this.getSidebarWidth()
     })
   }
 
@@ -80,11 +101,12 @@ class Container extends Component {
       toggleTrackOpen,
       zoomIn,
       zoomOut,
-      scale
+      scale,
+      stickyHeader
     } = this.props
-    const { time, isHeaderSticky, headerHeight, sidebarWidth } = this.state
+    const { time, isHeaderSticky, headerHeight, sidebarWidth, timelineVisualWidth } = this.state
     return (
-      <div className="react-timelines" ref={(tracker) => { this.tracker = tracker }}>
+      <div className="react-timelines">
         <Controls
           isOpen={isOpen}
           toggleOpen={toggleOpen}
@@ -94,7 +116,7 @@ class Container extends Component {
           zoomMin={scale.zoomMin}
           zoomMax={scale.zoomMax}
         />
-        <div className={`layout ${isOpen ? 'is-open' : ''}`}>
+        <div className={`layout ${isOpen ? 'is-open' : ''}`} ref={(layout) => { this.layout = layout }}>
           <div className="layout__side" ref={(sidebar) => { this.sidebar = sidebar }}>
             <Sidebar
               timebar={timebar}
@@ -105,7 +127,7 @@ class Container extends Component {
               width={sidebarWidth}
             />
           </div>
-          <div className="layout__main">
+          <div className="layout__main" ref={(layoutMain) => { this.layoutMain = layoutMain }}>
             <Timeline
               now={now}
               time={time}
@@ -113,8 +135,12 @@ class Container extends Component {
               tracks={tracks}
               getMarkerOffset={this.getMarkerOffset}
               getHeaderHeight={this.getHeaderHeight}
+              getTimelineWidth={this.getTimelineWidth}
               isHeaderSticky={isHeaderSticky}
+              stickyHeader={stickyHeader}
               headerHeight={headerHeight}
+              timelineVisualWidth={timelineVisualWidth}
+              isOpen={isOpen}
             />
           </div>
         </div>
