@@ -28,19 +28,18 @@ class Header extends PureComponent {
       timebar: { rows }
     } = this.props
     return (
-      <div style={isSticky ? { paddingTop: height } : {}}>
+      <div
+        style={isSticky ? { paddingTop: height } : {}}
+        onMouseMove={onMove}
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
+      >
         <div
           className={`timeline__header ${isSticky ? 'is-sticky' : ''}`}
           style={isSticky ? { width: visualWidth, height } : { height }}
         >
           <div className="timeline__header-scroll" ref={(scroll) => { this.scroll = scroll }}>
-            <div
-              ref={(timebar) => { this.timebar = timebar }}
-              style={{ width }}
-              onMouseMove={onMove}
-              onMouseEnter={onEnter}
-              onMouseLeave={onLeave}
-            >
+            <div ref={(timebar) => { this.timebar = timebar }} style={{ width }}>
               <Timebar time={time} rows={rows} />
             </div>
           </div>
