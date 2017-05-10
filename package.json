@@ -1,6 +1,6 @@
 {
   "name": "react-timelines",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "React Timelines",
   "main": "lib/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "repository": "git@github.com:JSainsburyPLC/react-timelines.git",
   "author": "JSainsburyPLC",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
     "prop-types": "^15.5.0"
   },
