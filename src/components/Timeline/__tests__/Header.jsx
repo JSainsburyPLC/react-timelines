@@ -50,7 +50,7 @@ describe('<Header />', () => {
     expect(onLeave).toBeCalled()
   })
 
-  it('sets the scrollLeft position when the component receives an updated scrollLeft prop', () => {
+  it('ensures the scroll left postion gets updated when a new scrollLeft prop is received', () => {
     const props = createProps()
     const wrapper = mount(<Header {...props} />)
     expect(wrapper.find('.timeline__header-scroll').getNode().scrollLeft).toBe(0)
@@ -58,6 +58,26 @@ describe('<Header />', () => {
     const nextProps = createProps({ scrollLeft: 100 })
     wrapper.setProps(nextProps)
     expect(wrapper.find('.timeline__header-scroll').getNode().scrollLeft).toBe(100)
+  })
+
+  it('ensures the scroll left position is correct when the header becomes sticky', () => {
+    const props = createProps({ isSticky: false })
+    const wrapper = mount(<Header {...props} />)
+    expect(wrapper.find('.timeline__header-scroll').getNode().scrollLeft).toBe(0)
+
+    const nextProps = createProps({ isSticky: true })
+    wrapper.setProps(nextProps)
+    expect(wrapper.find('.timeline__header-scroll').getNode().scrollLeft).toBe(0)
+  })
+
+  it('does not update the scrollLeft position if the component updates and the scrollLeft and isSticky props have not changed', () => {
+    const props = createProps()
+    const wrapper = mount(<Header {...props} />)
+    expect(wrapper.find('.timeline__header-scroll').getNode().scrollLeft).toBe(0)
+
+    const nextProps = createProps({ height: 100 })
+    wrapper.setProps(nextProps)
+    expect(wrapper.find('.timeline__header-scroll').getNode().scrollLeft).toBe(0)
   })
 
   it('calls the getHeight() prop when mounted', () => {

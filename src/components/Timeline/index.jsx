@@ -8,6 +8,8 @@ import PointerMarker from './Marker/Pointer'
 
 import getMouseX from '../../utils/getMouseX'
 import { getDayMonth } from '../../utils/formatDate'
+import raf from '../../utils/raf'
+import { addListener, removeListener } from '../../utils/events'
 
 class Timeline extends Component {
   constructor(props) {
@@ -29,7 +31,7 @@ class Timeline extends Component {
 
   componentDidMount() {
     if (this.props.stickyHeader) {
-      window.addEventListener('resize', this.handleResize)
+      addListener('resize', this.handleResize)
       this.props.getMarkerOffset(this.timeline)
       this.props.getTimelineWidth(this.timeline)
     }
@@ -43,14 +45,15 @@ class Timeline extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.isOpen !== this.props.isOpen) {
-      this.props.getTimelineWidth(this.timeline)
+    const { isOpen, getTimelineWidth, stickyHeader } = this.props
+    if (stickyHeader && prevProps.isOpen !== isOpen) {
+      getTimelineWidth(this.timeline)
     }
   }
 
   componentWillUnmount() {
     if (this.props.stickyHeader) {
-      window.removeEventListener('resize', this.handleResize)
+      removeListener('resize', this.handleResize)
     }
   }
 
@@ -67,14 +70,14 @@ class Timeline extends Component {
   }
 
   handleScroll() {
-    requestAnimationFrame(() => {
+    raf(() => {
       const scrollLeft = this.timeline.scrollLeft
       this.setState({ scrollLeft })
     })
   }
 
   handleResize() {
-    requestAnimationFrame(() => {
+    raf(() => {
       this.props.getTimelineWidth(this.timeline)
     })
   }
@@ -133,9 +136,9 @@ Timeline.propTypes = {
   time: PropTypes.shape({}).isRequired,
   timebar: PropTypes.shape({}).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  getHeaderHeight: PropTypes.func,
-  getMarkerOffset: PropTypes.func,
-  getTimelineWidth: PropTypes.func,
+  getHeaderHeight: PropTypes.func.isRequired,
+  getMarkerOffset: PropTypes.func.isRequired,
+  getTimelineWidth: PropTypes.func.isRequired,
   isHeaderSticky: PropTypes.bool,
   stickyHeader: PropTypes.bool,
   headerHeight: PropTypes.number,

@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import Controls from './components/Controls'
 import Sidebar from './components/Sidebar'
 import Timeline from './components/Timeline'
 import createTime from './utils/time'
+import raf from './utils/raf'
+import { addListener, removeListener } from './utils/events'
 
 const getNumericPropertyValue = (node, prop) =>
   parseInt(getComputedStyle(node, null).getPropertyValue(prop), 10)
@@ -31,8 +34,8 @@ class Container extends Component {
 
   componentDidMount() {
     if (this.props.stickyHeader) {
-      window.addEventListener('scroll', this.handleScroll)
-      window.addEventListener('resize', this.handleResize)
+      addListener('scroll', this.handleScroll)
+      addListener('resize', this.handleResize)
       this.getSidebarWidth()
     }
   }
@@ -51,8 +54,8 @@ class Container extends Component {
 
   componentWillUnmount() {
     if (this.props.stickyHeader) {
-      window.removeEventListener('scroll', this.handleScroll)
-      window.removeEventListener('resize', this.handleResize)
+      removeListener('scroll', this.handleScroll)
+      removeListener('resize', this.handleResize)
     }
   }
 
@@ -75,7 +78,7 @@ class Container extends Component {
   }
 
   handleScroll() {
-    requestAnimationFrame(() => {
+    raf(() => {
       const { markerOffset, headerHeight } = this.state
       const { top, bottom } = this.layoutMain.getBoundingClientRect()
       const isHeaderSticky = (top <= -markerOffset) && (bottom >= headerHeight)
@@ -86,7 +89,7 @@ class Container extends Component {
   }
 
   handleResize() {
-    requestAnimationFrame(() => {
+    raf(() => {
       this.getSidebarWidth()
     })
   }
