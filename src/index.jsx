@@ -7,9 +7,7 @@ import Timeline from './components/Timeline'
 import createTime from './utils/time'
 import raf from './utils/raf'
 import { addListener, removeListener } from './utils/events'
-
-const getNumericPropertyValue = (node, prop) =>
-  parseInt(getComputedStyle(node, null).getPropertyValue(prop), 10)
+import getNumericPropertyValue from './utils/getNumericPropertyValue'
 
 class Container extends Component {
 
