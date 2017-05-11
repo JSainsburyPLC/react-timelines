@@ -15,4 +15,48 @@ describe('<Header />', () => {
     expect(wrapper.find('.timebar-key').first().text()).toBe('row-1')
     expect(wrapper.find('.timebar-key').last().text()).toBe('row-2')
   })
+
+  it('it reserves the space taken up by the header when it is sticky', () => {
+    const props = {
+      timebar: { rows: [{ id: '1' }] },
+      isSticky: true,
+      height: 100
+    }
+    const wrapper = shallow(<Header {...props} />)
+    expect(wrapper.prop('style')).toEqual({
+      paddingTop: 100
+    })
+  })
+
+  it('it does not reserve the space taken up by the header when it is static', () => {
+    const props = {
+      timebar: { rows: [{ id: '1' }] },
+      isSticky: false,
+      height: 100
+    }
+    const wrapper = shallow(<Header {...props} />)
+    expect(wrapper.prop('style')).toEqual({})
+  })
+
+  it('becomes sticky when it receives a sticky prop', () => {
+    const props = {
+      timebar: { rows: [{ id: '1' }] },
+      isSticky: true,
+      width: 200
+    }
+    const wrapper = shallow(<Header {...props} />)
+    expect(wrapper.find('.sidebar__header').prop('className')).toMatch('is-sticky')
+    expect(wrapper.find('.sidebar__header').prop('style')).toEqual({ width: 200 })
+  })
+
+  it('becomes static when it receives a falsy sticky prop', () => {
+    const props = {
+      timebar: { rows: [{ id: '1' }] },
+      isSticky: false,
+      width: 200
+    }
+    const wrapper = shallow(<Header {...props} />)
+    expect(wrapper.find('.sidebar__header').prop('className')).not.toMatch('is-sticky')
+    expect(wrapper.find('.sidebar__header').prop('style')).toEqual({})
+  })
 })

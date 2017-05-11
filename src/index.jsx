@@ -47,7 +47,7 @@ class Container extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.isOpen !== this.props.isOpen) {
+    if (this.props.stickyHeader && prevProps.isOpen !== this.props.isOpen) {
       this.getSidebarWidth()
     }
   }
