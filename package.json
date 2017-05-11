@@ -66,7 +66,8 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/utils/raf.js",
-      "<rootDir>/utils/events.js"
+      "<rootDir>/utils/events.js",
+      "<rootDir>/propTypes.js"
     ]
   }
 }
