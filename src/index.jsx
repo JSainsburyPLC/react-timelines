@@ -80,9 +80,7 @@ class Container extends Component {
       const { markerOffset, headerHeight } = this.state
       const { top, bottom } = this.layoutMain.getBoundingClientRect()
       const isHeaderSticky = (top <= -markerOffset) && (bottom >= headerHeight)
-      if (this.props.stickyHeader) {
-        this.setState(() => ({ isHeaderSticky }))
-      }
+      this.setState(() => ({ isHeaderSticky }))
     })
   }
 
