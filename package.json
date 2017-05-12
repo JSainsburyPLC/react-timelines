@@ -67,7 +67,7 @@
       "/node_modules/",
       "<rootDir>/utils/raf.js",
       "<rootDir>/utils/events.js",
-      "<rootDir>/utils/getComputedStyle.js",
+      "<rootDir>/utils/computedStyle.js",
       "<rootDir>/propTypes.js"
     ]
   }

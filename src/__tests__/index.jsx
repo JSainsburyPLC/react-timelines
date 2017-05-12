@@ -155,7 +155,7 @@ describe('<ReactTimeline />', () => {
       expect(wrapper.state('timelineVisualWidth')).toBe(0)
       wrapper.instance().getSidebarWidth = jest.fn()
 
-      wrapper.instance().getTimelineWidth({ offsetWidth: 200 })
+      wrapper.instance().setTimelineVisualWidth(200)
       expect(wrapper.state('timelineVisualWidth')).toBe(200)
 
       wrapper.setState({ isOpen: false })

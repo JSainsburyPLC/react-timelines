@@ -27,7 +27,7 @@ class Container extends Component {
     this.setHeaderHeight = this.setHeaderHeight.bind(this)
     this.getSidebarWidth = this.getSidebarWidth.bind(this)
     this.getMarkerOffset = this.getMarkerOffset.bind(this)
-    this.getTimelineWidth = this.getTimelineWidth.bind(this)
+    this.setTimelineVisualWidth = this.setTimelineVisualWidth.bind(this)
   }
 
   componentDidMount() {
@@ -71,8 +71,8 @@ class Container extends Component {
     this.setState({ markerOffset: getNumericPropertyValue(node, 'padding-top') })
   }
 
-  getTimelineWidth(node) {
-    this.setState({ timelineVisualWidth: node.offsetWidth })
+  setTimelineVisualWidth(timelineVisualWidth) {
+    this.setState({ timelineVisualWidth })
   }
 
   handleScroll() {
@@ -134,7 +134,7 @@ class Container extends Component {
               tracks={tracks}
               getMarkerOffset={this.getMarkerOffset}
               setHeaderHeight={this.setHeaderHeight}
-              getTimelineWidth={this.getTimelineWidth}
+              setTimelineVisualWidth={this.setTimelineVisualWidth}
               isHeaderSticky={isHeaderSticky}
               stickyHeader={stickyHeader}
               headerHeight={headerHeight}

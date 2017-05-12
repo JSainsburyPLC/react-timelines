@@ -35,7 +35,7 @@ class Timeline extends Component {
     if (this.props.stickyHeader) {
       addListener('resize', this.handleResize)
       this.props.getMarkerOffset(this.timeline)
-      this.props.getTimelineWidth(this.timeline)
+      this.props.setTimelineVisualWidth(this.timeline.offsetWidth)
     }
   }
 
@@ -47,9 +47,9 @@ class Timeline extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isOpen, getTimelineWidth, stickyHeader } = this.props
+    const { isOpen, setTimelineVisualWidth, stickyHeader } = this.props
     if (stickyHeader && prevProps.isOpen !== isOpen) {
-      getTimelineWidth(this.timeline)
+      setTimelineVisualWidth(this.timeline.offsetWidth)
     }
   }
 
@@ -80,7 +80,7 @@ class Timeline extends Component {
 
   handleResize() {
     raf(() => {
-      this.props.getTimelineWidth(this.timeline)
+      this.props.setTimelineVisualWidth(this.timeline.offsetWidth)
     })
   }
 
@@ -140,7 +140,7 @@ Timeline.propTypes = {
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   setHeaderHeight: PropTypes.func.isRequired,
   getMarkerOffset: PropTypes.func.isRequired,
-  getTimelineWidth: PropTypes.func.isRequired,
+  setTimelineVisualWidth: PropTypes.func.isRequired,
   isHeaderSticky: PropTypes.bool,
   stickyHeader: PropTypes.bool,
   headerHeight: PropTypes.number,
