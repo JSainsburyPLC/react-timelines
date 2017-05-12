@@ -126,8 +126,9 @@ describe('<Timeline />', () => {
 
     const props = createProps({ stickyHeader: true })
     const wrapper = mount(<Timeline {...props} />)
-    wrapper.instance().componentWillUnmount()
-    expect(removeListener).toBeCalledWith('resize', wrapper.instance().handleResize)
+    const handleResize = wrapper.instance().handleResize
+    wrapper.unmount()
+    expect(removeListener).toBeCalledWith('resize', handleResize)
   })
 
   it('does not attempt to remove the resize event listener if the timeline does not have a sticky header', () => {
@@ -135,8 +136,8 @@ describe('<Timeline />', () => {
 
     const props = createProps({ stickyHeader: false })
     const wrapper = mount(<Timeline {...props} />)
-    wrapper.instance().componentWillUnmount()
-    expect(removeListener).not.toBeCalledWith('resize', wrapper.instance().handleResize)
+    wrapper.unmount()
+    expect(removeListener).not.toBeCalled()
   })
 
   it('gets the timeline width during resize events', () => {
