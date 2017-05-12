@@ -5,12 +5,12 @@ import ReactTimeline from '../'
 import Controls from '../components/Controls'
 import Sidebar from '../components/Sidebar'
 import Timeline from '../components/Timeline'
-import getComputedStyle from '../utils/getComputedStyle'
+import computedStyle from '../utils/computedStyle'
 
 import { addListener, removeListener } from '../utils/events'
 import raf from '../utils/raf'
 
-jest.mock('../utils/getComputedStyle')
+jest.mock('../utils/computedStyle')
 
 jest.mock('../components/Controls', () => () => null)
 jest.mock('../components/Sidebar', () => () => null)
@@ -89,7 +89,7 @@ describe('<ReactTimeline />', () => {
       removeListener.mockImplementation(jest.fn())
       raf.mockImplementation(fn => fn())
 
-      getComputedStyle.mockImplementation(node => ({
+      computedStyle.mockImplementation(node => ({
         getPropertyValue(prop) {
           return node.style[prop]
         }
@@ -148,7 +148,7 @@ describe('<ReactTimeline />', () => {
     })
 
     it('ensures the width of the header and sidebar is correct', () => {
-      getComputedStyle.mockImplementation(() => ({
+      computedStyle.mockImplementation(() => ({
         getPropertyValue: jest.fn()
       }))
 
