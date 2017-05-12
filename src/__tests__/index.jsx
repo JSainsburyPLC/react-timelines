@@ -25,8 +25,8 @@ const createProps = ({
   toggleOpen = jest.fn(),
   zoomIn = jest.fn(),
   zoomOut = jest.fn(),
-  stickyHeader = false
-} = {}) => ({ now, scale, isOpen, timebar, tracks, toggleOpen, zoomIn, zoomOut, stickyHeader })
+  enableStickyHeader = false
+} = {}) => ({ now, scale, isOpen, timebar, tracks, toggleOpen, zoomIn, zoomOut, enableStickyHeader })
 
 describe('<ReactTimeline />', () => {
   it('renders <Controls /> and <Layout />', () => {

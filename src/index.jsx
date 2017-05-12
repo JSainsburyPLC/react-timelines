@@ -32,10 +32,10 @@ class Container extends Component {
       zoomIn,
       zoomOut,
       scale,
-      stickyHeader
+      enableStickyHeader
     } = this.props
 
-    const LayoutComponent = stickyHeader ? StickyLayout : Layout
+    const LayoutComponent = enableStickyHeader ? StickyLayout : Layout
 
     return (
       <div className="react-timelines">
@@ -77,7 +77,7 @@ Container.propTypes = {
   toggleTrackOpen: PropTypes.func,
   zoomIn: PropTypes.func,
   zoomOut: PropTypes.func,
-  stickyHeader: PropTypes.bool
+  enableStickyHeader: PropTypes.bool
 }
 
 export default Container

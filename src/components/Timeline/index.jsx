@@ -33,7 +33,7 @@ class Timeline extends Component {
   }
 
   componentDidMount() {
-    if (this.props.stickyHeader) {
+    if (this.props.enableStickyHeader) {
       addListener('resize', this.handleResize)
       this.props.setMarkerOffset(getNumericPropertyValue(this.timeline, 'padding-top'))
       this.props.setViewportWidth(this.timeline.offsetWidth)
@@ -48,14 +48,14 @@ class Timeline extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isOpen, setViewportWidth, stickyHeader } = this.props
-    if (stickyHeader && prevProps.isOpen !== isOpen) {
+    const { isOpen, setViewportWidth, enableStickyHeader } = this.props
+    if (enableStickyHeader && prevProps.isOpen !== isOpen) {
       setViewportWidth(this.timeline.offsetWidth)
     }
   }
 
   componentWillUnmount() {
-    if (this.props.stickyHeader) {
+    if (this.props.enableStickyHeader) {
       removeListener('resize', this.handleResize)
     }
   }
@@ -95,7 +95,7 @@ class Timeline extends Component {
       headerHeight,
       viewportWidth,
       setHeaderHeight,
-      stickyHeader
+      enableStickyHeader
     } = this.props
     const {
       pointerX,
@@ -121,7 +121,7 @@ class Timeline extends Component {
               onEnter={this.handleMouseEnter}
               onLeave={this.handleMouseLeave}
               width={time.timelineWidth}
-              stickyHeader={stickyHeader}
+              enableStickyHeader={enableStickyHeader}
               isSticky={isHeaderSticky}
               height={headerHeight}
               viewportWidth={viewportWidth}
@@ -145,7 +145,7 @@ Timeline.propTypes = {
   setMarkerOffset: PropTypes.func,
   setViewportWidth: PropTypes.func,
   isHeaderSticky: PropTypes.bool,
-  stickyHeader: PropTypes.bool,
+  enableStickyHeader: PropTypes.bool,
   headerHeight: PropTypes.number,
   viewportWidth: PropTypes.number,
   isOpen: PropTypes.bool

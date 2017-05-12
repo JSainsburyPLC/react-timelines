@@ -100,7 +100,7 @@ class StickyLayout extends Component {
             timebar={timebar}
             tracks={tracks}
             // BUNDLE
-            stickyHeader
+            enableStickyHeader
             isHeaderSticky={isHeaderSticky}
             setMarkerOffset={this.setMarkerOffset}
             setHeaderHeight={this.setHeaderHeight}

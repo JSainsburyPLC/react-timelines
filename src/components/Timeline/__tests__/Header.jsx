@@ -15,7 +15,7 @@ const createProps = ({
   viewportWidth = 0,
   height = 0,
   isSticky = false,
-  stickyHeader = false
+  enableStickyHeader = false
 } = {}) => ({
   time,
   timebar,
@@ -27,7 +27,7 @@ const createProps = ({
   viewportWidth,
   height,
   isSticky,
-  stickyHeader
+  enableStickyHeader
 })
 
 describe('<Header />', () => {
@@ -93,7 +93,7 @@ describe('<Header />', () => {
 
   it('calls the setHeight() prop when mounted', () => {
     const setHeight = jest.fn()
-    const props = createProps({ setHeight, stickyHeader: true })
+    const props = createProps({ setHeight, enableStickyHeader: true })
     mount(<Header {...props} />)
     expect(setHeight).toBeCalled()
   })

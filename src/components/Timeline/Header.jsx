@@ -6,7 +6,7 @@ import { propTypeTimebar } from '../../propTypes'
 
 class Header extends PureComponent {
   componentDidMount() {
-    if (this.props.stickyHeader) {
+    if (this.props.enableStickyHeader) {
       this.props.setHeight(this.timebar.offsetHeight)
     }
   }
@@ -64,7 +64,7 @@ Header.propTypes = {
   viewportWidth: PropTypes.number,
   scrollLeft: PropTypes.number,
   setHeight: PropTypes.func,
-  stickyHeader: PropTypes.bool
+  enableStickyHeader: PropTypes.bool
 }
 
 export default Header

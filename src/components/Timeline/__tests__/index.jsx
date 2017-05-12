@@ -25,7 +25,7 @@ const createProps = ({
   setHeaderHeight = jest.fn(),
   tracks = [],
   isHeaderSticky = false,
-  stickyHeader = false,
+  enableStickyHeader = false,
   setMarkerOffset = jest.fn(),
   setViewportWidth = jest.fn(),
   isOpen = false
@@ -36,7 +36,7 @@ const createProps = ({
   setHeaderHeight,
   tracks,
   isHeaderSticky,
-  stickyHeader,
+  enableStickyHeader,
   setMarkerOffset,
   setViewportWidth,
   isOpen
@@ -107,7 +107,7 @@ describe('<Timeline />', () => {
   it('calls setMarkerOffset() and setViewportWidth() when mounted if the timeline has a sticky header', () => {
     const setMarkerOffset = jest.fn()
     const setViewportWidth = jest.fn()
-    const props = createProps({ setMarkerOffset, setViewportWidth, stickyHeader: true })
+    const props = createProps({ setMarkerOffset, setViewportWidth, enableStickyHeader: true })
     mount(<Timeline {...props} />)
     expect(setMarkerOffset).toBeCalled()
     expect(setViewportWidth).toBeCalled()
@@ -116,7 +116,7 @@ describe('<Timeline />', () => {
   it('adds the resize event listener when mounted if the timeline has a sticky header', () => {
     addListener.mockImplementation(jest.fn())
 
-    const props = createProps({ stickyHeader: true })
+    const props = createProps({ enableStickyHeader: true })
     const wrapper = mount(<Timeline {...props} />)
     expect(addListener).toBeCalledWith('resize', wrapper.instance().handleResize)
   })
@@ -124,7 +124,7 @@ describe('<Timeline />', () => {
   it('removes the resize event listener when unmounted if the timeline has a sticky header', () => {
     removeListener.mockImplementation(jest.fn())
 
-    const props = createProps({ stickyHeader: true })
+    const props = createProps({ enableStickyHeader: true })
     const wrapper = mount(<Timeline {...props} />)
     const handleResize = wrapper.instance().handleResize
     wrapper.unmount()
@@ -134,7 +134,7 @@ describe('<Timeline />', () => {
   it('does not attempt to remove the resize event listener if the timeline does not have a sticky header', () => {
     removeListener.mockImplementation(jest.fn())
 
-    const props = createProps({ stickyHeader: false })
+    const props = createProps({ enableStickyHeader: false })
     const wrapper = mount(<Timeline {...props} />)
     wrapper.unmount()
     expect(removeListener).not.toBeCalled()
@@ -145,14 +145,14 @@ describe('<Timeline />', () => {
     raf.mockImplementation(cb => cb())
 
     const setViewportWidth = jest.fn()
-    const props = createProps({ stickyHeader: true, setViewportWidth })
+    const props = createProps({ enableStickyHeader: true, setViewportWidth })
     mount(<Timeline {...props} />)
     expect(setViewportWidth).toHaveBeenCalledTimes(2)
   })
 
   it('gets the timeline width when the user toggles the opening of the nav', () => {
     const setViewportWidth = jest.fn()
-    const props = createProps({ setViewportWidth, isOpen: false, stickyHeader: true })
+    const props = createProps({ setViewportWidth, isOpen: false, enableStickyHeader: true })
     const wrapper = mount(<Timeline {...props} />)
     expect(setViewportWidth).toHaveBeenCalledTimes(1)
 
