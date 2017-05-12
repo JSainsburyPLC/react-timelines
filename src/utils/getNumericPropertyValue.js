@@ -1,4 +1,4 @@
-import getComputedStyle from './getComputedStyle'
+import computedStyle from './computedStyle'
 
 export default (node, prop) =>
-  parseInt(getComputedStyle(node).getPropertyValue(prop), 10)
+  parseInt(computedStyle(node).getPropertyValue(prop), 10)

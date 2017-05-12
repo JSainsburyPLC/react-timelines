@@ -1,11 +1,11 @@
 import getNumericPropertyValue from '../getNumericPropertyValue'
-import getComputedStyle from '../getComputedStyle'
+import computedStyle from '../computedStyle'
 
-jest.mock('../getComputedStyle')
+jest.mock('../computedStyle')
 
 describe('getNumericPropertyValue', () => {
   it('returns the numeric portion within a property value of a DOM node', () => {
-    getComputedStyle.mockImplementation(node => ({
+    computedStyle.mockImplementation(node => ({
       getPropertyValue(prop) {
         return node.style[prop]
       }
