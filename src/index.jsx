@@ -25,7 +25,7 @@ class Container extends Component {
     this.handleScroll = this.handleScroll.bind(this)
     this.handleResize = this.handleResize.bind(this)
     this.setHeaderHeight = this.setHeaderHeight.bind(this)
-    this.getSidebarWidth = this.getSidebarWidth.bind(this)
+    this.setSidebarWidth = this.setSidebarWidth.bind(this)
     this.setMarkerOffset = this.setMarkerOffset.bind(this)
     this.setTimelineViewportWidth = this.setTimelineViewportWidth.bind(this)
   }
@@ -34,7 +34,7 @@ class Container extends Component {
     if (this.props.stickyHeader) {
       addListener('scroll', this.handleScroll)
       addListener('resize', this.handleResize)
-      this.getSidebarWidth()
+      this.setSidebarWidth()
     }
   }
 
@@ -46,7 +46,7 @@ class Container extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.stickyHeader && prevProps.isOpen !== this.props.isOpen) {
-      this.getSidebarWidth()
+      this.setSidebarWidth()
     }
   }
 
@@ -57,7 +57,7 @@ class Container extends Component {
     }
   }
 
-  getSidebarWidth() {
+  setSidebarWidth() {
     const layoutOffset = getNumericPropertyValue(this.layout, 'margin-left')
     const sidebarWidth = (this.sidebar.offsetWidth + layoutOffset)
     this.setState({ sidebarWidth })
@@ -86,7 +86,7 @@ class Container extends Component {
 
   handleResize() {
     raf(() => {
-      this.getSidebarWidth()
+      this.setSidebarWidth()
     })
   }
 
@@ -121,6 +121,7 @@ class Container extends Component {
               timebar={timebar}
               tracks={tracks}
               toggleTrackOpen={toggleTrackOpen}
+
               isHeaderSticky={isHeaderSticky}
               headerHeight={headerHeight}
               width={sidebarWidth}
@@ -132,13 +133,13 @@ class Container extends Component {
               time={time}
               timebar={timebar}
               tracks={tracks}
-              setMarkerOffset={this.setMarkerOffset}
-              setHeaderHeight={this.setHeaderHeight}
-              setTimelineViewportWidth={this.setTimelineViewportWidth}
               isHeaderSticky={isHeaderSticky}
               stickyHeader={stickyHeader}
+              setMarkerOffset={this.setMarkerOffset}
+              setHeaderHeight={this.setHeaderHeight}
+              setViewportWidth={this.setTimelineViewportWidth}
               headerHeight={headerHeight}
-              timelineViewportWidth={timelineViewportWidth}
+              viewportWidth={timelineViewportWidth}
               isOpen={isOpen}
             />
           </div>

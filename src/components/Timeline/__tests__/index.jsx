@@ -27,7 +27,7 @@ const createProps = ({
   isHeaderSticky = false,
   stickyHeader = false,
   setMarkerOffset = jest.fn(),
-  setTimelineViewportWidth = jest.fn(),
+  setViewportWidth = jest.fn(),
   isOpen = false
 } = {}) => ({
   now,
@@ -38,7 +38,7 @@ const createProps = ({
   isHeaderSticky,
   stickyHeader,
   setMarkerOffset,
-  setTimelineViewportWidth,
+  setViewportWidth,
   isOpen
 })
 
@@ -104,13 +104,13 @@ describe('<Timeline />', () => {
     expect(wrapper.state('scrollLeft')).toBe(50)
   })
 
-  it('calls setMarkerOffset() and setTimelineViewportWidth() when mounted if the timeline has a sticky header', () => {
+  it('calls setMarkerOffset() and setViewportWidth() when mounted if the timeline has a sticky header', () => {
     const setMarkerOffset = jest.fn()
-    const setTimelineViewportWidth = jest.fn()
-    const props = createProps({ setMarkerOffset, setTimelineViewportWidth, stickyHeader: true })
+    const setViewportWidth = jest.fn()
+    const props = createProps({ setMarkerOffset, setViewportWidth, stickyHeader: true })
     mount(<Timeline {...props} />)
     expect(setMarkerOffset).toBeCalled()
-    expect(setTimelineViewportWidth).toBeCalled()
+    expect(setViewportWidth).toBeCalled()
   })
 
   it('adds the resize event listener when mounted if the timeline has a sticky header', () => {
@@ -144,20 +144,20 @@ describe('<Timeline />', () => {
     addListener.mockImplementation((event, cb) => cb())
     raf.mockImplementation(cb => cb())
 
-    const setTimelineViewportWidth = jest.fn()
-    const props = createProps({ stickyHeader: true, setTimelineViewportWidth })
+    const setViewportWidth = jest.fn()
+    const props = createProps({ stickyHeader: true, setViewportWidth })
     mount(<Timeline {...props} />)
-    expect(setTimelineViewportWidth).toHaveBeenCalledTimes(2)
+    expect(setViewportWidth).toHaveBeenCalledTimes(2)
   })
 
   it('gets the timeline width when the user toggles the opening of the nav', () => {
-    const setTimelineViewportWidth = jest.fn()
-    const props = createProps({ setTimelineViewportWidth, isOpen: false, stickyHeader: true })
+    const setViewportWidth = jest.fn()
+    const props = createProps({ setViewportWidth, isOpen: false, stickyHeader: true })
     const wrapper = mount(<Timeline {...props} />)
-    expect(setTimelineViewportWidth).toHaveBeenCalledTimes(1)
+    expect(setViewportWidth).toHaveBeenCalledTimes(1)
 
     wrapper.setProps({ isOpen: true })
-    expect(setTimelineViewportWidth).toHaveBeenCalledTimes(2)
+    expect(setViewportWidth).toHaveBeenCalledTimes(2)
   })
 
   it('ensures the header gets the correct scroll position when it becomes sticky', () => {
