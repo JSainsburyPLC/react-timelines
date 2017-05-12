@@ -12,7 +12,6 @@ import raf from '../utils/raf'
 
 jest.mock('../utils/getComputedStyle')
 
-
 jest.mock('../components/Controls', () => () => null)
 jest.mock('../components/Sidebar', () => () => null)
 jest.mock('../components/Timeline', () => () => null)
@@ -139,11 +138,13 @@ describe('<ReactTimeline />', () => {
 
     it('wont be sticky when stickyHeader prop is false', () => {
       addListener.mockImplementation(jest.fn())
+      addListener.mockImplementation(jest.fn())
       const props = createProps({ stickyHeader: false })
       const wrapper = mount(<ReactTimeline {...props} />)
       expect(addListener).not.toBeCalled()
 
       wrapper.unmount()
+      expect(removeListener).not.toBeCalled()
     })
 
     it('ensures the width of the header and sidebar is correct', () => {
