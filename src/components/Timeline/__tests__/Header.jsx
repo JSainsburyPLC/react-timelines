@@ -10,13 +10,13 @@ const createProps = ({
   onMove = jest.fn(),
   onEnter = jest.fn(),
   onLeave = jest.fn(),
-  getHeight = jest.fn(),
+  setHeight = jest.fn(),
   scrollLeft = 0,
   visualWidth = 0,
   height = 0,
   isSticky = false
 } = {}) => ({
-  time, timebar, onMove, onEnter, onLeave, getHeight, scrollLeft, visualWidth, height, isSticky
+  time, timebar, onMove, onEnter, onLeave, setHeight, scrollLeft, visualWidth, height, isSticky
 })
 
 describe('<Header />', () => {
@@ -80,11 +80,11 @@ describe('<Header />', () => {
     expect(wrapper.find('.timeline__header-scroll').getNode().scrollLeft).toBe(0)
   })
 
-  it('calls the getHeight() prop when mounted', () => {
-    const getHeight = jest.fn()
-    const props = createProps({ getHeight })
-    const wrapper = mount(<Header {...props} />)
-    expect(getHeight).toBeCalledWith(wrapper.node.timebar)
+  it('calls the setHeight() prop when mounted', () => {
+    const setHeight = jest.fn()
+    const props = createProps({ setHeight })
+    mount(<Header {...props} />)
+    expect(setHeight).toBeCalled()
   })
 
   it('makes the header sticky if isSticky is true', () => {

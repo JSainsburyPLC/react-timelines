@@ -93,7 +93,7 @@ class Timeline extends Component {
       isHeaderSticky,
       headerHeight,
       timelineVisualWidth,
-      getHeaderHeight
+      setHeaderHeight
     } = this.props
     const {
       pointerX,
@@ -123,7 +123,7 @@ class Timeline extends Component {
               height={headerHeight}
               visualWidth={timelineVisualWidth}
               scrollLeft={scrollLeft}
-              getHeight={getHeaderHeight}
+              setHeight={setHeaderHeight}
             />
           </div>
           <Body time={time} tracks={tracks} />
@@ -138,7 +138,7 @@ Timeline.propTypes = {
   time: PropTypes.shape({}).isRequired,
   timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  getHeaderHeight: PropTypes.func.isRequired,
+  setHeaderHeight: PropTypes.func.isRequired,
   getMarkerOffset: PropTypes.func.isRequired,
   getTimelineWidth: PropTypes.func.isRequired,
   isHeaderSticky: PropTypes.bool,

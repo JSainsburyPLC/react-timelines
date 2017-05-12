@@ -24,7 +24,7 @@ class Container extends Component {
 
     this.handleScroll = this.handleScroll.bind(this)
     this.handleResize = this.handleResize.bind(this)
-    this.getHeaderHeight = this.getHeaderHeight.bind(this)
+    this.setHeaderHeight = this.setHeaderHeight.bind(this)
     this.getSidebarWidth = this.getSidebarWidth.bind(this)
     this.getMarkerOffset = this.getMarkerOffset.bind(this)
     this.getTimelineWidth = this.getTimelineWidth.bind(this)
@@ -63,8 +63,8 @@ class Container extends Component {
     this.setState({ sidebarWidth })
   }
 
-  getHeaderHeight(header) {
-    this.setState({ headerHeight: header.offsetHeight })
+  setHeaderHeight(headerHeight) {
+    this.setState({ headerHeight })
   }
 
   getMarkerOffset(node) {
@@ -133,7 +133,7 @@ class Container extends Component {
               timebar={timebar}
               tracks={tracks}
               getMarkerOffset={this.getMarkerOffset}
-              getHeaderHeight={this.getHeaderHeight}
+              setHeaderHeight={this.setHeaderHeight}
               getTimelineWidth={this.getTimelineWidth}
               isHeaderSticky={isHeaderSticky}
               stickyHeader={stickyHeader}

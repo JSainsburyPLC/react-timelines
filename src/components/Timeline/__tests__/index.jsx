@@ -22,7 +22,7 @@ const createProps = ({
     toX: jest.fn(() => 0)
   },
   timebar = { rows: [] },
-  getHeaderHeight = jest.fn(),
+  setHeaderHeight = jest.fn(),
   tracks = [],
   isHeaderSticky = false,
   stickyHeader = false,
@@ -33,7 +33,7 @@ const createProps = ({
   now,
   time,
   timebar,
-  getHeaderHeight,
+  setHeaderHeight,
   tracks,
   isHeaderSticky,
   stickyHeader,

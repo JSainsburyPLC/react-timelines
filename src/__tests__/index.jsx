@@ -102,9 +102,7 @@ describe('<ReactTimeline />', () => {
       wrapper.instance().getMarkerOffset({
         style: { 'padding-top': '40px' }
       })
-      wrapper.instance().getHeaderHeight({
-        offsetHeight: 50
-      })
+      wrapper.instance().setHeaderHeight(50)
       wrapper.instance().layoutMain.getBoundingClientRect = () => ({
         top: -60,
         bottom: 100
