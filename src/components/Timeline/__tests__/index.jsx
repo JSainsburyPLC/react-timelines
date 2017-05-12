@@ -26,7 +26,7 @@ const createProps = ({
   tracks = [],
   isHeaderSticky = false,
   stickyHeader = false,
-  getMarkerOffset = jest.fn(),
+  setMarkerOffset = jest.fn(),
   setTimelineVisualWidth = jest.fn(),
   isOpen = false
 } = {}) => ({
@@ -37,7 +37,7 @@ const createProps = ({
   tracks,
   isHeaderSticky,
   stickyHeader,
-  getMarkerOffset,
+  setMarkerOffset,
   setTimelineVisualWidth,
   isOpen
 })
@@ -104,12 +104,12 @@ describe('<Timeline />', () => {
     expect(wrapper.state('scrollLeft')).toBe(50)
   })
 
-  it('calls getMarkerOffset() and setTimelineVisualWidth() when mounted if the timeline has a sticky header', () => {
-    const getMarkerOffset = jest.fn()
+  it('calls setMarkerOffset() and setTimelineVisualWidth() when mounted if the timeline has a sticky header', () => {
+    const setMarkerOffset = jest.fn()
     const setTimelineVisualWidth = jest.fn()
-    const props = createProps({ getMarkerOffset, setTimelineVisualWidth, stickyHeader: true })
-    const wrapper = mount(<Timeline {...props} />)
-    expect(getMarkerOffset).toBeCalledWith(wrapper.node.timeline)
+    const props = createProps({ setMarkerOffset, setTimelineVisualWidth, stickyHeader: true })
+    mount(<Timeline {...props} />)
+    expect(setMarkerOffset).toBeCalled()
     expect(setTimelineVisualWidth).toBeCalled()
   })
 

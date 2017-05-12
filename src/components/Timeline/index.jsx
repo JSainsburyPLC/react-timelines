@@ -10,6 +10,7 @@ import getMouseX from '../../utils/getMouseX'
 import { getDayMonth } from '../../utils/formatDate'
 import raf from '../../utils/raf'
 import { addListener, removeListener } from '../../utils/events'
+import getNumericPropertyValue from '../../utils/getNumericPropertyValue'
 
 import { propTypeTimebar } from '../../propTypes'
 
@@ -34,7 +35,7 @@ class Timeline extends Component {
   componentDidMount() {
     if (this.props.stickyHeader) {
       addListener('resize', this.handleResize)
-      this.props.getMarkerOffset(this.timeline)
+      this.props.setMarkerOffset(getNumericPropertyValue(this.timeline, 'padding-top'))
       this.props.setTimelineVisualWidth(this.timeline.offsetWidth)
     }
   }
@@ -139,7 +140,7 @@ Timeline.propTypes = {
   timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   setHeaderHeight: PropTypes.func.isRequired,
-  getMarkerOffset: PropTypes.func.isRequired,
+  setMarkerOffset: PropTypes.func.isRequired,
   setTimelineVisualWidth: PropTypes.func.isRequired,
   isHeaderSticky: PropTypes.bool,
   stickyHeader: PropTypes.bool,

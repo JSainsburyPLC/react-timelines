@@ -99,9 +99,7 @@ describe('<ReactTimeline />', () => {
       const wrapper = mount(<ReactTimeline {...props} />)
       expect(typeof listeners.scroll).toEqual('function')
 
-      wrapper.instance().getMarkerOffset({
-        style: { 'padding-top': '40px' }
-      })
+      wrapper.instance().setMarkerOffset(40)
       wrapper.instance().setHeaderHeight(50)
       wrapper.instance().layoutMain.getBoundingClientRect = () => ({
         top: -60,
