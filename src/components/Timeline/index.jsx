@@ -94,7 +94,8 @@ class Timeline extends Component {
       isHeaderSticky,
       headerHeight,
       viewportWidth,
-      setHeaderHeight
+      setHeaderHeight,
+      stickyHeader
     } = this.props
     const {
       pointerX,
@@ -120,6 +121,7 @@ class Timeline extends Component {
               onEnter={this.handleMouseEnter}
               onLeave={this.handleMouseLeave}
               width={time.timelineWidth}
+              stickyHeader={stickyHeader}
               isSticky={isHeaderSticky}
               height={headerHeight}
               viewportWidth={viewportWidth}
@@ -139,9 +141,9 @@ Timeline.propTypes = {
   time: PropTypes.shape({}).isRequired,
   timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  setHeaderHeight: PropTypes.func.isRequired,
-  setMarkerOffset: PropTypes.func.isRequired,
-  setViewportWidth: PropTypes.func.isRequired,
+  setHeaderHeight: PropTypes.func,
+  setMarkerOffset: PropTypes.func,
+  setViewportWidth: PropTypes.func,
   isHeaderSticky: PropTypes.bool,
   stickyHeader: PropTypes.bool,
   headerHeight: PropTypes.number,

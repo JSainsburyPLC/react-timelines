@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Controls from './components/Controls'
 import Layout from './components/Layout'
+import StickyLayout from './components/Layout/Sticky'
 import createTime from './utils/time'
 
 class Container extends Component {
@@ -33,6 +34,9 @@ class Container extends Component {
       scale,
       stickyHeader
     } = this.props
+
+    const LayoutComponent = stickyHeader ? StickyLayout : Layout
+
     return (
       <div className="react-timelines">
         <Controls
@@ -44,8 +48,7 @@ class Container extends Component {
           zoomMin={scale.zoomMin}
           zoomMax={scale.zoomMax}
         />
-        <Layout
-          stickyHeader={stickyHeader}
+        <LayoutComponent
           scale={scale}
           now={now}
           tracks={tracks}
