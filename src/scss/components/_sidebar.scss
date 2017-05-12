@@ -6,17 +6,17 @@
 }
 
 .sidebar__header {
-  position: static;
-  top: 0;
-  z-index: 1;
+  position: relative;
+  overflow: hidden;
   background-color: $react-timelines-sidebar-background-color;
 }
 
-.sidebar__header {
-  position: relative;
-  margin-left: ($react-timelines-sidebar-width - $react-timelines-sidebar-closed-offset);
+.sidebar__header.is-sticky {
+  position: fixed;
+  top: 0;
+  z-index: 1;
   direction: rtl;
-  overflow: hidden;
+  margin-left: ($react-timelines-sidebar-width - $react-timelines-sidebar-closed-offset);
 
   @media (min-width: $react-timelines-auto-open-breakpoint) {
     margin-left: 0;
@@ -24,14 +24,9 @@
   }
 }
 
-.layout.is-open .sidebar__header {
+.layout.is-open .sidebar__header.is-sticky {
   margin-left: 0;
   direction: ltr;
-}
-
-
-.sidebar__header.is-sticky {
-  position: fixed;
 }
 
 .sidebar__body {}
