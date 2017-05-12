@@ -25,7 +25,7 @@ class Header extends PureComponent {
       isSticky,
       width,
       height,
-      visualWidth,
+      viewportWidth,
       timebar: { rows }
     } = this.props
     return (
@@ -37,7 +37,7 @@ class Header extends PureComponent {
       >
         <div
           className={`timeline__header ${isSticky ? 'is-sticky' : ''}`}
-          style={isSticky ? { width: visualWidth, height } : { height }}
+          style={isSticky ? { width: viewportWidth, height } : { height }}
         >
           <div className="timeline__header-scroll" ref={(scroll) => { this.scroll = scroll }}>
             <div ref={(timebar) => { this.timebar = timebar }} style={{ width }}>
@@ -59,7 +59,7 @@ Header.propTypes = {
   isSticky: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
-  visualWidth: PropTypes.number,
+  viewportWidth: PropTypes.number,
   scrollLeft: PropTypes.number,
   setHeight: PropTypes.func
 }

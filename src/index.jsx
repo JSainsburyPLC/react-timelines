@@ -19,7 +19,7 @@ class Container extends Component {
       headerHeight: 0,
       markerOffset: 0,
       sidebarWidth: 0,
-      timelineVisualWidth: 0
+      timelineViewportWidth: 0
     }
 
     this.handleScroll = this.handleScroll.bind(this)
@@ -27,7 +27,7 @@ class Container extends Component {
     this.setHeaderHeight = this.setHeaderHeight.bind(this)
     this.getSidebarWidth = this.getSidebarWidth.bind(this)
     this.setMarkerOffset = this.setMarkerOffset.bind(this)
-    this.setTimelineVisualWidth = this.setTimelineVisualWidth.bind(this)
+    this.setTimelineViewportWidth = this.setTimelineViewportWidth.bind(this)
   }
 
   componentDidMount() {
@@ -71,8 +71,8 @@ class Container extends Component {
     this.setState({ markerOffset })
   }
 
-  setTimelineVisualWidth(timelineVisualWidth) {
-    this.setState({ timelineVisualWidth })
+  setTimelineViewportWidth(timelineViewportWidth) {
+    this.setState({ timelineViewportWidth })
   }
 
   handleScroll() {
@@ -103,7 +103,7 @@ class Container extends Component {
       scale,
       stickyHeader
     } = this.props
-    const { time, isHeaderSticky, headerHeight, sidebarWidth, timelineVisualWidth } = this.state
+    const { time, isHeaderSticky, headerHeight, sidebarWidth, timelineViewportWidth } = this.state
     return (
       <div className="react-timelines">
         <Controls
@@ -134,11 +134,11 @@ class Container extends Component {
               tracks={tracks}
               setMarkerOffset={this.setMarkerOffset}
               setHeaderHeight={this.setHeaderHeight}
-              setTimelineVisualWidth={this.setTimelineVisualWidth}
+              setTimelineViewportWidth={this.setTimelineViewportWidth}
               isHeaderSticky={isHeaderSticky}
               stickyHeader={stickyHeader}
               headerHeight={headerHeight}
-              timelineVisualWidth={timelineVisualWidth}
+              timelineViewportWidth={timelineViewportWidth}
               isOpen={isOpen}
             />
           </div>

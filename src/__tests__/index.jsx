@@ -150,11 +150,11 @@ describe('<ReactTimeline />', () => {
 
       const props = createProps({ stickyHeader: true, isOpen: false })
       const wrapper = mount(<ReactTimeline {...props} />)
-      expect(wrapper.state('timelineVisualWidth')).toBe(0)
+      expect(wrapper.state('timelineViewportWidth')).toBe(0)
       wrapper.instance().getSidebarWidth = jest.fn()
 
-      wrapper.instance().setTimelineVisualWidth(200)
-      expect(wrapper.state('timelineVisualWidth')).toBe(200)
+      wrapper.instance().setTimelineViewportWidth(200)
+      expect(wrapper.state('timelineViewportWidth')).toBe(200)
 
       wrapper.setState({ isOpen: false })
     })

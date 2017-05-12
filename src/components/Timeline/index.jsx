@@ -36,7 +36,7 @@ class Timeline extends Component {
     if (this.props.stickyHeader) {
       addListener('resize', this.handleResize)
       this.props.setMarkerOffset(getNumericPropertyValue(this.timeline, 'padding-top'))
-      this.props.setTimelineVisualWidth(this.timeline.offsetWidth)
+      this.props.setTimelineViewportWidth(this.timeline.offsetWidth)
     }
   }
 
@@ -48,9 +48,9 @@ class Timeline extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isOpen, setTimelineVisualWidth, stickyHeader } = this.props
+    const { isOpen, setTimelineViewportWidth, stickyHeader } = this.props
     if (stickyHeader && prevProps.isOpen !== isOpen) {
-      setTimelineVisualWidth(this.timeline.offsetWidth)
+      setTimelineViewportWidth(this.timeline.offsetWidth)
     }
   }
 
@@ -81,7 +81,7 @@ class Timeline extends Component {
 
   handleResize() {
     raf(() => {
-      this.props.setTimelineVisualWidth(this.timeline.offsetWidth)
+      this.props.setTimelineViewportWidth(this.timeline.offsetWidth)
     })
   }
 
@@ -93,7 +93,7 @@ class Timeline extends Component {
       tracks,
       isHeaderSticky,
       headerHeight,
-      timelineVisualWidth,
+      timelineViewportWidth,
       setHeaderHeight
     } = this.props
     const {
@@ -122,7 +122,7 @@ class Timeline extends Component {
               width={time.timelineWidth}
               isSticky={isHeaderSticky}
               height={headerHeight}
-              visualWidth={timelineVisualWidth}
+              viewportWidth={timelineViewportWidth}
               scrollLeft={scrollLeft}
               setHeight={setHeaderHeight}
             />
@@ -141,11 +141,11 @@ Timeline.propTypes = {
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   setHeaderHeight: PropTypes.func.isRequired,
   setMarkerOffset: PropTypes.func.isRequired,
-  setTimelineVisualWidth: PropTypes.func.isRequired,
+  setTimelineViewportWidth: PropTypes.func.isRequired,
   isHeaderSticky: PropTypes.bool,
   stickyHeader: PropTypes.bool,
   headerHeight: PropTypes.number,
-  timelineVisualWidth: PropTypes.number,
+  timelineViewportWidth: PropTypes.number,
   isOpen: PropTypes.bool
 }
 
