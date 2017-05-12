@@ -11,6 +11,8 @@ import { getDayMonth } from '../../utils/formatDate'
 import raf from '../../utils/raf'
 import { addListener, removeListener } from '../../utils/events'
 
+import { propTypeTimebar } from '../../propTypes'
+
 class Timeline extends Component {
   constructor(props) {
     super(props)
@@ -134,7 +136,7 @@ class Timeline extends Component {
 Timeline.propTypes = {
   now: PropTypes.instanceOf(Date),
   time: PropTypes.shape({}).isRequired,
-  timebar: PropTypes.shape({}).isRequired,
+  timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   getHeaderHeight: PropTypes.func.isRequired,
   getMarkerOffset: PropTypes.func.isRequired,
