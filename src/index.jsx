@@ -55,6 +55,7 @@ class Container extends Component {
           timebar={timebar}
           toggleTrackOpen={toggleTrackOpen}
           time={this.state.time}
+          isOpen={isOpen}
         />
       </div>
     )

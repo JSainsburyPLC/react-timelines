@@ -5,7 +5,12 @@ import Header from './Header'
 import Body from './Body'
 import { propTypeTimebar } from '../../propTypes'
 
-const Sidebar = ({ timebar, tracks, toggleTrackOpen, isHeaderSticky, headerHeight, width }) =>
+const Sidebar = ({
+  timebar,
+  tracks,
+  toggleTrackOpen,
+  sticky: { isHeaderSticky, headerHeight, width } = {}
+}) =>
   <div className="sidebar">
     <Header
       timebar={timebar}
@@ -20,9 +25,7 @@ Sidebar.propTypes = {
   timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   toggleTrackOpen: PropTypes.func,
-  isHeaderSticky: PropTypes.bool,
-  headerHeight: PropTypes.number,
-  width: PropTypes.number
+  sticky: PropTypes.shape({})
 }
 
 export default Sidebar

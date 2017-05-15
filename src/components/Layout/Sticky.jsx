@@ -87,10 +87,7 @@ class StickyLayout extends Component {
             timebar={timebar}
             tracks={tracks}
             toggleTrackOpen={toggleTrackOpen}
-            // BUNDLE
-            isHeaderSticky={isHeaderSticky}
-            headerHeight={headerHeight}
-            width={sidebarWidth}
+            sticky={{ isHeaderSticky, headerHeight, width: sidebarWidth }}
           />
         </div>
         <div className="layout__main" ref={(layoutMain) => { this.layoutMain = layoutMain }}>
@@ -99,15 +96,16 @@ class StickyLayout extends Component {
             time={time}
             timebar={timebar}
             tracks={tracks}
-            // BUNDLE
-            enableStickyHeader
-            isHeaderSticky={isHeaderSticky}
-            setMarkerOffset={this.setMarkerOffset}
-            setHeaderHeight={this.setHeaderHeight}
-            setViewportWidth={this.setTimelineViewportWidth}
-            headerHeight={headerHeight}
-            viewportWidth={timelineViewportWidth}
             isOpen={isOpen}
+            sticky={{
+              enableStickyHeader: true,
+              isHeaderSticky,
+              setMarkerOffset: this.setMarkerOffset,
+              setHeaderHeight: this.setHeaderHeight,
+              setViewportWidth: this.setTimelineViewportWidth,
+              viewportWidth: timelineViewportWidth,
+              headerHeight
+            }}
           />
         </div>
       </div>

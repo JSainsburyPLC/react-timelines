@@ -33,29 +33,29 @@ class Timeline extends Component {
   }
 
   componentDidMount() {
-    if (this.props.enableStickyHeader) {
+    if (this.props.sticky) {
       addListener('resize', this.handleResize)
-      this.props.setMarkerOffset(getNumericPropertyValue(this.timeline, 'padding-top'))
-      this.props.setViewportWidth(this.timeline.offsetWidth)
+      this.props.sticky.setMarkerOffset(getNumericPropertyValue(this.timeline, 'padding-top'))
+      this.props.sticky.setViewportWidth(this.timeline.offsetWidth)
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.isHeaderSticky !== nextProps.isHeaderSticky) {
+    if (this.props.sticky.isHeaderSticky !== nextProps.sticky.isHeaderSticky) {
       const scrollLeft = this.timeline.scrollLeft
       this.setState({ scrollLeft })
     }
   }
 
   componentDidUpdate(prevProps) {
-    const { isOpen, setViewportWidth, enableStickyHeader } = this.props
-    if (enableStickyHeader && prevProps.isOpen !== isOpen) {
-      setViewportWidth(this.timeline.offsetWidth)
+    const { sticky, isOpen } = this.props
+    if (sticky && prevProps.isOpen !== isOpen) {
+      sticky.setViewportWidth(this.timeline.offsetWidth)
     }
   }
 
   componentWillUnmount() {
-    if (this.props.enableStickyHeader) {
+    if (this.props.sticky) {
       removeListener('resize', this.handleResize)
     }
   }
@@ -81,7 +81,7 @@ class Timeline extends Component {
 
   handleResize() {
     raf(() => {
-      this.props.setViewportWidth(this.timeline.offsetWidth)
+      this.props.sticky.setViewportWidth(this.timeline.offsetWidth)
     })
   }
 
@@ -91,11 +91,7 @@ class Timeline extends Component {
       time,
       timebar,
       tracks,
-      isHeaderSticky,
-      headerHeight,
-      viewportWidth,
-      setHeaderHeight,
-      enableStickyHeader
+      sticky
     } = this.props
     const {
       pointerX,
@@ -103,6 +99,7 @@ class Timeline extends Component {
       pointerHighlighted,
       scrollLeft
     } = this.state
+    const { isHeaderSticky, setHeaderHeight, headerHeight, viewportWidth } = sticky || {}
     return (
       <div className="timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={isHeaderSticky && this.handleScroll}>
         <div className="timeline__content" style={{ width: `${time.timelineWidth}px` }}>
@@ -121,7 +118,7 @@ class Timeline extends Component {
               onEnter={this.handleMouseEnter}
               onLeave={this.handleMouseLeave}
               width={time.timelineWidth}
-              enableStickyHeader={enableStickyHeader}
+              enableStickyHeader={!!sticky}
               isSticky={isHeaderSticky}
               height={headerHeight}
               viewportWidth={viewportWidth}
@@ -141,14 +138,15 @@ Timeline.propTypes = {
   time: PropTypes.shape({}).isRequired,
   timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  setHeaderHeight: PropTypes.func,
-  setMarkerOffset: PropTypes.func,
-  setViewportWidth: PropTypes.func,
-  isHeaderSticky: PropTypes.bool,
-  enableStickyHeader: PropTypes.bool,
-  headerHeight: PropTypes.number,
-  viewportWidth: PropTypes.number,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
+  sticky: PropTypes.shape({
+    isHeaderSticky: PropTypes.bool,
+    setMarkerOffset: PropTypes.func,
+    setHeaderHeight: PropTypes.func,
+    setViewportWidth: PropTypes.func,
+    headerHeight: PropTypes.number,
+    viewportWidth: PropTypes.number
+  })
 }
 
 export default Timeline
