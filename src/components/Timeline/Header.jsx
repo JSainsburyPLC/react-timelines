@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import Timebar from './Timebar'
-import { propTypeTimebar } from '../../propTypes'
+import { propTypeTimebar, propTypeSticky } from '../../propTypes'
 
 class Header extends PureComponent {
   componentDidMount() {
@@ -31,11 +31,10 @@ class Header extends PureComponent {
       onMove,
       onEnter,
       onLeave,
-      sticky,
       width,
-      timebar: { rows }
+      timebar: { rows },
+      sticky: { isHeaderSticky, headerHeight, viewportWidth } = {}
     } = this.props
-    const { isHeaderSticky, headerHeight, viewportWidth } = sticky || {}
     return (
       <div
         style={isHeaderSticky ? { paddingTop: headerHeight } : {}}
@@ -68,13 +67,7 @@ Header.propTypes = {
   onEnter: PropTypes.func.isRequired,
   onLeave: PropTypes.func.isRequired,
   width: PropTypes.number,
-  sticky: PropTypes.shape({
-    isHeaderSticky: PropTypes.bool,
-    setHeaderHeight: PropTypes.func,
-    headerHeight: PropTypes.number,
-    viewportWidth: PropTypes.number,
-    scrollLeft: PropTypes.number
-  })
+  sticky: propTypeSticky
 }
 
 export default Header

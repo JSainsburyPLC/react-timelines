@@ -12,7 +12,7 @@ import raf from '../../utils/raf'
 import { addListener, removeListener } from '../../utils/events'
 import getNumericPropertyValue from '../../utils/getNumericPropertyValue'
 
-import { propTypeTimebar } from '../../propTypes'
+import { propTypeTimebar, propTypeSticky } from '../../propTypes'
 
 class Timeline extends Component {
   constructor(props) {
@@ -135,14 +135,7 @@ Timeline.propTypes = {
   timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   isOpen: PropTypes.bool,
-  sticky: PropTypes.shape({
-    isHeaderSticky: PropTypes.bool,
-    setMarkerOffset: PropTypes.func,
-    setHeaderHeight: PropTypes.func,
-    setViewportWidth: PropTypes.func,
-    viewportWidth: PropTypes.number,
-    headerHeight: PropTypes.number
-  })
+  sticky: propTypeSticky
 }
 
 export default Timeline
