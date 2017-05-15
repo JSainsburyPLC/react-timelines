@@ -6,14 +6,21 @@ import { propTypeTimebar } from '../../propTypes'
 
 class Header extends PureComponent {
   componentDidMount() {
-    if (this.props.enableStickyHeader) {
-      this.props.setHeight(this.timebar.offsetHeight)
+    const { sticky } = this.props
+    if (sticky) {
+      sticky.setHeaderHeight(this.timebar.offsetHeight)
     }
   }
 
   componentDidUpdate(prevProps) {
-    const { scrollLeft, isSticky } = this.props
-    if (scrollLeft !== prevProps.scrollLeft || isSticky !== prevProps.isSticky) {
+    const { sticky } = this.props
+    if (!sticky) {
+      return
+    }
+    const { scrollLeft, isHeaderSticky } = sticky
+    const prevScrollLeft = prevProps.sticky.scrollLeft
+    const prevIsHeaderSticky = prevProps.sticky.isHeaderSticky
+    if (scrollLeft !== prevScrollLeft || isHeaderSticky !== prevIsHeaderSticky) {
       this.scroll.scrollLeft = scrollLeft
     }
   }
@@ -24,25 +31,27 @@ class Header extends PureComponent {
       onMove,
       onEnter,
       onLeave,
-      isSticky,
+      sticky,
       width,
-      height,
-      viewportWidth,
       timebar: { rows }
     } = this.props
+    const { isHeaderSticky, headerHeight, viewportWidth } = sticky || {}
     return (
       <div
-        style={isSticky ? { paddingTop: height } : {}}
+        style={isHeaderSticky ? { paddingTop: headerHeight } : {}}
         onMouseMove={onMove}
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
       >
         <div
-          className={`timeline__header ${isSticky ? 'is-sticky' : ''}`}
-          style={isSticky ? { width: viewportWidth, height } : { height }}
+          className={`timeline__header ${isHeaderSticky ? 'is-sticky' : ''}`}
+          style={isHeaderSticky ? { width: viewportWidth, headerHeight } : { headerHeight }}
         >
           <div className="timeline__header-scroll" ref={(scroll) => { this.scroll = scroll }}>
-            <div ref={(timebar) => { this.timebar = timebar }} style={{ width }}>
+            <div
+              ref={(timebar) => { this.timebar = timebar }}
+              style={isHeaderSticky ? { width } : {}}
+            >
               <Timebar time={time} rows={rows} />
             </div>
           </div>
@@ -58,13 +67,14 @@ Header.propTypes = {
   onMove: PropTypes.func.isRequired,
   onEnter: PropTypes.func.isRequired,
   onLeave: PropTypes.func.isRequired,
-  isSticky: PropTypes.bool,
   width: PropTypes.number,
-  height: PropTypes.number,
-  viewportWidth: PropTypes.number,
-  scrollLeft: PropTypes.number,
-  setHeight: PropTypes.func,
-  enableStickyHeader: PropTypes.bool
+  sticky: PropTypes.shape({
+    isHeaderSticky: PropTypes.bool,
+    setHeaderHeight: PropTypes.func,
+    headerHeight: PropTypes.number,
+    viewportWidth: PropTypes.number,
+    scrollLeft: PropTypes.number
+  })
 }
 
 export default Header

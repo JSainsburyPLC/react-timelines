@@ -98,7 +98,6 @@ class StickyLayout extends Component {
             tracks={tracks}
             isOpen={isOpen}
             sticky={{
-              enableStickyHeader: true,
               isHeaderSticky,
               setMarkerOffset: this.setMarkerOffset,
               setHeaderHeight: this.setHeaderHeight,

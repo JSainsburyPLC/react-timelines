@@ -41,7 +41,9 @@ class Timeline extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.sticky.isHeaderSticky !== nextProps.sticky.isHeaderSticky) {
+    const { sticky } = this.props
+    const nextSticky = nextProps.sticky
+    if ((sticky && sticky.isHeaderSticky) !== (nextSticky && nextSticky.isHeaderSticky)) {
       const scrollLeft = this.timeline.scrollLeft
       this.setState({ scrollLeft })
     }
@@ -99,9 +101,8 @@ class Timeline extends Component {
       pointerHighlighted,
       scrollLeft
     } = this.state
-    const { isHeaderSticky, setHeaderHeight, headerHeight, viewportWidth } = sticky || {}
     return (
-      <div className="timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={isHeaderSticky && this.handleScroll}>
+      <div className="timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={sticky && sticky.isHeaderSticky && this.handleScroll}>
         <div className="timeline__content" style={{ width: `${time.timelineWidth}px` }}>
           {now && <NowMarker now={now} visible time={time} />}
           <PointerMarker
@@ -118,12 +119,7 @@ class Timeline extends Component {
               onEnter={this.handleMouseEnter}
               onLeave={this.handleMouseLeave}
               width={time.timelineWidth}
-              enableStickyHeader={!!sticky}
-              isSticky={isHeaderSticky}
-              height={headerHeight}
-              viewportWidth={viewportWidth}
-              scrollLeft={scrollLeft}
-              setHeight={setHeaderHeight}
+              sticky={sticky ? { ...sticky, scrollLeft } : undefined}
             />
           </div>
           <Body time={time} tracks={tracks} />
@@ -144,8 +140,8 @@ Timeline.propTypes = {
     setMarkerOffset: PropTypes.func,
     setHeaderHeight: PropTypes.func,
     setViewportWidth: PropTypes.func,
-    headerHeight: PropTypes.number,
-    viewportWidth: PropTypes.number
+    viewportWidth: PropTypes.number,
+    headerHeight: PropTypes.number
   })
 }
 
