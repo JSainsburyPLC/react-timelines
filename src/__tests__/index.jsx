@@ -4,6 +4,7 @@ import { shallow } from 'enzyme'
 import ReactTimeline from '../'
 import Controls from '../components/Controls'
 import Layout from '../components/Layout'
+import StickyLayout from '../components/Layout/Sticky'
 
 const defaultStart = new Date('2010-01-01')
 const defaultEnd = new Date('2030-01-01')
@@ -19,7 +20,7 @@ const createScaleProps = ({
 const createProps = ({
   now = new Date(),
   scale = createScaleProps(),
-  isOpen = false,
+  isOpen = undefined,
   timebar = { rows: [] },
   tracks = [],
   toggleOpen = jest.fn(),
@@ -39,11 +40,24 @@ const createProps = ({
 })
 
 describe('<ReactTimeline />', () => {
-  it('renders <Controls /> and <Layout />', () => {
+  it('renders <Controls />', () => {
     const props = createProps()
     const wrapper = shallow(<ReactTimeline {...props} />)
     expect(wrapper.find(Controls).exists()).toBe(true)
+  })
+
+  it('renders <StickyLayout /> when sticky header is enabled', () => {
+    const props = createProps({ enableStickyHeader: true })
+    const wrapper = shallow(<ReactTimeline {...props} />)
+    expect(wrapper.find(StickyLayout).exists()).toBe(true)
+    expect(wrapper.find(Layout).exists()).toBe(false)
+  })
+
+  it('renders <Layout /> when sticky header is not enabled', () => {
+    const props = createProps({ enableStickyHeader: false })
+    const wrapper = shallow(<ReactTimeline {...props} />)
     expect(wrapper.find(Layout).exists()).toBe(true)
+    expect(wrapper.find(StickyLayout).exists()).toBe(false)
   })
 
   it('re-renders when zoom changes', () => {
@@ -58,5 +72,11 @@ describe('<ReactTimeline />', () => {
 
     wrapper.setProps(nextProps)
     expect(wrapper.state('time').zoom).toBe(2)
+  })
+
+  it('renders the sidebar open by default', () => {
+    const props = createProps()
+    const wrapper = shallow(<ReactTimeline {...props} />)
+    expect(wrapper.find(Controls).prop('isOpen')).toBe(true)
   })
 })

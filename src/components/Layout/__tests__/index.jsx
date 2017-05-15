@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Layout from '../Sticky'
+import Layout from '../'
 import Sidebar from '../../Sidebar'
 import Timeline from '../../Timeline'
 
