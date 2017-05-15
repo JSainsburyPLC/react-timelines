@@ -25,3 +25,8 @@
   width: calc(100% - #{$react-timelines-sidebar-width});
   vertical-align: top;
 }
+
+.layout__timeline {
+  overflow-x: scroll;
+  padding-top: $react-timelines-marker-label-height;
+}

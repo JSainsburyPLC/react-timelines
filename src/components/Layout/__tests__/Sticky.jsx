@@ -36,12 +36,6 @@ describe('<StickyLayout />', () => {
     expect(wrapper.find(Timeline).exists()).toBe(true)
   })
 
-  it('renders <Sidebar /> in open state by default', () => {
-    const props = { ...createProps(), isOpen: undefined }
-    const wrapper = shallow(<StickyLayout {...props} />)
-    expect(wrapper.find('.layout').prop('className')).toMatch('is-open')
-  })
-
   it('renders <Sidebar /> in an open state', () => {
     const props = createProps({ isOpen: true })
     const wrapper = shallow(<StickyLayout {...props} />)
@@ -55,7 +49,7 @@ describe('<StickyLayout />', () => {
   })
 
   describe('sticky header', () => {
-    it('is sticky when top of window is within the timeline', () => {
+    it('becomes sticky when the window is within the timeline', () => {
       const listeners = {}
       addListener.mockImplementation((evt, fun) => { listeners[evt] = fun })
       removeListener.mockImplementation(jest.fn())
@@ -73,7 +67,7 @@ describe('<StickyLayout />', () => {
 
       wrapper.instance().setMarkerOffset(40)
       wrapper.instance().setHeaderHeight(50)
-      wrapper.instance().layoutMain.getBoundingClientRect = () => ({
+      wrapper.instance().timeline.getBoundingClientRect = () => ({
         top: -60,
         bottom: 100
       })
@@ -82,7 +76,7 @@ describe('<StickyLayout />', () => {
         isHeaderSticky: true
       })
 
-      wrapper.instance().layoutMain.getBoundingClientRect = () => ({
+      wrapper.instance().timeline.getBoundingClientRect = () => ({
         top: 10,
         bottom: 100
       })
@@ -91,7 +85,7 @@ describe('<StickyLayout />', () => {
         isHeaderSticky: false
       })
 
-      wrapper.instance().layoutMain.getBoundingClientRect = () => ({
+      wrapper.instance().timeline.getBoundingClientRect = () => ({
         top: -60,
         bottom: 20
       })
@@ -102,23 +96,6 @@ describe('<StickyLayout />', () => {
 
       wrapper.unmount()
       expect(removeListener).toBeCalled()
-    })
-
-
-    it('ensures the width of the header and sidebar is correct', () => {
-      computedStyle.mockImplementation(() => ({
-        getPropertyValue: jest.fn()
-      }))
-
-      const props = createProps({ isOpen: false })
-      const wrapper = mount(<StickyLayout {...props} />)
-      expect(wrapper.state('timelineViewportWidth')).toBe(0)
-      wrapper.instance().setSidebarWidth = jest.fn()
-
-      wrapper.instance().setTimelineViewportWidth(200)
-      expect(wrapper.state('timelineViewportWidth')).toBe(200)
-
-      wrapper.setState({ isOpen: false })
     })
   })
 })

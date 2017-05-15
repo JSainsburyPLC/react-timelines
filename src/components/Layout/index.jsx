@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Sidebar from '../Sidebar'
 import Timeline from '../Timeline'
 
-const Layout = ({ isOpen = true, tracks, now, time, timebar, toggleTrackOpen }) => (
+const Layout = ({ isOpen, tracks, now, time, timebar, toggleTrackOpen }) => (
   <div className={`layout ${isOpen ? 'is-open' : ''}`}>
     <div className="layout__side">
       <Sidebar
@@ -14,12 +14,14 @@ const Layout = ({ isOpen = true, tracks, now, time, timebar, toggleTrackOpen }) 
       />
     </div>
     <div className="layout__main">
-      <Timeline
-        now={now}
-        time={time}
-        timebar={timebar}
-        tracks={tracks}
-      />
+      <div className="layout__timeline">
+        <Timeline
+          now={now}
+          time={time}
+          timebar={timebar}
+          tracks={tracks}
+        />
+      </div>
     </div>
   </div>
 )

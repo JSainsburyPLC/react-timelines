@@ -25,12 +25,6 @@ describe('<Layout />', () => {
     expect(wrapper.find(Timeline).exists()).toBe(true)
   })
 
-  it('renders <Sidebar /> in open state by default', () => {
-    const props = { ...createProps(), isOpen: undefined }
-    const wrapper = shallow(<Layout {...props} />)
-    expect(wrapper.find('.layout').prop('className')).toMatch('is-open')
-  })
-
   it('renders <Sidebar /> in an open state', () => {
     const props = createProps({ isOpen: true })
     const wrapper = shallow(<Layout {...props} />)
