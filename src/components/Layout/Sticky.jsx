@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-
 import Sidebar from '../Sidebar'
 import Timeline from '../Timeline'
-
+import propTypes from './propTypes'
 import { addListener, removeListener } from '../../utils/events'
 import raf from '../../utils/raf'
 import getNumericPropertyValue from '../../utils/getNumericPropertyValue'
@@ -20,8 +18,8 @@ class StickyLayout extends PureComponent {
       scrollLeft: 0
     }
 
-    this.handleXScroll = this.handleXScroll.bind(this)
-    this.handleYScroll = this.handleYScroll.bind(this)
+    this.handleScrollX = this.handleScrollX.bind(this)
+    this.handleScrollY = this.handleScrollY.bind(this)
     this.handleResize = this.handleResize.bind(this)
     this.setHeaderHeight = this.setHeaderHeight.bind(this)
     this.setSidebarWidth = this.setSidebarWidth.bind(this)
@@ -31,7 +29,7 @@ class StickyLayout extends PureComponent {
   }
 
   componentDidMount() {
-    addListener('scroll', this.handleYScroll)
+    addListener('scroll', this.handleScrollY)
     addListener('resize', this.handleResize)
     this.setSidebarWidth()
     this.setMarkerOffset(getNumericPropertyValue(this.timeline, 'padding-top'))
@@ -50,7 +48,7 @@ class StickyLayout extends PureComponent {
   }
 
   componentWillUnmount() {
-    removeListener('scroll', this.handleYScroll)
+    removeListener('scroll', this.handleScrollY)
     removeListener('resize', this.handleResize)
   }
 
@@ -77,7 +75,7 @@ class StickyLayout extends PureComponent {
     this.setState({ scrollLeft })
   }
 
-  handleYScroll() {
+  handleScrollY() {
     raf(() => {
       const { markerOffset, headerHeight } = this.state
       const { top, bottom } = this.timeline.getBoundingClientRect()
@@ -86,7 +84,7 @@ class StickyLayout extends PureComponent {
     })
   }
 
-  handleXScroll() {
+  handleScrollX() {
     raf(this.setTimelineHeaderScroll)
   }
 
@@ -117,7 +115,7 @@ class StickyLayout extends PureComponent {
           />
         </div>
         <div className="layout__main">
-          <div className="layout__timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={isHeaderSticky && this.handleXScroll}>
+          <div className="layout__timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={isHeaderSticky && this.handleScrollX}>
             <Timeline
               now={now}
               time={time}
@@ -138,13 +136,6 @@ class StickyLayout extends PureComponent {
   }
 }
 
-StickyLayout.propTypes = {
-  timebar: PropTypes.shape({}).isRequired,
-  time: PropTypes.shape({}).isRequired,
-  tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  now: PropTypes.instanceOf(Date),
-  isOpen: PropTypes.bool,
-  toggleTrackOpen: PropTypes.func
-}
+StickyLayout.propTypes = propTypes
 
 export default StickyLayout
