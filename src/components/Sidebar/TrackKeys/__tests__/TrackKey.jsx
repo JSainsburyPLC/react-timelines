@@ -5,6 +5,12 @@ import TrackKey from '../TrackKey'
 import TrackKeys from '../'
 
 describe('<TrackKey />', () => {
+  it('renders a link if passed', () => {
+    const track = { link: 'test-url', title: 'test-title' }
+    const wrapper = shallow(<TrackKey track={track} />)
+    expect(wrapper.find('[href="test-url"]').text()).toBe('test-title')
+  })
+
   describe('toggle button', () => {
     const getToggleButton = node => node.find('.track-key__toggle')
 

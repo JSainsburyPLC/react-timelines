@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import TrackKeys from './'
 
 const TrackKey = ({ track, toggleOpen }) => {
-  const { title, tracks, isOpen } = track
+  const { title, tracks, isOpen, link } = track
   const isExpandable = isOpen !== undefined
   return (
     <div className="track-key">
@@ -17,7 +17,7 @@ const TrackKey = ({ track, toggleOpen }) => {
             { isOpen ? 'Close' : 'Open' }
           </button>
         }
-        { title }
+        { link ? <a href={link}>{title}</a> : title }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />
