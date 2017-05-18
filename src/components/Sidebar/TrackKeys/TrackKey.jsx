@@ -17,7 +17,7 @@ const TrackKey = ({ track, toggleOpen }) => {
             { isOpen ? 'Close' : 'Open' }
           </button>
         }
-        { link ? <a href={link}>{title}</a> : title }
+        { link ? <a className="track-key__link" href={link}>{title}</a> : title }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />
