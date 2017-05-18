@@ -27,6 +27,6 @@
 }
 
 .layout__timeline {
-  overflow-x: scroll;
+  overflow-x: auto;
   padding-top: $react-timelines-marker-label-height;
 }
