@@ -22,7 +22,6 @@ class Container extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
     const {
       isOpen = true,
       tracks,
