@@ -73,7 +73,7 @@ describe('<StickyLayout />', () => {
       })
       listeners.scroll()
       expect(wrapper.state()).toMatchObject({
-        isHeaderSticky: true
+        isSticky: true
       })
 
       wrapper.instance().timeline.getBoundingClientRect = () => ({
@@ -82,7 +82,7 @@ describe('<StickyLayout />', () => {
       })
       listeners.scroll()
       expect(wrapper.state()).toMatchObject({
-        isHeaderSticky: false
+        isSticky: false
       })
 
       wrapper.instance().timeline.getBoundingClientRect = () => ({
@@ -91,7 +91,7 @@ describe('<StickyLayout />', () => {
       })
       listeners.scroll()
       expect(wrapper.state()).toMatchObject({
-        isHeaderSticky: false
+        isSticky: false
       })
 
       wrapper.unmount()

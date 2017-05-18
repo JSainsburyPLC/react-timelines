@@ -11,7 +11,7 @@ export const propTypeTimebar = PropTypes.shape({
 })
 
 export const propTypeSticky = PropTypes.shape({
-  isHeaderSticky: PropTypes.bool,
+  isSticky: PropTypes.bool,
   setHeaderHeight: PropTypes.func,
   viewportWidth: PropTypes.number,
   headerHeight: PropTypes.number,

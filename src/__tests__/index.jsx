@@ -26,7 +26,7 @@ const createProps = ({
   toggleOpen = jest.fn(),
   zoomIn = jest.fn(),
   zoomOut = jest.fn(),
-  enableStickyHeader = false
+  enableSticky = false
 } = {}) => ({
   now,
   scale,
@@ -36,7 +36,7 @@ const createProps = ({
   toggleOpen,
   zoomIn,
   zoomOut,
-  enableStickyHeader
+  enableSticky
 })
 
 describe('<ReactTimeline />', () => {
@@ -47,14 +47,14 @@ describe('<ReactTimeline />', () => {
   })
 
   it('renders <StickyLayout /> when sticky header is enabled', () => {
-    const props = createProps({ enableStickyHeader: true })
+    const props = createProps({ enableSticky: true })
     const wrapper = shallow(<ReactTimeline {...props} />)
     expect(wrapper.find(StickyLayout).exists()).toBe(true)
     expect(wrapper.find(Layout).exists()).toBe(false)
   })
 
   it('renders <Layout /> when sticky header is not enabled', () => {
-    const props = createProps({ enableStickyHeader: false })
+    const props = createProps({ enableSticky: false })
     const wrapper = shallow(<ReactTimeline {...props} />)
     expect(wrapper.find(Layout).exists()).toBe(true)
     expect(wrapper.find(StickyLayout).exists()).toBe(false)

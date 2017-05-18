@@ -10,7 +10,7 @@ class StickyLayout extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      isHeaderSticky: false,
+      isSticky: false,
       headerHeight: 0,
       markerOffset: 0,
       sidebarWidth: 0,
@@ -41,7 +41,7 @@ class StickyLayout extends PureComponent {
       this.setSidebarWidth()
     }
 
-    if (this.state.isHeaderSticky && !prevState.isHeaderSticky) {
+    if (this.state.isSticky && !prevState.isSticky) {
       this.setTimelineHeaderScroll()
       this.setTimelineViewportWidth(this.timeline.offsetWidth)
     }
@@ -79,8 +79,8 @@ class StickyLayout extends PureComponent {
     raf(() => {
       const { markerOffset, headerHeight } = this.state
       const { top, bottom } = this.timeline.getBoundingClientRect()
-      const isHeaderSticky = (top <= -markerOffset) && (bottom >= headerHeight)
-      this.setState(() => ({ isHeaderSticky }))
+      const isSticky = (top <= -markerOffset) && (bottom >= headerHeight)
+      this.setState(() => ({ isSticky }))
     })
   }
 
@@ -98,7 +98,7 @@ class StickyLayout extends PureComponent {
   render() {
     const { isOpen, tracks, now, time, timebar, toggleTrackOpen } = this.props
     const {
-      isHeaderSticky,
+      isSticky,
       headerHeight,
       sidebarWidth,
       timelineViewportWidth,
@@ -111,18 +111,18 @@ class StickyLayout extends PureComponent {
             timebar={timebar}
             tracks={tracks}
             toggleTrackOpen={toggleTrackOpen}
-            sticky={{ isHeaderSticky, headerHeight, width: sidebarWidth }}
+            sticky={{ isSticky, headerHeight, width: sidebarWidth }}
           />
         </div>
         <div className="layout__main">
-          <div className="layout__timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={isHeaderSticky && this.handleScrollX}>
+          <div className="layout__timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={isSticky && this.handleScrollX}>
             <Timeline
               now={now}
               time={time}
               timebar={timebar}
               tracks={tracks}
               sticky={{
-                isHeaderSticky,
+                isSticky,
                 setHeaderHeight: this.setHeaderHeight,
                 viewportWidth: timelineViewportWidth,
                 headerHeight,

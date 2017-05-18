@@ -5,13 +5,13 @@ import Header from '../Header'
 import Timebar from '../Timebar'
 
 const createStickyProp = ({
-  isHeaderSticky = false,
+  isSticky = false,
   setHeaderHeight = jest.fn(),
   headerHeight = 0,
   viewportWidth = 0,
   scrollLeft = 0
 } = {}) => ({
-  isHeaderSticky,
+  isSticky,
   setHeaderHeight,
   headerHeight,
   viewportWidth,
@@ -78,18 +78,18 @@ describe('<Header />', () => {
   })
 
   it('ensures the scroll left position is correct when the header becomes sticky', () => {
-    let sticky = createStickyProp({ isHeaderSticky: false })
+    let sticky = createStickyProp({ isSticky: false })
     const props = createProps({ sticky })
     const wrapper = mount(<Header {...props} />)
     expect(wrapper.find('.timeline__header-scroll').getNode().scrollLeft).toBe(0)
 
-    sticky = createStickyProp({ isHeaderSticky: true })
+    sticky = createStickyProp({ isSticky: true })
     const nextProps = createProps({ sticky })
     wrapper.setProps(nextProps)
     expect(wrapper.find('.timeline__header-scroll').getNode().scrollLeft).toBe(0)
   })
 
-  it('does not update the scrollLeft position if the component updates and the scrollLeft and isHeaderSticky props have not changed', () => {
+  it('does not update the scrollLeft position if the component updates and the scrollLeft and isSticky props have not changed', () => {
     const sticky = createStickyProp()
     const props = createProps({ sticky })
     const wrapper = mount(<Header {...props} />)
@@ -108,22 +108,22 @@ describe('<Header />', () => {
     expect(setHeaderHeight).toBeCalled()
   })
 
-  it('makes the header sticky if isHeaderSticky is true', () => {
-    const sticky = createStickyProp({ isHeaderSticky: true })
+  it('makes the header sticky if isSticky is true', () => {
+    const sticky = createStickyProp({ isSticky: true })
     const props = createProps({ sticky })
     const wrapper = mount(<Header {...props} />)
     expect(wrapper.find('.timeline__header').prop('className')).toMatch('is-sticky')
   })
 
-  it('makes the header static if isHeaderSticky is false', () => {
-    const sticky = createStickyProp({ isHeaderSticky: false })
+  it('makes the header static if isSticky is false', () => {
+    const sticky = createStickyProp({ isSticky: false })
     const props = createProps({ sticky })
     const wrapper = mount(<Header {...props} />)
     expect(wrapper.find('.timeline__header').prop('className')).not.toMatch('is-sticky')
   })
 
   it('sets the viewportWidth and header of the header if sticky', () => {
-    const sticky = createStickyProp({ isHeaderSticky: true, viewportWidth: 100, headerHeight: 20 })
+    const sticky = createStickyProp({ isSticky: true, viewportWidth: 100, headerHeight: 20 })
     const props = createProps({ sticky })
     const wrapper = mount(<Header {...props} />)
     expect(wrapper.find('.timeline__header').prop('style')).toEqual({
@@ -133,7 +133,7 @@ describe('<Header />', () => {
   })
 
   it('sets the only height of the header if static', () => {
-    const sticky = createStickyProp({ isHeaderSticky: false, viewportWidth: 100, headerHeight: 20 })
+    const sticky = createStickyProp({ isSticky: false, viewportWidth: 100, headerHeight: 20 })
     const props = createProps({ sticky })
     const wrapper = mount(<Header {...props} />)
     expect(wrapper.find('.timeline__header').prop('style')).toEqual({ headerHeight: 20 })

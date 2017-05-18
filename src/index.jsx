@@ -22,6 +22,7 @@ class Container extends Component {
   }
 
   render() {
+    console.log('this.props', this.props)
     const {
       isOpen = true,
       tracks,
@@ -32,10 +33,10 @@ class Container extends Component {
       zoomIn,
       zoomOut,
       scale,
-      enableStickyHeader
+      enableSticky
     } = this.props
 
-    const LayoutComponent = enableStickyHeader ? StickyLayout : Layout
+    const LayoutComponent = enableSticky ? StickyLayout : Layout
 
     return (
       <div className="react-timelines">
@@ -78,7 +79,7 @@ Container.propTypes = {
   toggleTrackOpen: PropTypes.func,
   zoomIn: PropTypes.func,
   zoomOut: PropTypes.func,
-  enableStickyHeader: PropTypes.bool
+  enableSticky: PropTypes.bool
 }
 
 export default Container

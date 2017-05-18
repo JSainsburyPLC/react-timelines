@@ -17,10 +17,10 @@ class Header extends PureComponent {
     if (!sticky) {
       return
     }
-    const { scrollLeft, isHeaderSticky } = sticky
+    const { scrollLeft, isSticky } = sticky
     const prevScrollLeft = prevProps.sticky.scrollLeft
-    const prevIsHeaderSticky = prevProps.sticky.isHeaderSticky
-    if (scrollLeft !== prevScrollLeft || isHeaderSticky !== prevIsHeaderSticky) {
+    const prevIsSticky = prevProps.sticky.isSticky
+    if (scrollLeft !== prevScrollLeft || isSticky !== prevIsSticky) {
       this.scroll.scrollLeft = scrollLeft
     }
   }
@@ -33,23 +33,23 @@ class Header extends PureComponent {
       onLeave,
       width,
       timebar: { rows },
-      sticky: { isHeaderSticky, headerHeight, viewportWidth } = {}
+      sticky: { isSticky, headerHeight, viewportWidth } = {}
     } = this.props
     return (
       <div
-        style={isHeaderSticky ? { paddingTop: headerHeight } : {}}
+        style={isSticky ? { paddingTop: headerHeight } : {}}
         onMouseMove={onMove}
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
       >
         <div
-          className={`timeline__header ${isHeaderSticky ? 'is-sticky' : ''}`}
-          style={isHeaderSticky ? { width: viewportWidth, headerHeight } : { headerHeight }}
+          className={`timeline__header ${isSticky ? 'is-sticky' : ''}`}
+          style={isSticky ? { width: viewportWidth, headerHeight } : { headerHeight }}
         >
           <div className="timeline__header-scroll" ref={(scroll) => { this.scroll = scroll }}>
             <div
               ref={(timebar) => { this.timebar = timebar }}
-              style={isHeaderSticky ? { width } : {}}
+              style={isSticky ? { width } : {}}
             >
               <Timebar time={time} rows={rows} />
             </div>

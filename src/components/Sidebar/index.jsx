@@ -10,12 +10,12 @@ const Sidebar = ({
   timebar,
   tracks,
   toggleTrackOpen,
-  sticky: { isHeaderSticky, headerHeight, width } = {}
+  sticky: { isSticky, headerHeight, width } = {}
 }) =>
   <div className="sidebar">
     <Header
       timebar={timebar}
-      isSticky={isHeaderSticky}
+      isSticky={isSticky}
       height={headerHeight}
       width={width}
     />
