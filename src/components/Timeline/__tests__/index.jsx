@@ -6,17 +6,20 @@ import Header from '../Header'
 import Body from '../Body'
 import NowMarker from '../Marker/Now'
 import PointerMarker from '../Marker/Pointer'
+import createTime from '../../../utils/time'
 
 import getMouseX from '../../../utils/getMouseX'
 
 jest.mock('../../../utils/getMouseX')
 
+const time = createTime({
+  start: new Date('2018-01-01'),
+  end: new Date('2019-01-01'),
+  zoom: 1
+})
+
 const createProps = ({
   now = new Date(),
-  time = {
-    fromX: jest.fn(() => new Date()),
-    toX: jest.fn(() => 0)
-  },
   timebar = { rows: [] },
   tracks = [],
   isOpen,
@@ -31,13 +34,25 @@ const createProps = ({
 })
 
 describe('<Timeline />', () => {
-  it('renders <NowMarker />, <PointerMarker />, <Header /> and <Body />', () => {
+  it('renders <NowMarker />, <Header /> and <Body />', () => {
     const props = createProps()
     const wrapper = shallow(<Timeline {...props} />)
     expect(wrapper.find(NowMarker).exists()).toBe(true)
-    expect(wrapper.find(PointerMarker).exists()).toBe(true)
     expect(wrapper.find(Header).exists()).toBe(true)
     expect(wrapper.find(Body).exists()).toBe(true)
+  })
+
+  it('does not render <PointerMarker /> when component mounts', () => {
+    const props = createProps()
+    const wrapper = shallow(<Timeline {...props} />)
+    expect(wrapper.find(PointerMarker).exists()).not.toBe(true)
+  })
+
+  it('renders <PointerMarker /> when component mounts', () => {
+    const props = createProps()
+    const wrapper = shallow(<Timeline {...props} />)
+    wrapper.setState({ pointerDate: new Date() })
+    expect(wrapper.find(PointerMarker).exists()).toBe(true)
   })
 
   it('does not render <NowMarker /> if "now" is "null"', () => {
@@ -46,15 +61,15 @@ describe('<Timeline />', () => {
     expect(wrapper.find(NowMarker).exists()).toBe(false)
   })
 
-  it('updates pointer x position when the mouse moves', () => {
-    const event = 50
+  it('updates pointerDate when the mouse moves', () => {
+    const event = 10
     const props = createProps()
     const wrapper = shallow(<Timeline {...props} />)
-    expect(wrapper.state('pointerX')).toBe(0)
+    expect(wrapper.state('pointerDate')).toBe(null)
 
     getMouseX.mockImplementation(e => e)
     wrapper.find(Header).prop('onMove')(event)
-    expect(wrapper.state('pointerX')).toBe(50)
+    expect(wrapper.state('pointerDate')).toEqual(new Date('2018-01-11'))
   })
 
   it('makes the pointer visible and highlighted when the mouse enters', () => {

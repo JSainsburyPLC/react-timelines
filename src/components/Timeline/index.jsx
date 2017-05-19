@@ -7,7 +7,6 @@ import NowMarker from './Marker/Now'
 import PointerMarker from './Marker/Pointer'
 
 import getMouseX from '../../utils/getMouseX'
-import { getDayMonth } from '../../utils/formatDate'
 import { propTypeTimebar, propTypeSticky } from '../../propTypes'
 
 class Timeline extends Component {
@@ -19,14 +18,14 @@ class Timeline extends Component {
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
 
     this.state = {
-      pointerX: 0,
+      pointerDate: null,
       pointerVisible: false,
       pointerHighlighted: false
     }
   }
 
   handleMouseMove(e) {
-    this.setState({ pointerX: getMouseX(e) })
+    this.setState({ pointerDate: this.props.time.fromX(getMouseX(e)) })
   }
 
   handleMouseLeave() {
@@ -46,19 +45,22 @@ class Timeline extends Component {
       sticky
     } = this.props
     const {
-      pointerX,
+      // pointerX,
+      pointerDate,
       pointerVisible,
       pointerHighlighted
     } = this.state
     return (
       <div className="timeline" style={{ width: `${time.timelineWidth}px` }}>
         {now && <NowMarker now={now} visible time={time} />}
-        <PointerMarker
-          x={pointerX}
-          visible={pointerVisible}
-          highlighted={pointerHighlighted}
-          text={getDayMonth(time.fromX(pointerX))}
-        />
+        {pointerDate &&
+          <PointerMarker
+            date={pointerDate}
+            time={time}
+            visible={pointerVisible}
+            highlighted={pointerHighlighted}
+          />
+        }
         <Header
           time={time}
           timebar={timebar}
@@ -76,7 +78,9 @@ class Timeline extends Component {
 
 Timeline.propTypes = {
   now: PropTypes.instanceOf(Date),
-  time: PropTypes.shape({}).isRequired,
+  time: PropTypes.shape({
+    fromX: PropTypes.func.isRequired
+  }).isRequired,
   timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   sticky: propTypeSticky
