@@ -1,6 +1,6 @@
 // Common
 $react-timelines-separator-color: #eee !default;
-$react-timelines-separater-dark-color: darken($react-timelines-separator-color, 10%) !default;
+$react-timelines-separator-dark-color: darken($react-timelines-separator-color, 10%) !default;
 
 $react-timelines-auto-open-breakpoint: 1000px !default;
 $react-timelines-font-family: sans-serif !default;
@@ -9,7 +9,7 @@ $react-timelines-text-color: #4c4c4c !default;
 
 // Header
 $react-timelines-header-row-height: 40px !default;
-$react-timelines-header-separator-color: $react-timelines-separater-dark-color !default;
+$react-timelines-header-separator-color: $react-timelines-separator-dark-color !default;
 
 // Sidebar
 $react-timelines-sidebar-width: 240px !default;
