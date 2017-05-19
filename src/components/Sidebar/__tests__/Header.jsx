@@ -4,8 +4,7 @@ import { shallow } from 'enzyme'
 import Header from '../Header'
 
 const defaultProps = {
-  timebar: { rows: [] },
-  sticky: {}
+  timebar: { rows: [] }
 }
 
 describe('<Header />', () => {

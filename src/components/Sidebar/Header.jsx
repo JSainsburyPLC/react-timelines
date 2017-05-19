@@ -1,7 +1,7 @@
 import React from 'react'
 import { propTypeTimebar, propTypeSticky } from '../../propTypes'
 
-const Header = ({ timebar: { rows }, sticky: { isSticky, width, height } }) => (
+const Header = ({ timebar: { rows }, sticky: { isSticky, width, height } = {} }) => (
   <div style={isSticky ? { paddingTop: height } : {}}>
     <div
       className={`sidebar__header ${isSticky ? 'is-sticky' : ''}`}
