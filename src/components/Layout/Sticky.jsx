@@ -111,7 +111,7 @@ class StickyLayout extends PureComponent {
             timebar={timebar}
             tracks={tracks}
             toggleTrackOpen={toggleTrackOpen}
-            sticky={{ isSticky, headerHeight, width: sidebarWidth }}
+            sticky={{ isSticky, height: headerHeight, width: sidebarWidth }}
           />
         </div>
         <div className="layout__main">

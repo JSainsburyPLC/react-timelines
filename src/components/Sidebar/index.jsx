@@ -5,20 +5,14 @@ import Header from './Header'
 import Body from './Body'
 import { propTypeTimebar, propTypeSticky } from '../../propTypes'
 
-
 const Sidebar = ({
   timebar,
   tracks,
   toggleTrackOpen,
-  sticky: { isSticky, headerHeight, width } = {}
+  sticky
 }) =>
   <div className="sidebar">
-    <Header
-      timebar={timebar}
-      isSticky={isSticky}
-      height={headerHeight}
-      width={width}
-    />
+    <Header timebar={timebar} sticky={sticky} />
     <Body tracks={tracks} toggleTrackOpen={toggleTrackOpen} />
   </div>
 

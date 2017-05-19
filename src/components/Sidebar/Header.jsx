@@ -1,8 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { propTypeTimebar } from '../../propTypes'
+import { propTypeTimebar, propTypeSticky } from '../../propTypes'
 
-const Header = ({ isSticky, height, width, timebar: { rows } }) => (
+const Header = ({ timebar: { rows }, sticky: { isSticky, width, height } }) => (
   <div style={isSticky ? { paddingTop: height } : {}}>
     <div
       className={`sidebar__header ${isSticky ? 'is-sticky' : ''}`}
@@ -18,9 +17,7 @@ const Header = ({ isSticky, height, width, timebar: { rows } }) => (
 )
 
 Header.propTypes = {
-  isSticky: PropTypes.bool,
-  height: PropTypes.number,
-  width: PropTypes.number,
+  sticky: propTypeSticky,
   timebar: propTypeTimebar.isRequired
 }
 
