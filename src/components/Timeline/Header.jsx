@@ -44,7 +44,7 @@ class Header extends PureComponent {
       >
         <div
           className={`timeline__header ${isSticky ? 'is-sticky' : ''}`}
-          style={isSticky ? { width: viewportWidth, headerHeight } : { headerHeight }}
+          style={isSticky ? { width: viewportWidth } : {}}
         >
           <div className="timeline__header-scroll" ref={(scroll) => { this.scroll = scroll }}>
             <div
