@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import ReactTimeline from '../'
+import Timeline, { StickyTimeline } from '../'
 import Controls from '../components/Controls'
 import Layout from '../components/Layout'
 import StickyLayout from '../components/Layout/Sticky'
@@ -25,8 +25,7 @@ const createProps = ({
   tracks = [],
   toggleOpen = jest.fn(),
   zoomIn = jest.fn(),
-  zoomOut = jest.fn(),
-  enableSticky = false
+  zoomOut = jest.fn()
 } = {}) => ({
   now,
   scale,
@@ -35,48 +34,49 @@ const createProps = ({
   tracks,
   toggleOpen,
   zoomIn,
-  zoomOut,
-  enableSticky
+  zoomOut
 })
 
-describe('<ReactTimeline />', () => {
-  it('renders <Controls />', () => {
-    const props = createProps()
-    const wrapper = shallow(<ReactTimeline {...props} />)
-    expect(wrapper.find(Controls).exists()).toBe(true)
+describe('<Timeline />', () => {
+  describe('Timeline', () => {
+    it('renders <Controls />', () => {
+      const props = createProps()
+      const wrapper = shallow(<Timeline {...props} />)
+      expect(wrapper.find(Controls).exists()).toBe(true)
+    })
+
+    it('renders <Layout />', () => {
+      const props = createProps()
+      const wrapper = shallow(<Timeline {...props} />)
+      expect(wrapper.find(Layout).exists()).toBe(true)
+    })
+
+    it('re-renders when zoom changes', () => {
+      const props = { ...createProps(), scale: createScaleProps({ zoom: 1 }) }
+      const wrapper = shallow(<Timeline {...props} />)
+      expect(wrapper.state('time').zoom).toBe(1)
+
+      const nextProps = { ...props, scale: createScaleProps({ zoom: 2 }) }
+
+      wrapper.setProps(nextProps)
+      expect(wrapper.state('time').zoom).toBe(2)
+
+      wrapper.setProps(nextProps)
+      expect(wrapper.state('time').zoom).toBe(2)
+    })
+
+    it('renders the sidebar open by default', () => {
+      const props = createProps()
+      const wrapper = shallow(<Timeline {...props} />)
+      expect(wrapper.find(Layout).prop('isOpen')).toBe(true)
+    })
   })
 
-  it('renders <StickyLayout /> when sticky header is enabled', () => {
-    const props = createProps({ enableSticky: true })
-    const wrapper = shallow(<ReactTimeline {...props} />)
-    expect(wrapper.find(StickyLayout).exists()).toBe(true)
-    expect(wrapper.find(Layout).exists()).toBe(false)
-  })
-
-  it('renders <Layout /> when sticky header is not enabled', () => {
-    const props = createProps({ enableSticky: false })
-    const wrapper = shallow(<ReactTimeline {...props} />)
-    expect(wrapper.find(Layout).exists()).toBe(true)
-    expect(wrapper.find(StickyLayout).exists()).toBe(false)
-  })
-
-  it('re-renders when zoom changes', () => {
-    const props = { ...createProps(), scale: createScaleProps({ zoom: 1 }) }
-    const wrapper = shallow(<ReactTimeline {...props} />)
-    expect(wrapper.state('time').zoom).toBe(1)
-
-    const nextProps = { ...props, scale: createScaleProps({ zoom: 2 }) }
-
-    wrapper.setProps(nextProps)
-    expect(wrapper.state('time').zoom).toBe(2)
-
-    wrapper.setProps(nextProps)
-    expect(wrapper.state('time').zoom).toBe(2)
-  })
-
-  it('renders the sidebar open by default', () => {
-    const props = createProps()
-    const wrapper = shallow(<ReactTimeline {...props} />)
-    expect(wrapper.find(Controls).prop('isOpen')).toBe(true)
+  describe('<StickyTimeline />', () => {
+    it('renders <StickyLayout />', () => {
+      const props = createProps()
+      const wrapper = shallow(<StickyTimeline {...props} />)
+      expect(wrapper.find(StickyLayout).exists()).toBe(true)
+    })
   })
 })

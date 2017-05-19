@@ -127,15 +127,7 @@ describe('<Header />', () => {
     const props = createProps({ sticky })
     const wrapper = mount(<Header {...props} />)
     expect(wrapper.find('.timeline__header').prop('style')).toEqual({
-      width: 100,
-      headerHeight: 20
+      width: 100
     })
-  })
-
-  it('sets the only height of the header if static', () => {
-    const sticky = createStickyProp({ isSticky: false, viewportWidth: 100, headerHeight: 20 })
-    const props = createProps({ sticky })
-    const wrapper = mount(<Header {...props} />)
-    expect(wrapper.find('.timeline__header').prop('style')).toEqual({ headerHeight: 20 })
   })
 })
