@@ -5,4 +5,8 @@
   text-align: right;
   font-weight: bold;
   border-bottom: 1px solid $react-timelines-sidebar-separator-color;
+
+  &:last-child {
+    border-bottom-color: $react-timelines-header-separator-color;
+  }
 }

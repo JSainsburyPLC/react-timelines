@@ -5,12 +5,19 @@
   height: $react-timelines-header-row-height + $react-timelines-border-width;
   overflow: hidden;
   line-height: $react-timelines-header-row-height;
+  &:last-child {
+
+  }
 }
 
 .timebar__cell {
   position: absolute;
   text-align: center;
   background: #fff;
-  box-shadow: 1px 0 0 0 #eee inset;
-  border-bottom: $react-timelines-border-width solid #eee;
+  box-shadow: 1px 0 0 0 $react-timelines-separater-dark-color inset;
+  border-bottom: $react-timelines-border-width solid $react-timelines-separater-dark-color;
+}
+
+.timebar__row:last-child .timebar__cell {
+  border-bottom-color: $react-timelines-header-separator-color;
 }
