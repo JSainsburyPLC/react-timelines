@@ -9,19 +9,22 @@ class Header extends PureComponent {
     const { sticky } = this.props
     if (sticky) {
       sticky.setHeaderHeight(this.timebar.offsetHeight)
+      const { scrollLeft, isSticky } = sticky
+      if (isSticky) {
+        this.scroll.scrollLeft = scrollLeft
+      }
     }
   }
 
   componentDidUpdate(prevProps) {
     const { sticky } = this.props
-    if (!sticky) {
-      return
-    }
-    const { scrollLeft, isSticky } = sticky
-    const prevScrollLeft = prevProps.sticky.scrollLeft
-    const prevIsSticky = prevProps.sticky.isSticky
-    if (scrollLeft !== prevScrollLeft || isSticky !== prevIsSticky) {
-      this.scroll.scrollLeft = scrollLeft
+    if (sticky) {
+      const { scrollLeft, isSticky } = sticky
+      const prevScrollLeft = prevProps.sticky.scrollLeft
+      const prevIsSticky = prevProps.sticky.isSticky
+      if (scrollLeft !== prevScrollLeft || isSticky !== prevIsSticky) {
+        this.scroll.scrollLeft = scrollLeft
+      }
     }
   }
 
