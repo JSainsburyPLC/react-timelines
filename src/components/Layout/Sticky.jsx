@@ -12,7 +12,7 @@ class StickyLayout extends PureComponent {
     this.state = {
       isSticky: false,
       headerHeight: 0,
-      markerOffset: 0,
+      markerHeight: 0,
       sidebarWidth: 0,
       timelineViewportWidth: 0,
       scrollLeft: 0
@@ -21,28 +21,31 @@ class StickyLayout extends PureComponent {
     this.handleScrollX = this.handleScrollX.bind(this)
     this.handleScrollY = this.handleScrollY.bind(this)
     this.handleResize = this.handleResize.bind(this)
+
     this.setHeaderHeight = this.setHeaderHeight.bind(this)
-    this.setSidebarWidth = this.setSidebarWidth.bind(this)
-    this.setMarkerOffset = this.setMarkerOffset.bind(this)
+    this.setMarkerHeight = this.setMarkerHeight.bind(this)
     this.setTimelineViewportWidth = this.setTimelineViewportWidth.bind(this)
-    this.setTimelineHeaderScroll = this.setTimelineHeaderScroll.bind(this)
+
+    this.updateSidebarWidth = this.updateSidebarWidth.bind(this)
+    this.updateTimelineHeaderScroll = this.updateTimelineHeaderScroll.bind(this)
   }
 
   componentDidMount() {
     addListener('scroll', this.handleScrollY)
     addListener('resize', this.handleResize)
-    this.setSidebarWidth()
-    this.setMarkerOffset(getNumericPropertyValue(this.timeline, 'padding-top'))
+    this.setMarkerHeight(getNumericPropertyValue(this.timeline, 'padding-top'))
+    this.updateSidebarWidth()
+    this.updateTimelineHeaderScroll()
     this.setTimelineViewportWidth(this.timeline.offsetWidth)
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.isOpen !== this.props.isOpen) {
-      this.setSidebarWidth()
+      this.updateSidebarWidth()
     }
 
     if (this.state.isSticky && !prevState.isSticky) {
-      this.setTimelineHeaderScroll()
+      this.updateTimelineHeaderScroll()
       this.setTimelineViewportWidth(this.timeline.offsetWidth)
     }
   }
@@ -52,45 +55,45 @@ class StickyLayout extends PureComponent {
     removeListener('resize', this.handleResize)
   }
 
-  setSidebarWidth() {
-    const layoutOffset = getNumericPropertyValue(this.layout, 'margin-left')
-    const sidebarWidth = (this.sidebar.offsetWidth + layoutOffset)
-    this.setState({ sidebarWidth })
-  }
-
   setHeaderHeight(headerHeight) {
     this.setState({ headerHeight })
   }
 
-  setMarkerOffset(markerOffset) {
-    this.setState({ markerOffset })
+  setMarkerHeight(markerHeight) {
+    this.setState({ markerHeight })
   }
 
   setTimelineViewportWidth(timelineViewportWidth) {
     this.setState({ timelineViewportWidth })
   }
 
-  setTimelineHeaderScroll() {
+  updateSidebarWidth() {
+    const layoutOffset = getNumericPropertyValue(this.layout, 'margin-left')
+    const sidebarWidth = (this.sidebar.offsetWidth + layoutOffset)
+    this.setState({ sidebarWidth })
+  }
+
+  updateTimelineHeaderScroll() {
     const scrollLeft = this.timeline.scrollLeft
     this.setState({ scrollLeft })
   }
 
   handleScrollY() {
     raf(() => {
-      const { markerOffset, headerHeight } = this.state
+      const { markerHeight, headerHeight } = this.state
       const { top, bottom } = this.timeline.getBoundingClientRect()
-      const isSticky = (top <= -markerOffset) && (bottom >= headerHeight)
+      const isSticky = (top <= -markerHeight) && (bottom >= headerHeight)
       this.setState(() => ({ isSticky }))
     })
   }
 
   handleScrollX() {
-    raf(this.setTimelineHeaderScroll)
+    raf(this.updateTimelineHeaderScroll)
   }
 
   handleResize() {
     raf(() => {
-      this.setSidebarWidth()
+      this.updateSidebarWidth()
       this.setTimelineViewportWidth(this.timeline.offsetWidth)
     })
   }

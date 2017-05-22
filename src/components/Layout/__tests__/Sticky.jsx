@@ -65,7 +65,7 @@ describe('<StickyLayout />', () => {
       const wrapper = mount(<StickyLayout {...props} />)
       expect(typeof listeners.scroll).toEqual('function')
 
-      wrapper.instance().setMarkerOffset(40)
+      wrapper.instance().setMarkerHeight(40)
       wrapper.instance().setHeaderHeight(50)
       wrapper.instance().timeline.getBoundingClientRect = () => ({
         top: -60,

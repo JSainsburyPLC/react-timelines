@@ -45,7 +45,6 @@ class Timeline extends Component {
       sticky
     } = this.props
     const {
-      // pointerX,
       pointerDate,
       pointerVisible,
       pointerHighlighted
