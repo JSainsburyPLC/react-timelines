@@ -19,12 +19,14 @@ class StickyLayout extends PureComponent {
     }
 
     this.handleScrollX = this.handleScrollX.bind(this)
+    this.handleHeaderScrollY = this.handleHeaderScrollY.bind(this)
     this.handleScrollY = this.handleScrollY.bind(this)
     this.handleResize = this.handleResize.bind(this)
 
     this.setHeaderHeight = this.setHeaderHeight.bind(this)
     this.setMarkerHeight = this.setMarkerHeight.bind(this)
     this.setTimelineViewportWidth = this.setTimelineViewportWidth.bind(this)
+    this.updateTimelineBodyScroll = this.updateTimelineBodyScroll.bind(this)
 
     this.updateSidebarWidth = this.updateSidebarWidth.bind(this)
     this.updateTimelineHeaderScroll = this.updateTimelineHeaderScroll.bind(this)
@@ -36,6 +38,7 @@ class StickyLayout extends PureComponent {
     this.setMarkerHeight(getNumericPropertyValue(this.timeline, 'padding-top'))
     this.updateSidebarWidth()
     this.updateTimelineHeaderScroll()
+    this.updateTimelineBodyScroll()
     this.setTimelineViewportWidth(this.timeline.offsetWidth)
   }
 
@@ -47,6 +50,13 @@ class StickyLayout extends PureComponent {
     if (this.state.isSticky && !prevState.isSticky) {
       this.updateTimelineHeaderScroll()
       this.setTimelineViewportWidth(this.timeline.offsetWidth)
+      if (!this.state.isSticky) {
+        this.updateTimelineBodyScroll()
+      }
+    }
+
+    if (this.state.isSticky && (this.state.scrollLeft !== prevState.scrollLeft)) {
+      this.updateTimelineBodyScroll()
     }
   }
 
@@ -67,15 +77,26 @@ class StickyLayout extends PureComponent {
     this.setState({ timelineViewportWidth })
   }
 
+
   updateSidebarWidth() {
     const layoutOffset = getNumericPropertyValue(this.layout, 'margin-left')
     const sidebarWidth = (this.sidebar.offsetWidth + layoutOffset)
     this.setState({ sidebarWidth })
   }
 
+  updateTimelineBodyScroll() {
+    this.timeline.scrollLeft = this.state.scrollLeft
+  }
+
   updateTimelineHeaderScroll() {
     const scrollLeft = this.timeline.scrollLeft
     this.setState({ scrollLeft })
+  }
+
+  handleHeaderScrollY(scrollLeft) {
+    raf(() => {
+      this.setState({ scrollLeft })
+    })
   }
 
   handleScrollY() {
@@ -128,6 +149,7 @@ class StickyLayout extends PureComponent {
                 isSticky,
                 setHeaderHeight: this.setHeaderHeight,
                 viewportWidth: timelineViewportWidth,
+                handleHeaderScrollY: this.handleHeaderScrollY,
                 headerHeight,
                 scrollLeft
               }}
