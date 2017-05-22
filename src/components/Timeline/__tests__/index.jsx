@@ -22,15 +22,13 @@ const createProps = ({
   now = new Date(),
   timebar = { rows: [] },
   tracks = [],
-  isOpen,
-  sticky = {}
+  isOpen
 } = {}) => ({
   now,
   time,
   timebar,
   tracks,
-  isOpen,
-  sticky
+  isOpen
 })
 
 describe('<Timeline />', () => {

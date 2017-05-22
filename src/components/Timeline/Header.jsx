@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import Timebar from './Timebar'
-import { propTypeTimebar, propTypeSticky } from '../../propTypes'
+import { propTypeTimebar } from '../../propTypes'
 
 class Header extends PureComponent {
   componentDidMount() {
@@ -70,7 +70,12 @@ Header.propTypes = {
   onEnter: PropTypes.func.isRequired,
   onLeave: PropTypes.func.isRequired,
   width: PropTypes.number,
-  sticky: propTypeSticky
+  sticky: PropTypes.shape({
+    isSticky: PropTypes.bool.isRequired,
+    setHeaderHeight: PropTypes.func.isRequired,
+    viewportWidth: PropTypes.number.isRequired,
+    scrollLeft: PropTypes.number.isRequired
+  })
 }
 
 export default Header

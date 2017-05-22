@@ -7,7 +7,7 @@ import NowMarker from './Marker/Now'
 import PointerMarker from './Marker/Pointer'
 
 import getMouseX from '../../utils/getMouseX'
-import { propTypeTimebar, propTypeSticky } from '../../propTypes'
+import { propTypeTimebar } from '../../propTypes'
 
 class Timeline extends Component {
   constructor(props) {
@@ -82,7 +82,7 @@ Timeline.propTypes = {
   }).isRequired,
   timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  sticky: propTypeSticky
+  sticky: PropTypes.shape({})
 }
 
 export default Timeline

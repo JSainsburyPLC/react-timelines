@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Header from './Header'
 import Body from './Body'
-import { propTypeTimebar, propTypeSticky } from '../../propTypes'
+import { propTypeTimebar } from '../../propTypes'
 
 const Sidebar = ({
   timebar,
@@ -20,7 +20,7 @@ Sidebar.propTypes = {
   timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   toggleTrackOpen: PropTypes.func,
-  sticky: propTypeSticky
+  sticky: PropTypes.shape({})
 }
 
 export default Sidebar

@@ -9,11 +9,3 @@ export const propTypeTimebar = PropTypes.shape({
     }).isRequired
   ).isRequired
 })
-
-export const propTypeSticky = PropTypes.shape({
-  isSticky: PropTypes.bool,
-  setHeaderHeight: PropTypes.func,
-  viewportWidth: PropTypes.number,
-  headerHeight: PropTypes.number,
-  scrollLeft: PropTypes.number
-})
