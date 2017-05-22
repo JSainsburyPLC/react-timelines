@@ -2,12 +2,7 @@
   position: relative;
 }
 
-.timeline__header {
-  position: static;
-  top: 0;
-  z-index: 1;
-  overflow: hidden;
-}
+.timeline__header {}
 
 .timeline__header-scroll {
   overflow-x: auto;
@@ -19,6 +14,8 @@
 
 .timeline__header.is-sticky {
   position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
 .timeline__body {

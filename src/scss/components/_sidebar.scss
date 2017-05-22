@@ -1,13 +1,9 @@
 .sidebar {
-  position: relative;
-  z-index: 1;
   background-color: $react-timelines-sidebar-background-color;
   box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
 }
 
 .sidebar__header {
-  position: relative;
-  overflow: hidden;
   background-color: $react-timelines-sidebar-background-color;
 }
 
