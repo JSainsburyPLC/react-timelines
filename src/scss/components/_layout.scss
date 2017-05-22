@@ -1,5 +1,4 @@
 .layout {
-  position: relative;
   margin-left: -($react-timelines-sidebar-width - $react-timelines-sidebar-closed-offset);
 
   @media (min-width: $react-timelines-auto-open-breakpoint) {
