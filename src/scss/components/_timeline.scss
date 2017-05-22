@@ -1,13 +1,22 @@
 .timeline {
-  overflow-x: auto;
-  padding-top: $react-timelines-marker-label-height;
-}
-
-.timeline__content {
   position: relative;
 }
 
 .timeline__header {}
+
+.timeline__header-scroll {
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.timeline__header.is-sticky {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
 
 .timeline__body {
   position: relative;

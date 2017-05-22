@@ -4,7 +4,7 @@ import Controls from '../'
 import Toggle from '../Toggle'
 
 const createProps = ({
-  isOpen = true,
+  isOpen = undefined,
   toggleOpen = jest.fn(),
   zoomIn = jest.fn(),
   zoomOut = jest.fn(),

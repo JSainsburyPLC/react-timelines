@@ -62,6 +62,13 @@
     "moduleDirectories": [
       "node_modules",
       "src"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/utils/raf.js",
+      "<rootDir>/utils/events.js",
+      "<rootDir>/utils/computedStyle.js",
+      "<rootDir>/propTypes.js"
     ]
   }
 }

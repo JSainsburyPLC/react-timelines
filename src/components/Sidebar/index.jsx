@@ -3,17 +3,24 @@ import PropTypes from 'prop-types'
 
 import Header from './Header'
 import Body from './Body'
+import { propTypeTimebar } from '../../propTypes'
 
-const Sidebar = ({ timebar, tracks, toggleTrackOpen }) =>
+const Sidebar = ({
+  timebar,
+  tracks,
+  toggleTrackOpen,
+  sticky
+}) =>
   <div className="sidebar">
-    <Header timebar={timebar} />
+    <Header timebar={timebar} sticky={sticky} />
     <Body tracks={tracks} toggleTrackOpen={toggleTrackOpen} />
   </div>
 
 Sidebar.propTypes = {
-  timebar: PropTypes.shape({}),
+  timebar: propTypeTimebar.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  toggleTrackOpen: PropTypes.func
+  toggleTrackOpen: PropTypes.func,
+  sticky: PropTypes.shape({})
 }
 
 export default Sidebar

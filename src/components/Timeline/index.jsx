@@ -7,7 +7,7 @@ import NowMarker from './Marker/Now'
 import PointerMarker from './Marker/Pointer'
 
 import getMouseX from '../../utils/getMouseX'
-import { getDayMonth } from '../../utils/formatDate'
+import { propTypeTimebar } from '../../propTypes'
 
 class Timeline extends Component {
   constructor(props) {
@@ -17,11 +17,15 @@ class Timeline extends Component {
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
 
-    this.state = { pointerX: 0, pointerVisible: false, pointerHighlighted: false }
+    this.state = {
+      pointerDate: null,
+      pointerVisible: false,
+      pointerHighlighted: false
+    }
   }
 
   handleMouseMove(e) {
-    this.setState({ pointerX: getMouseX(e) })
+    this.setState({ pointerDate: this.props.time.fromX(getMouseX(e)) })
   }
 
   handleMouseLeave() {
@@ -33,27 +37,39 @@ class Timeline extends Component {
   }
 
   render() {
-    const { now, time, timebar, tracks } = this.props
-    const { pointerX, pointerVisible, pointerHighlighted } = this.state
+    const {
+      now,
+      time,
+      timebar,
+      tracks,
+      sticky
+    } = this.props
+    const {
+      pointerDate,
+      pointerVisible,
+      pointerHighlighted
+    } = this.state
     return (
-      <div className="timeline">
-        <div className="timeline__content" style={{ width: `${time.timelineWidth}px` }}>
-          {now && <NowMarker now={now} visible time={time} />}
+      <div className="timeline" style={{ width: `${time.timelineWidth}px` }}>
+        {now && <NowMarker now={now} visible time={time} />}
+        {pointerDate &&
           <PointerMarker
-            x={pointerX}
+            date={pointerDate}
+            time={time}
             visible={pointerVisible}
             highlighted={pointerHighlighted}
-            text={getDayMonth(time.fromX(pointerX))}
           />
-          <Header
-            time={time}
-            timebar={timebar}
-            onMove={this.handleMouseMove}
-            onEnter={this.handleMouseEnter}
-            onLeave={this.handleMouseLeave}
-          />
-          <Body time={time} tracks={tracks} />
-        </div>
+        }
+        <Header
+          time={time}
+          timebar={timebar}
+          onMove={this.handleMouseMove}
+          onEnter={this.handleMouseEnter}
+          onLeave={this.handleMouseLeave}
+          width={time.timelineWidth}
+          sticky={sticky}
+        />
+        <Body time={time} tracks={tracks} />
       </div>
     )
   }
@@ -61,9 +77,12 @@ class Timeline extends Component {
 
 Timeline.propTypes = {
   now: PropTypes.instanceOf(Date),
-  time: PropTypes.shape({}).isRequired,
-  timebar: PropTypes.shape({}).isRequired,
-  tracks: PropTypes.arrayOf(PropTypes.shape({}))
+  time: PropTypes.shape({
+    fromX: PropTypes.func.isRequired
+  }).isRequired,
+  timebar: propTypeTimebar.isRequired,
+  tracks: PropTypes.arrayOf(PropTypes.shape({})),
+  sticky: PropTypes.shape({})
 }
 
 export default Timeline
