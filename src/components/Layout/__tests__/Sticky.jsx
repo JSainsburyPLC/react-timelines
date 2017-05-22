@@ -29,6 +29,15 @@ const createProps = ({
 } = {}) => ({ timebar, time, tracks, now, isOpen, toggleTrackOpen })
 
 describe('<StickyLayout />', () => {
+  beforeEach(() => {
+    computedStyle.mockImplementation(node => ({
+      getPropertyValue(prop) {
+        return node.style[prop]
+      }
+    }))
+    raf.mockImplementation(fn => fn())
+  })
+
   it('renders <Sidebar /> and <Timeline />', () => {
     const props = createProps()
     const wrapper = shallow(<StickyLayout {...props} />)
@@ -53,13 +62,6 @@ describe('<StickyLayout />', () => {
       const listeners = {}
       addListener.mockImplementation((evt, fun) => { listeners[evt] = fun })
       removeListener.mockImplementation(jest.fn())
-      raf.mockImplementation(fn => fn())
-
-      computedStyle.mockImplementation(node => ({
-        getPropertyValue(prop) {
-          return node.style[prop]
-        }
-      }))
 
       const props = createProps()
       const wrapper = mount(<StickyLayout {...props} />)
@@ -96,6 +98,14 @@ describe('<StickyLayout />', () => {
 
       wrapper.unmount()
       expect(removeListener).toBeCalled()
+    })
+
+    it('syncs the timeline scroll position when the header is scrolled and is sticky', () => {
+      const props = createProps()
+      const wrapper = mount(<StickyLayout {...props} />)
+      wrapper.setState({ isSticky: true })
+      wrapper.find(Timeline).prop('sticky').handleHeaderScrollY('100')
+      expect(wrapper.find('.layout__timeline').getNode().scrollLeft).toBe(100)
     })
   })
 })

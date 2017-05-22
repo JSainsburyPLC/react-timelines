@@ -47,16 +47,15 @@ class StickyLayout extends PureComponent {
       this.updateSidebarWidth()
     }
 
-    if (this.state.isSticky && !prevState.isSticky) {
-      this.updateTimelineHeaderScroll()
-      this.setTimelineViewportWidth(this.timeline.offsetWidth)
-      if (!this.state.isSticky) {
+    if (this.state.isSticky) {
+      if (!prevState.isSticky) {
+        this.updateTimelineHeaderScroll()
+        this.setTimelineViewportWidth(this.timeline.offsetWidth)
+      }
+
+      if (this.state.scrollLeft !== prevState.scrollLeft) {
         this.updateTimelineBodyScroll()
       }
-    }
-
-    if (this.state.isSticky && (this.state.scrollLeft !== prevState.scrollLeft)) {
-      this.updateTimelineBodyScroll()
     }
   }
 
