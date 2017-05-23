@@ -3,12 +3,21 @@ import { shallow } from 'enzyme'
 
 import TrackKey from '../TrackKey'
 import TrackKeys from '../'
+import Chevron from '../../../Elements/Chevron'
 
 describe('<TrackKey />', () => {
-  it('renders a link if passed', () => {
-    const track = { link: 'test-url', title: 'test-title' }
-    const wrapper = shallow(<TrackKey track={track} />)
-    expect(wrapper.find('[href="test-url"]').text()).toBe('test-title')
+  describe('link', () => {
+    it('renders if passed', () => {
+      const track = { link: 'test-url', title: 'test-title' }
+      const wrapper = shallow(<TrackKey track={track} />)
+      expect(wrapper.find('[href="test-url"]').text()).toMatch('test-title')
+    })
+
+    it('renders <Chevron /> if passed', () => {
+      const track = { link: 'test-url', title: 'test-title' }
+      const wrapper = shallow(<TrackKey track={track} />)
+      expect(wrapper.find('[href="test-url"]').find(Chevron).exists()).toBe(true)
+    })
   })
 
   describe('toggle button', () => {

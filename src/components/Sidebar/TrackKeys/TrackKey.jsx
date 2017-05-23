@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import TrackKeys from './'
+import Chevron from '../../Elements/Chevron'
 
 const TrackKey = ({ track, toggleOpen }) => {
   const { title, tracks, isOpen, link } = track
@@ -17,7 +18,7 @@ const TrackKey = ({ track, toggleOpen }) => {
             { isOpen ? 'Close' : 'Open' }
           </button>
         }
-        { link ? <a className="track-key__link" href={link}>{title}</a> : title }
+        { link ? <a className="track-key__link" href={link}>{title}<Chevron /></a> : title }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />
