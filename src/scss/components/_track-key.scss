@@ -92,6 +92,18 @@
   &:focus {
     text-decoration: underline;
   }
+
+  &::before {
+    $size: 12px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: $size;
+    height: $size;
+    transform: rotate(-90deg) translateX(50%);
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgY2xhc3NOYW1lPSJjaGV2cm9uIiB2aWV3Qm94PSIwIDAgMTg1LjM0NCAxODUuMzQ0Ij48cGF0aCBkPSJNOTIuNjcyIDE0NC4zNzNjLTIuNzUyIDAtNS40OTMtMS4wNDQtNy41OTMtMy4xMzhMMy4xNDQgNTkuM2MtNC4xOTQtNC4xOTgtNC4xOTQtMTAuOTkgMC0xNS4xOCA0LjE5NC00LjE5OCAxMC45ODctNC4xOTggMTUuMTggMGw3NC4zNDcgNzQuMzQyIDc0LjM0Ny03NC4zNGM0LjE5My00LjIgMTAuOTg2LTQuMiAxNS4xOCAwIDQuMTkzIDQuMTkzIDQuMTkzIDEwLjk4IDAgMTUuMThsLTgxLjk0IDgxLjkzM2MtMi4wOTQgMi4wOTQtNC44NCAzLjEzOC03LjU4OCAzLjEzOHoiIC8+PC9zdmc+');
+    content: ' ';
+  }
 }
 
 .track-key__toggle--close::before {
