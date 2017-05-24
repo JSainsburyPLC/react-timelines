@@ -8,7 +8,7 @@
   position: relative;
   overflow: hidden;
   height: $react-timelines-track-height + $react-timelines-border-width;
-  padding-right: (($react-timelines-sidebar-key-indent-width * 2) + $react-timelines-sidebar-key-icon-size);
+  padding-right: $react-timelines-track-height;
   line-height: $react-timelines-track-height;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -53,31 +53,25 @@
 }
 
 .track-key__toggle {
-  $size: 34px;
-  $psuedo-offset: 6px;
-
   position: relative;
   display: inline-block;
-  width: $size;
-  height: $size;
   overflow: hidden;
-  left: -$psuedo-offset;
-  vertical-align: middle;
+  height: 100%;
   background: transparent;
-  color: transparent;
-  white-space: nowrap;
-
+  text-indent: 30px;
   &:hover::before,
   &:focus::before {
     background-color: $react-timelines-button-background-color-hover;
   }
 
   &::before {
+    $size: 20px;
     position: absolute;
-    top: $psuedo-offset;
-    bottom: $psuedo-offset;
-    right: $psuedo-offset;
-    left: $psuedo-offset;
+    top: 50%;
+    left: 0;
+    width: $size;
+    height: $size;
+    margin-top: -($size / 2);
     background-color: $react-timelines-button-background-color;
     background-size: 10px;
     background-repeat: no-repeat;
@@ -107,7 +101,7 @@
     width: $react-timelines-sidebar-key-icon-size;
     height: $react-timelines-sidebar-key-icon-size;
     margin-top: -($react-timelines-sidebar-key-icon-size / 2);
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDQ4Mi4xMzYgNDgyLjEzNSI+PHBhdGggZD0iTTQ1NS40ODIgMTk4LjE4NEwzMjYuODMgMzI2LjgzMmMtMzUuNTM2IDM1LjU0LTkzLjExIDM1LjU0LTEyOC42NDcgMGwtNDIuODgtNDIuODg2IDQyLjg4LTQyLjg3NiA0Mi44ODQgNDIuODc2YzExLjg0NSAxMS44MjIgMzEuMDY0IDExLjg0NiA0Mi44ODYgMGwxMjguNjQ0LTEyOC42NDNjMTEuODE2LTExLjgzIDExLjgxNi0zMS4wNjYgMC00Mi45bC00Mi44OC00Mi44OGMtMTEuODIzLTExLjgxNS0zMS4wNjUtMTEuODE1LTQyLjg4OCAwbC00NS45MyA0NS45MzVjLTIxLjI5LTEyLjUzLTQ1LjQ5LTE3LjkwNS02OS40NS0xNi4yOWw3Mi41LTcyLjUyN2MzNS41MzYtMzUuNTIgOTMuMTM3LTM1LjUyIDEyOC42NDUgMGw0Mi44ODYgNDIuODg0YzM1LjUzNiAzNS41MjMgMzUuNTM2IDkzLjE0IDAgMTI4LjY2MnpNMjAxLjIwNiAzNjYuNjk4bC00NS45MDMgNDUuOWMtMTEuODQ1IDExLjg0Ni0zMS4wNjQgMTEuODE3LTQyLjg4IDBsLTQyLjg4NS00Mi44OGMtMTEuODQ1LTExLjgyMi0xMS44NDUtMzEuMDQyIDAtNDIuODg3bDEyOC42NDYtMTI4LjY0NWMxMS44Mi0xMS44MTQgMzEuMDctMTEuODE0IDQyLjg4NCAwbDQyLjg4NiA0Mi44ODYgNDIuODc2LTQyLjg4Ni00Mi44NzYtNDIuODhjLTM1LjU0LTM1LjUyMi05My4xMTMtMzUuNTIyLTEyOC42NSAwbC0xMjguNjUgMTI4LjY0Yy0zNS41MzcgMzUuNTQ2LTM1LjUzNyA5My4xNDcgMCAxMjguNjUzTDY5LjU0IDQ1NS40OGMzNS41MSAzNS41NCA5My4xMSAzNS41NCAxMjguNjQ2IDBsNzIuNDk2LTcyLjVjLTIzLjk1NiAxLjU5OC00OC4wOTItMy43ODMtNjkuNDc0LTE2LjI4MnoiLz48L3N2Zz4=');
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDQ4Mi4xMzYgNDgyLjEzNSI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTQ1NS40ODIgMTk4LjE4NEwzMjYuODMgMzI2LjgzMmMtMzUuNTM2IDM1LjU0LTkzLjExIDM1LjU0LTEyOC42NDcgMGwtNDIuODgtNDIuODg2IDQyLjg4LTQyLjg3NiA0Mi44ODQgNDIuODc2YzExLjg0NSAxMS44MjIgMzEuMDY0IDExLjg0NiA0Mi44ODYgMGwxMjguNjQ0LTEyOC42NDNjMTEuODE2LTExLjgzIDExLjgxNi0zMS4wNjYgMC00Mi45bC00Mi44OC00Mi44OGMtMTEuODIzLTExLjgxNS0zMS4wNjUtMTEuODE1LTQyLjg4OCAwbC00NS45MyA0NS45MzVjLTIxLjI5LTEyLjUzLTQ1LjQ5LTE3LjkwNS02OS40NS0xNi4yOWw3Mi41LTcyLjUyN2MzNS41MzYtMzUuNTIgOTMuMTM3LTM1LjUyIDEyOC42NDUgMGw0Mi44ODYgNDIuODg0YzM1LjUzNiAzNS41MjMgMzUuNTM2IDkzLjE0IDAgMTI4LjY2MnpNMjAxLjIwNiAzNjYuNjk4bC00NS45MDMgNDUuOWMtMTEuODQ1IDExLjg0Ni0zMS4wNjQgMTEuODE3LTQyLjg4IDBsLTQyLjg4NS00Mi44OGMtMTEuODQ1LTExLjgyMi0xMS44NDUtMzEuMDQyIDAtNDIuODg3bDEyOC42NDYtMTI4LjY0NWMxMS44Mi0xMS44MTQgMzEuMDctMTEuODE0IDQyLjg4NCAwbDQyLjg4NiA0Mi44ODYgNDIuODc2LTQyLjg4Ni00Mi44NzYtNDIuODhjLTM1LjU0LTM1LjUyMi05My4xMTMtMzUuNTIyLTEyOC42NSAwbC0xMjguNjUgMTI4LjY0Yy0zNS41MzcgMzUuNTQ2LTM1LjUzNyA5My4xNDcgMCAxMjguNjUzTDY5LjU0IDQ1NS40OGMzNS41MSAzNS41NCA5My4xMSAzNS41NCAxMjguNjQ2IDBsNzIuNDk2LTcyLjVjLTIzLjk1NiAxLjU5OC00OC4wOTItMy43ODMtNjkuNDc0LTE2LjI4MnoiLz48L3N2Zz4=');
     content: ' ';
   }
 }
