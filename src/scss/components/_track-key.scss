@@ -8,7 +8,7 @@
   position: relative;
   overflow: hidden;
   height: $react-timelines-track-height + $react-timelines-border-width;
-  padding-right: $react-timelines-sidebar-key-indent-width;
+  padding-right: ($react-timelines-sidebar-key-indent-width + $react-timelines-sidebar-key-icon-size);
   line-height: $react-timelines-track-height;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -94,13 +94,12 @@
   }
 
   &::before {
-    $size: 12px;
     position: absolute;
     top: 50%;
-    right: 10px;
-    width: $size;
-    height: $size;
-    margin-top: -($size / 2);
+    right: $react-timelines-sidebar-key-icon-size;
+    width: $react-timelines-sidebar-key-icon-size;
+    height: $react-timelines-sidebar-key-icon-size;
+    margin-top: -($react-timelines-sidebar-key-icon-size / 2);
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxODYgMTg2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMDQuMzcgOTIuNjdjMCAyLjc1My0xLjA0MyA1LjQ5NC0zLjEzNyA3LjU5NEwxOS4yOTggMTgyLjJjLTQuMTk4IDQuMTkzLTEwLjk5IDQuMTkzLTE1LjE4IDAtNC4xOTgtNC4xOTUtNC4xOTgtMTAuOTg4IDAtMTUuMThMNzguNDYgOTIuNjcgNC4xMiAxOC4zMjVjLTQuMi00LjE5My00LjItMTAuOTg2IDAtMTUuMTggNC4xOTMtNC4xOTMgMTAuOTgtNC4xOTMgMTUuMTggMGw4MS45MzMgODEuOTRjMi4wOTQgMi4wOTQgMy4xMzggNC44NCAzLjEzOCA3LjU4OHYtLjAwMnoiLz48L3N2Zz4=');
     content: ' ';
   }
