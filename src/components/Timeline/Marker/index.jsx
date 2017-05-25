@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Marker = ({ x, modifier, children, visible, highlighted }) =>
   <div
-    className={`rt-marker rt-marker--${modifier} ${visible ? 'is-visible' : ''} ${highlighted ? 'is-highlighted' : ''}`}
+    className={`rt-marker rt-marker--${modifier} ${visible ? 'rt-is-visible' : ''} ${highlighted ? 'rt-is-highlighted' : ''}`}
     style={{ left: `${x}px` }}
   >
     <div className="rt-marker__label">

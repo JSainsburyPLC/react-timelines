@@ -5,7 +5,7 @@ import { propTypeTimebar } from '../../propTypes'
 const Header = ({ timebar: { rows }, sticky: { isSticky, sidebarWidth, headerHeight } = {} }) => (
   <div style={isSticky ? { paddingTop: headerHeight } : {}}>
     <div
-      className={`rt-sidebar__header ${isSticky ? 'is-sticky' : ''}`}
+      className={`rt-sidebar__header ${isSticky ? 'rt-is-sticky' : ''}`}
       style={isSticky ? { width: sidebarWidth } : {}}
     >
       {

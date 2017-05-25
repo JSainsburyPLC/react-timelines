@@ -60,7 +60,7 @@ describe('<Header />', () => {
     }
     const props = { ...defaultProps, sticky }
     const wrapper = shallow(<Header {...props} />)
-    expect(wrapper.find('.rt-sidebar__header').hasClass('is-sticky')).toBe(true)
+    expect(wrapper.find('.rt-sidebar__header').hasClass('rt-is-sticky')).toBe(true)
     expect(wrapper.find('.rt-sidebar__header').prop('style')).toEqual({ width: 200 })
   })
 
@@ -72,7 +72,7 @@ describe('<Header />', () => {
     }
     const props = { ...defaultProps, sticky }
     const wrapper = shallow(<Header {...props} />)
-    expect(wrapper.find('.rt-sidebar__header').hasClass('is-sticky')).toBe(false)
+    expect(wrapper.find('.rt-sidebar__header').hasClass('rt-is-sticky')).toBe(false)
     expect(wrapper.find('.rt-sidebar__header').prop('style')).toEqual({})
   })
 })
