@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import BasicElement from '../../Elements/Basic'
 
-const Element = ({ time, style, id, title, start, end, tooltip }) =>
+const Element = ({ time, style, id, title, start, end, tooltip, classes }) =>
   <div
     key={id}
     className="track__element"
@@ -15,12 +15,14 @@ const Element = ({ time, style, id, title, start, end, tooltip }) =>
       start={start}
       end={end}
       style={{ ...style }}
+      classes={classes}
     />
   </div>
 
 Element.propTypes = {
   time: PropTypes.shape({}).isRequired,
   style: PropTypes.shape({}),
+  classes: PropTypes.arrayOf(PropTypes.string.isRequired),
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
   start: PropTypes.instanceOf(Date).isRequired,

@@ -3,15 +3,14 @@ import { shallow } from 'enzyme'
 
 import Basic from '../Basic'
 
-const createProps = ({
-  title = '',
-  start = new Date('2017-01-01'),
-  end = new Date('2017-02-01'),
-  style = {},
-  tooltip = ''
-}) => ({
-  title, start, end, style, tooltip
-})
+const defaultProps = {
+  title: '',
+  start: new Date('2017-01-01'),
+  end: new Date('2017-02-01'),
+  style: {},
+  tooltip: '',
+  classes: []
+}
 
 describe('<Basic />', () => {
   describe('Tooltip', () => {
@@ -19,7 +18,7 @@ describe('<Basic />', () => {
 
     it('renders the tooltip value if it exists', () => {
       const tooltip = 'Test tooltip'
-      const props = createProps({ tooltip })
+      const props = { ...defaultProps, tooltip }
       const wrapper = shallow(<Basic {...props} />)
       expect(getTooltip(wrapper).text()).toBe(tooltip)
     })
@@ -29,11 +28,18 @@ describe('<Basic />', () => {
       const title = 'TEST'
       const start = new Date('2017-03-20')
       const end = new Date('2017-04-15')
-      const props = createProps({ tooltip, title, start, end })
+      const props = { ...defaultProps, tooltip, title, start, end }
       const wrapper = shallow(<Basic {...props} />)
       expect(getTooltip(wrapper).text()).toMatch('TEST')
       expect(getTooltip(wrapper).text()).toMatch('Start 20 Mar')
       expect(getTooltip(wrapper).text()).toMatch('End 15 Apr')
+    })
+
+    it('can take an optional list of class names to add to the parent', () => {
+      const props = { ...defaultProps, classes: ['foo', 'bar'] }
+      const wrapper = shallow(<Basic {...props} />)
+      expect(wrapper.find('.element').hasClass('foo')).toBe(true)
+      expect(wrapper.find('.element').hasClass('bar')).toBe(true)
     })
   })
 })
