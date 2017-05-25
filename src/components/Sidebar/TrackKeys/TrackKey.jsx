@@ -7,19 +7,19 @@ const TrackKey = ({ track, toggleOpen }) => {
   const { title, tracks, isOpen, link } = track
   const isExpandable = isOpen !== undefined
   return (
-    <div className="track-key">
-      <div className="track-key__entry">
+    <div className="rt-track-key">
+      <div className="rt-track-key__entry">
         { isExpandable &&
           <button
             title="Expand track"
-            className={`track-key__toggle ${isOpen ? 'track-key__toggle--close' : 'track-key__toggle--open'}`}
+            className={`rt-track-key__toggle ${isOpen ? 'rt-track-key__toggle--close' : 'rt-track-key__toggle--open'}`}
             onClick={() => toggleOpen(track)}
           >
             { isOpen ? 'Close' : 'Open' }
           </button>
         }
         <span>{title}</span>
-        { link && <a className="track-key__link" title="Open link" href={link}>link</a> }
+        { link && <a className="rt-track-key__link" title="Open link" href={link}>link</a> }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />

@@ -1,13 +1,13 @@
-.sidebar {
+.rt-sidebar {
   background-color: $react-timelines-sidebar-background-color;
   box-shadow: 10px 0 10px -5px rgba(12, 12, 12, 0.1);
 }
 
-.sidebar__header {
+.rt-sidebar__header {
   background-color: $react-timelines-sidebar-background-color;
 }
 
-.sidebar__header.is-sticky {
+.rt-sidebar__header.is-sticky {
   position: fixed;
   top: 0;
   z-index: 2;
@@ -20,9 +20,9 @@
   }
 }
 
-.layout.is-open .sidebar__header.is-sticky {
+.rt-layout.is-open .rt-sidebar__header.is-sticky {
   margin-left: 0;
   direction: ltr;
 }
 
-.sidebar__body {}
+.rt-sidebar__body {}

@@ -28,12 +28,12 @@ describe('<Layout />', () => {
   it('renders <Sidebar /> in an open state', () => {
     const props = createProps({ isOpen: true })
     const wrapper = shallow(<Layout {...props} />)
-    expect(wrapper.find('.layout').prop('className')).toMatch('is-open')
+    expect(wrapper.find('.rt-layout').prop('className')).toMatch('is-open')
   })
 
   it('renders <Sidebar /> in a closed state', () => {
     const props = createProps({ isOpen: false })
     const wrapper = shallow(<Layout {...props} />)
-    expect(wrapper.find('.layout').prop('className')).not.toMatch('is-open')
+    expect(wrapper.find('.rt-layout').prop('className')).not.toMatch('is-open')
   })
 })

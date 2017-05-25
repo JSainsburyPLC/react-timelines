@@ -4,16 +4,16 @@ import Timeline from '../Timeline'
 import propTypes from './propTypes'
 
 const Layout = ({ isOpen, tracks, now, time, timebar, toggleTrackOpen }) => (
-  <div className={`layout ${isOpen ? 'is-open' : ''}`}>
-    <div className="layout__side">
+  <div className={`rt-layout ${isOpen ? 'is-open' : ''}`}>
+    <div className="rt-layout__side">
       <Sidebar
         timebar={timebar}
         tracks={tracks}
         toggleTrackOpen={toggleTrackOpen}
       />
     </div>
-    <div className="layout__main">
-      <div className="layout__timeline">
+    <div className="rt-layout__main">
+      <div className="rt-layout__timeline">
         <Timeline
           now={now}
           time={time}

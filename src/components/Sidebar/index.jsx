@@ -11,7 +11,7 @@ const Sidebar = ({
   toggleTrackOpen,
   sticky
 }) =>
-  <div className="sidebar">
+  <div className="rt-sidebar">
     <Header timebar={timebar} sticky={sticky} />
     <Body tracks={tracks} toggleTrackOpen={toggleTrackOpen} />
   </div>

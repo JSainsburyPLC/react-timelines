@@ -1,4 +1,4 @@
-.marker {
+.rt-marker {
   position: absolute;
   z-index: 2;
   top: 0;
@@ -9,12 +9,12 @@
   pointer-events: none;
 }
 
-.marker.is-visible {
+.rt-marker.is-visible {
   opacity: 1;
 }
 
 
-.marker--now {
+.rt-marker--now {
   color: $react-timelines-marker-now-background-color;
   border-color: rgba(
     $react-timelines-marker-now-background-color,
@@ -22,7 +22,7 @@
   );
 }
 
-.marker--pointer {
+.rt-marker--pointer {
   color: $react-timelines-marker-pointer-background-color;
   border-color: rgba(
     $react-timelines-marker-pointer-background-color,
@@ -30,12 +30,12 @@
   );
 }
 
-.marker--pointer.is-highlighted {
+.rt-marker--pointer.is-highlighted {
   color: darken($react-timelines-marker-pointer-background-color, 25%);
   border-color: rgba(darken($react-timelines-marker-pointer-background-color, 1), 25%);
 }
 
-.marker__label {
+.rt-marker__label {
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -63,7 +63,7 @@
   }
 }
 
-.marker__content {
+.rt-marker__content {
   display: table-cell;
   vertical-align: middle;
   white-space: nowrap;

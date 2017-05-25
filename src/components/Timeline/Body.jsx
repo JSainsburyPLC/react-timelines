@@ -7,7 +7,7 @@ class Body extends PureComponent {
   render() {
     const { time, tracks } = this.props
     return (
-      <div className="timeline__body">
+      <div className="rt-timeline__body">
         <Tracks time={time} tracks={tracks} />
       </div>
     )

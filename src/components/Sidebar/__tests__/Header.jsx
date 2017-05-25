@@ -24,8 +24,8 @@ describe('<Header />', () => {
     }
     const props = { ...defaultProps, timebar }
     const wrapper = shallow(<Header {...props} />)
-    expect(wrapper.find('.timebar-key').first().text()).toBe('row-1')
-    expect(wrapper.find('.timebar-key').last().text()).toBe('row-2')
+    expect(wrapper.find('.rt-timebar-key').first().text()).toBe('row-1')
+    expect(wrapper.find('.rt-timebar-key').last().text()).toBe('row-2')
   })
 
   it('reserves the space taken up by the header when it is sticky', () => {
@@ -60,8 +60,8 @@ describe('<Header />', () => {
     }
     const props = { ...defaultProps, sticky }
     const wrapper = shallow(<Header {...props} />)
-    expect(wrapper.find('.sidebar__header').hasClass('is-sticky')).toBe(true)
-    expect(wrapper.find('.sidebar__header').prop('style')).toEqual({ width: 200 })
+    expect(wrapper.find('.rt-sidebar__header').hasClass('is-sticky')).toBe(true)
+    expect(wrapper.find('.rt-sidebar__header').prop('style')).toEqual({ width: 200 })
   })
 
   it('becomes static when it receives a falsy sticky prop', () => {
@@ -72,7 +72,7 @@ describe('<Header />', () => {
     }
     const props = { ...defaultProps, sticky }
     const wrapper = shallow(<Header {...props} />)
-    expect(wrapper.find('.sidebar__header').hasClass('is-sticky')).toBe(false)
-    expect(wrapper.find('.sidebar__header').prop('style')).toEqual({})
+    expect(wrapper.find('.rt-sidebar__header').hasClass('is-sticky')).toBe(false)
+    expect(wrapper.find('.rt-sidebar__header').prop('style')).toEqual({})
   })
 })

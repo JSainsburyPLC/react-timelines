@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Track from './Track'
 
 const Tracks = ({ time, tracks }) =>
-  <div className="tracks">
+  <div className="rt-tracks">
     {
       tracks.map(({ id, elements, isOpen, tracks: children }) =>
         <Track

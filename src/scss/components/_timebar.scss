@@ -1,13 +1,13 @@
-.timebar {}
+.rt-timebar {}
 
-.timebar__row {
+.rt-timebar__row {
   position: relative;
   height: $react-timelines-header-row-height + $react-timelines-border-width;
   overflow: hidden;
   line-height: $react-timelines-header-row-height;
 }
 
-.timebar__cell {
+.rt-timebar__cell {
   position: absolute;
   text-align: center;
   background: #fff;
@@ -15,6 +15,6 @@
   border-bottom: $react-timelines-border-width solid $react-timelines-separator-color;
 }
 
-.timebar__row:last-child .timebar__cell {
+.rt-timebar__row:last-child .rt-timebar__cell {
   border-bottom-color: $react-timelines-header-separator-color;
 }
