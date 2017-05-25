@@ -4,7 +4,7 @@ import Timeline from '../Timeline'
 import propTypes from './propTypes'
 
 const Layout = ({ isOpen, tracks, now, time, timebar, toggleTrackOpen }) => (
-  <div className={`rt-layout ${isOpen ? 'is-open' : ''}`}>
+  <div className={`rt-layout ${isOpen ? 'rt-is-open' : ''}`}>
     <div className="rt-layout__side">
       <Sidebar
         timebar={timebar}

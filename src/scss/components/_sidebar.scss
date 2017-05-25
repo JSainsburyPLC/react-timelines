@@ -7,7 +7,7 @@
   background-color: $react-timelines-sidebar-background-color;
 }
 
-.rt-sidebar__header.is-sticky {
+.rt-sidebar__header.rt-is-sticky {
   position: fixed;
   top: 0;
   z-index: 2;
@@ -20,7 +20,7 @@
   }
 }
 
-.rt-layout.is-open .rt-sidebar__header.is-sticky {
+.rt-layout.rt-is-open .rt-sidebar__header.rt-is-sticky {
   margin-left: 0;
   direction: ltr;
 }

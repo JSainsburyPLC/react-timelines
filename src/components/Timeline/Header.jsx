@@ -55,7 +55,7 @@ class Header extends PureComponent {
         onMouseLeave={onLeave}
       >
         <div
-          className={`rt-timeline__header ${isSticky ? 'is-sticky' : ''}`}
+          className={`rt-timeline__header ${isSticky ? 'rt-is-sticky' : ''}`}
           style={isSticky ? { width: viewportWidth } : {}}
         >
           <div className="rt-timeline__header-scroll" ref={(scroll) => { this.scroll = scroll }} onScroll={isSticky && this.handleScroll}>

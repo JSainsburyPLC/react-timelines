@@ -9,7 +9,7 @@
   pointer-events: none;
 }
 
-.rt-marker.is-visible {
+.rt-marker.rt-is-visible {
   opacity: 1;
 }
 
@@ -30,7 +30,7 @@
   );
 }
 
-.rt-marker--pointer.is-highlighted {
+.rt-marker--pointer.rt-is-highlighted {
   color: darken($react-timelines-marker-pointer-background-color, 25%);
   border-color: rgba(darken($react-timelines-marker-pointer-background-color, 1), 25%);
 }

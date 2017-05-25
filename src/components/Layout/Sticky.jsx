@@ -128,7 +128,7 @@ class StickyLayout extends PureComponent {
       scrollLeft
     } = this.state
     return (
-      <div className={`rt-layout ${isOpen ? 'is-open' : ''}`} ref={(layout) => { this.layout = layout }}>
+      <div className={`rt-layout ${isOpen ? 'rt-is-open' : ''}`} ref={(layout) => { this.layout = layout }}>
         <div className="rt-layout__side" ref={(sidebar) => { this.sidebar = sidebar }}>
           <Sidebar
             timebar={timebar}
