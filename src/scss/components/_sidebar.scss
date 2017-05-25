@@ -10,7 +10,7 @@
 .sidebar__header.is-sticky {
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   direction: rtl;
   margin-left: ($react-timelines-sidebar-width - $react-timelines-sidebar-closed-offset);
 
