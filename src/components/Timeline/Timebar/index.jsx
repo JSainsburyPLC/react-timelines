@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Row from './Row'
 
 const Timebar = ({ time, rows }) =>
-  <div className="timebar">
+  <div className="rt-timebar">
     {
       rows.map(({ id, title, cells, style }) =>
         <Row

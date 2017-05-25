@@ -1,10 +1,10 @@
-.timeline {
+.rt-timeline {
   position: relative;
 }
 
-.timeline__header {}
+.rt-timeline__header {}
 
-.timeline__header-scroll {
+.rt-timeline__header-scroll {
   overflow-x: auto;
 
   &::-webkit-scrollbar {
@@ -12,12 +12,12 @@
   }
 }
 
-.timeline__header.is-sticky {
+.rt-timeline__header.is-sticky {
   position: fixed;
   top: 0;
   z-index: 1;
 }
 
-.timeline__body {
+.rt-timeline__body {
   position: relative;
 }

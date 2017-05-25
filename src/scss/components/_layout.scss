@@ -1,4 +1,4 @@
-.layout {
+.rt-layout {
   margin-left: -($react-timelines-sidebar-width - $react-timelines-sidebar-closed-offset);
 
   @media (min-width: $react-timelines-auto-open-breakpoint) {
@@ -10,7 +10,7 @@
   }
 }
 
-.layout__side {
+.rt-layout__side {
   position: relative;
   z-index: 2;
   display: inline-block;
@@ -19,13 +19,13 @@
   vertical-align: top;
 }
 
-.layout__main {
+.rt-layout__main {
   display: inline-block;
   width: calc(100% - #{$react-timelines-sidebar-width});
   vertical-align: top;
 }
 
-.layout__timeline {
+.rt-layout__timeline {
   overflow-x: auto;
   padding-top: $react-timelines-marker-label-height;
 }

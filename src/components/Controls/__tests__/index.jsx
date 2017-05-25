@@ -37,7 +37,7 @@ describe('<Controls />', () => {
   })
 
   describe('Zoom in button', () => {
-    const findButton = node => node.find('.controls__button--zoom-in')
+    const findButton = node => node.find('.rt-controls__button--zoom-in')
 
     it('not rendered if no "zoomIn" fn passed', () => {
       const props = { ...createProps(), zoomIn: undefined }
@@ -73,7 +73,7 @@ describe('<Controls />', () => {
   })
 
   describe('Zoom out button', () => {
-    const findButton = node => node.find('.controls__button--zoom-out')
+    const findButton = node => node.find('.rt-controls__button--zoom-out')
 
     it('not rendered if no "zoomOut" fn passed', () => {
       const props = { ...createProps(), zoomOut: undefined }

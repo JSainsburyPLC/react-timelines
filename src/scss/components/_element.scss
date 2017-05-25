@@ -1,4 +1,4 @@
-.element {
+.rt-element {
   $height: $react-timelines-track-height - 2 * $react-timelines-element-spacing;
 
   position: relative;
@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-.element__content {
+.rt-element__content {
   padding: 0 10px;
   overflow: hidden;
   white-space: nowrap;
@@ -17,7 +17,7 @@
   text-overflow: ellipsis;
 }
 
-.element__tooltip {
+.rt-element__tooltip {
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -43,8 +43,8 @@
   }
 }
 
-.element:hover > .element__tooltip,
-.element:focus > .element__tooltip {
+.rt-element:hover > .rt-element__tooltip,
+.rt-element:focus > .rt-element__tooltip {
   $delay: 0.3s;
   transform: translateX(-50%) scale(1);
   transition: transform 0s $delay;

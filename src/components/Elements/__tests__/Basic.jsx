@@ -14,7 +14,7 @@ const defaultProps = {
 
 describe('<Basic />', () => {
   describe('Tooltip', () => {
-    const getTooltip = node => node.find('.element__tooltip')
+    const getTooltip = node => node.find('.rt-element__tooltip')
 
     it('renders the tooltip value if it exists', () => {
       const tooltip = 'Test tooltip'
@@ -38,8 +38,8 @@ describe('<Basic />', () => {
     it('can take an optional list of class names to add to the parent', () => {
       const props = { ...defaultProps, classes: ['foo', 'bar'] }
       const wrapper = shallow(<Basic {...props} />)
-      expect(wrapper.find('.element').hasClass('foo')).toBe(true)
-      expect(wrapper.find('.element').hasClass('bar')).toBe(true)
+      expect(wrapper.find('.rt-element').hasClass('foo')).toBe(true)
+      expect(wrapper.find('.rt-element').hasClass('bar')).toBe(true)
     })
   })
 })

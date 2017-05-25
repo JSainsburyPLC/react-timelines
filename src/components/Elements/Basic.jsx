@@ -4,11 +4,11 @@ import { getDayMonth } from '../../utils/formatDate'
 import createClasses from '../../utils/classes'
 
 const Basic = ({ title, start, end, style, tooltip, classes }) =>
-  <div className={createClasses('element', classes)} style={style}>
-    <div className="element__content" aria-hidden="true">
-      <span className="element__title">{ title }</span>
+  <div className={createClasses('rt-element', classes)} style={style}>
+    <div className="rt-element__content" aria-hidden="true">
+      <span className="rt-element__title">{ title }</span>
     </div>
-    <div className="element__tooltip">
+    <div className="rt-element__tooltip">
       {
         tooltip
         ? <div>{tooltip}</div>

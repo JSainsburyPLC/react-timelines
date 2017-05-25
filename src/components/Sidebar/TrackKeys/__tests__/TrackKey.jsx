@@ -12,7 +12,7 @@ describe('<TrackKey />', () => {
   })
 
   describe('toggle button', () => {
-    const getToggleButton = node => node.find('.track-key__toggle')
+    const getToggleButton = node => node.find('.rt-track-key__toggle')
 
     it('renders when "track.isOpen" is defined', () => {
       const props = {

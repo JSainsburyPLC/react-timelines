@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Cell = ({ time, title, start, end }) =>
   <div
-    className="timebar__cell"
+    className="rt-timebar__cell"
     style={time.toStyleLeftAndWidth(start, end)}
   >
     {title}

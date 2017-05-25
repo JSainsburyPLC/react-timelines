@@ -50,7 +50,7 @@ class Timeline extends Component {
       pointerHighlighted
     } = this.state
     return (
-      <div className="timeline" style={{ width: `${time.timelineWidth}px` }}>
+      <div className="rt-timeline" style={{ width: `${time.timelineWidth}px` }}>
         {now && <NowMarker now={now} visible time={time} />}
         {pointerDate &&
           <PointerMarker

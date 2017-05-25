@@ -48,13 +48,13 @@ describe('<StickyLayout />', () => {
   it('renders <Sidebar /> in an open state', () => {
     const props = createProps({ isOpen: true })
     const wrapper = shallow(<StickyLayout {...props} />)
-    expect(wrapper.find('.layout').prop('className')).toMatch('is-open')
+    expect(wrapper.find('.rt-layout').prop('className')).toMatch('is-open')
   })
 
   it('renders <Sidebar /> in a closed state', () => {
     const props = createProps({ isOpen: false })
     const wrapper = shallow(<StickyLayout {...props} />)
-    expect(wrapper.find('.layout').prop('className')).not.toMatch('is-open')
+    expect(wrapper.find('.rt-layout').prop('className')).not.toMatch('is-open')
   })
 
   describe('sticky header', () => {
@@ -105,7 +105,7 @@ describe('<StickyLayout />', () => {
       const wrapper = mount(<StickyLayout {...props} />)
       wrapper.setState({ isSticky: true })
       wrapper.find(Timeline).prop('sticky').handleHeaderScrollY('100')
-      expect(wrapper.find('.layout__timeline').getNode().scrollLeft).toBe(100)
+      expect(wrapper.find('.rt-layout__timeline').getNode().scrollLeft).toBe(100)
     })
   })
 })

@@ -6,7 +6,7 @@ import BasicElement from '../../Elements/Basic'
 const Element = ({ time, style, id, title, start, end, tooltip, classes }) =>
   <div
     key={id}
-    className="track__element"
+    className="rt-track__element"
     style={time.toStyleLeftAndWidth(start, end)}
   >
     <BasicElement

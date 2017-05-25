@@ -5,8 +5,8 @@ import Tracks from './'
 import Element from './Element'
 
 const Track = ({ time, elements, isOpen, tracks }) =>
-  <div className="track">
-    <div className="track__elements">
+  <div className="tr-track">
+    <div className="rt-track__elements">
       { elements.filter(({ start, end }) => (end > start)).map(element =>
         <Element
           key={element.id}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Toggle = ({ toggleOpen, isOpen }) =>
   <button
-    className={`controls__button controls__button--toggle ${isOpen ? 'controls__button--toggle-close' : 'controls__button--toggle-open'}`}
+    className={`rt-controls__button rt-controls__button--toggle ${isOpen ? 'rt-controls__button--toggle-close' : 'rt-controls__button--toggle-open'}`}
     onClick={toggleOpen}
   >
     {isOpen ? 'Close' : 'Open'}

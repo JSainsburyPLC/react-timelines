@@ -128,8 +128,8 @@ class StickyLayout extends PureComponent {
       scrollLeft
     } = this.state
     return (
-      <div className={`layout ${isOpen ? 'is-open' : ''}`} ref={(layout) => { this.layout = layout }}>
-        <div className="layout__side" ref={(sidebar) => { this.sidebar = sidebar }}>
+      <div className={`rt-layout ${isOpen ? 'is-open' : ''}`} ref={(layout) => { this.layout = layout }}>
+        <div className="rt-layout__side" ref={(sidebar) => { this.sidebar = sidebar }}>
           <Sidebar
             timebar={timebar}
             tracks={tracks}
@@ -137,8 +137,8 @@ class StickyLayout extends PureComponent {
             sticky={{ isSticky, headerHeight, sidebarWidth }}
           />
         </div>
-        <div className="layout__main">
-          <div className="layout__timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={isSticky && this.handleScrollX}>
+        <div className="rt-layout__main">
+          <div className="rt-layout__timeline" ref={(timeline) => { this.timeline = timeline }} onScroll={isSticky && this.handleScrollX}>
             <Timeline
               now={now}
               time={time}
