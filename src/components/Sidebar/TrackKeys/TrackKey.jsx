@@ -9,15 +9,17 @@ const TrackKey = ({ track, toggleOpen }) => {
   return (
     <div className="track-key">
       <div className="track-key__entry">
-        { isExpandable ?
+        { isExpandable &&
           <button
+            title="Expand track"
             className={`track-key__toggle ${isOpen ? 'track-key__toggle--close' : 'track-key__toggle--open'}`}
             onClick={() => toggleOpen(track)}
           >
-            {title}
+            { isOpen ? 'Close' : 'Open' }
           </button>
-        : <span>{title}</span>}
-        { link && <a className="track-key__link" href={link}>link</a> }
+        }
+        <span>{title}</span>
+        { link && <a className="track-key__link" title="Open link" href={link}>link</a> }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />
