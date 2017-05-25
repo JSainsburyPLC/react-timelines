@@ -7,7 +7,7 @@ const TrackKey = ({ track, toggleOpen }) => {
   const { title, tracks, isOpen, link } = track
   const isExpandable = isOpen !== undefined
   return (
-    <div className="rt-track-key">
+    <li className="rt-track-key">
       <div className="rt-track-key__entry">
         { isExpandable &&
           <button
@@ -24,7 +24,7 @@ const TrackKey = ({ track, toggleOpen }) => {
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />
       }
-    </div>
+    </li>
   )
 }
 
