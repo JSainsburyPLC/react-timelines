@@ -10,4 +10,5 @@ dependencies:
 
 test:
   override:
-    - yarn test
+    - yarn lint
+    - yarn unit:ci

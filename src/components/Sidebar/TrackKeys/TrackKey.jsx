@@ -11,13 +11,15 @@ const TrackKey = ({ track, toggleOpen }) => {
       <div className="track-key__entry">
         { isExpandable &&
           <button
+            title="Expand track"
             className={`track-key__toggle ${isOpen ? 'track-key__toggle--close' : 'track-key__toggle--open'}`}
             onClick={() => toggleOpen(track)}
           >
             { isOpen ? 'Close' : 'Open' }
           </button>
         }
-        { link ? <a className="track-key__link" href={link}>{title}</a> : title }
+        <span>{title}</span>
+        { link && <a className="track-key__link" title="Open link" href={link}>link</a> }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />
