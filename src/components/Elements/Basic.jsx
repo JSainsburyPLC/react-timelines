@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import { getDayMonth } from '../../utils/formatDate'
+import createClasses from '../../utils/classes'
 
-const Basic = ({ title, start, end, style, tooltip }) =>
-  <div className="element" style={style}>
+const Basic = ({ title, start, end, style, tooltip, classes }) =>
+  <div className={createClasses('element', classes)} style={style}>
     <div className="element__content" aria-hidden="true">
-      { title }
+      <span className="element__title">{ title }</span>
     </div>
     <div className="element__tooltip">
       {
@@ -28,6 +28,7 @@ Basic.propTypes = {
   start: PropTypes.instanceOf(Date).isRequired,
   end: PropTypes.instanceOf(Date).isRequired,
   style: PropTypes.shape({}),
+  classes: PropTypes.arrayOf(PropTypes.string.isRequired),
   tooltip: PropTypes.string
 }
 
