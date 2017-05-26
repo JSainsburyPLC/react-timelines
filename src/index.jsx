@@ -108,7 +108,7 @@ class StickyTimeline extends Base {
       scale
     } = this.props
     return (
-      <div className="react-timelines">
+      <div className="rt">
         { this.renderControls() }
         <StickyLayout
           scale={scale}
