@@ -35,23 +35,23 @@ $react-timelines-marker-line-transparency: 0.5 !default;
 $react-timelines-button-background-color: #767676 !default;
 $react-timelines-button-background-color-hover: #4c4c4c !default;
 
-.react-timelines {
+.rt {
   position: relative;
   z-index: 1;
   overflow: hidden;
   font-family: $react-timelines-font-family;
   color: $react-timelines-text-color;
-
-  @import 'components/controls';
-  @import 'components/element';
-  @import 'components/layout';
-  @import 'components/marker';
-  @import 'components/sidebar';
-  @import 'components/timebar';
-  @import 'components/timebar-key';
-  @import 'components/timeline';
-  @import 'components/track';
-  @import 'components/tracks';
-  @import 'components/track-key';
-  @import 'components/track-keys';
 }
+
+@import 'components/controls';
+@import 'components/element';
+@import 'components/layout';
+@import 'components/marker';
+@import 'components/sidebar';
+@import 'components/timebar';
+@import 'components/timebar-key';
+@import 'components/timeline';
+@import 'components/track';
+@import 'components/tracks';
+@import 'components/track-key';
+@import 'components/track-keys';
