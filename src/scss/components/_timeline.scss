@@ -1,5 +1,7 @@
 .rt-timeline {
   position: relative;
+  overflow: hidden;
+  padding-top: $react-timelines-marker-label-height;
 }
 
 .rt-timeline__header {}

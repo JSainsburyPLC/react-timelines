@@ -24,7 +24,6 @@ class StickyLayout extends PureComponent {
     this.handleResize = this.handleResize.bind(this)
 
     this.setHeaderHeight = this.setHeaderHeight.bind(this)
-    this.setMarkerHeight = this.setMarkerHeight.bind(this)
     this.setTimelineViewportWidth = this.setTimelineViewportWidth.bind(this)
     this.updateTimelineBodyScroll = this.updateTimelineBodyScroll.bind(this)
 
@@ -35,7 +34,6 @@ class StickyLayout extends PureComponent {
   componentDidMount() {
     addListener('scroll', this.handleScrollY)
     addListener('resize', this.handleResize)
-    this.setMarkerHeight(getNumericPropertyValue(this.timeline, 'padding-top'))
     this.updateSidebarWidth()
     this.updateTimelineHeaderScroll()
     this.updateTimelineBodyScroll()
@@ -68,14 +66,9 @@ class StickyLayout extends PureComponent {
     this.setState({ headerHeight })
   }
 
-  setMarkerHeight(markerHeight) {
-    this.setState({ markerHeight })
-  }
-
   setTimelineViewportWidth(timelineViewportWidth) {
     this.setState({ timelineViewportWidth })
   }
-
 
   updateSidebarWidth() {
     const layoutOffset = getNumericPropertyValue(this.layout, 'margin-left')
@@ -100,7 +93,8 @@ class StickyLayout extends PureComponent {
 
   handleScrollY() {
     raf(() => {
-      const { markerHeight, headerHeight } = this.state
+      const { headerHeight } = this.state
+      const markerHeight = 50
       const { top, bottom } = this.timeline.getBoundingClientRect()
       const isSticky = (top <= -markerHeight) && (bottom >= headerHeight)
       this.setState(() => ({ isSticky }))
