@@ -1,7 +1,7 @@
 .rt-marker {
   position: absolute;
   z-index: 2;
-  top: 0;
+  top: $react-timelines-marker-label-height;
   bottom: 0;
   margin-left: -($react-timelines-marker-line-width / 2);
   border-left: $react-timelines-marker-line-width solid;

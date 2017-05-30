@@ -79,7 +79,7 @@ class Timeline extends Base {
       scale
     } = this.props
     return (
-      <div className="react-timelines">
+      <div className="rt">
         { this.renderControls() }
         <Layout
           scale={scale}
