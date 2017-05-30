@@ -1,7 +1,7 @@
 .rt-marker {
   position: absolute;
   z-index: 2;
-  top: $react-timelines-marker-label-height;
+  top: $react-timelines-marker-height;
   bottom: 0;
   margin-left: -($react-timelines-marker-line-width / 2);
   border-left: $react-timelines-marker-line-width solid;
@@ -41,7 +41,7 @@
   left: 50%;
   display: table;
   min-width: 70px;
-  height: $react-timelines-marker-label-height;
+  height: $react-timelines-marker-height;
   padding: 0 10px;
   line-height: 1.1;
   text-align: center;
