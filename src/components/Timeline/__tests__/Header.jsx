@@ -125,12 +125,13 @@ describe('<Header />', () => {
       expect(wrapper.find('.rt-timeline__header').prop('className')).not.toMatch('is-sticky')
     })
 
-    it('sets the viewportWidth and header of the header if sticky', () => {
+    it('sets the viewportWidth and height of the header if sticky', () => {
       const sticky = createStickyProp({ isSticky: true, viewportWidth: 100, headerHeight: 20 })
       const props = createProps({ sticky })
       const wrapper = mount(<Header {...props} />)
       expect(wrapper.find('.rt-timeline__header').prop('style')).toEqual({
-        width: 100
+        width: 100,
+        height: 20
       })
     })
 
