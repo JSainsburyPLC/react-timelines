@@ -23,7 +23,7 @@ const basePropTypes = {
 }
 
 const timelinePropTypes = {
-  timebar: PropTypes.shape({}).isRequired,
+  timebar: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   now: PropTypes.instanceOf(Date),
   toggleTrackOpen: PropTypes.func,

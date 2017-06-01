@@ -44,7 +44,7 @@ class Header extends PureComponent {
       onEnter,
       onLeave,
       width,
-      timebar: { rows },
+      timebar: rows,
       sticky: { isSticky, headerHeight, viewportWidth } = {}
     } = this.props
     return (

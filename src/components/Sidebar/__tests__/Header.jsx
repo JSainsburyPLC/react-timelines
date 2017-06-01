@@ -10,18 +10,16 @@ const defaultSticky = {
 }
 
 const defaultProps = {
-  timebar: { rows: [] },
+  timebar: [],
   sticky: { ...defaultSticky }
 }
 
 describe('<Header />', () => {
   it('renders the title for each row', () => {
-    const timebar = {
-      rows: [
-        { id: '1', title: 'row-1' },
-        { id: '1', title: 'row-2' }
-      ]
-    }
+    const timebar = [
+      { id: '1', title: 'row-1' },
+      { id: '1', title: 'row-2' }
+    ]
     const props = { ...defaultProps, timebar }
     const wrapper = shallow(<Header {...props} />)
     expect(wrapper.find('.rt-timebar-key').first().text()).toBe('row-1')

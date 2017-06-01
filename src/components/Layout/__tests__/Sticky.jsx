@@ -17,7 +17,7 @@ jest.mock('../../../utils/events')
 jest.mock('../../../utils/raf')
 
 const createProps = ({
-  timebar = { rows: [] },
+  timebar = [],
   time = {
     fromX: jest.fn(() => new Date()),
     toX: jest.fn(() => 0)
