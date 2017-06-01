@@ -13,8 +13,6 @@ npm install react-timelines
 
 ## Use
 
-Use the component:
-
 ```js
 import Timeline from 'react-timelines'
 
