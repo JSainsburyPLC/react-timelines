@@ -2,12 +2,11 @@
 
 ## Install
 
-*Yarn*
 ```js
 yarn add react-timelines
 ```
 
-*NPM*
+**Or**
 ```js
 npm install react-timelines
 ```
