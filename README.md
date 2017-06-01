@@ -2,12 +2,12 @@
 
 ## Install
 
-Install with Yarn:
+*Yarn*
 ```js
 yarn add react-timelines
 ```
 
-NPM:
+*NPM*
 ```js
 npm install react-timelines
 ```
@@ -50,7 +50,7 @@ Using Sass you can configure the timeline with variables:
 $react-timelines-font-family: MaryAnn;
 $react-timelines-sidebar-width: 320px;
 
-@import 'node_modules/react-timelines/src/scss/style';
+@import '~/react-timelines/src/scss/style';
 ```
 
 **Without build tools**
