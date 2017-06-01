@@ -22,7 +22,7 @@ const createStickyProp = ({
 
 const createProps = ({
   time = {},
-  timebar = { rows: [] },
+  timebar = [],
   onMove = jest.fn(),
   onEnter = jest.fn(),
   onLeave = jest.fn(),

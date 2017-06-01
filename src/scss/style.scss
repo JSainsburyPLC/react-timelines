@@ -41,6 +41,10 @@ $react-timelines-button-background-color-hover: #4c4c4c !default;
   overflow: hidden;
   font-family: $react-timelines-font-family;
   color: $react-timelines-text-color;
+
+  * {
+    box-sizing: border-box;
+  }
 }
 
 @import 'components/controls';

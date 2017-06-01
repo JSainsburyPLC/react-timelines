@@ -6,7 +6,7 @@ import Sidebar from '../../Sidebar'
 import Timeline from '../../Timeline'
 
 const createProps = ({
-  timebar = { rows: [] },
+  timebar = [],
   time = {
     fromX: jest.fn(() => new Date()),
     toX: jest.fn(() => 0)

@@ -20,7 +20,7 @@ const time = createTime({
 
 const createProps = ({
   now = new Date(),
-  timebar = { rows: [] },
+  timebar = [],
   tracks = [],
   isOpen
 } = {}) => ({

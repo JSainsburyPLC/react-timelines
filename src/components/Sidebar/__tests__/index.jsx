@@ -8,7 +8,7 @@ import Body from '../Body'
 describe('<Sidebar />', () => {
   it('renders <Header /> and <Body />', () => {
     const props = {
-      timebar: { rows: [] },
+      timebar: [],
       tracks: [{}],
       toggleTrackOpen: jest.fn()
     }
