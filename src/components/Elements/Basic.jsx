@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { getDayMonth } from '../../utils/formatDate'
 import createClasses from '../../utils/classes'
 
-
 const Basic = ({ title, start, end, style, tooltip, classes }) =>
   <div className={createClasses('rt-element', classes)} style={style}>
     <div className="rt-element__content" aria-hidden="true">
