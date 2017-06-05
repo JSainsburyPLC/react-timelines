@@ -7,7 +7,7 @@ import createTime from '../../../../utils/time'
 
 
 describe('<Element />', () => {
-  const props = {
+  const defaultProps = {
     id: '1',
     time: createTime({
       start: new Date('2016-01-01'),
@@ -20,7 +20,7 @@ describe('<Element />', () => {
   }
 
   it('renders with a calculated width and left position based on "start" and "end"', () => {
-    const wrapper = shallow(<Element {...props} />)
+    const wrapper = shallow(<Element {...defaultProps} />)
     expect(wrapper.prop('style')).toEqual({
       left: '366px',
       width: '365px'
@@ -28,7 +28,34 @@ describe('<Element />', () => {
   })
 
   it('renders <BasicElement />', () => {
-    const wrapper = shallow(<Element {...props} />)
+    const wrapper = shallow(<Element {...defaultProps} />)
     expect(wrapper.find(BasicElement).exists()).toBe(true)
+  })
+
+  describe('clickElement', () => {
+    it('renders with a cursor pointer style if callback is passed', () => {
+      const props = {
+        ...defaultProps,
+        clickElement: jest.fn()
+      }
+      const wrapper = shallow(<Element {...props} />)
+      expect(wrapper.prop('style')).toMatchObject({ cursor: 'pointer' })
+    })
+
+    it('renders without cursor pointer style if callback is not passed', () => {
+      const wrapper = shallow(<Element {...defaultProps} />)
+      expect(wrapper.prop('style')).not.toMatchObject({ cursor: 'pointer' })
+    })
+
+    it('gets called with props when clicked', () => {
+      const clickElement = jest.fn()
+      const props = { ...defaultProps, clickElement }
+      const wrapper = shallow(<Element {...props} />)
+      expect(clickElement).toHaveBeenCalledTimes(0)
+
+      wrapper.simulate('click')
+      expect(clickElement).toHaveBeenCalledTimes(1)
+      expect(clickElement).toHaveBeenCalledWith(props)
+    })
   })
 })

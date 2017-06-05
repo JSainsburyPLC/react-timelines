@@ -3,21 +3,34 @@ import PropTypes from 'prop-types'
 
 import BasicElement from '../../Elements/Basic'
 
-const Element = ({ time, style, id, title, start, end, tooltip, classes }) =>
-  <div
-    key={id}
-    className="rt-track__element"
-    style={time.toStyleLeftAndWidth(start, end)}
-  >
-    <BasicElement
-      tooltip={tooltip}
-      title={title}
-      start={start}
-      end={end}
-      style={{ ...style }}
-      classes={classes}
-    />
-  </div>
+const Element = (props) => {
+  const { time, style, id, title, start, end, tooltip, classes, clickElement } = props
+  const handleClick = () => {
+    clickElement(props)
+  }
+  const elementStyle = {
+    ...time.toStyleLeftAndWidth(start, end),
+    ...clickElement ? { cursor: 'pointer' } : {}
+  }
+  return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      key={id}
+      className="rt-track__element"
+      style={elementStyle}
+      onClick={clickElement && handleClick}
+    >
+      <BasicElement
+        tooltip={tooltip}
+        title={title}
+        start={start}
+        end={end}
+        style={{ ...style }}
+        classes={classes}
+      />
+    </div>
+  )
+}
 
 Element.propTypes = {
   time: PropTypes.shape({}).isRequired,
@@ -27,7 +40,8 @@ Element.propTypes = {
   title: PropTypes.string,
   start: PropTypes.instanceOf(Date).isRequired,
   end: PropTypes.instanceOf(Date).isRequired,
-  tooltip: PropTypes.string
+  tooltip: PropTypes.string,
+  clickElement: PropTypes.func
 }
 
 export default Element
