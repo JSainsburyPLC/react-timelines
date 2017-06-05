@@ -11,7 +11,8 @@ const Basic = ({ title, start, end, style, tooltip, classes }) =>
     <div className="rt-element__tooltip">
       {
         tooltip
-        ? <div>{tooltip}</div>
+        // eslint-disable-next-line react/no-danger
+        ? <div dangerouslySetInnerHTML={{ __html: tooltip.split('\n').join('<br>') }} />
         : (
           <div>
             <div>{title}</div>
