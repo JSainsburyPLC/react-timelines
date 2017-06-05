@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Tracks from './'
 import Element from './Element'
 
-const Track = ({ time, elements, isOpen, tracks }) =>
+const Track = ({ time, elements, isOpen, tracks, clickElement }) =>
   <div className="tr-track">
     <div className="rt-track__elements">
       { elements.filter(({ start, end }) => (end > start)).map(element =>
@@ -12,6 +12,7 @@ const Track = ({ time, elements, isOpen, tracks }) =>
           key={element.id}
           time={time}
           style={element.style}
+          clickElement={clickElement}
           {...element}
         />)
       }
@@ -25,7 +26,8 @@ Track.propTypes = {
   time: PropTypes.shape({}).isRequired,
   isOpen: PropTypes.bool,
   elements: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  tracks: PropTypes.arrayOf(PropTypes.shape({}))
+  tracks: PropTypes.arrayOf(PropTypes.shape({})),
+  clickElement: PropTypes.func
 }
 
 export default Track
