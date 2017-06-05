@@ -20,16 +20,14 @@ describe('<Basic />', () => {
       const tooltip = 'Test tooltip'
       const props = { ...defaultProps, tooltip }
       const wrapper = shallow(<Basic {...props} />)
-      expect(getTooltip(wrapper).text()).toBe(tooltip)
+      expect(getTooltip(wrapper).html()).toMatch('Test tooltip')
     })
 
     it('handles multiline tooltips', () => {
-      const tooltip = `Test
-        tooltip`
+      const tooltip = 'Test\ntooltip'
       const props = { ...defaultProps, tooltip }
-      const expected = '<div>Test</div><div>tooltip</div>'
       const wrapper = shallow(<Basic {...props} />)
-      expect(getTooltip(wrapper).find('.rt-element__tooltip').html()).toMatch(expected)
+      expect(getTooltip(wrapper).html()).toMatch('Test<br>tooltip')
     })
 
     it('renders the title, formatted start and end date if the tooltip prop does not exist', () => {
@@ -44,7 +42,7 @@ describe('<Basic />', () => {
       expect(getTooltip(wrapper).text()).toMatch('End 15 Apr')
     })
 
-    it('can take an optional list of class names to add to the parent', () => {
+    it('can take an optional list of classnames to add to the parent', () => {
       const props = { ...defaultProps, classes: ['foo', 'bar'] }
       const wrapper = shallow(<Basic {...props} />)
       expect(wrapper.find('.rt-element').hasClass('foo')).toBe(true)
