@@ -23,6 +23,15 @@ describe('<Basic />', () => {
       expect(getTooltip(wrapper).text()).toBe(tooltip)
     })
 
+    it('handles multiline tooltips', () => {
+      const tooltip = `Test
+        tooltip`
+      const props = { ...defaultProps, tooltip }
+      const expected = '<div>Test</div><div>tooltip</div>'
+      const wrapper = shallow(<Basic {...props} />)
+      expect(getTooltip(wrapper).find('.rt-element__tooltip').html()).toMatch(expected)
+    })
+
     it('renders the title, formatted start and end date if the tooltip prop does not exist', () => {
       const tooltip = ''
       const title = 'TEST'

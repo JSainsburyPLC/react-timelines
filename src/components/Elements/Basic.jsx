@@ -11,7 +11,8 @@ const Basic = ({ title, start, end, style, tooltip, classes }) =>
     <div className="rt-element__tooltip">
       {
         tooltip
-        ? <div>{tooltip}</div>
+        // eslint-disable-next-line react/no-array-index-key
+        ? tooltip.split('\n').map((partial, i) => <div key={i}>{partial.trim()}</div>)
         : (
           <div>
             <div>{title}</div>
