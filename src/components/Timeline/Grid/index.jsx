@@ -12,7 +12,7 @@ Grid.propTypes = {
   grid: PropTypes.arrayOf(PropTypes.shape({
     start: PropTypes.instanceOf(Date).isRequired,
     end: PropTypes.instanceOf(Date).isRequired
-  }))
+  })).isRequired
 }
 
 export default Grid
