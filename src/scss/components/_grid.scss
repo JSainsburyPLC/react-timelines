@@ -1,0 +1,16 @@
+.rt-grid {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: blue;
+}
+
+.rt-grid__cell {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  box-shadow: 1px 0 0 0 $react-timelines-separator-color inset;
+}
