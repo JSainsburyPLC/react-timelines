@@ -9,7 +9,7 @@ import PointerMarker from './Marker/Pointer'
 import getMouseX from '../../utils/getMouseX'
 import { propTypeTimebar } from '../../propTypes'
 
-import getGridRowCells from '../../utils/getGridRowCells'
+import getGridCells from '../../utils/getGridCells'
 
 class Timeline extends Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class Timeline extends Component {
       pointerVisible,
       pointerHighlighted
     } = this.state
-    const grid = getGridRowCells(timebar)
+    const grid = getGridCells(timebar)
     return (
       <div className="rt-timeline" style={{ width: `${time.timelineWidth}px` }}>
         {now && <NowMarker now={now} visible time={time} />}
