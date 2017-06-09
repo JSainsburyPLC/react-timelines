@@ -50,7 +50,6 @@ class Timeline extends Component {
       pointerVisible,
       pointerHighlighted
     } = this.state
-    const { cells } = timebar[2]
     return (
       <div className="rt-timeline" style={{ width: `${time.timelineWidth}px` }}>
         {now && <NowMarker now={now} visible time={time} />}
@@ -71,7 +70,7 @@ class Timeline extends Component {
           width={time.timelineWidth}
           sticky={sticky}
         />
-        <Body time={time} cells={cells} tracks={tracks} clickElement={clickElement} />
+        <Body time={time} timebar={timebar} tracks={tracks} clickElement={clickElement} />
       </div>
     )
   }
