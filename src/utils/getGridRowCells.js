@@ -1,7 +1,4 @@
-const getGridRowCells = timebar =>
-  timebar.find(row => (
-    row.useAsGrid) ||
-    timebar[timebar.length - 1]
-  ).cells
+const getGridCells = timebar =>
+  (timebar.find(row => row.useAsGrid) || {}).cells
 
-export default getGridRowCells
+export default getGridCells
