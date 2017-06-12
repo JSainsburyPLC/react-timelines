@@ -1,6 +1,6 @@
-import getGridCells from '../getGridCells'
+import getGrid from '../getGrid'
 
-describe('getGridCells', () => {
+describe('getGrid', () => {
   it('returns the cells from the first timebar row that has "useAsGrid" set to true', () => {
     const timebar = [
       {
@@ -13,7 +13,7 @@ describe('getGridCells', () => {
         cells: [{ id: 'row-3-cell-1' }]
       }
     ]
-    const actual = getGridCells(timebar)
+    const actual = getGrid(timebar)
     const expected = [{ id: 'row-2-cell-1' }]
     expect(actual).toEqual(expected)
   })
@@ -22,7 +22,7 @@ describe('getGridCells', () => {
     const timebar = [
       { cells: [] }
     ]
-    const actual = getGridCells(timebar)
+    const actual = getGrid(timebar)
     expect(actual).toEqual(undefined)
   })
 })
