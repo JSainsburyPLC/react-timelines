@@ -1,6 +1,6 @@
 // Common
-$react-timelines-separator-color: #eee !default;
-$react-timelines-separator-dark-color: darken($react-timelines-separator-color, 10%) !default;
+$react-timelines-keyline-color: #eee !default;
+$react-timelines-separator-dark-color: darken($react-timelines-keyline-color, 10%) !default;
 
 $react-timelines-auto-open-breakpoint: 1000px !default;
 $react-timelines-font-family: sans-serif !default;
@@ -15,7 +15,7 @@ $react-timelines-header-separator-color: $react-timelines-separator-dark-color !
 $react-timelines-sidebar-width: 240px !default;
 $react-timelines-sidebar-closed-offset: 40px;
 $react-timelines-sidebar-background-color: #fff !default;
-$react-timelines-sidebar-separator-color: $react-timelines-separator-color !default;
+$react-timelines-sidebar-separator-color: $react-timelines-keyline-color !default;
 $react-timelines-sidebar-key-indent-width: 20px !default;
 $react-timelines-sidebar-key-icon-size: 16px !default;
 $react-timelines-sidebar-key-icon-hover-color: #eee !default;
@@ -49,6 +49,7 @@ $react-timelines-button-background-color-hover: #4c4c4c !default;
 
 @import 'components/controls';
 @import 'components/element';
+@import 'components/grid';
 @import 'components/layout';
 @import 'components/marker';
 @import 'components/sidebar';

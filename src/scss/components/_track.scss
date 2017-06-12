@@ -3,8 +3,7 @@
 .rt-track__elements {
   position: relative;
   height: $react-timelines-track-height + $react-timelines-border-width;
-  background: #fff;
-  border-bottom: $react-timelines-border-width solid $react-timelines-separator-color;
+  border-bottom: $react-timelines-border-width solid $react-timelines-keyline-color;
 }
 
 .rt-track__element {

@@ -11,8 +11,8 @@
   position: absolute;
   text-align: center;
   background: #fff;
-  box-shadow: 1px 0 0 0 $react-timelines-separator-color inset;
-  border-bottom: $react-timelines-border-width solid $react-timelines-separator-color;
+  box-shadow: 1px 0 0 0 $react-timelines-keyline-color inset;
+  border-bottom: $react-timelines-border-width solid $react-timelines-keyline-color;
 }
 
 .rt-timebar__row:last-child .rt-timebar__cell {
