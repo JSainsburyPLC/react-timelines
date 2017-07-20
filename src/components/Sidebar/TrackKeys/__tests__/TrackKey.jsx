@@ -5,6 +5,20 @@ import TrackKey from '../TrackKey'
 import TrackKeys from '../'
 
 describe('<TrackKey />', () => {
+  describe('side component', () => {
+    const getSideComponent = node => node.find('.rt-track-key__side')
+
+    it('renders the side component if "sideComponent" exists', () => {
+      const track = { title: 'test', isOpen: true, sideComponent: <span>Component</span> }
+      const context = { clickTrackButton: jest.fn() }
+
+      const wrapper = shallow(<TrackKey track={track} />, { context })
+      const component = getSideComponent(wrapper)
+      expect(component.exists()).toBe(true)
+      expect(component.text()).toEqual('Component')
+    })
+  })
+
   describe('link button', () => {
     const getButton = node => node.find('.rt-track-key__button')
 
@@ -18,6 +32,14 @@ describe('<TrackKey />', () => {
 
     it('does not render when "hasButton" is false', () => {
       const track = { title: 'test', isOpen: true }
+      const context = { clickTrackButton: jest.fn() }
+
+      const wrapper = shallow(<TrackKey track={track} />, { context })
+      expect(getButton(wrapper).exists()).toBe(false)
+    })
+
+    it('does not render when "sideComponent" is present', () => {
+      const track = { title: 'test', isOpen: true, hasButton: true, sideComponent: <span>Component</span> }
       const context = { clickTrackButton: jest.fn() }
 
       const wrapper = shallow(<TrackKey track={track} />, { context })

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import TrackKeys from './'
 
 const TrackKey = ({ track, toggleOpen }, context) => {
-  const { title, tracks, isOpen, hasButton } = track
+  const { title, tracks, isOpen, hasButton, sideComponent } = track
   const { clickTrackButton } = context
   const isExpandable = isOpen !== undefined
   const handleClick = () => clickTrackButton(track)
@@ -22,7 +22,8 @@ const TrackKey = ({ track, toggleOpen }, context) => {
           </button>
         }
         <span>{title}</span>
-        { hasButton && clickTrackButton && <button className="rt-track-key__button" onClick={handleClick} /> }
+        { hasButton && !sideComponent && clickTrackButton && <button className="rt-track-key__button" onClick={handleClick} /> }
+        { sideComponent && <div className="rt-track-key__side">{ React.cloneElement(sideComponent) }</div> }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />
