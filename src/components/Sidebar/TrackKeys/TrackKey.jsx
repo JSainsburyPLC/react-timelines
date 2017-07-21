@@ -24,8 +24,8 @@ const TrackKey = ({ track, toggleOpen }, context) => {
             { isOpen ? 'Close' : 'Open' }
           </button>
         }
-        <span>{title}</span>
-        { showButton && <button className="rt-track-key__button" onClick={handleClick} /> }
+        <span className="rt-track-key__title">{title}</span>
+        { showButton && <button className="rt-track-key__side rt-track-key__side--button" onClick={handleClick} /> }
         { showSide && <div className="rt-track-key__side">{ React.cloneElement(sideComponent) }</div> }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
