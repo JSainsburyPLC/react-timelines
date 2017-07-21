@@ -4,10 +4,20 @@ import PropTypes from 'prop-types'
 import TrackKeys from './'
 
 const TrackKey = ({ track, toggleOpen }, context) => {
-  const { title, tracks, isOpen, hasButton } = track
+  const { title, tracks, isOpen, hasButton, sideComponent } = track
   const { clickTrackButton } = context
   const isExpandable = isOpen !== undefined
-  const handleClick = () => clickTrackButton(track)
+
+  const buildSideComponent = () => {
+    if (sideComponent) {
+      return React.cloneElement(sideComponent)
+    } else if (hasButton && clickTrackButton) {
+      const handleClick = () => clickTrackButton(track)
+      return <button className="rt-track-key__side-button" onClick={handleClick} />
+    }
+
+    return null
+  }
 
   return (
     <li className="rt-track-key">
@@ -21,8 +31,8 @@ const TrackKey = ({ track, toggleOpen }, context) => {
             { isOpen ? 'Close' : 'Open' }
           </button>
         }
-        <span>{title}</span>
-        { hasButton && clickTrackButton && <button className="rt-track-key__button" onClick={handleClick} /> }
+        <span className="rt-track-key__title">{title}</span>
+        { buildSideComponent() }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />
