@@ -7,10 +7,17 @@ const TrackKey = ({ track, toggleOpen }, context) => {
   const { title, tracks, isOpen, hasButton, sideComponent } = track
   const { clickTrackButton } = context
   const isExpandable = isOpen !== undefined
-  const handleClick = () => clickTrackButton(track)
 
-  const showSide = !!sideComponent
-  const showButton = !showSide && hasButton && clickTrackButton
+  const buildSideComponent = () => {
+    if (sideComponent) {
+      return React.cloneElement(sideComponent)
+    } else if (hasButton && clickTrackButton) {
+      const handleClick = () => clickTrackButton(track)
+      return <button className="rt-track-key__side-button" onClick={handleClick} />
+    }
+
+    return null
+  }
 
   return (
     <li className="rt-track-key">
@@ -25,8 +32,7 @@ const TrackKey = ({ track, toggleOpen }, context) => {
           </button>
         }
         <span className="rt-track-key__title">{title}</span>
-        { showButton && <button className="rt-track-key__side rt-track-key__side--button" onClick={handleClick} /> }
-        { showSide && <div className="rt-track-key__side">{ React.cloneElement(sideComponent) }</div> }
+        { buildSideComponent() }
       </div>
       { isOpen && tracks && tracks.length > 0 &&
         <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />
