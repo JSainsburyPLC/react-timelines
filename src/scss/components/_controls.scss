@@ -1,19 +1,13 @@
 .rt-controls {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.75);
-  padding: 5px;
-  z-index: 3;
+  margin: 0 0 $react-timelines-spacing $react-timelines-spacing;
 }
 
 .rt-controls__button {
-  $size: 36px;
   display: inline-block;
-  width: $size;
-  height: $size;
+  width: $react-timelines-header-row-height;
+  height: $react-timelines-header-row-height;
   overflow: hidden;
-  margin-right: 5px;
+  margin-right: 1px;
   background-color: $react-timelines-button-background-color;
   color: transparent;
   white-space: nowrap;
