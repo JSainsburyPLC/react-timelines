@@ -1,4 +1,6 @@
-.rt-timebar {}
+.rt-timebar {
+  background: #fff;
+}
 
 .rt-timebar__row {
   position: relative;
@@ -6,7 +8,6 @@
   overflow: hidden;
   line-height: $react-timelines-header-row-height;
   border-bottom: $react-timelines-border-width solid $react-timelines-keyline-color;
-
   &:last-child {
     border-bottom-color: $react-timelines-header-separator-color;
   }
@@ -15,6 +16,6 @@
 .rt-timebar__cell {
   position: absolute;
   text-align: center;
-  background: #fff;
+
   border-left: 1px solid $react-timelines-keyline-color;
 }
