@@ -1,14 +1,10 @@
 .rt-controls {
-  position: relative;
-}
-
-.rt-controls__content {
-  @media (min-width: $react-timelines-auto-open-breakpoint) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 3;
-  }
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 5px;
+  z-index: 3;
 }
 
 .rt-controls__button {
@@ -28,6 +24,10 @@
   &:hover,
   &:focus {
     background-color: $react-timelines-button-background-color-hover;
+  }
+
+  &:last-child {
+    margin-right: 0;
   }
 }
 
