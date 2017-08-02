@@ -1,5 +1,5 @@
 .rt-timebar {
-  background: #fff;
+  background-color: $react-timelines-keyline-color;
 }
 
 .rt-timebar__row {
@@ -17,5 +17,6 @@
   position: absolute;
   text-align: center;
 
+  background-color: $react-timelines-timebar-cell-background-color;
   border-left: 1px solid $react-timelines-keyline-color;
 }
