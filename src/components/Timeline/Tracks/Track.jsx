@@ -12,6 +12,7 @@ const Track = ({ time, elements, isOpen, tracks }) =>
           key={element.id}
           time={time}
           style={element.style}
+          dataSet={element.dataSet}
           {...element}
         />)
       }

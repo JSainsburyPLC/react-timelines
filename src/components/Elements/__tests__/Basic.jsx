@@ -49,4 +49,13 @@ describe('<Basic />', () => {
       expect(wrapper.find('.rt-element').hasClass('bar')).toBe(true)
     })
   })
+
+  describe('Data set', () => {
+    it('should be able to set data-*', () => {
+      const props = { ...defaultProps, dataSet: { foo: 'boo', bar: 'baz' } }
+      const wrapper = shallow(<Basic {...props} />)
+      expect(wrapper.props()['data-foo']).toEqual('boo')
+      expect(wrapper.props()['data-bar']).toEqual('baz')
+    })
+  })
 })
