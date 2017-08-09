@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import BasicElement from '../../Elements/Basic'
 
 const Element = (props, context) => {
-  const { time, style, id, title, start, end, tooltip, classes } = props
+  const { time, style, id, title, start, end, classes, dataSet, tooltip } = props
   const { clickElement } = context
   const handleClick = () => {
     clickElement(props)
@@ -22,12 +22,13 @@ const Element = (props, context) => {
       onClick={clickElement && handleClick}
     >
       <BasicElement
-        tooltip={tooltip}
         title={title}
         start={start}
         end={end}
         style={{ ...style }}
         classes={classes}
+        dataSet={dataSet}
+        tooltip={tooltip}
       />
     </div>
   )
@@ -37,6 +38,7 @@ Element.propTypes = {
   time: PropTypes.shape({}).isRequired,
   style: PropTypes.shape({}),
   classes: PropTypes.arrayOf(PropTypes.string.isRequired),
+  dataSet: PropTypes.shape({}),
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
   start: PropTypes.instanceOf(Date).isRequired,
