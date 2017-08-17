@@ -6,5 +6,6 @@ export default {
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   now: PropTypes.instanceOf(Date),
   isOpen: PropTypes.bool,
-  toggleTrackOpen: PropTypes.func
+  toggleTrackOpen: PropTypes.func,
+  scrollToNow: PropTypes.shape({})
 }

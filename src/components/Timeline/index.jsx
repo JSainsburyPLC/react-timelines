@@ -46,16 +46,19 @@ class Timeline extends Component {
       tracks,
       sticky
     } = this.props
+
     const {
       pointerDate,
       pointerVisible,
       pointerHighlighted
     } = this.state
+
     const grid = getGrid(timebar)
+
     return (
       <div className="rt-timeline" style={{ width: `${time.timelineWidth}px` }}>
-        {now && <NowMarker now={now} visible time={time} />}
-        {pointerDate &&
+        { now && <NowMarker now={now} visible time={time} /> }
+        { pointerDate &&
           <PointerMarker
             date={pointerDate}
             time={time}
@@ -72,7 +75,11 @@ class Timeline extends Component {
           width={time.timelineWidth}
           sticky={sticky}
         />
-        <Body time={time} grid={grid} tracks={tracks} />
+        <Body
+          time={time}
+          grid={grid}
+          tracks={tracks}
+        />
       </div>
     )
   }

@@ -29,6 +29,10 @@ const timelinePropTypes = {
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   now: PropTypes.instanceOf(Date),
   toggleTrackOpen: PropTypes.func,
+  scrollToNow: PropTypes.shape({
+    enabled: PropTypes.bool.isRequired,
+    onComplete: PropTypes.func.isRequired
+  }),
   ...basePropTypes
 }
 
@@ -88,7 +92,8 @@ class Timeline extends Base {
       now,
       timebar,
       toggleTrackOpen,
-      scale
+      scale,
+      scrollToNow
     } = this.props
     return (
       <div className="rt">
@@ -99,6 +104,7 @@ class Timeline extends Base {
           tracks={tracks}
           timebar={timebar}
           toggleTrackOpen={toggleTrackOpen}
+          scrollToNow={scrollToNow}
           time={this.state.time}
           isOpen={isOpen}
         />
@@ -117,7 +123,8 @@ class StickyTimeline extends Base {
       now,
       timebar,
       toggleTrackOpen,
-      scale
+      scale,
+      scrollToNow
     } = this.props
     return (
       <div className="rt">
@@ -128,6 +135,7 @@ class StickyTimeline extends Base {
           tracks={tracks}
           timebar={timebar}
           toggleTrackOpen={toggleTrackOpen}
+          scrollToNow={scrollToNow}
           time={this.state.time}
           isOpen={isOpen}
         />
