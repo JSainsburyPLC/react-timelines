@@ -5,10 +5,7 @@ import Header from './Header'
 import Body from './Body'
 import NowMarker from './Marker/Now'
 import PointerMarker from './Marker/Pointer'
-
 import getMouseX from '../../utils/getMouseX'
-import { propTypeTimebar } from '../../propTypes'
-
 import getGrid from '../../utils/getGrid'
 
 class Timeline extends Component {
@@ -90,7 +87,12 @@ Timeline.propTypes = {
   time: PropTypes.shape({
     fromX: PropTypes.func.isRequired
   }).isRequired,
-  timebar: propTypeTimebar.isRequired,
+  timebar: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string
+    }).isRequired
+  ).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   sticky: PropTypes.shape({})
 }

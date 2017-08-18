@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import Timebar from './Timebar'
-import { propTypeTimebar } from '../../propTypes'
 
 class Header extends PureComponent {
   constructor(props) {
@@ -74,7 +73,12 @@ class Header extends PureComponent {
 
 Header.propTypes = {
   time: PropTypes.shape({}).isRequired,
-  timebar: propTypeTimebar.isRequired,
+  timebar: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string
+    }).isRequired
+  ).isRequired,
   onMove: PropTypes.func.isRequired,
   onEnter: PropTypes.func.isRequired,
   onLeave: PropTypes.func.isRequired,
