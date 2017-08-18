@@ -34,7 +34,6 @@ class Layout extends PureComponent {
 
   componentDidMount() {
     const timelineViewportWidth = this.timeline.offsetWidth
-    this.scrollToNow(timelineViewportWidth)
 
     if (this.props.enableSticky) {
       addListener('scroll', this.handleScrollY)
@@ -44,6 +43,8 @@ class Layout extends PureComponent {
       this.updateTimelineBodyScroll()
       this.setTimelineViewportWidth(timelineViewportWidth)
     }
+
+    this.scrollToNow(timelineViewportWidth)
   }
 
   componentDidUpdate(prevProps, prevState) {
