@@ -1,10 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Timeline, { StickyTimeline } from '../'
+import Timeline from '../'
 import Controls from '../components/Controls'
 import Layout from '../components/Layout'
-import StickyLayout from '../components/Layout/Sticky'
 
 const defaultStart = new Date('2010-01-01')
 const defaultEnd = new Date('2030-01-01')
@@ -69,14 +68,6 @@ describe('<Timeline />', () => {
       const props = createProps()
       const wrapper = shallow(<Timeline {...props} />)
       expect(wrapper.find(Layout).prop('isOpen')).toBe(true)
-    })
-  })
-
-  describe('<StickyTimeline />', () => {
-    it('renders <StickyLayout />', () => {
-      const props = createProps()
-      const wrapper = shallow(<StickyTimeline {...props} />)
-      expect(wrapper.find(StickyLayout).exists()).toBe(true)
     })
   })
 })

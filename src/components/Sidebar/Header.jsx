@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { propTypeTimebar } from '../../propTypes'
 
 const Header = ({ timebar, sticky: { isSticky, sidebarWidth, headerHeight } = {} }) => (
   <div style={isSticky ? { paddingTop: headerHeight } : {}}>
@@ -23,7 +22,12 @@ Header.propTypes = {
     headerHeight: PropTypes.number.isRequired,
     sidebarWidth: PropTypes.number.isRequired
   }),
-  timebar: propTypeTimebar.isRequired
+  timebar: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string
+    }).isRequired
+  ).isRequired
 }
 
 export default Header
