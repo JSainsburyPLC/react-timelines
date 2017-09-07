@@ -1,0 +1,10 @@
+<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+  <title>
+    Menu
+  </title>
+  <g fill="#fff" fill-rule="evenodd">
+    <rect width="46" height="8" rx="4" transform="translate(5 7)"/>
+    <rect width="46" height="8" rx="4" transform="translate(5 41)"/>
+    <rect width="46" height="8" rx="4" transform="translate(5 24)"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+  <title>
+    Cross
+  </title>
+  <g fill="#fff" fill-rule="evenodd">
+    <rect width="56" height="8" rx="4" transform="rotate(-45 56.335 16.263)"/>
+    <rect width="56" height="8" rx="4" transform="rotate(45 -.707 15.364)"/>
+  </g>
+</svg>

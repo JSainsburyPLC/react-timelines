@@ -35,8 +35,9 @@ $react-timelines-marker-pointer-background-color: #888 !default;
 $react-timelines-marker-line-transparency: 0.5 !default;
 
 // Controls
-$react-timelines-button-background-color: #767676 !default;
-$react-timelines-button-background-color-hover: #4c4c4c !default;
+$react-timelines-button-background-color: #fff !default;
+$react-timelines-button-background-color-hover: #f0f0f0 !default;
+$react-timelines-button-size: 44px !default;
 
 .rt {
   position: relative;
@@ -49,6 +50,8 @@ $react-timelines-button-background-color-hover: #4c4c4c !default;
     box-sizing: border-box;
   }
 }
+
+@import 'utils';
 
 @import 'components/controls';
 @import 'components/element';
