@@ -54,12 +54,12 @@
   width: $icon-size;
   height: $icon-size;
   margin-right: 10px;
-  background: $react-timelines-button-background-color no-repeat center/10px;
+  background: $react-timelines-text-color no-repeat center/10px;
   color: transparent;
 
   &:hover,
   &:focus {
-    background-color: $react-timelines-button-background-color-hover;
+    background-color: darken($react-timelines-text-color, 20%);
   }
 }
 
