@@ -7,6 +7,8 @@ import { addListener, removeListener } from '../../utils/events'
 import raf from '../../utils/raf'
 import getNumericPropertyValue from '../../utils/getNumericPropertyValue'
 
+const noop = () => {}
+
 class Layout extends PureComponent {
   constructor(props) {
     super(props)
@@ -167,7 +169,7 @@ class Layout extends PureComponent {
           <div
             className="rt-layout__timeline"
             ref={(timeline) => { this.timeline = timeline }}
-            onScroll={isSticky && this.handleScrollX}
+            onScroll={isSticky ? this.handleScrollX : noop}
           >
             <Timeline
               now={now}

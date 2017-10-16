@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import Timebar from './Timebar'
 
+const noop = () => {}
+
 class Header extends PureComponent {
   constructor(props) {
     super(props)
@@ -57,7 +59,7 @@ class Header extends PureComponent {
           className={`rt-timeline__header ${isSticky ? 'rt-is-sticky' : ''}`}
           style={isSticky ? { width: viewportWidth, height: headerHeight } : {}}
         >
-          <div className="rt-timeline__header-scroll" ref={(scroll) => { this.scroll = scroll }} onScroll={isSticky && this.handleScroll}>
+          <div className="rt-timeline__header-scroll" ref={(scroll) => { this.scroll = scroll }} onScroll={isSticky ? this.handleScroll : noop}>
             <div
               ref={(timebar) => { this.timebar = timebar }}
               style={isSticky ? { width } : {}}
