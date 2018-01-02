@@ -12,31 +12,31 @@ const create = ({
   const timelineWidthStyle = `${timelineWidth}px`
   // const timelineWidthStyle = '100%'
 
-  const toXPercent = (from) => {
-    const value = (from - start) / duration
-    return value * 100
-  }
+  // const toXPercent = (from) => {
+  //   const value = (from - start) / duration
+  //   return value * 100
+  // }
 
   const toXPixels = (from) => {
     const value = (from - start) / duration
     return Math.round(value * timelineWidth)
   }
 
-  const toStyleLeftPercent = from => ({
-    left: `${toXPercent(from)}%`
-  })
+  // const toStyleLeftPercent = from => ({
+  //   left: `${toXPercent(from)}%`
+  // })
 
   const toStyleLeftPixels = from => ({
     left: `${toXPixels(from)}px`
   })
 
-  const toStyleLeftAndWidthPercent = (from, to) => {
-    const left = toXPercent(from)
-    return {
-      left: `${left}%`,
-      width: `${toXPercent(to) - left}%`
-    }
-  }
+  // const toStyleLeftAndWidthPercent = (from, to) => {
+  //   const left = toXPercent(from)
+  //   return {
+  //     left: `${left}%`,
+  //     width: `${toXPercent(to) - left}%`
+  //   }
+  // }
 
   const toStyleLeftAndWidthPixels = (from, to) => {
     const left = toXPixels(from)
