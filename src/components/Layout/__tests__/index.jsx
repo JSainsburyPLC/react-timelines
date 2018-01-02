@@ -25,9 +25,21 @@ const createProps = ({
   now = new Date(),
   isOpen = false,
   toggleTrackOpen = jest.fn(),
-  enableSticky = true
+  enableSticky = true,
+  onLayoutChange = jest.fn(),
+  timelineViewportWidth = 1000,
+  sidebarWidth = 200
 } = {}) => ({
-  timebar, time, tracks, now, isOpen, toggleTrackOpen, enableSticky
+  timebar,
+  time,
+  tracks,
+  now,
+  isOpen,
+  toggleTrackOpen,
+  enableSticky,
+  onLayoutChange,
+  timelineViewportWidth,
+  sidebarWidth
 })
 
 describe('<Layout />', () => {

@@ -13,9 +13,10 @@ const createScaleProps = ({
   end = defaultEnd,
   zoom = 1,
   zoomMin = undefined,
-  zoomMax = undefined
+  zoomMax = undefined,
+  minWidth = undefined
 } = {}) => ({
-  start, end, zoom, zoomMin, zoomMax
+  start, end, zoom, zoomMin, zoomMax, minWidth
 })
 
 const createProps = ({

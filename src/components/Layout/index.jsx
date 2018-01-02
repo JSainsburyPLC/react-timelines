@@ -15,8 +15,6 @@ class Layout extends PureComponent {
     this.state = {
       isSticky: false,
       headerHeight: 0,
-      sidebarWidth: 0,
-      timelineViewportWidth: 0,
       scrollLeft: 0
     }
   }
@@ -24,32 +22,28 @@ class Layout extends PureComponent {
   componentDidMount() {
     if (this.props.enableSticky) {
       addListener('scroll', this.handleScrollY)
-      addListener('resize', this.handleResize)
-      this.updateSidebarWidth()
       this.updateTimelineHeaderScroll()
       this.updateTimelineBodyScroll()
-      this.updateTimelineViewportWidth()
     }
 
-    this.scrollToNow()
+    addListener('resize', this.handleResize)
+    this.handleLayoutChange(() => this.scrollToNow())
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.enableSticky) {
-      if (prevProps.isOpen !== this.props.isOpen) {
-        this.updateSidebarWidth()
-      }
-
       if (this.state.isSticky) {
         if (!prevState.isSticky) {
           this.updateTimelineHeaderScroll()
-          this.updateTimelineViewportWidth()
         }
-
         if (this.state.scrollLeft !== prevState.scrollLeft) {
           this.updateTimelineBodyScroll()
         }
       }
+    }
+
+    if (this.props.isOpen !== prevProps.isOpen) {
+      this.handleLayoutChange()
     }
   }
 
@@ -60,8 +54,6 @@ class Layout extends PureComponent {
     }
   }
 
-  getTimelineWidth = () => this.timeline.offsetWidth
-
   setHeaderHeight = (headerHeight) => {
     this.setState({ headerHeight })
   }
@@ -69,22 +61,12 @@ class Layout extends PureComponent {
   scrollToNow = () => {
     const { time, scrollToNow, now } = this.props
     if (scrollToNow) {
-      this.timeline.scrollLeft = time.toX(now) - (0.5 * this.getTimelineWidth())
+      this.timeline.scrollLeft = time.toX(now) - (0.5 * this.props.timelineViewportWidth)
     }
-  }
-
-  updateSidebarWidth = () => {
-    const layoutOffset = getNumericPropertyValue(this.layout, 'margin-left')
-    const sidebarWidth = (this.sidebar.offsetWidth + layoutOffset)
-    this.setState({ sidebarWidth })
   }
 
   updateTimelineBodyScroll = () => {
     this.timeline.scrollLeft = this.state.scrollLeft
-  }
-
-  updateTimelineViewportWidth = () => {
-    this.setState({ timelineViewportWidth: this.getTimelineWidth() })
   }
 
   updateTimelineHeaderScroll = () => {
@@ -112,12 +94,28 @@ class Layout extends PureComponent {
     raf(this.updateTimelineHeaderScroll)
   }
 
-  handleResize = () => {
-    raf(() => {
-      this.updateSidebarWidth()
-      this.updateTimelineViewportWidth()
-    })
+  calculateSidebarWidth = () => this.sidebar.offsetWidth + getNumericPropertyValue(this.layout, 'margin-left')
+
+  calculateTimelineViewportWidth = () => this.timeline.offsetWidth
+
+  handleLayoutChange = (cb) => {
+    const sidebarWidth = this.calculateSidebarWidth()
+    const timelineViewportWidth = this.calculateTimelineViewportWidth()
+    if (
+      sidebarWidth !== this.props.sidebarWidth ||
+      timelineViewportWidth !== this.props.timelineViewportWidth
+    ) {
+      this.props.onLayoutChange(
+        {
+          sidebarWidth: this.calculateSidebarWidth(),
+          timelineViewportWidth: this.calculateTimelineViewportWidth()
+        },
+        cb
+      )
+    }
   }
+
+  handleResize = () => this.handleLayoutChange()
 
   render() {
     const {
@@ -126,14 +124,14 @@ class Layout extends PureComponent {
       now,
       time,
       timebar,
-      toggleTrackOpen
+      toggleTrackOpen,
+      sidebarWidth,
+      timelineViewportWidth
     } = this.props
 
     const {
       isSticky,
       headerHeight,
-      sidebarWidth,
-      timelineViewportWidth,
       scrollLeft
     } = this.state
     return (
@@ -187,7 +185,10 @@ Layout.propTypes = {
   now: PropTypes.instanceOf(Date),
   isOpen: PropTypes.bool,
   toggleTrackOpen: PropTypes.func,
-  scrollToNow: PropTypes.bool
+  scrollToNow: PropTypes.bool,
+  onLayoutChange: PropTypes.func.isRequired,
+  sidebarWidth: PropTypes.number,
+  timelineViewportWidth: PropTypes.number
 }
 
 export default Layout
