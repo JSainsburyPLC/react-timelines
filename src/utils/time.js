@@ -4,62 +4,47 @@ const create = ({
   start,
   end,
   zoom,
-  timelineViewportWidth = 0
+  viewportWidth = 0,
+  minWidth = 0
 }) => {
   const duration = end - start
 
-  // console.log('timelineViewportWidth', timelineViewportWidth)
-
   const days = duration / MILLIS_IN_A_DAY
-  const timelineWidth = days * zoom
+  const daysZoomWidth = days * zoom
+
+  let timelineWidth
+
+  if (daysZoomWidth > viewportWidth) {
+    timelineWidth = daysZoomWidth
+  } else {
+    timelineWidth = viewportWidth
+  }
+
+  if (timelineWidth < minWidth) {
+    timelineWidth = minWidth
+  }
+
   const timelineWidthStyle = `${timelineWidth}px`
 
-
-  // const timelineWidthStyle = '100%'
-
-  // const toXPercent = (from) => {
-  //   const value = (from - start) / duration
-  //   return value * 100
-  // }
-
-  const toXPixels = (from) => {
+  const toX = (from) => {
     const value = (from - start) / duration
     return Math.round(value * timelineWidth)
   }
 
-  // const toStyleLeftPercent = from => ({
-  //   left: `${toXPercent(from)}%`
-  // })
-
-  const toStyleLeftPixels = from => ({
-    left: `${toXPixels(from)}px`
+  const toStyleLeft = from => ({
+    left: `${toX(from)}px`
   })
 
-  // const toStyleLeftAndWidthPercent = (from, to) => {
-  //   const left = toXPercent(from)
-  //   return {
-  //     left: `${left}%`,
-  //     width: `${toXPercent(to) - left}%`
-  //   }
-  // }
-
-  const toStyleLeftAndWidthPixels = (from, to) => {
-    const left = toXPixels(from)
+  const toStyleLeftAndWidth = (from, to) => {
+    const left = toX(from)
     return {
       left: `${left}px`,
-      width: `${toXPixels(to) - left}px`
+      width: `${toX(to) - left}px`
     }
   }
 
-  const toX = toXPixels
-  const toStyleLeft = toStyleLeftPixels
-  const toStyleLeftAndWidth = toStyleLeftAndWidthPixels
-
   const fromX = x =>
     new Date(start.getTime() + ((x / timelineWidth) * duration))
-
-  // const fromX = x =>
-  //   new Date(start.getTime() + ((x / timelineWidth) * duration))
 
   return {
     timelineWidth,

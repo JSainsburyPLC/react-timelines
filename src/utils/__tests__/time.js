@@ -21,6 +21,31 @@ describe('createTime', () => {
       })
       expect(timelineWidth).toBe(50)
     })
+
+    it('uses viewportWidth if greater than daysZoomWidth', () => {
+      const newYear = new Date('2017-01-01T00:00:00.000Z')
+      const newYearMidday = new Date('2017-01-01T12:00:00.000Z')
+      const { timelineWidth } = createTime({
+        start: newYear,
+        end: newYearMidday,
+        zoom: 1,
+        viewportWidth: 1000
+      })
+      expect(timelineWidth).toBe(1000)
+    })
+
+    it('minTimelineWidth ensures timelineWidth does not fall below minimum', () => {
+      const newYear = new Date('2017-01-01T00:00:00.000Z')
+      const newYearMidday = new Date('2017-01-01T12:00:00.000Z')
+      const { timelineWidth } = createTime({
+        start: newYear,
+        end: newYearMidday,
+        zoom: 1,
+        viewportWidth: 500,
+        minWidth: 800
+      })
+      expect(timelineWidth).toBe(800)
+    })
   })
 
   describe('toX()', () => {

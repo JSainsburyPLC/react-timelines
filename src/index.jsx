@@ -13,7 +13,7 @@ class Timeline extends Component {
     const timelineViewportWidth = UNKNOWN_WIDTH
     const sidebarWidth = UNKNOWN_WIDTH
     this.state = {
-      time: createTime({ ...props.scale, timelineViewportWidth }),
+      time: createTime({ ...props.scale, viewportWidth: timelineViewportWidth }),
       timelineViewportWidth,
       sidebarWidth
     }
@@ -34,7 +34,7 @@ class Timeline extends Component {
     if (nextProps.scale !== this.props.scale) {
       const time = createTime({
         ...nextProps.scale,
-        timelineViewportWidth: this.state.timelineViewportWidth
+        viewportWidth: this.state.timelineViewportWidth
       })
       this.setState({ time })
     }
@@ -43,7 +43,7 @@ class Timeline extends Component {
   handleLayoutChange = ({ timelineViewportWidth, sidebarWidth }, cb) => {
     const time = createTime({
       ...this.props.scale,
-      timelineViewportWidth
+      viewportWidth: timelineViewportWidth
     })
     this.setState({
       time,
@@ -109,7 +109,8 @@ Timeline.propTypes = {
     end: PropTypes.instanceOf(Date).isRequired,
     zoom: PropTypes.number.isRequired,
     zoomMin: PropTypes.number,
-    zoomMax: PropTypes.number
+    zoomMax: PropTypes.number,
+    minWidth: PropTypes.number
   }),
   isOpen: PropTypes.bool,
   toggleOpen: PropTypes.func,
