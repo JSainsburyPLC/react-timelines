@@ -5,11 +5,17 @@ import Controls from './components/Controls'
 import Layout from './components/Layout'
 import createTime from './utils/time'
 
+const UNKNOWN_WIDTH = -1
+
 class Timeline extends Component {
   constructor(props) {
     super(props)
+    const timelineViewportWidth = UNKNOWN_WIDTH
+    const sidebarWidth = UNKNOWN_WIDTH
     this.state = {
-      time: createTime(props.scale)
+      time: createTime({ ...props.scale, timelineViewportWidth }),
+      timelineViewportWidth,
+      sidebarWidth
     }
   }
 
@@ -18,15 +24,33 @@ class Timeline extends Component {
       clickElement,
       clickTrackButton
     } = this.props
-    return { clickElement, clickTrackButton }
+    return {
+      clickElement,
+      clickTrackButton
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.scale !== this.props.scale) {
-      this.setState({ time: createTime(nextProps.scale) })
+      const time = createTime({
+        ...nextProps.scale,
+        timelineViewportWidth: this.state.timelineViewportWidth
+      })
+      this.setState({ time })
     }
   }
 
+  handleLayoutChange = ({ timelineViewportWidth, sidebarWidth }, cb) => {
+    const time = createTime({
+      ...this.props.scale,
+      timelineViewportWidth
+    })
+    this.setState({
+      time,
+      timelineViewportWidth,
+      sidebarWidth
+    }, cb)
+  }
 
   render() {
     const {
@@ -42,6 +66,8 @@ class Timeline extends Component {
       enableSticky = false,
       scrollToNow
     } = this.props
+
+    const { time, timelineViewportWidth, sidebarWidth } = this.state
 
     return (
       <div className="rt">
@@ -61,8 +87,11 @@ class Timeline extends Component {
           timebar={timebar}
           toggleTrackOpen={toggleTrackOpen}
           scrollToNow={scrollToNow}
-          time={this.state.time}
+          time={time}
           isOpen={isOpen}
+          onLayoutChange={this.handleLayoutChange}
+          timelineViewportWidth={timelineViewportWidth}
+          sidebarWidth={sidebarWidth}
         />
       </div>
     )

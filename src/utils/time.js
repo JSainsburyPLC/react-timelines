@@ -3,13 +3,18 @@ const MILLIS_IN_A_DAY = 24 * 60 * 60 * 1000
 const create = ({
   start,
   end,
-  zoom
+  zoom,
+  timelineViewportWidth = 0
 }) => {
   const duration = end - start
+
+  // console.log('timelineViewportWidth', timelineViewportWidth)
 
   const days = duration / MILLIS_IN_A_DAY
   const timelineWidth = days * zoom
   const timelineWidthStyle = `${timelineWidth}px`
+
+
   // const timelineWidthStyle = '100%'
 
   // const toXPercent = (from) => {
