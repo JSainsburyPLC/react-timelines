@@ -33,7 +33,8 @@ const createProps = ({
   onMove,
   onEnter,
   onLeave,
-  sticky
+  sticky,
+  width: '1000px'
 })
 
 describe('<Header />', () => {
@@ -72,35 +73,35 @@ describe('<Header />', () => {
       let sticky = createStickyProp()
       const props = createProps({ sticky })
       const wrapper = mount(<Header {...props} />)
-      expect(wrapper.find('.rt-timeline__header-scroll').getNode().scrollLeft).toBe(0)
+      expect(wrapper.find('.rt-timeline__header-scroll').instance().scrollLeft).toBe(0)
 
       sticky = createStickyProp({ scrollLeft: 100 })
       const nextProps = createProps({ sticky })
       wrapper.setProps(nextProps)
-      expect(wrapper.find('.rt-timeline__header-scroll').getNode().scrollLeft).toBe(100)
+      expect(wrapper.find('.rt-timeline__header-scroll').instance().scrollLeft).toBe(100)
     })
 
     it('ensures the scroll left position is correct when the header becomes sticky', () => {
       let sticky = createStickyProp({ isSticky: false })
       const props = createProps({ sticky })
       const wrapper = mount(<Header {...props} />)
-      expect(wrapper.find('.rt-timeline__header-scroll').getNode().scrollLeft).toBe(0)
+      expect(wrapper.find('.rt-timeline__header-scroll').instance().scrollLeft).toBe(0)
 
       sticky = createStickyProp({ isSticky: true })
       const nextProps = createProps({ sticky })
       wrapper.setProps(nextProps)
-      expect(wrapper.find('.rt-timeline__header-scroll').getNode().scrollLeft).toBe(0)
+      expect(wrapper.find('.rt-timeline__header-scroll').instance().scrollLeft).toBe(0)
     })
 
     it('does not update the scrollLeft position if the component updates and the scrollLeft and isSticky props have not changed', () => {
       const sticky = createStickyProp()
       const props = createProps({ sticky })
       const wrapper = mount(<Header {...props} />)
-      expect(wrapper.find('.rt-timeline__header-scroll').getNode().scrollLeft).toBe(0)
+      expect(wrapper.find('.rt-timeline__header-scroll').instance().scrollLeft).toBe(0)
 
       const nextProps = createProps({ height: 100, sticky })
       wrapper.setProps(nextProps)
-      expect(wrapper.find('.rt-timeline__header-scroll').getNode().scrollLeft).toBe(0)
+      expect(wrapper.find('.rt-timeline__header-scroll').instance().scrollLeft).toBe(0)
     })
 
     it('calls the setHeaderHeight() prop when mounted', () => {

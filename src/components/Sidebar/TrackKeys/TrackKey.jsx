@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 import TrackKeys from './'
 
 const TrackKey = ({ track, toggleOpen }, context) => {
-  const { title, tracks, isOpen, hasButton, sideComponent } = track
+  const {
+    title, tracks, isOpen, hasButton, sideComponent
+  } = track
   const { clickTrackButton } = context
   const isExpandable = isOpen !== undefined
 

@@ -13,6 +13,7 @@
   ],
   "plugins": [
     "add-module-exports",
-    "transform-runtime"
+    "transform-runtime",
+    "transform-class-properties"
   ]
 }

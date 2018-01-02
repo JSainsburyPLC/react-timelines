@@ -1,10 +1,14 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events jsx-a11y/no-static-element-interactions */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import BasicElement from '../../Elements/Basic'
 
 const Element = (props, context) => {
-  const { time, style, id, title, start, end, classes, dataSet, tooltip } = props
+  const {
+    time, style, id, title, start, end, classes, dataSet, tooltip
+  } = props
   const { clickElement } = context
   const handleClick = () => {
     clickElement(props)
@@ -13,13 +17,16 @@ const Element = (props, context) => {
     ...time.toStyleLeftAndWidth(start, end),
     ...clickElement ? { cursor: 'pointer' } : {}
   }
+  const clickProps = (clickElement && handleClick) ? {
+    onClick: handleClick,
+    role: 'button'
+  } : {}
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       key={id}
       className="rt-track__element"
       style={elementStyle}
-      onClick={clickElement && handleClick}
+      {...clickProps}
     >
       <BasicElement
         title={title}

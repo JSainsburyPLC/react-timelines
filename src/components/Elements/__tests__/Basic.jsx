@@ -35,7 +35,9 @@ describe('<Basic />', () => {
       const title = 'TEST'
       const start = new Date('2017-03-20')
       const end = new Date('2017-04-15')
-      const props = { ...defaultProps, tooltip, title, start, end }
+      const props = {
+        ...defaultProps, tooltip, title, start, end
+      }
       const wrapper = shallow(<Basic {...props} />)
       expect(getTooltip(wrapper).text()).toMatch('TEST')
       expect(getTooltip(wrapper).text()).toMatch('Start 20 Mar')

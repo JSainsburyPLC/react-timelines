@@ -11,7 +11,9 @@ const buildDataAttributes = (attributes = {}) => {
   return value
 }
 
-const Basic = ({ title, start, end, style, classes, dataSet, tooltip }) =>
+const Basic = ({
+  title, start, end, style, classes, dataSet, tooltip
+}) => (
   <div
     className={createClasses('rt-element', classes)}
     style={style}
@@ -35,6 +37,7 @@ const Basic = ({ title, start, end, style, classes, dataSet, tooltip }) =>
       }
     </div>
   </div>
+)
 
 Basic.propTypes = {
   title: PropTypes.string.isRequired,

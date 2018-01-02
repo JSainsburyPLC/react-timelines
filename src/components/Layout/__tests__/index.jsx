@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 
 import Layout from '../'
 import Sidebar from '../../Sidebar'
@@ -8,7 +8,6 @@ import Timeline from '../../Timeline'
 import computedStyle from '../../../utils/computedStyle'
 import { addListener, removeListener } from '../../../utils/events'
 import raf from '../../../utils/raf'
-
 
 jest.mock('../../Sidebar', () => () => null)
 jest.mock('../../Timeline', () => () => null)
@@ -27,34 +26,37 @@ const createProps = ({
   isOpen = false,
   toggleTrackOpen = jest.fn(),
   enableSticky = true
-} = {}) => ({ timebar, time, tracks, now, isOpen, toggleTrackOpen, enableSticky })
+} = {}) => ({
+  timebar, time, tracks, now, isOpen, toggleTrackOpen, enableSticky
+})
 
 describe('<Layout />', () => {
   beforeEach(() => {
-    computedStyle.mockImplementation(node => ({
-      getPropertyValue(prop) {
-        return node.style[prop]
-      }
-    }))
+    computedStyle.mockImplementation(node =>
+      ({
+        getPropertyValue(prop) {
+          return node.style[prop]
+        }
+      }))
     raf.mockImplementation(fn => fn())
   })
 
   it('renders <Sidebar /> and <Timeline />', () => {
     const props = createProps()
-    const wrapper = shallow(<Layout {...props} />)
+    const wrapper = mount(<Layout {...props} />)
     expect(wrapper.find(Sidebar).exists()).toBe(true)
     expect(wrapper.find(Timeline).exists()).toBe(true)
   })
 
   it('renders <Sidebar /> in an open state', () => {
     const props = createProps({ isOpen: true })
-    const wrapper = shallow(<Layout {...props} />)
+    const wrapper = mount(<Layout {...props} />)
     expect(wrapper.find('.rt-layout').prop('className')).toMatch('is-open')
   })
 
   it('renders <Sidebar /> in a closed state', () => {
     const props = createProps({ isOpen: false })
-    const wrapper = shallow(<Layout {...props} />)
+    const wrapper = mount(<Layout {...props} />)
     expect(wrapper.find('.rt-layout').prop('className')).not.toMatch('is-open')
   })
 
@@ -105,7 +107,7 @@ describe('<Layout />', () => {
       const wrapper = mount(<Layout {...props} />)
       wrapper.setState({ isSticky: true })
       wrapper.find(Timeline).prop('sticky').handleHeaderScrollY('100')
-      expect(wrapper.find('.rt-layout__timeline').getNode().scrollLeft).toBe(100)
+      expect(wrapper.find('.rt-layout__timeline').instance().scrollLeft).toBe(100)
     })
   })
 })
