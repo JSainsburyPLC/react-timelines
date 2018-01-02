@@ -13,7 +13,7 @@ const Controls = ({
   zoom,
   zoomMin,
   zoomMax
-}) =>
+}) => (
   <div className="rt-controls">
     <div className="rt-controls__content">
       { toggleOpen && <Toggle isOpen={isOpen} toggleOpen={toggleOpen} /> }
@@ -21,6 +21,7 @@ const Controls = ({
       { zoomOut && <ZoomOut zoomOut={zoomOut} zoomMin={zoomMin} zoom={zoom} /> }
     </div>
   </div>
+)
 
 Controls.propTypes = {
   zoom: PropTypes.number.isRequired,

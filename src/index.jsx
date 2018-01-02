@@ -11,7 +11,6 @@ class Timeline extends Component {
     this.state = {
       time: createTime(props.scale)
     }
-    
   }
 
   getChildContext() {
@@ -27,7 +26,6 @@ class Timeline extends Component {
       this.setState({ time: createTime(nextProps.scale) })
     }
   }
-
 
 
   render() {

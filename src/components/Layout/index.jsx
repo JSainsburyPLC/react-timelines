@@ -15,7 +15,6 @@ class Layout extends PureComponent {
     this.state = {
       isSticky: false,
       headerHeight: 0,
-      markerHeight: 0,
       sidebarWidth: 0,
       timelineViewportWidth: 0,
       scrollLeft: 0
@@ -89,7 +88,7 @@ class Layout extends PureComponent {
   }
 
   updateTimelineHeaderScroll = () => {
-    const scrollLeft = this.timeline.scrollLeft
+    const { scrollLeft } = this.timeline
     this.setState({ scrollLeft })
   }
 

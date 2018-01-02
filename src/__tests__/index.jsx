@@ -14,7 +14,9 @@ const createScaleProps = ({
   zoom = 1,
   zoomMin = undefined,
   zoomMax = undefined
-} = {}) => ({ start, end, zoom, zoomMin, zoomMax })
+} = {}) => ({
+  start, end, zoom, zoomMin, zoomMax
+})
 
 const createProps = ({
   now = new Date(),

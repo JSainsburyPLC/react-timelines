@@ -9,19 +9,18 @@ const Sidebar = ({
   tracks,
   toggleTrackOpen,
   sticky
-}) =>
+}) => (
   <div className="rt-sidebar">
     <Header timebar={timebar} sticky={sticky} />
     <Body tracks={tracks} toggleTrackOpen={toggleTrackOpen} />
   </div>
+)
 
 Sidebar.propTypes = {
-  timebar: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string
-    }).isRequired
-  ).isRequired,
+  timebar: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string
+  }).isRequired).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   toggleTrackOpen: PropTypes.func,
   sticky: PropTypes.shape({})

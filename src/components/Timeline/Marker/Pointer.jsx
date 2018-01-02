@@ -4,12 +4,20 @@ import PropTypes from 'prop-types'
 import { getDayMonth } from '../../../utils/formatDate'
 import Marker from './'
 
-const PointerMarker = ({ time, date, visible, highlighted }) =>
-  <Marker modifier="pointer" x={time.toX(date)} visible={visible} highlighted={highlighted}>
+const PointerMarker = ({
+  time, date, visible, highlighted
+}) => (
+  <Marker
+    modifier="pointer"
+    x={time.toX(date)}
+    visible={visible}
+    highlighted={highlighted}
+  >
     <div>
       <div><strong>{getDayMonth(date)}</strong></div>
     </div>
   </Marker>
+)
 
 PointerMarker.propTypes = {
   time: PropTypes.shape({}).isRequired,

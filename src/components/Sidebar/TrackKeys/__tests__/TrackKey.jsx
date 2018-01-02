@@ -40,7 +40,9 @@ describe('<TrackKey />', () => {
     })
 
     it('does not render when "sideComponent" is present', () => {
-      const track = { title: 'test', isOpen: true, hasButton: true, sideComponent: <span>Component</span> }
+      const track = {
+        title: 'test', isOpen: true, hasButton: true, sideComponent: <span>Component</span>
+      }
       const context = { clickTrackButton: jest.fn() }
 
       const wrapper = shallow(<TrackKey track={track} />, { context })

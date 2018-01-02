@@ -83,12 +83,10 @@ Timeline.propTypes = {
   time: PropTypes.shape({
     fromX: PropTypes.func.isRequired
   }).isRequired,
-  timebar: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string
-    }).isRequired
-  ).isRequired,
+  timebar: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string
+  }).isRequired).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   sticky: PropTypes.shape({})
 }
