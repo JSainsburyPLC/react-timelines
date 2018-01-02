@@ -6,11 +6,6 @@ import Timebar from './Timebar'
 const noop = () => {}
 
 class Header extends PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.handleScroll = this.handleScroll.bind(this)
-  }
   componentDidMount() {
     const { sticky } = this.props
     if (sticky) {
@@ -34,7 +29,7 @@ class Header extends PureComponent {
     }
   }
 
-  handleScroll() {
+  handleScroll = () => {
     this.props.sticky.handleHeaderScrollY(this.scroll.scrollLeft)
   }
 
@@ -84,7 +79,7 @@ Header.propTypes = {
   onMove: PropTypes.func.isRequired,
   onEnter: PropTypes.func.isRequired,
   onLeave: PropTypes.func.isRequired,
-  width: PropTypes.number,
+  width: PropTypes.string.isRequired,
   sticky: PropTypes.shape({
     isSticky: PropTypes.bool.isRequired,
     setHeaderHeight: PropTypes.func.isRequired,

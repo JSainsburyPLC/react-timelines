@@ -12,10 +12,6 @@ class Timeline extends Component {
   constructor(props) {
     super(props)
 
-    this.handleMouseMove = this.handleMouseMove.bind(this)
-    this.handleMouseEnter = this.handleMouseEnter.bind(this)
-    this.handleMouseLeave = this.handleMouseLeave.bind(this)
-
     this.state = {
       pointerDate: null,
       pointerVisible: false,
@@ -23,15 +19,15 @@ class Timeline extends Component {
     }
   }
 
-  handleMouseMove(e) {
+  handleMouseMove = (e) => {
     this.setState({ pointerDate: this.props.time.fromX(getMouseX(e)) })
   }
 
-  handleMouseLeave() {
+  handleMouseLeave = () => {
     this.setState({ pointerHighlighted: false })
   }
 
-  handleMouseEnter() {
+  handleMouseEnter = () => {
     this.setState({ pointerVisible: true, pointerHighlighted: true })
   }
 
@@ -53,7 +49,7 @@ class Timeline extends Component {
     const grid = getGrid(timebar)
 
     return (
-      <div className="rt-timeline" style={{ width: `${time.timelineWidth}px` }}>
+      <div className="rt-timeline" style={{ width: time.timelineWidthStyle }}>
         { now && <NowMarker now={now} visible time={time} /> }
         { pointerDate &&
           <PointerMarker
@@ -69,7 +65,7 @@ class Timeline extends Component {
           onMove={this.handleMouseMove}
           onEnter={this.handleMouseEnter}
           onLeave={this.handleMouseLeave}
-          width={time.timelineWidth}
+          width={time.timelineWidthStyle}
           sticky={sticky}
         />
         <Body

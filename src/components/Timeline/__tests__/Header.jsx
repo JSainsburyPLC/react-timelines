@@ -33,7 +33,8 @@ const createProps = ({
   onMove,
   onEnter,
   onLeave,
-  sticky
+  sticky,
+  width: '1000px'
 })
 
 describe('<Header />', () => {

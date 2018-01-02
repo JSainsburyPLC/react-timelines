@@ -11,10 +11,14 @@ class Timeline extends Component {
     this.state = {
       time: createTime(props.scale)
     }
+    
   }
 
   getChildContext() {
-    const { clickElement, clickTrackButton } = this.props
+    const {
+      clickElement,
+      clickTrackButton
+    } = this.props
     return { clickElement, clickTrackButton }
   }
 
@@ -23,6 +27,8 @@ class Timeline extends Component {
       this.setState({ time: createTime(nextProps.scale) })
     }
   }
+
+
 
   render() {
     const {
@@ -36,7 +42,6 @@ class Timeline extends Component {
       timebar,
       toggleTrackOpen,
       enableSticky = false,
-      scale,
       scrollToNow
     } = this.props
 
@@ -53,7 +58,6 @@ class Timeline extends Component {
         />
         <Layout
           enableSticky={enableSticky}
-          scale={scale}
           now={now}
           tracks={tracks}
           timebar={timebar}
