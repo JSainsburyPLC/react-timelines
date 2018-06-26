@@ -1,0 +1,15 @@
+body {
+  font-family: sans-serif;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-left: 20px;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  padding: 80px;
+}
