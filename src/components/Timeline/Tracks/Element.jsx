@@ -4,12 +4,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import BasicElement from '../../Elements/Basic'
+import ClickContext from '../../../contexts/ClickContext'
 
-const Element = (props, context) => {
+export const Component = (props) => {
   const {
-    time, style, id, title, start, end, classes, dataSet, tooltip
+    time, style, id, title, start, end, classes, dataSet, tooltip, clickElement
   } = props
-  const { clickElement } = context
   const handleClick = () => {
     clickElement(props)
   }
@@ -41,7 +41,7 @@ const Element = (props, context) => {
   )
 }
 
-Element.propTypes = {
+Component.propTypes = {
   time: PropTypes.shape({}).isRequired,
   style: PropTypes.shape({}),
   classes: PropTypes.arrayOf(PropTypes.string.isRequired),
@@ -50,11 +50,18 @@ Element.propTypes = {
   title: PropTypes.string,
   start: PropTypes.instanceOf(Date).isRequired,
   end: PropTypes.instanceOf(Date).isRequired,
-  tooltip: PropTypes.string
-}
-
-Element.contextTypes = {
+  tooltip: PropTypes.string,
   clickElement: PropTypes.func
 }
+
+Component.defaultTypes = {
+  clickElement: undefined
+}
+
+const Element = props => (
+  <ClickContext.Consumer>
+    { ({ clickElement }) => <Element {...props} clickElement={clickElement} /> }
+  </ClickContext.Consumer>
+)
 
 export default Element

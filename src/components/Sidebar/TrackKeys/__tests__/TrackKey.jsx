@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import TrackKey from '../TrackKey'
+import { Component as TrackKey } from '../TrackKey'
 import TrackKeys from '../'
 
 describe('<TrackKey />', () => {
@@ -11,9 +11,7 @@ describe('<TrackKey />', () => {
 
     it('renders the side component if "sideComponent" exists', () => {
       const track = { title: 'test', isOpen: true, sideComponent }
-      const context = { clickTrackButton: jest.fn() }
-
-      const wrapper = shallow(<TrackKey track={track} />, { context })
+      const wrapper = shallow(<TrackKey track={track} clickTrackButton={jest.fn()} />)
       const component = getSideComponent(wrapper)
       expect(component.exists()).toBe(true)
       expect(component.text()).toEqual('Component')
@@ -25,17 +23,13 @@ describe('<TrackKey />', () => {
 
     it('renders a button if "hasButton" is true and "clickTrackButton" exists', () => {
       const track = { title: 'test', isOpen: true, hasButton: true }
-      const context = { clickTrackButton: jest.fn() }
-
-      const wrapper = shallow(<TrackKey track={track} />, { context })
+      const wrapper = shallow(<TrackKey track={track} clickTrackButton={jest.fn()} />)
       expect(getButton(wrapper).exists()).toBe(true)
     })
 
     it('does not render when "hasButton" is false', () => {
       const track = { title: 'test', isOpen: true }
-      const context = { clickTrackButton: jest.fn() }
-
-      const wrapper = shallow(<TrackKey track={track} />, { context })
+      const wrapper = shallow(<TrackKey track={track} clickTrackButton={jest.fn()} />)
       expect(getButton(wrapper).exists()).toBe(false)
     })
 
@@ -43,26 +37,20 @@ describe('<TrackKey />', () => {
       const track = {
         title: 'test', isOpen: true, hasButton: true, sideComponent: <span>Component</span>
       }
-      const context = { clickTrackButton: jest.fn() }
-
-      const wrapper = shallow(<TrackKey track={track} />, { context })
+      const wrapper = shallow(<TrackKey track={track} clickTrackButton={jest.fn()} />)
       expect(getButton(wrapper).exists()).toBe(false)
     })
 
     it('does not render when "clickTrackButton" does not exist', () => {
       const track = { title: 'test', isOpen: true, hasButton: true }
-      const context = {}
-
-      const wrapper = shallow(<TrackKey track={track} />, { context })
+      const wrapper = shallow(<TrackKey track={track} />)
       expect(getButton(wrapper).exists()).toBe(false)
     })
 
     it('calls "clickTrackButton" with the track when clicked', () => {
       const track = { title: 'test', isOpen: true, hasButton: true }
       const clickTrackButton = jest.fn()
-      const context = { clickTrackButton }
-
-      const wrapper = shallow(<TrackKey track={track} />, { context })
+      const wrapper = shallow(<TrackKey track={track} clickTrackButton={clickTrackButton} />)
       const button = getButton(wrapper)
 
       expect(clickTrackButton).not.toBeCalled()

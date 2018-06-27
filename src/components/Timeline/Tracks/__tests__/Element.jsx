@@ -1,10 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Element from '../Element'
+import { Component as Element } from '../Element'
 import BasicElement from '../../../Elements/Basic'
 import createTime from '../../../../utils/time'
-
 
 describe('<Element />', () => {
   const defaultProps = {
@@ -35,8 +34,7 @@ describe('<Element />', () => {
   describe('clickElement', () => {
     it('renders with a cursor pointer style if callback is passed', () => {
       const props = { ...defaultProps }
-      const context = { clickElement: jest.fn() }
-      const wrapper = shallow(<Element {...props} />, { context })
+      const wrapper = shallow(<Element {...props} clickElement={jest.fn()} />)
       expect(wrapper.prop('style')).toMatchObject({ cursor: 'pointer' })
     })
 
@@ -47,9 +45,8 @@ describe('<Element />', () => {
 
     it('gets called with props when clicked', () => {
       const clickElement = jest.fn()
-      const props = { ...defaultProps }
-      const context = { clickElement }
-      const wrapper = shallow(<Element {...props} />, { context })
+      const props = { ...defaultProps, clickElement }
+      const wrapper = shallow(<Element {...props} clickElement={clickElement} />)
       expect(clickElement).toHaveBeenCalledTimes(0)
 
       wrapper.simulate('click')

@@ -2,12 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import TrackKeys from './'
+import ClickContext from '../../../contexts/ClickContext'
 
-const TrackKey = ({ track, toggleOpen }, context) => {
+export const Component = ({ track, toggleOpen, clickTrackButton }) => {
   const {
-    title, tracks, isOpen, hasButton, sideComponent
+    title,
+    tracks,
+    isOpen,
+    hasButton,
+    sideComponent
   } = track
-  const { clickTrackButton } = context
   const isExpandable = isOpen !== undefined
 
   const buildSideComponent = () => {
@@ -43,18 +47,25 @@ const TrackKey = ({ track, toggleOpen }, context) => {
   )
 }
 
-TrackKey.propTypes = {
+Component.propTypes = {
   track: PropTypes.shape({
     title: PropTypes.string.isRequired,
     tracks: PropTypes.arrayOf(PropTypes.shape({})),
     isOpen: PropTypes.bool,
     hasButton: PropTypes.bool
   }),
-  toggleOpen: PropTypes.func
-}
-
-TrackKey.contextTypes = {
+  toggleOpen: PropTypes.func,
   clickTrackButton: PropTypes.func
 }
+
+Component.defaultProps = {
+  clickTrackButton: undefined
+}
+
+const TrackKey = props => (
+  <ClickContext.Consumer>
+    { ({ clickTrackButton }) => <Component {...props} clickTrackButton={clickTrackButton} /> }
+  </ClickContext.Consumer>
+)
 
 export default TrackKey
