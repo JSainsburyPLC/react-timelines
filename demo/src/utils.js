@@ -26,6 +26,22 @@ const COLORS = [
 
 export const randomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)]
 
+let color = -1
+export const nextColor = () => {
+  color = (color + 1) % COLORS.length
+  return COLORS[color]
+}
+
+// let prevColor = null
+// export const nextRandomColor = () => {
+//   let c = randomColor()
+//   while (c === prevColor) {
+//     c = randomColor()
+//   }
+//   prevColor = c
+//   return c
+// }
+
 // export const randomColor = () => {
 //   const LETTERS = '0123456789ABCDEF'
 //   let color = ''
