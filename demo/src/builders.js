@@ -89,7 +89,7 @@ export const buildElement = ({
       style: {
         backgroundColor: `#${bgColor}`,
         color,
-        borderRadius: `${Math.floor(Math.random() * (32 + 1))}px`,
+        borderRadius: '4px',
         textTransform: 'capitalize',
       },
     }
