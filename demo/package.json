@@ -1,5 +1,5 @@
 {
-  "name": "js-boilerplate",
+  "name": "react-timelines-demo",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "react-timelines": "^2.3.0"
   }
 }

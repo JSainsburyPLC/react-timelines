@@ -7,15 +7,15 @@ const Timebar = ({ time, rows }) => (
   <div className="rt-timebar">
     {
       rows.map(({
- id, title, cells, style
-}) => (
-  <Row
-    key={id}
-    time={time}
-    title={title}
-    cells={cells}
-    style={style}
-  />
+        id, title, cells, style
+      }) => (
+        <Row
+          key={id}
+          time={time}
+          title={title}
+          cells={cells}
+          style={style}
+        />
       ))
     }
   </div>
