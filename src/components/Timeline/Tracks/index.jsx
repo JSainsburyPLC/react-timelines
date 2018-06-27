@@ -7,15 +7,18 @@ const Tracks = ({ time, tracks }) => (
   <div className="rt-tracks">
     {
       tracks.map(({
- id, elements, isOpen, tracks: children
-}) => (
-  <Track
-    key={id}
-    time={time}
-    elements={elements}
-    isOpen={isOpen}
-    tracks={children}
-  />
+        id,
+        elements,
+        isOpen,
+        tracks: children
+      }) => (
+        <Track
+          key={id}
+          time={time}
+          elements={elements}
+          isOpen={isOpen}
+          tracks={children}
+        />
       ))
     }
   </div>
