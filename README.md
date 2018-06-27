@@ -1,5 +1,7 @@
 # React Timelines [![CircleCI](https://circleci.com/gh/JSainsburyPLC/react-timelines.svg?style=svg)](https://circleci.com/gh/JSainsburyPLC/react-timelines)
 
+## [Demo](https://jsainsburyplc.github.io/react-timelines/)
+
 ## Install
 
 ```js
