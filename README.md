@@ -21,16 +21,6 @@ const MyWidget = () => <Timeline {...props} />
 export default MyWidget
 ```
 
-### With sticky header
-
-```js
-import { StickyTimeline } from 'react-timelines'
-
-const MyWidget = () => <StickyTimeline {...props} />
-
-export default MyWidget
-```
-
 ## Styling
 
 **Using Webpack**

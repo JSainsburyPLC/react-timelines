@@ -1,14 +1,10 @@
 {
   "presets": [
-    "stage-2",
-    "react",
-    [
-      "env", {
-        "targets": {
-          "browsers": ["last 2 versions", "ie 9-11"],
-          "node": "current"
-        }
-      }
-    ]
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-class-properties"
   ]
 }
