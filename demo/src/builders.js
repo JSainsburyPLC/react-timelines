@@ -19,7 +19,7 @@ import {
   colourIsLight,
   addMonthsToYear,
   addMonthsToYearAsDate,
-  randomColor,
+  nextColor,
   randomTitle,
 } from './utils'
 
@@ -76,20 +76,21 @@ export const buildTimebar = () => [
 ]
 
 export const buildElement = ({
-  trackId, start, end,
+  trackId, start, end, i,
 }) => {
-  const bgColor = randomColor()
+  const bgColor = nextColor()
   const color = colourIsLight(...hexToRgb(bgColor)) ? '#000000' : '#ffffff'
   return (
     {
-      id: `t-${trackId}-el-${start.getTime()}`,
+      id: `t-${trackId}-el-${i}`,
       title: randomTitle(),
       start,
       end,
       style: {
         backgroundColor: `#${bgColor}`,
         color,
-        borderRadius: `${Math.floor(Math.random() * (32 + 1))}px`,
+        borderRadius: '4px',
+        boxShadow: '1px 1px 0px rgba(0, 0, 0, 0.25)',
         textTransform: 'capitalize',
       },
     }

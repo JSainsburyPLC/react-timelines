@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Controls from './components/Controls'
 import Layout from './components/Layout'
 import createTime from './utils/time'
+import ClickContext from './contexts/ClickContext'
 
 const UNKNOWN_WIDTH = -1
 
@@ -16,17 +17,6 @@ class Timeline extends Component {
       time: createTime({ ...props.scale, viewportWidth: timelineViewportWidth }),
       timelineViewportWidth,
       sidebarWidth
-    }
-  }
-
-  getChildContext() {
-    const {
-      clickElement,
-      clickTrackButton
-    } = this.props
-    return {
-      clickElement,
-      clickTrackButton
     }
   }
 
@@ -69,31 +59,35 @@ class Timeline extends Component {
 
     const { time, timelineViewportWidth, sidebarWidth } = this.state
 
+    const { clickElement, clickTrackButton } = this.props
+
     return (
-      <div className="rt">
-        <Controls
-          isOpen={isOpen}
-          toggleOpen={toggleOpen}
-          zoomIn={zoomIn}
-          zoomOut={zoomOut}
-          zoom={zoom}
-          zoomMin={zoomMin}
-          zoomMax={zoomMax}
-        />
-        <Layout
-          enableSticky={enableSticky}
-          now={now}
-          tracks={tracks}
-          timebar={timebar}
-          toggleTrackOpen={toggleTrackOpen}
-          scrollToNow={scrollToNow}
-          time={time}
-          isOpen={isOpen}
-          onLayoutChange={this.handleLayoutChange}
-          timelineViewportWidth={timelineViewportWidth}
-          sidebarWidth={sidebarWidth}
-        />
-      </div>
+      <ClickContext.Provider value={{ clickElement, clickTrackButton }}>
+        <div className="rt">
+          <Controls
+            isOpen={isOpen}
+            toggleOpen={toggleOpen}
+            zoomIn={zoomIn}
+            zoomOut={zoomOut}
+            zoom={zoom}
+            zoomMin={zoomMin}
+            zoomMax={zoomMax}
+          />
+          <Layout
+            enableSticky={enableSticky}
+            now={now}
+            tracks={tracks}
+            timebar={timebar}
+            toggleTrackOpen={toggleTrackOpen}
+            scrollToNow={scrollToNow}
+            time={time}
+            isOpen={isOpen}
+            onLayoutChange={this.handleLayoutChange}
+            timelineViewportWidth={timelineViewportWidth}
+            sidebarWidth={sidebarWidth}
+          />
+        </div>
+      </ClickContext.Provider>
     )
   }
 }
