@@ -1,6 +1,6 @@
 {
   "name": "react-timelines",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "React Timelines",
   "main": "lib/index.js",
   "scripts": {
@@ -20,6 +20,20 @@
     "coverage": "jest --coverage --collectCoverageFrom='**/*.{js,jsx}'",
     "prepublish": "npm run clean && npm run build"
   },
+  "keywords": [
+    "timeline",
+    "schedule",
+    "history",
+    "react",
+    "gantt",
+    "horizontal",
+    "library",
+    "scroll",
+    "scss",
+    "sass",
+    "tracks",
+    "time"
+  ],
   "repository": "git@github.com:JSainsburyPLC/react-timelines.git",
   "author": "JSainsburyPLC",
   "license": "MIT",
