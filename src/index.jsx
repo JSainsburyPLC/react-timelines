@@ -92,11 +92,6 @@ class Timeline extends Component {
   }
 }
 
-Timeline.childContextTypes = {
-  clickElement: PropTypes.func,
-  clickTrackButton: PropTypes.func
-}
-
 Timeline.propTypes = {
   scale: PropTypes.shape({
     start: PropTypes.instanceOf(Date).isRequired,
