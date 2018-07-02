@@ -130,7 +130,9 @@ class Layout extends PureComponent {
       timebar,
       toggleTrackOpen,
       sidebarWidth,
-      timelineViewportWidth
+      timelineViewportWidth,
+      clickElement,
+      clickTrackButton
     } = this.props
 
     const {
@@ -152,6 +154,7 @@ class Layout extends PureComponent {
             tracks={tracks}
             toggleTrackOpen={toggleTrackOpen}
             sticky={{ isSticky, headerHeight, sidebarWidth }}
+            clickTrackButton={clickTrackButton}
           />
         </div>
         <div className="rt-layout__main">
@@ -173,6 +176,7 @@ class Layout extends PureComponent {
                 headerHeight,
                 scrollLeft
               }}
+              clickElement={clickElement}
             />
           </div>
         </div>
@@ -192,7 +196,9 @@ Layout.propTypes = {
   scrollToNow: PropTypes.bool,
   onLayoutChange: PropTypes.func.isRequired,
   sidebarWidth: PropTypes.number,
-  timelineViewportWidth: PropTypes.number
+  timelineViewportWidth: PropTypes.number,
+  clickElement: PropTypes.func,
+  clickTrackButton: PropTypes.func
 }
 
 export default Layout

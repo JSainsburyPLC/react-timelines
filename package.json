@@ -70,8 +70,8 @@
     "rimraf": "^2.6.1"
   },
   "peerDependencies": {
-    "react": ">=16.3",
-    "react-dom": ">=16.3"
+    "react": ">=16",
+    "react-dom": ">=16"
   },
   "jest": {
     "rootDir": "./src",
