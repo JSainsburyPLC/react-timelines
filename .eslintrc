@@ -11,7 +11,8 @@
     "import/named": "error",
     "import/default": "error",
     "react/require-default-props": "off",
-    "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }]
+    "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }],
+    "object-curly-newline": "off"
   },
   "settings": {
     "import/parser": "babel-eslint"

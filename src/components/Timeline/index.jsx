@@ -37,7 +37,8 @@ class Timeline extends Component {
       time,
       timebar,
       tracks,
-      sticky
+      sticky,
+      clickElement
     } = this.props
 
     const {
@@ -72,6 +73,7 @@ class Timeline extends Component {
           time={time}
           grid={grid}
           tracks={tracks}
+          clickElement={clickElement}
         />
       </div>
     )
@@ -88,7 +90,8 @@ Timeline.propTypes = {
     title: PropTypes.string
   }).isRequired).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  sticky: PropTypes.shape({})
+  sticky: PropTypes.shape({}),
+  clickElement: PropTypes.func
 }
 
 export default Timeline

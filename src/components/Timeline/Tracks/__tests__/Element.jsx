@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { Component as Element } from '../Element'
+import Element from '../Element'
 import BasicElement from '../../../Elements/Basic'
 import createTime from '../../../../utils/time'
 

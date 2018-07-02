@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import Controls from './components/Controls'
 import Layout from './components/Layout'
 import createTime from './utils/time'
-import ClickContext from './contexts/ClickContext'
 
 const UNKNOWN_WIDTH = -1
 
@@ -62,32 +61,32 @@ class Timeline extends Component {
     const { clickElement, clickTrackButton } = this.props
 
     return (
-      <ClickContext.Provider value={{ clickElement, clickTrackButton }}>
-        <div className="rt">
-          <Controls
-            isOpen={isOpen}
-            toggleOpen={toggleOpen}
-            zoomIn={zoomIn}
-            zoomOut={zoomOut}
-            zoom={zoom}
-            zoomMin={zoomMin}
-            zoomMax={zoomMax}
-          />
-          <Layout
-            enableSticky={enableSticky}
-            now={now}
-            tracks={tracks}
-            timebar={timebar}
-            toggleTrackOpen={toggleTrackOpen}
-            scrollToNow={scrollToNow}
-            time={time}
-            isOpen={isOpen}
-            onLayoutChange={this.handleLayoutChange}
-            timelineViewportWidth={timelineViewportWidth}
-            sidebarWidth={sidebarWidth}
-          />
-        </div>
-      </ClickContext.Provider>
+      <div className="rt">
+        <Controls
+          isOpen={isOpen}
+          toggleOpen={toggleOpen}
+          zoomIn={zoomIn}
+          zoomOut={zoomOut}
+          zoom={zoom}
+          zoomMin={zoomMin}
+          zoomMax={zoomMax}
+        />
+        <Layout
+          enableSticky={enableSticky}
+          now={now}
+          tracks={tracks}
+          timebar={timebar}
+          toggleTrackOpen={toggleTrackOpen}
+          scrollToNow={scrollToNow}
+          time={time}
+          isOpen={isOpen}
+          onLayoutChange={this.handleLayoutChange}
+          timelineViewportWidth={timelineViewportWidth}
+          sidebarWidth={sidebarWidth}
+          clickElement={clickElement}
+          clickTrackButton={clickTrackButton}
+        />
+      </div>
     )
   }
 }
