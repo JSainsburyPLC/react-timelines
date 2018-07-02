@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { Component as TrackKey } from '../TrackKey'
+import TrackKey from '../TrackKey'
 import TrackKeys from '../'
 
 describe('<TrackKey />', () => {
