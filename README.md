@@ -1,16 +1,15 @@
 # React Timelines [![CircleCI](https://circleci.com/gh/JSainsburyPLC/react-timelines.svg?style=svg)](https://circleci.com/gh/JSainsburyPLC/react-timelines)
 
-## [Demo](https://jsainsburyplc.github.io/react-timelines/)
+[**Demo**](https://jsainsburyplc.github.io/react-timelines/)
 
 ## Install
 
-```js
-yarn add react-timelines
-```
-
-**Or**
-```js
+```sh
+# with npm
 npm install react-timelines
+
+# or with Yarn
+yarn add react-timelines
 ```
 
 ## Use
@@ -25,16 +24,18 @@ export default MyWidget
 
 ## Styling
 
-**Using Webpack**
+### Using Webpack
 
 Using Webpack with CSS loader, add the following:
+
 ```js
-import 'react-timelines/lib/css/style.css';
+import 'react-timelines/lib/css/style.css'
 ```
 
-**Using Sass (SCSS)**
+### Using Sass (SCSS)
 
 Using Sass you can configure the timeline with variables:
+
 ```scss
 $react-timelines-font-family: MaryAnn;
 $react-timelines-sidebar-width: 320px;
@@ -42,17 +43,15 @@ $react-timelines-sidebar-width: 320px;
 @import '~/react-timelines/src/scss/style';
 ```
 
-**Without build tools**
+### Without build tools
 
 Create a CSS file with the contents of `react-timelines/lib/css/style.css` and include it in `<head>`
 
 ## Development
 
-```
-yarn
+```sh
+npm install
+npm run watch
 ```
 
-Then:
-```
-yarn watch
-```
+This library is developed using VSCode - opening it in VSCode will recommend extensions, and enable linting and auto-formatting of code.
