@@ -19,7 +19,8 @@
     "lint:prettier:fix": "prettier --write \"{e2e,src}/**/*.{js,jsx}\"",
     "unit": "jest",
     "coverage": "jest --coverage --collectCoverageFrom='**/*.{js,jsx}'",
-    "prepublish": "npm run clean && npm run build"
+    "prepublish": "npm run clean && npm run build",
+    "demo:deploy": "cd demo && npm install && npm run deploy"
   },
   "keywords": [
     "timeline",
