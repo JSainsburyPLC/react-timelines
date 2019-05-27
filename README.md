@@ -1,4 +1,4 @@
-# React Timelines [![CircleCI](https://circleci.com/gh/JSainsburyPLC/react-timelines.svg?style=svg)](https://circleci.com/gh/JSainsburyPLC/react-timelines)
+# React Timelines
 
 [**Demo**](https://jsainsburyplc.github.io/react-timelines/)
 
