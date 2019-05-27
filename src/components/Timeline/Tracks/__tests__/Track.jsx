@@ -41,6 +41,18 @@ describe('<Track />', () => {
     expect(wrapper.find(Tracks)).toHaveLength(1)
   })
 
+  it('renders <Tracks /> if is open and tracks exist', () => {
+    const props = createProps({
+      isOpen: true,
+      tracks: [{}],
+      clickElement: jest.fn(),
+    })
+    const wrapper = shallow(<Track {...props} />)
+    const tracks = wrapper.find(Tracks)
+
+    expect(tracks.props().clickElement).toBe(props.clickElement)
+  })
+
   it('does not render <Tracks /> is is not open', () => {
     const props = createProps({
       isOpen: false,

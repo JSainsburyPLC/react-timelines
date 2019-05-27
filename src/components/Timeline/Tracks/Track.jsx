@@ -13,7 +13,7 @@ const Track = ({ time, elements, isOpen, tracks, clickElement }) => (
           <Element key={element.id} time={time} clickElement={clickElement} {...element} />
         ))}
     </div>
-    {isOpen && tracks && tracks.length > 0 && <Tracks time={time} tracks={tracks} />}
+    {isOpen && tracks && tracks.length > 0 && <Tracks time={time} tracks={tracks} clickElement={clickElement} />}
   </div>
 )
 
