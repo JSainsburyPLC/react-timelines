@@ -1,6 +1,6 @@
 {
   "name": "react-timelines-demo",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
@@ -12,7 +12,7 @@
   },
   "author": "JSainsburyPLC",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
