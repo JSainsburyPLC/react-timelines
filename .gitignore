@@ -5,3 +5,4 @@ coverage
 .yarnclean
 yarn-error.log
 yarn.lock
+build

@@ -11,7 +11,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "npm run build && gh-pages -d ./dist"
+    "deploy": "npm run build && gh-pages -d ./build"
   },
   "devDependencies": {
     "gh-pages": "^2.0.1"
