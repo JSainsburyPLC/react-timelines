@@ -7,7 +7,7 @@ describe('getMouseX', () => {
       currentTarget: {
         getBoundingClientRect: () => ({ left: 10 }),
       },
-    }
+    } as any
     expect(getMouseX(event)).toBe(190)
   })
 })

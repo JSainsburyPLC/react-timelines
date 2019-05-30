@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
 import Controls from './components/Controls'
 import Layout from './components/Layout'
@@ -19,7 +19,7 @@ class Timeline extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  public componentWillReceiveProps(nextProps) {
     const { scale } = this.props
     const { timelineViewportWidth } = this.state
 
@@ -32,7 +32,7 @@ class Timeline extends Component {
     }
   }
 
-  handleLayoutChange = ({ timelineViewportWidth, sidebarWidth }, cb) => {
+  public handleLayoutChange = ({ timelineViewportWidth, sidebarWidth }, cb) => {
     const { scale } = this.props
     const time = createTime({
       ...scale,
@@ -48,7 +48,7 @@ class Timeline extends Component {
     )
   }
 
-  render() {
+  public render() {
     const {
       isOpen = true,
       toggleOpen,
