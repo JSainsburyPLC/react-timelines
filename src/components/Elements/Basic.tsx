@@ -1,17 +1,28 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import { getDayMonth } from '../../utils/formatDate'
-import createClasses from '../../utils/classes'
+import React, { FunctionComponent } from 'react'
 
-const buildDataAttributes = (attributes = {}) => {
-  const value = {}
+import createClasses from '../../utils/classes'
+import { getDayMonth } from '../../utils/formatDate'
+
+const buildDataAttributes = (attributes = {} as Record<string, string>) => {
+  const value: Record<string, string> = {}
   Object.keys(attributes).forEach(name => {
     value[`data-${name}`] = attributes[name]
   })
   return value
 }
 
-const Basic = ({ title, start, end, style, classes, dataSet, tooltip }) => (
+interface BasicProps {
+  title: string
+  start: Date
+  end: Date
+  style?: object
+  classes?: string[]
+  dataSet?: Record<string, string>
+  tooltip?: string
+}
+
+const Basic: FunctionComponent<BasicProps> = ({ title, start, end, style, classes, dataSet, tooltip }) => (
   <div className={createClasses('rt-element', classes)} style={style} {...buildDataAttributes(dataSet)}>
     <div className="rt-element__content" aria-hidden="true">
       <span className="rt-element__title">{title}</span>

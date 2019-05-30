@@ -1,16 +1,58 @@
-import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import React, { PureComponent, RefObject } from 'react'
 
+import { addListener, removeListener } from '../../utils/events'
+import getNumericPropertyValue from '../../utils/getNumericPropertyValue'
+import raf from '../../utils/raf'
 import Sidebar from '../Sidebar'
 import Timeline from '../Timeline'
-import { addListener, removeListener } from '../../utils/events'
-import raf from '../../utils/raf'
-import getNumericPropertyValue from '../../utils/getNumericPropertyValue'
 
-const noop = () => {}
+const noop = () => undefined
 
-class Layout extends PureComponent {
-  constructor(props) {
+interface LayoutProps {
+  enableSticky: boolean
+  timebar: object[]
+  time: object
+  tracks: object[]
+  now?: Date
+  isOpen?: boolean
+  toggleTrackOpen?: () => void
+  scrollToNow?: boolean
+  onLayoutChange: () => void
+  sidebarWidth?: number
+  timelineViewportWidth?: number
+  clickElement?: () => void
+  clickTrackButton?: () => void
+}
+
+interface LayoutState {
+  isSticky: boolean
+  headerHeight: number
+  scrollLeft: number
+}
+
+class Layout extends PureComponent<LayoutProps, LayoutState> {
+  public static propTypes = {
+    enableSticky: PropTypes.bool.isRequired,
+    timebar: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    time: PropTypes.shape({}).isRequired,
+    tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    now: PropTypes.instanceOf(Date),
+    isOpen: PropTypes.bool,
+    toggleTrackOpen: PropTypes.func,
+    scrollToNow: PropTypes.bool,
+    onLayoutChange: PropTypes.func.isRequired,
+    sidebarWidth: PropTypes.number,
+    timelineViewportWidth: PropTypes.number,
+    clickElement: PropTypes.func,
+    clickTrackButton: PropTypes.func,
+  }
+
+  private timeline: RefObject<any>
+  private layout: RefObject<any>
+  private sidebar: RefObject<any>
+
+  constructor(props: LayoutProps) {
     super(props)
 
     this.timeline = React.createRef()
@@ -24,7 +66,7 @@ class Layout extends PureComponent {
     }
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     const { enableSticky } = this.props
 
     if (enableSticky) {
@@ -37,7 +79,7 @@ class Layout extends PureComponent {
     this.handleLayoutChange(() => this.scrollToNow())
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  public componentDidUpdate(prevProps: LayoutProps, prevState: LayoutState) {
     const { enableSticky, isOpen } = this.props
     const { isSticky, scrollLeft } = this.state
 
@@ -56,7 +98,7 @@ class Layout extends PureComponent {
     }
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     const { enableSticky } = this.props
 
     if (enableSticky) {
@@ -65,34 +107,34 @@ class Layout extends PureComponent {
     }
   }
 
-  setHeaderHeight = headerHeight => {
+  public setHeaderHeight = (headerHeight: number) => {
     this.setState({ headerHeight })
   }
 
-  scrollToNow = () => {
+  public scrollToNow = () => {
     const { time, scrollToNow, now, timelineViewportWidth } = this.props
     if (scrollToNow) {
       this.timeline.current.scrollLeft = time.toX(now) - 0.5 * timelineViewportWidth
     }
   }
 
-  updateTimelineBodyScroll = () => {
+  public updateTimelineBodyScroll = () => {
     const { scrollLeft } = this.state
     this.timeline.current.scrollLeft = scrollLeft
   }
 
-  updateTimelineHeaderScroll = () => {
+  public updateTimelineHeaderScroll = () => {
     const { scrollLeft } = this.timeline.current
     this.setState({ scrollLeft })
   }
 
-  handleHeaderScrollY = scrollLeft => {
+  public handleHeaderScrollY = (scrollLeft: number) => {
     raf(() => {
       this.setState({ scrollLeft })
     })
   }
 
-  handleScrollY = () => {
+  public handleScrollY = () => {
     raf(() => {
       const { headerHeight } = this.state
       const markerHeight = 0
@@ -102,16 +144,16 @@ class Layout extends PureComponent {
     })
   }
 
-  handleScrollX = () => {
+  public handleScrollX = () => {
     raf(this.updateTimelineHeaderScroll)
   }
 
-  calculateSidebarWidth = () =>
+  public calculateSidebarWidth = () =>
     this.sidebar.current.offsetWidth + getNumericPropertyValue(this.layout.current, 'margin-left')
 
-  calculateTimelineViewportWidth = () => this.timeline.current.offsetWidth
+  public calculateTimelineViewportWidth = () => this.timeline.current.offsetWidth
 
-  handleLayoutChange = cb => {
+  public handleLayoutChange = cb => {
     const { sidebarWidth, timelineViewportWidth, onLayoutChange } = this.props
 
     const nextSidebarWidth = this.calculateSidebarWidth()
@@ -127,9 +169,9 @@ class Layout extends PureComponent {
     }
   }
 
-  handleResize = () => this.handleLayoutChange()
+  public handleResize = () => this.handleLayoutChange()
 
-  render() {
+  public render() {
     const {
       isOpen,
       tracks,
@@ -163,12 +205,12 @@ class Layout extends PureComponent {
               timebar={timebar}
               tracks={tracks}
               sticky={{
+                headerHeight,
+                scrollLeft,
                 isSticky,
                 setHeaderHeight: this.setHeaderHeight,
                 viewportWidth: timelineViewportWidth,
                 handleHeaderScrollY: this.handleHeaderScrollY,
-                headerHeight,
-                scrollLeft,
               }}
               clickElement={clickElement}
             />
@@ -177,22 +219,6 @@ class Layout extends PureComponent {
       </div>
     )
   }
-}
-
-Layout.propTypes = {
-  enableSticky: PropTypes.bool.isRequired,
-  timebar: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  time: PropTypes.shape({}).isRequired,
-  tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  now: PropTypes.instanceOf(Date),
-  isOpen: PropTypes.bool,
-  toggleTrackOpen: PropTypes.func,
-  scrollToNow: PropTypes.bool,
-  onLayoutChange: PropTypes.func.isRequired,
-  sidebarWidth: PropTypes.number,
-  timelineViewportWidth: PropTypes.number,
-  clickElement: PropTypes.func,
-  clickTrackButton: PropTypes.func,
 }
 
 export default Layout

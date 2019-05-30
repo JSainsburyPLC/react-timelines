@@ -1,5 +1,5 @@
+import { shallow, ShallowWrapper } from 'enzyme'
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import Basic from '../Basic'
 
@@ -14,7 +14,7 @@ const defaultProps = {
 
 describe('<Basic />', () => {
   describe('Tooltip', () => {
-    const getTooltip = node => node.find('.rt-element__tooltip')
+    const getTooltip = (node: ShallowWrapper) => node.find('.rt-element__tooltip')
 
     it('renders the tooltip value if it exists', () => {
       const tooltip = 'Test tooltip'
