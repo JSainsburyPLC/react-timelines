@@ -1,10 +1,12 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
-import Header from './Header'
-import Body from './Body'
+import Body, { BodyProps } from './Body'
+import Header, { HeaderProps } from './Header'
 
-const Sidebar = ({ timebar, tracks, toggleTrackOpen, sticky, clickTrackButton }) => (
+type SidebarProps = BodyProps & HeaderProps
+
+const Sidebar: FunctionComponent<SidebarProps> = ({ timebar, tracks, toggleTrackOpen, sticky, clickTrackButton }) => (
   <div className="rt-sidebar">
     <Header timebar={timebar} sticky={sticky} />
     <Body tracks={tracks} toggleTrackOpen={toggleTrackOpen} clickTrackButton={clickTrackButton} />

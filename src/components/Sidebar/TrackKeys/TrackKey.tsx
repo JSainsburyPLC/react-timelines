@@ -1,9 +1,15 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
 import TrackKeys from '.'
 
-const TrackKey = ({ track, toggleOpen, clickTrackButton }) => {
+interface TrackKeyProps {
+  track: any
+  toggleOpen: () => void
+  clickTrackButton: () => void
+}
+
+const TrackKey: FunctionComponent<TrackKeyProps> = ({ track, toggleOpen, clickTrackButton }) => {
   const { title, tracks, isOpen, hasButton, sideComponent } = track
   const isExpandable = isOpen !== undefined
 
@@ -56,3 +62,4 @@ TrackKey.defaultProps = {
 }
 
 export default TrackKey
+export { TrackKeyProps }

@@ -1,7 +1,21 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
-const Header = ({ timebar, sticky: { isSticky, sidebarWidth, headerHeight } = {} }) => (
+interface StickyProps {
+  isSticky: boolean
+  sidebarWidth: number
+  headerHeight: number
+}
+
+interface HeaderProps {
+  timebar: Array<{ id: string; title: string }>
+  sticky: StickyProps
+}
+
+const Header: FunctionComponent<HeaderProps> = ({
+  timebar,
+  sticky: { isSticky, sidebarWidth, headerHeight } = {} as StickyProps,
+}) => (
   <div style={isSticky ? { paddingTop: headerHeight } : {}}>
     <div
       className={`rt-sidebar__header ${isSticky ? 'rt-is-sticky' : ''}`}
@@ -31,3 +45,4 @@ Header.propTypes = {
 }
 
 export default Header
+export { HeaderProps }

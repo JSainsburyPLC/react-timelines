@@ -1,8 +1,8 @@
-import React from 'react'
 import { shallow } from 'enzyme'
+import React from 'react'
 
-import TrackKey from '../TrackKey'
 import TrackKeys from '..'
+import TrackKey from '../TrackKey'
 
 describe('<TrackKey />', () => {
   describe('side component', () => {

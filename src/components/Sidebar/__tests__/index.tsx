@@ -1,9 +1,9 @@
-import React from 'react'
 import { shallow } from 'enzyme'
+import React from 'react'
 
 import Sidebar from '..'
-import Header from '../Header'
 import Body from '../Body'
+import Header from '../Header'
 
 describe('<Sidebar />', () => {
   it('renders <Header /> and <Body />', () => {

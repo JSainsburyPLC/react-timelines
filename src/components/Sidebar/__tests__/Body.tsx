@@ -1,5 +1,5 @@
-import React from 'react'
 import { shallow } from 'enzyme'
+import React from 'react'
 
 import Body from '../Body'
 import TrackKeys from '../TrackKeys'
