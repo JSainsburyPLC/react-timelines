@@ -1,0 +1,23 @@
+{
+  "exclude": ["node_modules", "dist", "demo"],
+  "compilerOptions": {
+    "lib": ["esnext", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "declaration": true,
+    "declarationMap": true,
+    "target": "es5",
+    "rootDir": "src",
+    "outDir": "dist",
+    "jsx": "react",
+    "allowJs": true
+  }
+}
