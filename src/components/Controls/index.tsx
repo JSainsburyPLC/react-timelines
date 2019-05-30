@@ -1,11 +1,29 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
 import Toggle from './Toggle'
 import ZoomIn from './ZoomIn'
 import ZoomOut from './ZoomOut'
 
-const Controls = ({ isOpen = true, toggleOpen, zoomIn, zoomOut, zoom, zoomMin, zoomMax }) => (
+interface ControlsProps {
+  zoom: number
+  isOpen?: boolean
+  toggleOpen?: () => void
+  zoomIn?: () => void
+  zoomOut?: () => void
+  zoomMin?: number
+  zoomMax?: number
+}
+
+const Controls: FunctionComponent<ControlsProps> = ({
+  isOpen = true,
+  toggleOpen,
+  zoomIn,
+  zoomOut,
+  zoom,
+  zoomMin,
+  zoomMax,
+}) => (
   <div className="rt-controls">
     <div className="rt-controls__content">
       {toggleOpen && <Toggle isOpen={isOpen} toggleOpen={toggleOpen} />}
@@ -26,3 +44,4 @@ Controls.propTypes = {
 }
 
 export default Controls
+export { ControlsProps }

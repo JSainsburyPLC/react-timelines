@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
 const CloseSvg = () => (
   <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,12 @@ const OpenSvg = () => (
   </svg>
 )
 
-const Toggle = ({ toggleOpen, isOpen }) => (
+interface ToggleProps {
+  toggleOpen: () => void
+  isOpen: boolean
+}
+
+const Toggle: FunctionComponent<ToggleProps> = ({ toggleOpen, isOpen }) => (
   <button className="rt-controls__button rt-controls__button--toggle" onClick={toggleOpen} type="button">
     <span className="rt-visually-hidden">{isOpen ? 'Close' : 'Open'}</span>
     {isOpen ? <CloseSvg /> : <OpenSvg />}

@@ -1,10 +1,16 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
-const ZoomIn = ({ zoom, zoomMax, zoomIn }) => (
+interface ZoomInProps {
+  zoom: number
+  zoomMax?: number
+  zoomIn: () => void
+}
+
+const ZoomIn: FunctionComponent<ZoomInProps> = ({ zoom, zoomMax, zoomIn }) => (
   <button
     className="rt-controls__button rt-controls__button--zoom-in"
-    disabled={zoomMax && zoom >= zoomMax}
+    disabled={zoomMax !== undefined && zoom >= zoomMax}
     onClick={zoomIn}
     type="button"
   >

@@ -1,17 +1,20 @@
+import { mount, ReactWrapper } from 'enzyme'
 import React from 'react'
-import { mount } from 'enzyme'
-import Controls from '..'
+
+import Controls, { ControlsProps } from '..'
 import Toggle from '../Toggle'
 
-const createProps = ({
-  isOpen = undefined,
-  toggleOpen = jest.fn(),
-  zoomIn = jest.fn(),
-  zoomOut = jest.fn(),
-  zoom = 2,
-  zoomMin = 1,
-  zoomMax = 10,
-} = {}) => ({
+const createProps = (
+  {
+    isOpen,
+    toggleOpen = jest.fn(),
+    zoomIn = jest.fn(),
+    zoomOut = jest.fn(),
+    zoom = 2,
+    zoomMin = 1,
+    zoomMax = 10,
+  } = {} as ControlsProps
+) => ({
   isOpen,
   toggleOpen,
   zoomIn,
@@ -37,7 +40,7 @@ describe('<Controls />', () => {
   })
 
   describe('Zoom in button', () => {
-    const findButton = node => node.find('.rt-controls__button--zoom-in')
+    const findButton = (node: ReactWrapper) => node.find('.rt-controls__button--zoom-in')
 
     it('not rendered if no "zoomIn" fn passed', () => {
       const props = { ...createProps(), zoomIn: undefined }
@@ -65,7 +68,7 @@ describe('<Controls />', () => {
 
     it('calls "zoomIn() when clicked"', () => {
       const zoomIn = jest.fn()
-      const props = createProps({ zoom: 2, zoomMax: 5, zoomIn })
+      const props = createProps({ zoomIn, zoom: 2, zoomMax: 5 })
       const wrapper = mount(<Controls {...props} />)
       findButton(wrapper).simulate('click')
       expect(zoomIn).toBeCalled()
@@ -73,7 +76,7 @@ describe('<Controls />', () => {
   })
 
   describe('Zoom out button', () => {
-    const findButton = node => node.find('.rt-controls__button--zoom-out')
+    const findButton = (node: ReactWrapper) => node.find('.rt-controls__button--zoom-out')
 
     it('not rendered if no "zoomOut" fn passed', () => {
       const props = { ...createProps(), zoomOut: undefined }
@@ -101,7 +104,7 @@ describe('<Controls />', () => {
 
     it('calls "zoomOut() when clicked"', () => {
       const zoomOut = jest.fn()
-      const props = createProps({ zoom: 5, zoomMin: 2, zoomOut })
+      const props = createProps({ zoomOut, zoom: 5, zoomMin: 2 })
       const wrapper = mount(<Controls {...props} />)
       findButton(wrapper).simulate('click')
       expect(zoomOut).toBeCalled()

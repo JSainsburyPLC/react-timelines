@@ -1,10 +1,16 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
-const ZoomOut = ({ zoom, zoomMin, zoomOut }) => (
+interface ZoomOutProps {
+  zoom: number
+  zoomMin?: number
+  zoomOut: () => void
+}
+
+const ZoomOut: FunctionComponent<ZoomOutProps> = ({ zoom, zoomMin, zoomOut }) => (
   <button
     className="rt-controls__button rt-controls__button--zoom-out"
-    disabled={zoomMin && zoom <= zoomMin}
+    disabled={zoomMin !== undefined && zoom <= zoomMin}
     onClick={zoomOut}
     type="button"
   >

@@ -1,4 +1,4 @@
-import { getMonth, getDayMonth } from '../formatDate'
+import { getDayMonth, getMonth } from '../formatDate'
 
 describe('formatDate', () => {
   describe('getMonth', () => {

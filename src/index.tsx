@@ -7,19 +7,73 @@ import createTime from './utils/time'
 
 const UNKNOWN_WIDTH = -1
 
-class Timeline extends Component {
-  constructor(props) {
+interface ScaleProps {
+  start: Date
+  end: Date
+  zoom: number
+  zoomMin?: number
+  zoomMax?: number
+  minWidth?: number
+}
+
+interface TimelineProps {
+  scale: ScaleProps
+  timebar: object[]
+  tracks: object[]
+  isOpen?: boolean
+  toggleOpen?: () => void
+  zoomIn?: () => void
+  zoomOut?: () => void
+  clickElement?: () => void
+  clickTrackButton?: () => void
+  now?: Date
+  toggleTrackOpen?: () => void
+  enableSticky?: boolean
+  scrollToNow?: boolean
+}
+
+interface TimelineState {
+  timelineViewportWidth: number
+  sidebarWidth: number
+  time: any
+}
+
+class Timeline extends Component<TimelineProps, TimelineState> {
+  public static propTypes = {
+    scale: PropTypes.shape({
+      start: PropTypes.instanceOf(Date).isRequired,
+      end: PropTypes.instanceOf(Date).isRequired,
+      zoom: PropTypes.number.isRequired,
+      zoomMin: PropTypes.number,
+      zoomMax: PropTypes.number,
+      minWidth: PropTypes.number,
+    }),
+    isOpen: PropTypes.bool,
+    toggleOpen: PropTypes.func,
+    zoomIn: PropTypes.func,
+    zoomOut: PropTypes.func,
+    clickElement: PropTypes.func,
+    clickTrackButton: PropTypes.func,
+    timebar: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    now: PropTypes.instanceOf(Date),
+    toggleTrackOpen: PropTypes.func,
+    enableSticky: PropTypes.bool,
+    scrollToNow: PropTypes.bool,
+  }
+
+  constructor(props: TimelineProps) {
     super(props)
     const timelineViewportWidth = UNKNOWN_WIDTH
     const sidebarWidth = UNKNOWN_WIDTH
     this.state = {
-      time: createTime({ ...props.scale, viewportWidth: timelineViewportWidth }),
       timelineViewportWidth,
       sidebarWidth,
+      time: createTime({ ...props.scale, viewportWidth: timelineViewportWidth }),
     }
   }
 
-  public componentWillReceiveProps(nextProps) {
+  public componentWillReceiveProps(nextProps: TimelineProps) {
     const { scale } = this.props
     const { timelineViewportWidth } = this.state
 
@@ -32,7 +86,10 @@ class Timeline extends Component {
     }
   }
 
-  public handleLayoutChange = ({ timelineViewportWidth, sidebarWidth }, cb) => {
+  public handleLayoutChange = (
+    { timelineViewportWidth, sidebarWidth }: { timelineViewportWidth: number; sidebarWidth: number },
+    cb: () => void
+  ) => {
     const { scale } = this.props
     const time = createTime({
       ...scale,
@@ -98,27 +155,5 @@ class Timeline extends Component {
   }
 }
 
-Timeline.propTypes = {
-  scale: PropTypes.shape({
-    start: PropTypes.instanceOf(Date).isRequired,
-    end: PropTypes.instanceOf(Date).isRequired,
-    zoom: PropTypes.number.isRequired,
-    zoomMin: PropTypes.number,
-    zoomMax: PropTypes.number,
-    minWidth: PropTypes.number,
-  }),
-  isOpen: PropTypes.bool,
-  toggleOpen: PropTypes.func,
-  zoomIn: PropTypes.func,
-  zoomOut: PropTypes.func,
-  clickElement: PropTypes.func,
-  clickTrackButton: PropTypes.func,
-  timebar: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  now: PropTypes.instanceOf(Date),
-  toggleTrackOpen: PropTypes.func,
-  enableSticky: PropTypes.bool,
-  scrollToNow: PropTypes.bool,
-}
-
 export default Timeline
+export { TimelineProps, ScaleProps }
