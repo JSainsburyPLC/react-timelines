@@ -21,24 +21,24 @@ export const buildTimebar = (start: Date, end: Date) => [
     title: 'Years',
     cells: Array.from(moment.range(start, end).by('year')).map(year => ({
       id: year.toISOString(),
-      start: year.startOf().toDate(),
-      end: year.endOf().toDate(),
+      start: year.startOf('year').toDate(),
+      end: year.endOf('year').toDate(),
       title: year.format('YYYY'),
     })),
     style: {},
   },
-  // {
-  //   id: 'months',
-  //   title: 'Months',
-  //   cells: Array.from(moment.range(start, end).by('month')).map(month => ({
-  //     id: month.toISOString(),
-  //     start: month.startOf().toDate(),
-  //     end: month.endOf().toDate(),
-  //     title: month.format('mm'),
-  //   })),
-  //   useAsGrid: true,
-  //   style: {},
-  // },
+  {
+    id: 'months',
+    title: 'Months',
+    cells: Array.from(moment.range(start, end).by('month')).map(month => ({
+      id: month.toISOString(),
+      start: month.startOf('month').toDate(),
+      end: month.endOf('month').toDate(),
+      title: month.format('MMM'),
+    })),
+    useAsGrid: true,
+    style: {},
+  },
 ]
 
 export const buildElement = ({ trackId, start, end, i }: { trackId: string; start: Date; end: Date; i: number }) => {

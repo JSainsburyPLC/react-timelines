@@ -4,7 +4,6 @@ import Timeline from 'react-timelines'
 import 'react-timelines/lib/css/style.css'
 
 import { buildTimebar } from './builders'
-import { NUM_OF_YEARS, START_YEAR } from './constants'
 import data from './data'
 
 interface Group {
@@ -47,20 +46,20 @@ const groupsByState = entries.reduce(
 
 const now = new Date('2005-01-01')
 const timebar = buildTimebar(new Date(START_DATE), new Date(END_DATE))
-console.log(timebar)
+
 const initialTracks = Object.values(groupsByState).reduce(
   (out, group) => {
-    const elements = group.entries.map((entry, index) => ({
-      id: `${entry.firstname}-${entry.lastname}-${entry.startdate}`,
-      title: entry.name,
-      start: new Date(entry.startdate),
-      end: new Date(entry.enddate),
-    }))
+    // const elements = group.entries.map(entry => ({
+    //   id: `${entry.firstname}-${entry.lastname}-${entry.startdate}`,
+    //   title: entry.name,
+    //   start: new Date(entry.startdate),
+    //   end: new Date(entry.enddate),
+    // }))
 
     return {
       ...out,
       [group.id]: {
-        elements,
+        elements: [],
         tracks: [],
         id: group.id,
         title: group.id,
@@ -74,7 +73,7 @@ const initialTracks = Object.values(groupsByState).reduce(
 const clickElement = (element: any) => alert(`Clicked element\n${JSON.stringify(element, null, 2)}`)
 const clickTrackButton = (track: any) => alert(JSON.stringify(track))
 
-const MIN_ZOOM = 2
+const MIN_ZOOM = 1
 const MAX_ZOOM = 20
 
 interface Track {
@@ -97,8 +96,8 @@ const App: FunctionComponent = () => {
     })
   }
 
-  const start = new Date(`${START_YEAR}`)
-  const end = new Date(`${START_YEAR + NUM_OF_YEARS}`)
+  const start = new Date(START_DATE)
+  const end = new Date(END_DATE)
 
   return (
     <div className="app">
