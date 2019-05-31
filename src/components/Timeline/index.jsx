@@ -33,7 +33,7 @@ class Timeline extends Component {
   }
 
   render() {
-    const { now, time, timebar, tracks, sticky, clickElement } = this.props
+    const { now, time, timebar, tracks, clickElement } = this.props
 
     const { pointerDate, pointerVisible, pointerHighlighted } = this.state
 
@@ -52,7 +52,6 @@ class Timeline extends Component {
           onEnter={this.handleMouseEnter}
           onLeave={this.handleMouseLeave}
           width={time.timelineWidthStyle}
-          sticky={sticky}
         />
         <Body time={time} grid={grid} tracks={tracks} clickElement={clickElement} />
       </div>
@@ -72,7 +71,6 @@ Timeline.propTypes = {
     }).isRequired
   ).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  sticky: PropTypes.shape({}),
   clickElement: PropTypes.func,
 }
 

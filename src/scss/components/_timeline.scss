@@ -3,21 +3,12 @@
   overflow: hidden;
 }
 
-.rt-timeline__header {}
-
 .rt-timeline__header-scroll {
   overflow-x: auto;
 
   &::-webkit-scrollbar {
     display: none;
   }
-}
-
-.rt-timeline__header.rt-is-sticky {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  overflow: hidden;
 }
 
 .rt-timeline__body {

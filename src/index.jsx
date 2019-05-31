@@ -59,7 +59,6 @@ class Timeline extends Component {
       now,
       timebar,
       toggleTrackOpen,
-      enableSticky = false,
       scrollToNow,
     } = this.props
 
@@ -79,7 +78,6 @@ class Timeline extends Component {
           zoomMax={zoomMax}
         />
         <Layout
-          enableSticky={enableSticky}
           now={now}
           tracks={tracks}
           timebar={timebar}
@@ -117,7 +115,6 @@ Timeline.propTypes = {
   tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   now: PropTypes.instanceOf(Date),
   toggleTrackOpen: PropTypes.func,
-  enableSticky: PropTypes.bool,
   scrollToNow: PropTypes.bool,
 }
 

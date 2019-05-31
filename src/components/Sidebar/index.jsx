@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import Header from './Header'
 import Body from './Body'
 
-const Sidebar = ({ timebar, tracks, toggleTrackOpen, sticky, clickTrackButton }) => (
+const Sidebar = ({ timebar, tracks, toggleTrackOpen, clickTrackButton }) => (
   <div className="rt-sidebar">
-    <Header timebar={timebar} sticky={sticky} />
+    <Header timebar={timebar} />
     <Body tracks={tracks} toggleTrackOpen={toggleTrackOpen} clickTrackButton={clickTrackButton} />
   </div>
 )
@@ -20,7 +20,6 @@ Sidebar.propTypes = {
   ).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   toggleTrackOpen: PropTypes.func,
-  sticky: PropTypes.shape({}),
   clickTrackButton: PropTypes.func,
 }
 

@@ -96,7 +96,6 @@ class App extends Component {
           tracks={tracks}
           now={now}
           toggleTrackOpen={this.handleToggleTrackOpen}
-          enableSticky
           scrollToNow
         />
       </div>
