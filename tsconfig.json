@@ -1,5 +1,5 @@
 {
-  "exclude": ["node_modules", "dist", "demo"],
+  "exclude": ["node_modules", "lib", "demo", "**/__tests__/*"],
   "compilerOptions": {
     "lib": ["esnext", "dom"],
     "module": "commonjs",
@@ -16,8 +16,7 @@
     "declarationMap": true,
     "target": "es5",
     "rootDir": "src",
-    "outDir": "dist",
-    "jsx": "react",
-    "allowJs": true
+    "outDir": "lib",
+    "jsx": "react"
   }
 }

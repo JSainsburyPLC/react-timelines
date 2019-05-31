@@ -5,18 +5,18 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib coverage",
-    "build:js": "babel src/ -d lib/",
-    "watch:js": "babel -w src/ -d lib/",
+    "build:js": "tsc",
+    "watch:js": "tsc -w",
     "build:css": "node-sass src/scss/style.scss lib/css/style.css",
     "watch:css": "node-sass -w src/scss/style.scss lib/css/style.css",
     "watch": "npm run watch:js & npm run watch:css",
     "build": "npm run clean && npm run build:js && npm run build:css",
     "test": "npm run lint && npm run unit",
-    "lint": "npm run lint:prettier && npm run lint:js",
-    "lint:js": "eslint . --ext .js,.jsx",
-    "lint:js:fix": "eslint . --ext .js,.jsx --fix",
-    "lint:prettier": "prettier --list-different \"{e2e,src}/**/*.{js,jsx}\"",
-    "lint:prettier:fix": "prettier --write \"{e2e,src}/**/*.{js,jsx}\"",
+    "lint": "npm run lint:prettier && npm run lint:ts",
+    "lint:ts": "tslint --project .",
+    "lint:ts:fix": "tslint --fix --project .",
+    "lint:prettier": "prettier --list-different \"src/**/*.{ts,tsx}\"",
+    "lint:prettier:fix": "prettier --write \"src/**/*.{ts,tsx}\"",
     "unit": "jest",
     "coverage": "jest --coverage --collectCoverageFrom='**/*.{js,jsx}'",
     "prepublish": "npm run clean && npm run build",
@@ -47,27 +47,13 @@
     "lib"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
     "@types/enzyme": "^3.9.3",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^24.0.11",
     "@types/prop-types": "^15.7.1",
     "@types/react": "^16.8.19",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.8.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.23.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-import": "^2.17.3",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.13.0",
     "jest": "^24.8.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.17.1",
@@ -99,14 +85,13 @@
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "<rootDir>/utils/raf.js",
-      "<rootDir>/utils/events.js",
-      "<rootDir>/utils/computedStyle.js",
-      "<rootDir>/propTypes.js",
+      "<rootDir>/utils/raf.ts",
+      "<rootDir>/utils/events.ts",
+      "<rootDir>/utils/computedStyle.ts",
       ".d.ts"
     ],
     "setupFiles": [
-      "../jestSetup.js"
+      "<rootDir>/setupTestFramework.ts"
     ]
   }
 }
