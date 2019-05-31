@@ -8,7 +8,10 @@ import data from './data'
 
 interface Group {
   id: string
-  entries: typeof data
+  parties: {
+    republicans: typeof data
+    democrats: typeof data
+  }
 }
 
 interface Track {
@@ -18,6 +21,14 @@ interface Track {
   title: string
   isOpen: boolean
 }
+
+const toElements = (e: typeof data) =>
+  e.map(entry => ({
+    id: `${entry.firstname}-${entry.lastname}-${entry.startdate}`,
+    title: entry.name,
+    start: new Date(entry.startdate),
+    end: new Date(entry.enddate),
+  }))
 
 const entries = data.filter(a => new Date(a.enddate).getFullYear() > 1970)
 const START_DATE = Math.min(...entries.map(entry => new Date(entry.startdate).getTime()))
@@ -30,13 +41,20 @@ const groupsByState = entries.reduce(
       return out
     }
 
-    if (out[state] && Array.isArray(out[state].entries)) {
-      out[state].entries.push(entry)
-    } else {
+    if (!out[state]) {
       out[state] = {
         id: state,
-        entries: [entry],
+        parties: {
+          republicans: [],
+          democrats: [],
+        },
       }
+    }
+
+    if (entry.party === 'Democrat') {
+      out[state].parties.democrats.push(entry)
+    } else {
+      out[state].parties.republicans.push(entry)
     }
 
     return out
@@ -48,25 +66,29 @@ const now = new Date('2005-01-01')
 const timebar = buildTimebar(new Date(START_DATE), new Date(END_DATE))
 
 const initialTracks = Object.values(groupsByState).reduce(
-  (out, group) => {
-    // const elements = group.entries.map(entry => ({
-    //   id: `${entry.firstname}-${entry.lastname}-${entry.startdate}`,
-    //   title: entry.name,
-    //   start: new Date(entry.startdate),
-    //   end: new Date(entry.enddate),
-    // }))
-
-    return {
-      ...out,
-      [group.id]: {
-        elements: [],
-        tracks: [],
-        id: group.id,
-        title: group.id,
-        isOpen: false,
-      },
-    }
-  },
+  (out, group) => ({
+    ...out,
+    [group.id]: {
+      elements: [],
+      tracks: [
+        {
+          id: `${group.id}-democrats`,
+          title: 'Democrats',
+          tracks: [],
+          elements: toElements(group.parties.democrats),
+        },
+        {
+          id: `${group.id}-republicans`,
+          title: 'Republicans',
+          tracks: [],
+          elements: toElements(group.parties.republicans),
+        },
+      ],
+      id: group.id,
+      title: group.id,
+      isOpen: true,
+    },
+  }),
   {} as Record<string, Track>
 )
 
