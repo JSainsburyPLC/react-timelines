@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react'
 
 interface StickyProps {
   isSticky: boolean
-  sidebarWidth: number
-  headerHeight: number
+  sidebarWidth?: number
+  headerHeight?: number
 }
 
 interface HeaderProps {

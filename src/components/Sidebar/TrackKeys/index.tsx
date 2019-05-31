@@ -4,8 +4,8 @@ import TrackKey, { TrackKeyProps } from './TrackKey'
 
 interface TrackKeysProps {
   tracks: Array<TrackKeyProps & { id: string }>
-  toggleOpen?: () => void
-  clickTrackButton?: () => void
+  toggleOpen: (track: any) => void
+  clickTrackButton?: (track: any) => void
 }
 
 const TrackKeys: FunctionComponent<TrackKeysProps> = ({ tracks, toggleOpen, clickTrackButton }) => (

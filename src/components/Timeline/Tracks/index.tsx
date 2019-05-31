@@ -1,20 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
 import Track from './Track'
 
-const Tracks = ({ time, tracks, clickElement }) => (
+interface TracksProps {
+  time: any
+  tracks: Array<{
+    id: string
+    elements: any
+    isOpen: boolean
+    tracks: any
+  }>
+  clickElement: any
+}
+
+const Tracks: FunctionComponent<TracksProps> = ({ time, tracks, clickElement }) => (
   <div className="rt-tracks">
     {tracks.map(({ id, elements, isOpen, tracks: children }) => (
       <Track key={id} time={time} elements={elements} isOpen={isOpen} tracks={children} clickElement={clickElement} />
     ))}
   </div>
 )
-
-Tracks.propTypes = {
-  time: PropTypes.shape({}).isRequired,
-  tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  clickElement: PropTypes.func,
-}
 
 export default Tracks

@@ -1,12 +1,12 @@
-import React from 'react'
 import { shallow } from 'enzyme'
+import React from 'react'
 
 import Timeline from '..'
-import Header from '../Header'
+import createTime from '../../../utils/time'
 import Body from '../Body'
+import Header from '../Header'
 import NowMarker from '../Marker/Now'
 import PointerMarker from '../Marker/Pointer'
-import createTime from '../../../utils/time'
 
 import getMouseX from '../../../utils/getMouseX'
 

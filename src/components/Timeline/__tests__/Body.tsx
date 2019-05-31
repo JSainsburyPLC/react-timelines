@@ -1,9 +1,9 @@
-import React from 'react'
 import { shallow } from 'enzyme'
+import React from 'react'
 
 import Body from '../Body'
-import Tracks from '../Tracks'
 import Grid from '../Grid'
+import Tracks from '../Tracks'
 
 const defaultProps = {
   time: {},

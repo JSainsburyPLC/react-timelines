@@ -1,15 +1,29 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
-import Header from './Header'
+import getGrid from '../../utils/getGrid'
+import getMouseX from '../../utils/getMouseX'
 import Body from './Body'
+import Header from './Header'
 import NowMarker from './Marker/Now'
 import PointerMarker from './Marker/Pointer'
-import getMouseX from '../../utils/getMouseX'
-import getGrid from '../../utils/getGrid'
 
-class Timeline extends Component {
-  constructor(props) {
+interface TimelineProps {
+  now: any
+  time: any
+  timebar: any
+  tracks: any
+  sticky: any
+  clickElement: any
+}
+
+interface TimelineState {
+  pointerDate: any
+  pointerVisible: any
+  pointerHighlighted: any
+}
+
+class Timeline extends Component<TimelineProps, TimelineState> {
+  constructor(props: TimelineProps) {
     super(props)
 
     this.state = {
@@ -19,22 +33,21 @@ class Timeline extends Component {
     }
   }
 
-  handleMouseMove = e => {
+  public handleMouseMove = (e: MouseEvent) => {
     const { time } = this.props
     this.setState({ pointerDate: time.fromX(getMouseX(e)) })
   }
 
-  handleMouseLeave = () => {
+  public handleMouseLeave = () => {
     this.setState({ pointerHighlighted: false })
   }
 
-  handleMouseEnter = () => {
+  public handleMouseEnter = () => {
     this.setState({ pointerVisible: true, pointerHighlighted: true })
   }
 
-  render() {
+  public render() {
     const { now, time, timebar, tracks, sticky, clickElement } = this.props
-
     const { pointerDate, pointerVisible, pointerHighlighted } = this.state
 
     const grid = getGrid(timebar)
@@ -58,22 +71,6 @@ class Timeline extends Component {
       </div>
     )
   }
-}
-
-Timeline.propTypes = {
-  now: PropTypes.instanceOf(Date),
-  time: PropTypes.shape({
-    fromX: PropTypes.func.isRequired,
-  }).isRequired,
-  timebar: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string,
-    }).isRequired
-  ).isRequired,
-  tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  sticky: PropTypes.shape({}),
-  clickElement: PropTypes.func,
 }
 
 export default Timeline

@@ -4,8 +4,8 @@ import TrackKeys from './TrackKeys'
 
 interface BodyProps {
   tracks: any[]
-  toggleTrackOpen?: () => void
-  clickTrackButton?: () => void
+  toggleTrackOpen: (track: any) => void
+  clickTrackButton?: (track: any) => void
 }
 
 const Body: FunctionComponent<BodyProps> = ({ tracks, toggleTrackOpen, clickTrackButton }) => (

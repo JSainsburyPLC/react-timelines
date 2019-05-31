@@ -4,8 +4,8 @@ import TrackKeys from '.'
 
 interface TrackKeyProps {
   track: any
-  toggleOpen: () => void
-  clickTrackButton: () => void
+  toggleOpen: (track: any) => void
+  clickTrackButton?: (track: any) => void
 }
 
 const TrackKey: FunctionComponent<TrackKeyProps> = ({ track, toggleOpen, clickTrackButton }) => {
@@ -16,6 +16,7 @@ const TrackKey: FunctionComponent<TrackKeyProps> = ({ track, toggleOpen, clickTr
     if (sideComponent) {
       return React.cloneElement(sideComponent)
     }
+
     if (hasButton && clickTrackButton) {
       const handleClick = () => clickTrackButton(track)
       return <button className="rt-track-key__side-button" onClick={handleClick} type="button" />

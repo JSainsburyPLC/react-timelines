@@ -1,5 +1,5 @@
 {
-  "exclude": ["node_modules", "lib", "demo", "**/__tests__/*"],
+  "exclude": ["node_modules", "lib", "demo", "**/__tests__/*", "setupTestFramework.ts"],
   "compilerOptions": {
     "lib": ["esnext", "dom"],
     "module": "commonjs",
@@ -12,8 +12,6 @@
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "declaration": true,
-    "declarationMap": true,
     "target": "es5",
     "rootDir": "src",
     "outDir": "lib",

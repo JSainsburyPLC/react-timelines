@@ -1,7 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
-const Marker = ({ x, modifier, children, visible, highlighted }) => (
+interface MarkerProps {
+  x: any
+  modifier: any
+  children: any
+  visible: any
+  highlighted: any
+}
+
+const Marker: FunctionComponent<MarkerProps> = ({ x, modifier, children, visible, highlighted }) => (
   <div
     className={`rt-marker rt-marker--${modifier} ${visible ? 'rt-is-visible' : ''} ${
       highlighted ? 'rt-is-highlighted' : ''
@@ -13,13 +20,5 @@ const Marker = ({ x, modifier, children, visible, highlighted }) => (
     </div>
   </div>
 )
-
-Marker.propTypes = {
-  x: PropTypes.number.isRequired,
-  modifier: PropTypes.string.isRequired,
-  visible: PropTypes.bool,
-  highlighted: PropTypes.bool,
-  children: PropTypes.node,
-}
 
 export default Marker

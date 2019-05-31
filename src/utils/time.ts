@@ -8,7 +8,19 @@ interface Options {
   minWidth?: number
 }
 
-const create = ({ start, end, zoom, viewportWidth = 0, minWidth = 0 }: Options) => {
+interface Time {
+  timelineWidth: number
+  timelineWidthStyle: string
+  start: Date
+  end: Date
+  zoom: number
+  toX: (date: Date) => number
+  toStyleLeft: (date: Date) => { left: string }
+  toStyleLeftAndWidth: (from: Date, to: Date) => { left: string; width: string }
+  fromX: (x: number) => Date
+}
+
+const create = ({ start, end, zoom, viewportWidth = 0, minWidth = 0 }: Options): Time => {
   const duration = end.getTime() - start.getTime()
 
   const days = duration / MILLIS_IN_A_DAY
@@ -61,3 +73,4 @@ const create = ({ start, end, zoom, viewportWidth = 0, minWidth = 0 }: Options) 
 }
 
 export default create
+export { Time }

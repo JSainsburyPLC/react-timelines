@@ -1,10 +1,20 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
 import BasicElement from '../../Elements/Basic'
 
-const Element = props => {
+interface ElementProps {
+  time: any
+  style: any
+  title: any
+  start: any
+  end: any
+  classes: any
+  dataSet: any
+  tooltip: any
+  clickElement: any
+}
+
+const Element: FunctionComponent<ElementProps> = props => {
   const { time, style, title, start, end, classes, dataSet, tooltip, clickElement } = props
 
   const handleClick = () => {
@@ -28,22 +38,6 @@ const Element = props => {
       />
     </div>
   )
-}
-
-Element.propTypes = {
-  time: PropTypes.shape({}).isRequired,
-  style: PropTypes.shape({}),
-  classes: PropTypes.arrayOf(PropTypes.string.isRequired),
-  dataSet: PropTypes.shape({}),
-  title: PropTypes.string,
-  start: PropTypes.instanceOf(Date).isRequired,
-  end: PropTypes.instanceOf(Date).isRequired,
-  tooltip: PropTypes.string,
-  clickElement: PropTypes.func,
-}
-
-Element.defaultTypes = {
-  clickElement: undefined,
 }
 
 export default Element

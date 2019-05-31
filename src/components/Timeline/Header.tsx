@@ -1,19 +1,38 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+import React, { PureComponent, RefObject } from 'react'
 
 import Timebar from './Timebar'
 
-const noop = () => {}
+const noop = () => undefined
 
-class Header extends PureComponent {
-  constructor(props) {
+interface HeaderProps {
+  time: any
+  onMove: any
+  onEnter: any
+  onLeave: any
+  width: any
+  timebar: any
+  sticky?: {
+    isSticky: any
+    headerHeight: any
+    viewportWidth: any
+    scrollLeft: number
+    setHeaderHeight: (height: number) => void
+    handleHeaderScrollY: (y: number) => void
+  }
+}
+
+class Header extends PureComponent<HeaderProps> {
+  private scroll: RefObject<any>
+  private timebar: RefObject<any>
+
+  constructor(props: HeaderProps) {
     super(props)
 
     this.scroll = React.createRef()
     this.timebar = React.createRef()
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     const { sticky } = this.props
     if (sticky) {
       sticky.setHeaderHeight(this.timebar.current.offsetHeight)
@@ -24,9 +43,10 @@ class Header extends PureComponent {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  public componentDidUpdate(prevProps: HeaderProps) {
     const { sticky } = this.props
-    if (sticky) {
+
+    if (sticky && prevProps.sticky) {
       const { scrollLeft, isSticky } = sticky
       const prevScrollLeft = prevProps.sticky.scrollLeft
       const prevIsSticky = prevProps.sticky.isSticky
@@ -36,21 +56,18 @@ class Header extends PureComponent {
     }
   }
 
-  handleScroll = () => {
+  public handleScroll = () => {
     const { sticky } = this.props
-    sticky.handleHeaderScrollY(this.scroll.current.scrollLeft)
+
+    if (sticky) {
+      sticky.handleHeaderScrollY(this.scroll.current.scrollLeft)
+    }
   }
 
-  render() {
-    const {
-      time,
-      onMove,
-      onEnter,
-      onLeave,
-      width,
-      timebar: rows,
-      sticky: { isSticky, headerHeight, viewportWidth } = {},
-    } = this.props
+  public render() {
+    const { time, onMove, onEnter, onLeave, width, timebar: rows, sticky = {} as any } = this.props
+    const { isSticky, headerHeight, viewportWidth } = sticky
+
     return (
       <div
         style={isSticky ? { paddingTop: headerHeight } : {}}
@@ -71,27 +88,6 @@ class Header extends PureComponent {
       </div>
     )
   }
-}
-
-Header.propTypes = {
-  time: PropTypes.shape({}).isRequired,
-  timebar: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string,
-    }).isRequired
-  ).isRequired,
-  onMove: PropTypes.func.isRequired,
-  onEnter: PropTypes.func.isRequired,
-  onLeave: PropTypes.func.isRequired,
-  width: PropTypes.string.isRequired,
-  sticky: PropTypes.shape({
-    isSticky: PropTypes.bool.isRequired,
-    setHeaderHeight: PropTypes.func.isRequired,
-    viewportWidth: PropTypes.number.isRequired,
-    handleHeaderScrollY: PropTypes.func.isRequired,
-    scrollLeft: PropTypes.number.isRequired,
-  }),
 }
 
 export default Header

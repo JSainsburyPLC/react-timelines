@@ -18,7 +18,7 @@ interface ScaleProps {
 
 interface TimelineProps {
   scale: ScaleProps
-  timebar: object[]
+  timebar: any
   tracks: object[]
   isOpen?: boolean
   toggleOpen?: () => void
@@ -27,7 +27,7 @@ interface TimelineProps {
   clickElement?: () => void
   clickTrackButton?: () => void
   now?: Date
-  toggleTrackOpen?: () => void
+  toggleTrackOpen: (track: any) => void
   enableSticky?: boolean
   scrollToNow?: boolean
 }
@@ -88,7 +88,7 @@ class Timeline extends Component<TimelineProps, TimelineState> {
 
   public handleLayoutChange = (
     { timelineViewportWidth, sidebarWidth }: { timelineViewportWidth: number; sidebarWidth: number },
-    cb: () => void
+    cb?: () => void
   ) => {
     const { scale } = this.props
     const time = createTime({

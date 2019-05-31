@@ -1,5 +1,5 @@
+import { mount, shallow } from 'enzyme'
 import React from 'react'
-import { shallow, mount } from 'enzyme'
 
 import Header from '../Header'
 import Timebar from '../Timebar'
@@ -26,7 +26,7 @@ const createProps = ({
   onMove = jest.fn(),
   onEnter = jest.fn(),
   onLeave = jest.fn(),
-  sticky = undefined,
+  sticky,
 } = {}) => ({
   time,
   timebar,

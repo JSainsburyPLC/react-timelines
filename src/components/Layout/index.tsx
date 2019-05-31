@@ -3,6 +3,7 @@ import React, { PureComponent, RefObject } from 'react'
 import { addListener, removeListener } from '../../utils/events'
 import getNumericPropertyValue from '../../utils/getNumericPropertyValue'
 import raf from '../../utils/raf'
+import { Time } from '../../utils/time'
 import Sidebar from '../Sidebar'
 import Timeline from '../Timeline'
 
@@ -10,16 +11,16 @@ const noop = () => undefined
 
 interface LayoutProps {
   enableSticky: boolean
-  timebar: object[]
-  time: object
+  timebar: Array<{ id: string; title: string }>
+  time: Time
   tracks: object[]
   now?: Date
   isOpen?: boolean
-  toggleTrackOpen?: () => void
+  toggleTrackOpen: (track: any) => void
   scrollToNow?: boolean
-  onLayoutChange: () => void
+  onLayoutChange: (values: any, callback?: () => void) => void
   sidebarWidth?: number
-  timelineViewportWidth?: number
+  timelineViewportWidth: number
   clickElement?: () => void
   clickTrackButton?: () => void
 }
@@ -96,7 +97,8 @@ class Layout extends PureComponent<LayoutProps, LayoutState> {
 
   public scrollToNow = () => {
     const { time, scrollToNow, now, timelineViewportWidth } = this.props
-    if (scrollToNow) {
+
+    if (scrollToNow && now) {
       this.timeline.current.scrollLeft = time.toX(now) - 0.5 * timelineViewportWidth
     }
   }
@@ -136,7 +138,7 @@ class Layout extends PureComponent<LayoutProps, LayoutState> {
 
   public calculateTimelineViewportWidth = () => this.timeline.current.offsetWidth
 
-  public handleLayoutChange = cb => {
+  public handleLayoutChange = (cb?: () => void) => {
     const { sidebarWidth, timelineViewportWidth, onLayoutChange } = this.props
 
     const nextSidebarWidth = this.calculateSidebarWidth()
