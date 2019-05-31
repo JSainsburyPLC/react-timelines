@@ -1,13 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FixedSizeList as List } from 'react-window'
 
 import Track from './Track'
 
 const Tracks = ({ time, tracks, clickElement }) => (
   <div className="rt-tracks">
-    {tracks.map(({ id, elements, isOpen, tracks: children }) => (
-      <Track key={id} time={time} elements={elements} isOpen={isOpen} tracks={children} clickElement={clickElement} />
-    ))}
+    <List height={500} itemCount={tracks.length} itemSize={60}>
+      {({ index, style }) => {
+        const { elements, isOpen, tracks: children } = tracks[index]
+
+        return (
+          <Track
+            time={time}
+            elements={elements}
+            isOpen={isOpen}
+            tracks={children}
+            clickElement={clickElement}
+            style={style}
+          />
+        )
+      }}
+    </List>
   </div>
 )
 

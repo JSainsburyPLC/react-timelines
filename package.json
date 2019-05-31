@@ -40,7 +40,8 @@
   "author": "JSainsburyPLC",
   "license": "MIT",
   "dependencies": {
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react-window": "^1.8.2"
   },
   "files": [
     "src",

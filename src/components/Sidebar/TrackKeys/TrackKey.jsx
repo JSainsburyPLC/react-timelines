@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import TrackKeys from '.'
 
-const TrackKey = ({ track, toggleOpen, clickTrackButton }) => {
+const TrackKey = ({ track, toggleOpen, clickTrackButton, style }) => {
   const { title, tracks, isOpen, hasButton, sideComponent } = track
   const isExpandable = isOpen !== undefined
 
@@ -20,7 +20,7 @@ const TrackKey = ({ track, toggleOpen, clickTrackButton }) => {
   }
 
   return (
-    <li className="rt-track-key">
+    <li className="rt-track-key" style={style}>
       <div className="rt-track-key__entry">
         {isExpandable && (
           <button
@@ -49,10 +49,12 @@ TrackKey.propTypes = {
   }),
   toggleOpen: PropTypes.func,
   clickTrackButton: PropTypes.func,
+  style: PropTypes.shape({}),
 }
 
 TrackKey.defaultProps = {
   clickTrackButton: undefined,
+  style: undefined,
 }
 
 export default TrackKey

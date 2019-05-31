@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import Tracks from '.'
 import Element from './Element'
 
-const Track = ({ time, elements, isOpen, tracks, clickElement }) => (
-  <div className="tr-track">
+const Track = ({ time, elements, isOpen, tracks, clickElement, style }) => (
+  <div className="tr-track" style={style}>
     <div className="rt-track__elements">
       {elements
         .filter(({ start, end }) => end > start)
@@ -23,6 +23,7 @@ Track.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   clickElement: PropTypes.func,
+  style: PropTypes.shape({}),
 }
 
 Track.defaultProps = {
