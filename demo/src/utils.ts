@@ -2,7 +2,7 @@
 
 import { MONTHS_PER_YEAR } from './constants'
 
-export const fill = n => {
+export const fill = (n: number) => {
   const arr = []
   for (let i = 0; i < n; i += 1) {
     arr.push(i)
@@ -39,20 +39,22 @@ export const nextColor = () => {
 //   return color
 // }
 
-export const hexToRgb = hex => {
+export const hexToRgb = (hex: string) => {
   const v = parseInt(hex, 16)
+  // tslint:disable: no-bitwise
   const r = (v >> 16) & 255
   const g = (v >> 8) & 255
   const b = v & 255
+  // tslint:enable: no-bitwise
   return [r, g, b]
 }
 
-export const colourIsLight = (r, g, b) => {
+export const colourIsLight = (r: number, g: number, b: number) => {
   const a = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255
   return a < 0.5
 }
 
-export const addMonthsToYear = (year, monthsToAdd) => {
+export const addMonthsToYear = (year: number, monthsToAdd: number) => {
   let y = year
   let m = monthsToAdd
   while (m >= MONTHS_PER_YEAR) {
@@ -62,7 +64,7 @@ export const addMonthsToYear = (year, monthsToAdd) => {
   return { year: y, month: m + 1 }
 }
 
-export const addMonthsToYearAsDate = (year, monthsToAdd) => {
+export const addMonthsToYearAsDate = (year: number, monthsToAdd: number) => {
   const r = addMonthsToYear(year, monthsToAdd)
   return new Date(`${r.year}-${r.month}`)
 }

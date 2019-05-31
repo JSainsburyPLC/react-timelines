@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-airbnb",
+    "tslint-config-prettier",
+    "tslint-react",
+    "tslint-react-a11y"
+  ],
+  "rules": {
+    "import-name": false,
+    "interface-name": [true, "never-prefix"],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],
+    "object-literal-sort-keys": false
+  }
+}
