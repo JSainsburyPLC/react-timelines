@@ -3,17 +3,70 @@ import Timeline from 'react-timelines'
 
 import 'react-timelines/lib/css/style.css'
 
-import { buildTimebar, buildTrack } from './builders'
-import { NUM_OF_TRACKS, NUM_OF_YEARS, START_YEAR } from './constants'
-import { fill } from './utils'
+import { buildTimebar } from './builders'
+import { NUM_OF_YEARS, START_YEAR } from './constants'
+import data from './data'
 
-const now = new Date('2021-01-01')
-const timebar = buildTimebar()
-const initialTracks = fill(NUM_OF_TRACKS).reduce(
-  (acc, i) => {
-    const track = buildTrack(`${i + 1}`)
-    acc[track.id] = track
-    return acc
+interface Group {
+  id: string
+  entries: typeof data
+}
+
+interface Track {
+  tracks: any[]
+  elements: any[]
+  id: string
+  title: string
+  isOpen: boolean
+}
+
+const entries = data.filter(a => new Date(a.enddate).getFullYear() > 1970)
+const START_DATE = Math.min(...entries.map(entry => new Date(entry.startdate).getTime()))
+const END_DATE = Math.max(...entries.map(entry => new Date(entry.enddate).getTime()))
+const groupsByState = entries.reduce(
+  (out, entry) => {
+    const { state } = entry
+
+    if (!state) {
+      return out
+    }
+
+    if (out[state] && Array.isArray(out[state].entries)) {
+      out[state].entries.push(entry)
+    } else {
+      out[state] = {
+        id: state,
+        entries: [entry],
+      }
+    }
+
+    return out
+  },
+  {} as Record<string, Group>
+)
+
+const now = new Date('2005-01-01')
+const timebar = buildTimebar(new Date(START_DATE), new Date(END_DATE))
+console.log(timebar)
+const initialTracks = Object.values(groupsByState).reduce(
+  (out, group) => {
+    const elements = group.entries.map((entry, index) => ({
+      id: `${entry.firstname}-${entry.lastname}-${entry.startdate}`,
+      title: entry.name,
+      start: new Date(entry.startdate),
+      end: new Date(entry.enddate),
+    }))
+
+    return {
+      ...out,
+      [group.id]: {
+        elements,
+        tracks: [],
+        id: group.id,
+        title: group.id,
+        isOpen: false,
+      },
+    }
   },
   {} as Record<string, Track>
 )

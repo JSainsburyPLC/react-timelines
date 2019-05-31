@@ -1,67 +1,44 @@
+import Moment from 'moment'
+import { extendMoment } from 'moment-range'
+
 import {
   MAX_ELEMENT_GAP,
   MAX_MONTH_SPAN,
   MAX_NUM_OF_SUBTRACKS,
   MAX_TRACK_START_GAP,
   MIN_MONTH_SPAN,
-  MONTH_NAMES,
-  MONTHS_PER_QUARTER,
-  MONTHS_PER_YEAR,
   NUM_OF_MONTHS,
-  NUM_OF_YEARS,
-  QUARTERS_PER_YEAR,
   START_YEAR,
 } from './constants'
 
-import { addMonthsToYear, addMonthsToYearAsDate, colourIsLight, fill, hexToRgb, nextColor, randomTitle } from './utils'
+import { addMonthsToYearAsDate, colourIsLight, fill, hexToRgb, nextColor, randomTitle } from './utils'
 
-export const buildQuarterCells = () => {
-  const v = []
-  for (let i = 0; i < QUARTERS_PER_YEAR * NUM_OF_YEARS; i += 1) {
-    const quarter = (i % 4) + 1
-    const startMonth = i * MONTHS_PER_QUARTER
-    const s = addMonthsToYear(START_YEAR, startMonth)
-    const e = addMonthsToYear(START_YEAR, startMonth + MONTHS_PER_QUARTER)
-    v.push({
-      id: `${s.year}-q${quarter}`,
-      title: `Q${quarter} ${s.year}`,
-      start: new Date(`${s.year}-${s.month}-01`),
-      end: new Date(`${e.year}-${e.month}-01`),
-    })
-  }
-  return v
-}
+const moment = extendMoment(Moment as any)
 
-export const buildMonthCells = () => {
-  const v = []
-  for (let i = 0; i < MONTHS_PER_YEAR * NUM_OF_YEARS; i += 1) {
-    const startMonth = i
-    const start = addMonthsToYearAsDate(START_YEAR, startMonth)
-    const end = addMonthsToYearAsDate(START_YEAR, startMonth + 1)
-    v.push({
-      start,
-      end,
-      id: `m${startMonth}`,
-      title: MONTH_NAMES[i % 12],
-    })
-  }
-  return v
-}
-
-export const buildTimebar = () => [
+export const buildTimebar = (start: Date, end: Date) => [
   {
-    id: 'quarters',
-    title: 'Quarters',
-    cells: buildQuarterCells(),
+    id: 'years',
+    title: 'Years',
+    cells: Array.from(moment.range(start, end).by('year')).map(year => ({
+      id: year.toISOString(),
+      start: year.startOf().toDate(),
+      end: year.endOf().toDate(),
+      title: year.format('YYYY'),
+    })),
     style: {},
   },
-  {
-    id: 'months',
-    title: 'Months',
-    cells: buildMonthCells(),
-    useAsGrid: true,
-    style: {},
-  },
+  // {
+  //   id: 'months',
+  //   title: 'Months',
+  //   cells: Array.from(moment.range(start, end).by('month')).map(month => ({
+  //     id: month.toISOString(),
+  //     start: month.startOf().toDate(),
+  //     end: month.endOf().toDate(),
+  //     title: month.format('mm'),
+  //   })),
+  //   useAsGrid: true,
+  //   style: {},
+  // },
 ]
 
 export const buildElement = ({ trackId, start, end, i }: { trackId: string; start: Date; end: Date; i: number }) => {
