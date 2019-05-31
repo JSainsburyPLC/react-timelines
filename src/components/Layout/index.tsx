@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { PureComponent, RefObject } from 'react'
 
 import { addListener, removeListener } from '../../utils/events'
@@ -32,22 +31,6 @@ interface LayoutState {
 }
 
 class Layout extends PureComponent<LayoutProps, LayoutState> {
-  public static propTypes = {
-    enableSticky: PropTypes.bool.isRequired,
-    timebar: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    time: PropTypes.shape({}).isRequired,
-    tracks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    now: PropTypes.instanceOf(Date),
-    isOpen: PropTypes.bool,
-    toggleTrackOpen: PropTypes.func,
-    scrollToNow: PropTypes.bool,
-    onLayoutChange: PropTypes.func.isRequired,
-    sidebarWidth: PropTypes.number,
-    timelineViewportWidth: PropTypes.number,
-    clickElement: PropTypes.func,
-    clickTrackButton: PropTypes.func,
-  }
-
   private timeline: RefObject<any>
   private layout: RefObject<any>
   private sidebar: RefObject<any>

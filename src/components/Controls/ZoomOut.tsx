@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { FunctionComponent } from 'react'
 
 interface ZoomOutProps {
@@ -24,11 +23,5 @@ const ZoomOut: FunctionComponent<ZoomOutProps> = ({ zoom, zoomMin, zoomOut }) =>
     </svg>
   </button>
 )
-
-ZoomOut.propTypes = {
-  zoom: PropTypes.number.isRequired,
-  zoomMin: PropTypes.number.isRequired,
-  zoomOut: PropTypes.func.isRequired,
-}
 
 export default ZoomOut

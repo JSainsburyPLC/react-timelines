@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { FunctionComponent } from 'react'
 
 import Toggle from './Toggle'
@@ -32,16 +31,6 @@ const Controls: FunctionComponent<ControlsProps> = ({
     </div>
   </div>
 )
-
-Controls.propTypes = {
-  zoom: PropTypes.number.isRequired,
-  isOpen: PropTypes.bool,
-  toggleOpen: PropTypes.func,
-  zoomIn: PropTypes.func,
-  zoomOut: PropTypes.func,
-  zoomMin: PropTypes.number,
-  zoomMax: PropTypes.number,
-}
 
 export default Controls
 export { ControlsProps }

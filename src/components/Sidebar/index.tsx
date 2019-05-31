@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { FunctionComponent } from 'react'
 
 import Body, { BodyProps } from './Body'
@@ -12,18 +11,5 @@ const Sidebar: FunctionComponent<SidebarProps> = ({ timebar, tracks, toggleTrack
     <Body tracks={tracks} toggleTrackOpen={toggleTrackOpen} clickTrackButton={clickTrackButton} />
   </div>
 )
-
-Sidebar.propTypes = {
-  timebar: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string,
-    }).isRequired
-  ).isRequired,
-  tracks: PropTypes.arrayOf(PropTypes.shape({})),
-  toggleTrackOpen: PropTypes.func,
-  sticky: PropTypes.shape({}),
-  clickTrackButton: PropTypes.func,
-}
 
 export default Sidebar

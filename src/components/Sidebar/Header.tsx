@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { FunctionComponent } from 'react'
 
 interface StickyProps {
@@ -29,20 +28,6 @@ const Header: FunctionComponent<HeaderProps> = ({
     </div>
   </div>
 )
-
-Header.propTypes = {
-  sticky: PropTypes.shape({
-    isSticky: PropTypes.bool.isRequired,
-    headerHeight: PropTypes.number.isRequired,
-    sidebarWidth: PropTypes.number.isRequired,
-  }),
-  timebar: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string,
-    }).isRequired
-  ).isRequired,
-}
 
 export default Header
 export { HeaderProps }

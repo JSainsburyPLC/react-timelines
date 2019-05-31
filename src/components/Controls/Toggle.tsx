@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { FunctionComponent } from 'react'
 
 const CloseSvg = () => (
@@ -31,10 +30,5 @@ const Toggle: FunctionComponent<ToggleProps> = ({ toggleOpen, isOpen }) => (
     {isOpen ? <CloseSvg /> : <OpenSvg />}
   </button>
 )
-
-Toggle.propTypes = {
-  toggleOpen: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-}
 
 export default Toggle

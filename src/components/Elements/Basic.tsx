@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { FunctionComponent } from 'react'
 
 import createClasses from '../../utils/classes'
@@ -45,15 +44,5 @@ const Basic: FunctionComponent<BasicProps> = ({ title, start, end, style, classe
     </div>
   </div>
 )
-
-Basic.propTypes = {
-  title: PropTypes.string.isRequired,
-  start: PropTypes.instanceOf(Date).isRequired,
-  end: PropTypes.instanceOf(Date).isRequired,
-  style: PropTypes.shape({}),
-  classes: PropTypes.arrayOf(PropTypes.string.isRequired),
-  dataSet: PropTypes.shape({}),
-  tooltip: PropTypes.string,
-}
 
 export default Basic

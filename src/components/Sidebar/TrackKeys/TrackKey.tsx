@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { FunctionComponent } from 'react'
 
 import TrackKeys from '.'
@@ -44,21 +43,6 @@ const TrackKey: FunctionComponent<TrackKeyProps> = ({ track, toggleOpen, clickTr
       {isOpen && tracks && tracks.length > 0 && <TrackKeys tracks={tracks} toggleOpen={toggleOpen} />}
     </li>
   )
-}
-
-TrackKey.propTypes = {
-  track: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    tracks: PropTypes.arrayOf(PropTypes.shape({})),
-    isOpen: PropTypes.bool,
-    hasButton: PropTypes.bool,
-  }),
-  toggleOpen: PropTypes.func,
-  clickTrackButton: PropTypes.func,
-}
-
-TrackKey.defaultProps = {
-  clickTrackButton: undefined,
 }
 
 export default TrackKey
