@@ -63,7 +63,17 @@ class Layout extends PureComponent {
   handleResize = () => this.handleLayoutChange()
 
   render() {
-    const { isOpen, tracks, now, time, timebar, toggleTrackOpen, clickElement, clickTrackButton } = this.props
+    const {
+      isOpen,
+      tracks,
+      now,
+      time,
+      timebar,
+      toggleTrackOpen,
+      clickElement,
+      clickTrackButton,
+      scrollSync,
+    } = this.props
 
     return (
       <div className={`rt-layout ${isOpen ? 'rt-is-open' : ''}`} ref={this.layout}>
@@ -73,11 +83,19 @@ class Layout extends PureComponent {
             tracks={tracks}
             toggleTrackOpen={toggleTrackOpen}
             clickTrackButton={clickTrackButton}
+            scrollSync={scrollSync}
           />
         </div>
         <div className="rt-layout__main">
           <div className="rt-layout__timeline" ref={this.timeline}>
-            <Timeline now={now} time={time} timebar={timebar} tracks={tracks} clickElement={clickElement} />
+            <Timeline
+              now={now}
+              time={time}
+              timebar={timebar}
+              tracks={tracks}
+              clickElement={clickElement}
+              scrollSync={scrollSync}
+            />
           </div>
         </div>
       </div>
@@ -98,6 +116,7 @@ Layout.propTypes = {
   timelineViewportWidth: PropTypes.number,
   clickElement: PropTypes.func,
   clickTrackButton: PropTypes.func,
+  scrollSync: PropTypes.shape({}).isRequired,
 }
 
 export default Layout

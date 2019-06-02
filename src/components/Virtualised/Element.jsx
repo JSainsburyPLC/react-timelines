@@ -2,14 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FixedSizeList as List } from 'react-window'
 
-import VirtualisedContext from './context'
-
 class VirtualisedElement extends Component {
-  static contextType = VirtualisedContext
-
   static propTypes = {
     id: PropTypes.string.isRequired,
     children: PropTypes.func.isRequired,
+    scrollSync: PropTypes.shape({}).isRequired,
   }
 
   constructor(props) {
@@ -19,25 +16,19 @@ class VirtualisedElement extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props
-    const { addElement } = this.context
+    const { id, scrollSync } = this.props
+    const { addElement } = scrollSync
 
     addElement(id, this.ref)
   }
 
-  onScroll = ({ scrollOffset, scrollUpdateWasRequested }) => {
-    if (scrollUpdateWasRequested) return
-
-    const { handleScroll } = this.context
-    handleScroll(scrollOffset)
-  }
-
   render() {
-    const { children } = this.props
-    const { height, itemCount, itemSize } = this.context
+    const { children, scrollSync, id } = this.props
+    const { height, itemCount, itemSize, handleScroll } = scrollSync
+    const onScroll = scrollArgs => handleScroll(id, scrollArgs)
 
     return (
-      <List height={height} itemCount={itemCount} itemSize={itemSize} ref={this.ref} onScroll={this.onScroll}>
+      <List height={height} itemCount={itemCount} itemSize={itemSize} ref={this.ref} onScroll={onScroll}>
         {children}
       </List>
     )

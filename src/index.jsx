@@ -4,9 +4,11 @@ import PropTypes from 'prop-types'
 import Controls from './components/Controls'
 import Layout from './components/Layout'
 import createTime from './utils/time'
-import VirtualisedWrapper from './components/Virtualised/Wrapper'
+import withScrollSync from './components/Virtualised/withScrollSync'
 
 const UNKNOWN_WIDTH = -1
+
+const WrappedLayout = withScrollSync(Layout)
 
 class Timeline extends Component {
   constructor(props) {
@@ -64,36 +66,40 @@ class Timeline extends Component {
     } = this.props
 
     const { time, timelineViewportWidth, sidebarWidth } = this.state
-
     const { clickElement, clickTrackButton } = this.props
+
+    const scrollSyncOptions = {
+      height: 600,
+      itemCount: tracks.length,
+      itemSize: 60,
+    }
 
     return (
       <div className="rt">
-        <VirtualisedWrapper height={600} itemCount={tracks.length} itemSize={60}>
-          <Controls
-            isOpen={isOpen}
-            toggleOpen={toggleOpen}
-            zoomIn={zoomIn}
-            zoomOut={zoomOut}
-            zoom={zoom}
-            zoomMin={zoomMin}
-            zoomMax={zoomMax}
-          />
-          <Layout
-            now={now}
-            tracks={tracks}
-            timebar={timebar}
-            toggleTrackOpen={toggleTrackOpen}
-            scrollToNow={scrollToNow}
-            time={time}
-            isOpen={isOpen}
-            onLayoutChange={this.handleLayoutChange}
-            timelineViewportWidth={timelineViewportWidth}
-            sidebarWidth={sidebarWidth}
-            clickElement={clickElement}
-            clickTrackButton={clickTrackButton}
-          />
-        </VirtualisedWrapper>
+        <Controls
+          isOpen={isOpen}
+          toggleOpen={toggleOpen}
+          zoomIn={zoomIn}
+          zoomOut={zoomOut}
+          zoom={zoom}
+          zoomMin={zoomMin}
+          zoomMax={zoomMax}
+        />
+        <WrappedLayout
+          now={now}
+          tracks={tracks}
+          timebar={timebar}
+          toggleTrackOpen={toggleTrackOpen}
+          scrollToNow={scrollToNow}
+          time={time}
+          isOpen={isOpen}
+          onLayoutChange={this.handleLayoutChange}
+          timelineViewportWidth={timelineViewportWidth}
+          sidebarWidth={sidebarWidth}
+          clickElement={clickElement}
+          clickTrackButton={clickTrackButton}
+          scrollSyncOptions={scrollSyncOptions}
+        />
       </div>
     )
   }
