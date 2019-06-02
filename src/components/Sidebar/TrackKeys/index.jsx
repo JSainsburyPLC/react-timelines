@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FixedSizeList as List } from 'react-window'
 
+import VirtualisedElement from '../../Virtualised/Element'
 import TrackKey from './TrackKey'
 
 const TrackKeys = ({ tracks, toggleOpen, clickTrackButton }) => (
   <ul className="rt-track-keys">
-    <List height={500} itemCount={tracks.length} itemSize={60}>
+    <VirtualisedElement id="track-keys">
       {({ index, style }) => {
         const track = tracks[index]
 
@@ -20,7 +20,7 @@ const TrackKeys = ({ tracks, toggleOpen, clickTrackButton }) => (
           />
         )
       }}
-    </List>
+    </VirtualisedElement>
   </ul>
 )
 

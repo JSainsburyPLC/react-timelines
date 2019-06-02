@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FixedSizeList as List } from 'react-window'
 
+import VirtualisedElement from '../../Virtualised/Element'
 import Track from './Track'
 
 const Tracks = ({ time, tracks, clickElement }) => (
   <div className="rt-tracks">
-    <List height={500} itemCount={tracks.length} itemSize={60}>
+    <VirtualisedElement id="tracks">
       {({ index, style }) => {
         const { elements, isOpen, tracks: children } = tracks[index]
 
@@ -21,7 +21,7 @@ const Tracks = ({ time, tracks, clickElement }) => (
           />
         )
       }}
-    </List>
+    </VirtualisedElement>
   </div>
 )
 

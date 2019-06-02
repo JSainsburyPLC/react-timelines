@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Controls from './components/Controls'
 import Layout from './components/Layout'
 import createTime from './utils/time'
+import VirtualisedWrapper from './components/Virtualised/Wrapper'
 
 const UNKNOWN_WIDTH = -1
 
@@ -68,29 +69,31 @@ class Timeline extends Component {
 
     return (
       <div className="rt">
-        <Controls
-          isOpen={isOpen}
-          toggleOpen={toggleOpen}
-          zoomIn={zoomIn}
-          zoomOut={zoomOut}
-          zoom={zoom}
-          zoomMin={zoomMin}
-          zoomMax={zoomMax}
-        />
-        <Layout
-          now={now}
-          tracks={tracks}
-          timebar={timebar}
-          toggleTrackOpen={toggleTrackOpen}
-          scrollToNow={scrollToNow}
-          time={time}
-          isOpen={isOpen}
-          onLayoutChange={this.handleLayoutChange}
-          timelineViewportWidth={timelineViewportWidth}
-          sidebarWidth={sidebarWidth}
-          clickElement={clickElement}
-          clickTrackButton={clickTrackButton}
-        />
+        <VirtualisedWrapper height={600} itemCount={tracks.length} itemSize={60}>
+          <Controls
+            isOpen={isOpen}
+            toggleOpen={toggleOpen}
+            zoomIn={zoomIn}
+            zoomOut={zoomOut}
+            zoom={zoom}
+            zoomMin={zoomMin}
+            zoomMax={zoomMax}
+          />
+          <Layout
+            now={now}
+            tracks={tracks}
+            timebar={timebar}
+            toggleTrackOpen={toggleTrackOpen}
+            scrollToNow={scrollToNow}
+            time={time}
+            isOpen={isOpen}
+            onLayoutChange={this.handleLayoutChange}
+            timelineViewportWidth={timelineViewportWidth}
+            sidebarWidth={sidebarWidth}
+            clickElement={clickElement}
+            clickTrackButton={clickTrackButton}
+          />
+        </VirtualisedWrapper>
       </div>
     )
   }
