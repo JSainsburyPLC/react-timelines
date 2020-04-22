@@ -1,6 +1,6 @@
 {
   "name": "react-timelines",
-  "version": "2.6.1",
+  "version": "2.7.1",
   "description": "React Timelines",
   "main": "lib/index.js",
   "scripts": {
@@ -94,5 +94,12 @@
     "setupFiles": [
       "../jestSetup.js"
     ]
+  },
+  "resolutions": {
+    "**/**/acorn": "7.1.1",
+    "**/**/handlebars": "~4.7.3",
+    "**/**/kind-of": "6.0.3",
+    "**/**/minimist": "1.2.5",
+    "**/**/serialize-javascript": "2.1.1"
   }
 }
