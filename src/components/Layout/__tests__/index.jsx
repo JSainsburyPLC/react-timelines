@@ -119,10 +119,7 @@ describe('<Layout />', () => {
       const props = createProps()
       const wrapper = mount(<Layout {...props} />)
       wrapper.setState({ isSticky: true })
-      wrapper
-        .find(Timeline)
-        .prop('sticky')
-        .handleHeaderScrollY('100')
+      wrapper.find(Timeline).prop('sticky').handleHeaderScrollY('100')
       expect(wrapper.find('.rt-layout__timeline').instance().scrollLeft).toBe(100)
     })
   })
