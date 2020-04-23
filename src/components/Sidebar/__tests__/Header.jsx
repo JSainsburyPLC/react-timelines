@@ -16,21 +16,14 @@ const defaultProps = {
 
 describe('<Header />', () => {
   it('renders the title for each row', () => {
-    const timebar = [{ id: '1', title: 'row-1' }, { id: '1', title: 'row-2' }]
+    const timebar = [
+      { id: '1', title: 'row-1' },
+      { id: '1', title: 'row-2' },
+    ]
     const props = { ...defaultProps, timebar }
     const wrapper = shallow(<Header {...props} />)
-    expect(
-      wrapper
-        .find('.rt-timebar-key')
-        .first()
-        .text()
-    ).toBe('row-1')
-    expect(
-      wrapper
-        .find('.rt-timebar-key')
-        .last()
-        .text()
-    ).toBe('row-2')
+    expect(wrapper.find('.rt-timebar-key').first().text()).toBe('row-1')
+    expect(wrapper.find('.rt-timebar-key').last().text()).toBe('row-2')
   })
 
   it('reserves the space taken up by the header when it is sticky', () => {
