@@ -1,6 +1,6 @@
 {
   "name": "react-timelines",
-  "version": "2.7.1",
+  "version": "1.0.0",
   "description": "React Timelines",
   "main": "lib/index.js",
   "scripts": {
@@ -36,7 +36,13 @@
     "tracks",
     "time"
   ],
-  "repository": "git@github.com:JSainsburyPLC/react-timelines.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:JSainsburyPLC/react-timelines.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/jsainsburyplc"
+  },
   "author": "JSainsburyPLC",
   "license": "MIT",
   "dependencies": {
